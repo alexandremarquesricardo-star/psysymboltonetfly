@@ -1,9 +1,265 @@
 <!doctype html>
-<html><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PsySymbol — Dream Meanings & Symbolism</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857946786580406" crossorigin="anonymous"></script>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PsySymbol — Dream Meanings & Symbolism</title>
+  <meta name="description" content="AI-generated interpretations for dreams, symbols, and spiritual numbers." />
+  <link rel="canonical" href="/#/" />
+  <style>
+    :root{--bg:#0b0b0e;--text:#f7f7f7;--muted:#b7b7c0;--card:#14141a;--border:#272732}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;background:var(--bg);color:var(--text)}
+    .container{max-width:1000px;margin:0 auto;padding:24px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:28px;height:28px}
+    .muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+    .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:4px}
+    .tab{padding:8px 10px;text-align:center;border-radius:8px;cursor:pointer;color:var(--muted)}
+    .tab.active{background:#1d1d26;color:#fff}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .input{flex:1;min-width:220px;border:1px solid var(--border);background:#0e0e14;color:#fff;padding:10px 12px;border-radius:10px}
+    .button{border:1px solid var(--border);background:#1a1a22;color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer}
+    .button:disabled{opacity:.6;cursor:not-allowed}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{background:#1d1d25;border:1px solid var(--border);padding:6px 10px;border-radius:999px;cursor:pointer}
+    h1{font-size:22px;margin:0 0 8px}
+    h2{font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:.08em;margin:14px 0 8px}
+    ul{margin:6px 0 0 18px}
+    .footer{font-size:12px;color:var(--muted);text-align:center;margin:40px 0 10px}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
+  </style>
+
+  <!-- AdSense (your publisher ID) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857946786580406" crossorigin="anonymous"></script>
+
+  <!-- Schema.org placeholder (populated dynamically) -->
+  <script type="application/ld+json" id="psysymbol-ld">{}</script>
 </head>
 <body>
-<div>Netlify-ready static build. Replace or expand topics.json as needed.</div>
-</body></html>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l3 7h7l-5.5 4 2.5 7-7-4-7 4 2.5-7L2 10h7l3-7z"/></svg>
+        <div>
+          <div style="font-weight:700;font-size:22px">PsySymbol</div>
+          <div class="muted" style="font-size:12px">Dreams · Symbols · Numbers</div>
+        </div>
+      </div>
+      <button class="button" id="themeBtn">Toggle Theme</button>
+    </div>
+
+    <div class="card" style="text-align:center;margin:16px 0">
+      <span class="pill">SEO-ready · AdSense slots</span>
+      <h1>Explore Dream Meanings & Symbolism</h1>
+      <p class="muted">Auto-generated, structured interpretations — no manual writing required.</p>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <div class="tab active" data-tab="symbols">Symbolism</div>
+      <div class="tab" data-tab="dreams">Dream Meanings</div>
+      <div class="tab" data-tab="numbers">Number Meanings</div>
+    </div>
+
+    <div style="margin:16px 0" class="row">
+      <input class="input" id="query" placeholder="Search meanings… e.g. black cat, butterfly, 333" />
+      <button class="button" id="goBtn">Interpret</button>
+    </div>
+
+    <div class="badges" id="suggestions"></div>
+
+    <div id="result" style="margin-top:16px"></div>
+
+    <div class="row" style="margin-top:18px">
+      <button class="button" id="dlSiteMap">Download sitemap.xml</button>
+      <button class="button" id="dlRobots">Download robots.txt</button>
+    </div>
+
+    <div class="footer">© <span id="year"></span> PsySymbol — Auto-Generated Meanings</div>
+  </div>
+
+<script>
+/* --- Starter topics.json is optional; SPA works without fetching it --- */
+const SAMPLES = {
+  dreams: ["black cat dream","losing teeth","flying","being chased","ocean waves","snake in bed"],
+  symbols: ["black cat","butterfly","white feather","raven","lotus","owl","key","mirror"],
+  numbers: ["111","222","333","444","555","777","1010","1212"]
+};
+const RELATED = ["intuition","transformation","protection","rebirth","balance","shadow work","synchronicity","clarity","boundaries"];
+
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
+function titleCase(s){return s.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase()).replace(/\s+/g," ").trim()}
+
+function prng(seedStr){
+  let h = 2166136261>>>0;
+  for(let i=0;i<seedStr.length;i++) h=Math.imul(h ^ seedStr.charCodeAt(i),16777619);
+  return ()=> (h = Math.imul(h ^ (h>>>15),2246822507), ((h ^ (h>>>13))>>>0)/2**32);
+}
+
+function makeSections(topic, mode){
+  const r = prng(mode+":"+topic.toLowerCase());
+  const tones = ["psychological","spiritual","symbolic","mythic","practical","archetypal"];
+  const tone = tones[Math.floor(r()*tones.length)];
+  const base = titleCase(topic);
+  const h1 = mode==="dreams"? `${base} — Dream Meaning` : (mode==="symbols"? `${base} — Symbolism & Meaning` : `${base} — Number Meaning`);
+  const short = [
+    `${base} often points to ${r()<0.5? "inner shifts":"heightened intuition"}.`,
+    `Many associate ${base.toLowerCase()} with ${r()<0.5? "protection":"transformation"}.`,
+    `In a ${tone} lens, ${base.toLowerCase()} highlights ${r()<0.5? "clarity":"shadow integration"}.`
+  ];
+  const bullets = [
+    `${r()<0.5? "Growth":"Change"} is unfolding beneath the surface`,
+    `A nudge to trust your ${r()<0.5? "intuition":"process"}`,
+    `${r()<0.5? "Release":"Set"} old patterns and ${r()<0.5? "welcome":"protect"} your energy`,
+    `Watch for repeating synchronicities around this theme`
+  ];
+  const scenarios = [
+    `You notice ${base.toLowerCase()} during a decision crossroads`,
+    `${base} appears after a conversation that stirred emotions`,
+    `You see ${base.toLowerCase()} repeatedly in a short time window`,
+    `A dream featuring ${base.toLowerCase()} recurs three nights in a row`
+  ];
+  const prompts = [
+    `What feels ready to change when ${base.toLowerCase()} shows up?`,
+    `Where is my energy asking for clearer boundaries?`,
+    `What synchronicities are clustering around this theme?`
+  ];
+  const cautions = [
+    `Avoid fatalistic thinking — context matters more than single symbols.`,
+    `Meanings are guides, not rules. Your lived experience leads.`
+  ];
+  const related = Array.from({length:4},()=> RELATED[Math.floor(r()*RELATED.length)]).filter((v,i,a)=>a.indexOf(v)===i);
+  return {h1, excerpt: short[Math.floor(r()*short.length)], bullets, scenarios, prompts, cautions, related};
+}
+
+function setMeta({title, description, canonical, jsonLd}){
+  if(title) document.title = title;
+  const ensure = (name,val)=>{
+    if(!val) return;
+    let el = document.querySelector(`meta[name="${name}"]`);
+    if(!el){ el=document.createElement("meta"); el.setAttribute("name",name); document.head.appendChild(el); }
+    el.setAttribute("content",val);
+  };
+  ensure("description", description || "Explore dream meanings and symbolism: animals, colors, numbers, and more.");
+  if(canonical){
+    let link = document.querySelector("link[rel=canonical]");
+    if(!link){ link=document.createElement("link"); link.setAttribute("rel","canonical"); document.head.appendChild(link) }
+    link.setAttribute("href", canonical);
+  }
+  let ld = document.getElementById("psysymbol-ld");
+  ld.textContent = JSON.stringify(jsonLd||{});
+}
+
+function render(topic, mode){
+  const d = makeSections(topic, mode);
+  const canonical = location.origin + "/#/" + mode + "/" + slugify(topic);
+  setMeta({
+    title: d.h1 + " | PsySymbol",
+    description: `${titleCase(topic)} meanings across ${mode}. ${d.excerpt}`,
+    canonical,
+    jsonLd: {
+      "@context":"https://schema.org",
+      "@type":"Article",
+      headline:d.h1,
+      description:`${titleCase(topic)} meanings across ${mode}. ${d.excerpt}`,
+      author: {"@type":"Organization","name":"PsySymbol"},
+      dateModified: new Date().toISOString(),
+      mainEntityOfPage: canonical
+    }
+  });
+
+  const el = document.getElementById("result");
+  el.innerHTML = `
+    <div class="card">
+      <h1>${d.h1}</h1>
+      <p class="muted">${d.excerpt}</p>
+
+      <ins class="adsbygoogle" style="display:block;margin:12px 0"
+        data-ad-client="ca-pub-3857946786580406" data-ad-slot="1234567890"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+      <h2>Core Themes</h2>
+      <ul>${d.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+      <h2>When It Appears</h2>
+      <ul>${d.scenarios.map(s=>`<li>${s}</li>`).join("")}</ul>
+      <h2>Journal Prompts</h2>
+      <ul>${d.prompts.map(p=>`<li>${p}</li>`).join("")}</ul>
+      <h2>Cautions</h2>
+      <ul>${d.cautions.map(c=>`<li>${c}</li>`).join("")}</ul>
+
+      <ins class="adsbygoogle" style="display:block;margin:12px 0"
+        data-ad-client="ca-pub-3857946786580406" data-ad-slot="9876543210"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+      <h2>Related</h2>
+      <div class="badges">${d.related.map(r=>`<span class="badge">${r}</span>`).join("")}</div>
+    </div>
+  `;
+  try{ (window.adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+}
+
+let activeTab = "symbols";
+function setTab(tab){
+  activeTab = tab;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active", t.dataset.tab===tab));
+  renderSuggestions();
+}
+function renderSuggestions(){
+  const box = document.getElementById("suggestions");
+  const items = SAMPLES[activeTab] || [];
+  box.innerHTML = items.map(s=>`<span class="badge" data-x="${s}">${s}</span>`).join("");
+  box.querySelectorAll(".badge").forEach(b=>b.addEventListener("click",()=> interpret(b.dataset.x)));
+}
+
+function interpret(term){
+  const q = (term || document.getElementById("query").value || "").trim();
+  if(!q) return;
+  location.hash = "#/"+activeTab+"/"+slugify(q);
+  render(q, activeTab);
+}
+
+document.getElementById("goBtn").addEventListener("click", ()=> interpret());
+document.getElementById("query").addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); interpret(); }});
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("dlSiteMap").addEventListener("click", ()=>{
+  fetch("./sitemap.xml").then(r=>r.text()).then(txt=>{
+    const a = document.createElement("a"); a.href=URL.createObjectURL(new Blob([txt],{type:"application/xml"})); a.download="sitemap.xml"; a.click();
+  });
+});
+document.getElementById("dlRobots").addEventListener("click", ()=>{
+  fetch("./robots.txt").then(r=>r.text()).then(txt=>{
+    const a = document.createElement("a"); a.href=URL.createObjectURL(new Blob([txt],{type:"text/plain"})); a.download="robots.txt"; a.click();
+  });
+});
+
+// tabs
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click", ()=> setTab(t.dataset.tab)));
+
+// theme
+document.getElementById("themeBtn").addEventListener("click", ()=>{
+  const root = document.documentElement;
+  const current = getComputedStyle(root).getPropertyValue('--bg').trim();
+  if(current==="#0b0b0e"){ // dark -> light
+    root.style.setProperty('--bg', '#ffffff');
+    root.style.setProperty('--text', '#0b0b0e');
+    root.style.setProperty('--muted', '#444a57');
+    root.style.setProperty('--card', '#f5f7fb');
+    root.style.setProperty('--border', '#e6e8f0');
+  } else {
+    root.style.setProperty('--bg', '#0b0b0e');
+    root.style.setProperty('--text', '#f7f7f7');
+    root.style.setProperty('--muted', '#b7b7c0');
+    root.style.setProperty('--card', '#14141a');
+    root.style.setProperty('--border', '#272732');
+  }
+});
+
+// initial state
+setTab("symbols");
+renderSuggestions();
+render("black cat", "symbols");
+</script>
+</body>
+</html>
