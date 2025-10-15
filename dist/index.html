@@ -5,42 +5,41 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PsySymbol — Dream Meanings & Symbolism</title>
   <meta name="description" content="AI-generated interpretations for dreams, symbols, and spiritual numbers." />
-  <link rel="canonical" href="/#/" />
-  <style>
-    :root{--bg:#0b0b0e;--text:#f7f7f7;--muted:#b7b7c0;--card:#14141a;--border:#272732}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;background:var(--bg);color:var(--text)}
-    .container{max-width:1000px;margin:0 auto;padding:24px}
-    .header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{display:flex;gap:10px;align-items:center}
-    .logo{width:28px;height:28px}
-    .muted{color:var(--muted)}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
-    .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:4px}
-    .tab{padding:8px 10px;text-align:center;border-radius:8px;cursor:pointer;color:var(--muted)}
-    .tab.active{background:#1d1d26;color:#fff}
-    .row{display:flex;gap:8px;flex-wrap:wrap}
-    .input{flex:1;min-width:220px;border:1px solid var(--border);background:#0e0e14;color:#fff;padding:10px 12px;border-radius:10px}
-    .button{border:1px solid var(--border);background:#1a1a22;color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer}
-    .badges{display:flex;flex-wrap:wrap;gap:8px}
-    .badge{background:#1d1d25;border:1px solid var(--border);padding:6px 10px;border-radius:999px;cursor:pointer}
-    h1{font-size:22px;margin:0 0 8px}
-    h2{font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:.08em;margin:14px 0 8px}
-    ul{margin:6px 0 0 18px}
-    .footer{font-size:12px;color:var(--muted);text-align:center;margin:40px 0 10px}
-    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
-  </style>
-
-  <!-- AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857946786580406" crossorigin="anonymous"></script>
-
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://psysymbol.com/" />
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="PsySymbol — Dream Meanings & Symbolism">
+  <meta property="og:description" content="AI-generated interpretations for dreams, symbols, and spiritual numbers.">
+  <meta property="og:url" content="https://psysymbol.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/app.css">
+  <!-- Consent Mode & GA4 bootstrap -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+    gtag('set', 'url_passthrough', true);
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
+  </script>
   <script type="application/ld+json" id="psysymbol-ld">{}</script>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <div class="brand">
-        <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l3 7h7l-5.5 4 2.5 7-7-4-7 4 2.5-7L2 10h7l3-7z"/></svg>
+        <svg class="logo" viewBox="0 0 24 24" role="img" aria-label="PsySymbol logo" fill="none" stroke="currentColor"><path d="M12 3l3 7h7l-5.5 4 2.5 7-7-4-7 4 2.5-7L2 10h7l3-7z"/></svg>
         <div>
           <div style="font-weight:700;font-size:22px">PsySymbol</div>
           <div class="muted" style="font-size:12px">Dreams · Symbols · Numbers</div>
@@ -55,139 +54,47 @@
     </div>
 
     <div class="tabs" id="tabs">
-      <div class="tab active" data-tab="symbols">Symbolism</div>
-      <div class="tab" data-tab="dreams">Dream Meanings</div>
-      <div class="tab" data-tab="numbers">Number Meanings</div>
+      <button class="tab active" data-tab="symbols" type="button">Symbolism</button>
+      <button class="tab" data-tab="dreams" type="button">Dream Meanings</button>
+      <button class="tab" data-tab="numbers" type="button">Number Meanings</button>
     </div>
 
     <div style="margin:16px 0" class="row">
-      <input class="input" id="query" placeholder="Search meanings… e.g. black cat, butterfly, 333" />
-      <button class="button" id="goBtn">Interpret</button>
+      <input class="input" id="query" placeholder="Search meanings… e.g. black cat, butterfly, 333" aria-label="Search meanings" />
+      <button class="button" id="goBtn" type="button">Interpret</button>
     </div>
 
     <div class="badges" id="suggestions"></div>
     <div id="result" style="margin-top:16px"></div>
 
     <div class="row" style="margin-top:18px">
-      <button class="button" id="dlSiteMap">Download sitemap.xml</button>
-      <button class="button" id="dlRobots">Download robots.txt</button>
+      <button class="button" id="dlSiteMap" type="button">Download sitemap.xml</button>
+      <button class="button" id="dlRobots" type="button">Download robots.txt</button>
     </div>
 
-    <div class="footer">© <span id="year"></span> PsySymbol — Auto-Generated Meanings</div>
+    <div class="disclaimer">Interpretations are generated programmatically for reflection. Not medical, psychological, or legal advice.</div>
+
+    <div class="footer">
+      © <span id="year"></span> PsySymbol — Auto-Generated Meanings ·
+      <a href="/about.html" class="muted">About</a> ·
+      <a href="/editorial.html" class="muted">Methodology</a> ·
+      <a href="/privacy.html" class="muted">Privacy</a> ·
+      <a href="/terms.html" class="muted">Terms</a> ·
+      <a href="/contact.html" class="muted">Contact</a>
+    </div>
   </div>
 
-<script>
-/* JS logic unchanged — just removed theme switcher */
-const SAMPLES = {
-  dreams: ["black cat dream","losing teeth","flying","being chased","ocean waves","snake in bed"],
-  symbols: ["black cat","butterfly","white feather","raven","lotus","owl","key","mirror"],
-  numbers: ["111","222","333","444","555","777","1010","1212"]
-};
-const RELATED = ["intuition","transformation","protection","rebirth","balance","shadow work","synchronicity","clarity","boundaries"];
-
-function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
-function titleCase(s){return s.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase()).replace(/\s+/g," ").trim()}
-
-function prng(seedStr){
-  let h = 2166136261>>>0;
-  for(let i=0;i<seedStr.length;i++) h=Math.imul(h ^ seedStr.charCodeAt(i),16777619);
-  return ()=> (h = Math.imul(h ^ (h>>>15),2246822507), ((h ^ (h>>>13))>>>0)/2**32);
-}
-
-function makeSections(topic, mode){
-  const r = prng(mode+":"+topic.toLowerCase());
-  const tones = ["psychological","spiritual","symbolic","mythic","practical","archetypal"];
-  const tone = tones[Math.floor(r()*tones.length)];
-  const base = titleCase(topic);
-  const h1 = mode==="dreams"? `${base} — Dream Meaning` : (mode==="symbols"? `${base} — Symbolism & Meaning` : `${base} — Number Meaning`);
-  const short = [
-    `${base} often points to ${r()<0.5? "inner shifts":"heightened intuition"}.`,
-    `Many associate ${base.toLowerCase()} with ${r()<0.5? "protection":"transformation"}.`,
-    `In a ${tone} lens, ${base.toLowerCase()} highlights ${r()<0.5? "clarity":"shadow integration"}.`
-  ];
-  const bullets = [
-    `${r()<0.5? "Growth":"Change"} is unfolding beneath the surface`,
-    `A nudge to trust your ${r()<0.5? "intuition":"process"}`,
-    `${r()<0.5? "Release":"Set"} old patterns and ${r()<0.5? "welcome":"protect"} your energy`,
-    `Watch for repeating synchronicities around this theme`
-  ];
-  const scenarios = [
-    `You notice ${base.toLowerCase()} during a decision crossroads`,
-    `${base} appears after a conversation that stirred emotions`,
-    `You see ${base.toLowerCase()} repeatedly in a short time window`,
-    `A dream featuring ${base.toLowerCase()} recurs three nights in a row`
-  ];
-  const prompts = [
-    `What feels ready to change when ${base.toLowerCase()} shows up?`,
-    `Where is my energy asking for clearer boundaries?`,
-    `What synchronicities are clustering around this theme?`
-  ];
-  const cautions = [
-    `Avoid fatalistic thinking — context matters more than single symbols.`,
-    `Meanings are guides, not rules. Your lived experience leads.`
-  ];
-  const related = Array.from({length:4},()=> RELATED[Math.floor(r()*RELATED.length)]).filter((v,i,a)=>a.indexOf(v)===i);
-  return {h1, excerpt: short[Math.floor(r()*short.length)], bullets, scenarios, prompts, cautions, related};
-}
-
-function render(topic, mode){
-  const d = makeSections(topic, mode);
-  const el = document.getElementById("result");
-  el.innerHTML = `
-    <div class="card">
-      <h1>${d.h1}</h1>
-      <p class="muted">${d.excerpt}</p>
-
-      <ins class="adsbygoogle" style="display:block;margin:12px 0"
-        data-ad-client="ca-pub-3857946786580406" data-ad-slot="1234567890"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
-
-      <h2>Core Themes</h2>
-      <ul>${d.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
-      <h2>When It Appears</h2>
-      <ul>${d.scenarios.map(s=>`<li>${s}</li>`).join("")}</ul>
-      <h2>Journal Prompts</h2>
-      <ul>${d.prompts.map(p=>`<li>${p}</li>`).join("")}</ul>
-      <h2>Cautions</h2>
-      <ul>${d.cautions.map(c=>`<li>${c}</li>`).join("")}</ul>
-
-      <ins class="adsbygoogle" style="display:block;margin:12px 0"
-        data-ad-client="ca-pub-3857946786580406" data-ad-slot="9876543210"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
-
-      <h2>Related</h2>
-      <div class="badges">${d.related.map(r=>`<span class="badge">${r}</span>`).join("")}</div>
+  <!-- Consent banner (injected/styled by app.js/app.css) -->
+  <div id="consent-banner" hidden>
+    <div class="inner">
+      <p>We use cookies for analytics and to show ads. Adjust your preferences anytime.</p>
+      <div class="actions">
+        <button id="consent-accept" type="button">Accept all</button>
+        <button id="consent-deny" type="button">Deny</button>
+      </div>
     </div>
-  `;
-  try{ (window.adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
-}
+  </div>
 
-let activeTab = "symbols";
-function setTab(tab){
-  activeTab = tab;
-  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active", t.dataset.tab===tab));
-  renderSuggestions();
-}
-function renderSuggestions(){
-  const box = document.getElementById("suggestions");
-  const items = SAMPLES[activeTab] || [];
-  box.innerHTML = items.map(s=>`<span class="badge" data-x="${s}">${s}</span>`).join("");
-  box.querySelectorAll(".badge").forEach(b=>b.addEventListener("click",()=> interpret(b.dataset.x)));
-}
-function interpret(term){
-  const q = (term || document.getElementById("query").value || "").trim();
-  if(!q) return;
-  render(q, activeTab);
-}
-
-document.getElementById("goBtn").addEventListener("click", ()=> interpret());
-document.getElementById("query").addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); interpret(); }});
-document.getElementById("year").textContent = new Date().getFullYear();
-document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click", ()=> setTab(t.dataset.tab)));
-
-setTab("symbols");
-renderSuggestions();
-render("black cat", "symbols");
-</script>
+  <script src="/app.js" defer></script>
 </body>
 </html>
