@@ -4,40 +4,55 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PsySymbol — Dream Meanings & Symbolism</title>
-  <meta name="description" content="AI-generated interpretations for dreams, symbols, and spiritual numbers." />
+  <meta name="description" content="Instant AI-generated interpretations for dreams, spiritual symbols, and repeating numbers. Structured, SEO-friendly, and ready to publish." />
   <meta name="robots" content="index,follow">
+
+  <!-- Canonical should reflect homepage -->
   <link rel="canonical" href="https://psysymbol.com/" />
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="PsySymbol — Dream Meanings & Symbolism">
-  <meta property="og:description" content="AI-generated interpretations for dreams, symbols, and spiritual numbers.">
+  <meta property="og:description" content="Dream interpretation, symbol meaning, and angel numbers — auto-generated for reflection, not therapy.">
   <meta property="og:url" content="https://psysymbol.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="/app.css">
-  <!-- Consent Mode & GA4 bootstrap -->
+
+  <link rel="stylesheet" href="/app.css" />
+
+  <!-- Consent Mode bootstrap -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
+
+    // Default: deny everything until explicit consent
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
       'ad_personalization': 'denied',
       'analytics_storage': 'denied'
     });
+
     gtag('set', 'url_passthrough', true);
   </script>
+
+  <!-- GA4 tag (will stay effectively inactive until consent is granted) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
   </script>
+
+  <!-- Structured data placeholder, can be populated dynamically -->
   <script type="application/ld+json" id="psysymbol-ld">{}</script>
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <!-- Header / Branding -->
+    <header class="header">
       <div class="brand">
         <svg class="logo" viewBox="0 0 24 24" role="img" aria-label="PsySymbol logo" fill="none" stroke="currentColor"><path d="M12 3l3 7h7l-5.5 4 2.5 7-7-4-7 4 2.5-7L2 10h7l3-7z"/></svg>
         <div>
@@ -45,49 +60,155 @@
           <div class="muted" style="font-size:12px">Dreams · Symbols · Numbers</div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="card" style="text-align:center;margin:16px 0">
-      <span class="pill">SEO-ready · AdSense slots</span>
-      <h1>Explore Dream Meanings & Symbolism</h1>
-      <p class="muted">Auto-generated, structured interpretations — no manual writing required.</p>
-    </div>
+    <!-- Hero / pitch -->
+    <section class="card" style="text-align:center;margin:16px 0">
+      <span class="pill">SEO-ready · AdSense friendly</span>
+      <h1>Explore Dream Meanings & Spiritual Symbolism</h1>
+      <p class="muted">Structured interpretations for recurring dreams, animal signs, and number patterns — auto-generated so you don't have to write manually.</p>
+    </section>
 
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-tab="symbols" type="button">Symbolism</button>
-      <button class="tab" data-tab="dreams" type="button">Dream Meanings</button>
-      <button class="tab" data-tab="numbers" type="button">Number Meanings</button>
-    </div>
+    <!-- Tabs -->
+    <nav class="tabs" id="tabs" role="tablist">
+      <button class="tab active"
+        role="tab"
+        aria-selected="true"
+        id="tab-symbols"
+        aria-controls="panel-symbols"
+        data-tab="symbols"
+        type="button">Symbolism</button>
 
+      <button class="tab"
+        role="tab"
+        aria-selected="false"
+        id="tab-dreams"
+        aria-controls="panel-dreams"
+        data-tab="dreams"
+        type="button">Dream Meanings</button>
+
+      <button class="tab"
+        role="tab"
+        aria-selected="false"
+        id="tab-numbers"
+        aria-controls="panel-numbers"
+        data-tab="numbers"
+        type="button">Number Meanings</button>
+    </nav>
+
+    <!-- Search -->
     <div style="margin:16px 0" class="row">
-      <input class="input" id="query" placeholder="Search meanings… e.g. black cat, butterfly, 333" aria-label="Search meanings" />
+      <input class="input" id="query" placeholder="Search meanings… e.g. black cat, teeth falling out, 333" aria-label="Search meanings" />
       <button class="button" id="goBtn" type="button">Interpret</button>
     </div>
 
+    <!-- Autocomplete / suggestions (filled by JS) -->
     <div class="badges" id="suggestions"></div>
-    <div id="result" style="margin-top:16px"></div>
 
-    <div class="row" style="margin-top:18px">
-      <button class="button" id="dlSiteMap" type="button">Download sitemap.xml</button>
-      <button class="button" id="dlRobots" type="button">Download robots.txt</button>
+    <!-- PANELS -->
+    <!-- SYMBOLS PANEL (default visible) -->
+    <main id="panel-symbols" role="tabpanel" aria-labelledby="tab-symbols">
+      <section id="result-symbols" style="margin-top:16px">
+        <section class="card">
+          <h2>Popular Symbol Meanings</h2>
+
+          <article>
+            <h3>Butterfly Symbolism</h3>
+            <p>Butterflies are commonly read as signs of transformation, rebirth, and emotional healing. Seeing one repeatedly can suggest you're exiting an old chapter and stepping into a more authentic version of yourself.</p>
+            <a href="/symbol/butterfly.html" class="muted">Full interpretation →</a>
+          </article>
+
+          <article>
+            <h3>Black Cat Meaning</h3>
+            <p>A black cat can represent intuition, protection, and mystery. Instead of “bad luck,” modern spiritual takes frame it as a nudge to trust your instincts and keep your energetic boundaries strong.</p>
+            <a href="/symbol/black-cat.html" class="muted">Full interpretation →</a>
+          </article>
+
+          <article>
+            <h3>Snake Symbolism</h3>
+            <p>Snakes are about shedding what no longer fits. They point to survival, primal energy, and healing through honesty. Sometimes it's a warning to watch manipulation; sometimes it's encouragement to let an old identity die.</p>
+            <a href="/symbol/snake.html" class="muted">Full interpretation →</a>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <!-- DREAMS PANEL (hidden by default, shown when tab is active) -->
+    <main id="panel-dreams" role="tabpanel" aria-labelledby="tab-dreams" hidden>
+      <section id="result-dreams" style="margin-top:16px">
+        <section class="card">
+          <h2>Common Dream Themes</h2>
+
+          <article>
+            <h3>Teeth Falling Out Dream</h3>
+            <p>This dream is often linked to insecurity, appearance anxiety, or fear of losing control in waking life. It can also point to guilt about something you said — like wishing you could “take the words back.”</p>
+            <a href="/dream/teeth-falling-out.html" class="muted">Full interpretation →</a>
+          </article>
+
+          <article>
+            <h3>Being Chased</h3>
+            <p>Dreams of being chased usually reflect avoidance. You're running from a responsibility, truth, conversation, or emotion that feels overwhelming. The chaser often represents the thing you're not addressing directly.</p>
+            <a href="/dream/being-chased.html" class="muted">Full interpretation →</a>
+          </article>
+
+          <article>
+            <h3>Ex-Partner Dreams</h3>
+            <p>Dreaming about an ex doesn't always mean you “miss them.” It can mean you're revisiting an emotional pattern you learned in that relationship — especially around trust, abandonment, or boundaries.</p>
+            <a href="/dream/ex-partner.html" class="muted">Full interpretation →</a>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <!-- NUMBERS PANEL (hidden by default, shown when tab is active) -->
+    <main id="panel-numbers" role="tabpanel" aria-labelledby="tab-numbers" hidden>
+      <section id="result-numbers" style="margin-top:16px">
+        <section class="card">
+          <h2>Repeating / Angel Numbers</h2>
+
+          <article>
+            <h3>111 Meaning</h3>
+            <p>111 is commonly read as a new-cycle number: “you're aligned, stay focused on your current intention.” People treat it as a green light to act instead of overthinking.</p>
+            <a href="/number/111.html" class="muted">Full interpretation →</a>
+          </article>
+
+          <article>
+            <h3>222 Meaning</h3>
+            <p>222 is interpreted as reassurance and emotional balance: trust the process, stop forcing outcomes, let things stabilise. It shows up when you’re trying to control something that actually needs patience.</p>
+            <a href="/number/222.html" class="muted">Full interpretation →</a>
+          </article>
+
+          <article>
+            <h3>333 Meaning</h3>
+            <p>333 is often framed as support: “you are not doing this alone.” Spiritually, it's about guidance, mentorship, or community energy stepping in so you don't burn out doing everything yourself.</p>
+            <a href="/number/333.html" class="muted">Full interpretation →</a>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer" style="margin-top:24px">
+      Interpretations are auto-generated for personal reflection and spirituality.
+      They are not medical, psychological, therapeutic, financial, or legal advice.
+      If you're in distress or worried about your safety, please seek qualified professional support.
     </div>
 
-    <div class="disclaimer">Interpretations are generated programmatically for reflection. Not medical, psychological, or legal advice.</div>
-
-    <div class="footer">
+    <!-- Footer -->
+    <footer class="footer">
       © <span id="year"></span> PsySymbol — Auto-Generated Meanings ·
       <a href="/about.html" class="muted">About</a> ·
       <a href="/editorial.html" class="muted">Methodology</a> ·
       <a href="/privacy.html" class="muted">Privacy</a> ·
       <a href="/terms.html" class="muted">Terms</a> ·
       <a href="/contact.html" class="muted">Contact</a>
-    </div>
+    </footer>
   </div>
 
-  <!-- Consent banner (injected/styled by app.js/app.css) -->
+  <!-- Consent banner -->
   <div id="consent-banner" hidden>
     <div class="inner">
-      <p>We use cookies for analytics and to show ads. Adjust your preferences anytime.</p>
+      <p>We use cookies for analytics and ads. You can change your choices anytime.</p>
       <div class="actions">
         <button id="consent-accept" type="button">Accept all</button>
         <button id="consent-deny" type="button">Deny</button>
@@ -95,6 +216,10 @@
     </div>
   </div>
 
+  <!-- Main app script:
+       - handles tab switching (show/hide panels)
+       - handles consent updates
+       - handles search -->
   <script src="/app.js" defer></script>
 </body>
 </html>
