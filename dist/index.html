@@ -2,127 +2,450 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PsySymbol — Dream Meanings & Symbolism</title>
-  <meta name="description" content="Instant AI-generated interpretations for dreams, spiritual symbols, and repeating numbers. Structured, SEO-friendly, and ready to publish." />
-  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PsySymbol — Instant Meanings for Dreams, Symbols & Numbers</title>
+  <meta name="description" content="Type a dream, symbol, or number. Click Interpret. Get an instant meaning — all on a single page, no backend.">
+  <link rel="canonical" href="/" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="PsySymbol — Dream, Symbol & Number Meanings" />
+  <meta property="og:description" content="Type a dream, symbol, or number. Click Interpret. Get an instant meaning — single-page, no backend." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="" />
+  <style>
+    :root{
+      --bg:#0b0c10;--card:#12131a;--card-2:#171824;--text:#f5f7fb;--muted:#b9bfd3;--acc:#7c9cff;--acc-2:#6ee7b7;--border:#26283a;--danger:#ff6b6b
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, Ubuntu, Cantarell;
+      background:radial-gradient(1200px 600px at 80% -10%, #1a1c2e55, transparent),
+                 radial-gradient(900px 500px at -10% 20%, #15303f55, transparent),
+                 var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:var(--acc)}
+    .wrap{max-width:980px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg, var(--acc), var(--acc-2));
+      display:grid;place-items:center; box-shadow:0 6px 24px #0007}
+    .logo span{font-weight:800;color:#0b0c10}
+    .title{display:flex;flex-direction:column}
+    .title h1{font-size:1.15rem;margin:0;letter-spacing:.2px}
+    .title p{margin:2px 0 0;font-size:.86rem;color:var(--muted)}
 
-  <link rel="canonical" href="https://psysymbol.com/" />
+    .card{background:linear-gradient(180deg, #151626, #0f1020); border:1px solid var(--border); border-radius:16px; box-shadow:0 8px 40px #0005}
+    .pad{padding:18px}
 
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    .mode-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .seg{position:relative}
+    .seg input{position:absolute;opacity:0;pointer-events:none}
+    .seg label{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);
+      border-radius:12px;background:var(--card-2); color:var(--muted); cursor:pointer; user-select:none;
+      transition:transform .08s ease, color .2s ease, background .2s ease, border-color .2s ease}
+    .seg input:checked + label{background:linear-gradient(180deg, #1a1d32, #15172a); color:var(--text); border-color:#2c2f46;
+      box-shadow:inset 0 0 0 1px #2f355a}
 
-  <meta property="og:title" content="PsySymbol — Dream Meanings & Symbolism">
-  <meta property="og:description" content="Dream interpretation, symbol meaning, and angel numbers — auto-generated for reflection, not therapy.">
-  <meta property="og:url" content="https://psysymbol.com/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+    .search{display:grid;grid-template-columns:1fr auto;gap:10px}
+    .search input{
+      width:100%;padding:14px 14px;border-radius:12px;border:1px solid var(--border);
+      background:#0e1020;color:var(--text);font-size:1rem;outline:0
+    }
+    .search button{padding:0 16px;border:0;border-radius:12px;background:linear-gradient(135deg, var(--acc), #98b0ff);
+      color:#0b0c10;font-weight:700;font-size:0.98rem;cursor:pointer; display:inline-flex; align-items:center; gap:8px; height:48px}
+    .search button:active{transform:translateY(1px)}
 
-  <link rel="stylesheet" href="/app.css" />
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#101227;color:var(--muted);cursor:pointer}
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    .result{margin-top:18px}
+    .result .head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+    .badge{font-size:.75rem;color:#dfe3ff;background:#192042;border:1px solid #2a2f56;border-radius:999px;padding:6px 10px}
+    .tools{display:flex;gap:8px}
+    .btn{padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:#0f1124;color:var(--muted);cursor:pointer}
+    .btn:hover{color:var(--text)}
 
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied'
-    });
+    .prose{line-height:1.65; color:#e8eaf7}
+    .prose h3{margin:12px 0 6px;font-size:1.05rem}
+    .prose p{margin:8px 0}
+    .muted{color:var(--muted)}
 
-    gtag('set', 'url_passthrough', true);
-  </script>
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
+    @media (min-width:768px){ .grid{grid-template-columns:1fr 1fr} }
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
-  </script>
+    .panel{border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg, #121327, #0e1022)}
+    .panel h4{margin:0 0 8px;font-size:.98rem;color:#e9ecff}
+    .panel .pad{padding:14px}
 
-  <script type="application/ld+json" id="psysymbol-ld">{}</script>
+    footer{margin-top:28px;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    .hidden{display:none}
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
+  <div class="wrap">
+    <header>
       <div class="brand">
-        <svg class="logo" viewBox="0 0 24 24" role="img" aria-label="PsySymbol logo" fill="none" stroke="currentColor"><path d="M12 3l3 7h7l-5.5 4 2.5 7-7-4-7 4 2.5-7L2 10h7l3-7z"/></svg>
-        <div>
-          <div style="font-weight:700;font-size:22px">PsySymbol</div>
-          <div class="muted" style="font-size:12px">Dreams · Symbols · Numbers</div>
+        <div class="logo" aria-hidden="true"><span>Ψ</span></div>
+        <div class="title">
+          <h1>PsySymbol</h1>
+          <p>Instant meanings for <strong>dreams</strong>, <strong>symbols</strong> & <strong>numbers</strong>. One page. No backend.</p>
         </div>
       </div>
     </header>
 
-    <section class="card" style="text-align:center;margin:16px 0">
-      <span class="pill">SEO-ready · AdSense friendly</span>
-      <h1>Explore Dream Meanings & Spiritual Symbolism</h1>
-      <p class="muted">Structured interpretations for recurring dreams, animal signs, and number patterns — auto-generated so you don't have to write manually.</p>
-    </section>
+    <main class="card pad" role="main">
+      <div class="mode-switch" role="tablist" aria-label="Interpretation type">
+        <div class="seg">
+          <input type="radio" id="mode-dream" name="mode" value="dream" checked>
+          <label for="mode-dream" role="tab" aria-controls="pane-dream">💤 Dream</label>
+        </div>
+        <div class="seg">
+          <input type="radio" id="mode-symbol" name="mode" value="symbol">
+          <label for="mode-symbol" role="tab" aria-controls="pane-symbol">🔮 Symbol</label>
+        </div>
+        <div class="seg">
+          <input type="radio" id="mode-number" name="mode" value="number">
+          <label for="mode-number" role="tab" aria-controls="pane-number">🔢 Number</label>
+        </div>
+      </div>
 
-    <nav class="tabs" id="tabs" role="tablist">
-      <a class="tab" role="tab" aria-selected="false" href="/symbol/index.html" id="tab-symbols" aria-controls="panel-symbols">Symbolism</a>
-      <a class="tab" role="tab" aria-selected="false" href="/dream/index.html" id="tab-dreams" aria-controls="panel-dreams">Dream Meanings</a>
-      <a class="tab" role="tab" aria-selected="false" href="/number/index.html" id="tab-numbers" aria-controls="panel-numbers">Number Meanings</a>
-    </nav>
+      <form id="form" class="search" autocomplete="off">
+        <input id="q" name="q" placeholder="Type your dream, symbol, or number… (e.g., ‘teeth falling’, ‘snake’, ‘111’)" aria-label="Query" required>
+        <button id="go" type="submit" aria-label="Interpret"><span>Interpret</span></button>
+      </form>
+      <div class="chips" id="suggest"></div>
 
-    <div style="margin:16px 0" class="row">
-      <input class="input" id="query" placeholder="Search meanings… e.g. black cat, teeth falling out, 333" aria-label="Search meanings" />
-      <button class="button" id="goBtn" type="button">Interpret</button>
-    </div>
-
-    <div class="badges" id="suggestions"></div>
-
-    <main id="home-panels" style="margin-top:16px">
-      <section class="card">
-        <h2>Popular Right Now</h2>
-
-        <article>
-          <h3>Butterfly Symbolism</h3>
-          <p>Butterflies are read as signs of transformation and rebirth, especially after emotional stress or major life change. They’re basically permission to grow into who you’re becoming.</p>
-          <a href="/symbol/butterfly.html" class="muted">Full interpretation →</a>
-        </article>
-
-        <article>
-          <h3>Teeth Falling Out Dream</h3>
-          <p>Classic anxiety dream. Often tied to shame, control, or wishing you could take back something you said. Not a prophecy — more like emotional mirror.</p>
-          <a href="/dream/teeth-falling-out.html" class="muted">Full interpretation →</a>
-        </article>
-
-        <article>
-          <h3>333 Meaning</h3>
-          <p>333 is read as “support is with you.” People take it as a nudge to ask for help instead of burning out solo.</p>
-          <a href="/number/333.html" class="muted">Full interpretation →</a>
-        </article>
+      <section id="result" class="result hidden" aria-live="polite">
+        <div class="head">
+          <span id="badge" class="badge">Meaning</span>
+          <div class="tools">
+            <button class="btn" id="copyBtn" title="Copy text">Copy</button>
+            <button class="btn" id="linkBtn" title="Copy shareable link">Share link</button>
+          </div>
+        </div>
+        <div id="out" class="prose"></div>
       </section>
+
+      <div class="grid">
+        <aside class="panel">
+          <div class="pad">
+            <h4>Recent</h4>
+            <div id="history" class="muted">No interpretations yet.</div>
+          </div>
+        </aside>
+        <aside class="panel">
+          <div class="pad">
+            <h4>Tips</h4>
+            <ul class="muted" style="margin:0; padding-left:18px">
+              <li>For multiple items, separate with commas: <em>snake, water, bridge</em>.</li>
+              <li>Numbers accept sequences like <em>111</em>, <em>222</em>, <em>1010</em>, or any integer.</li>
+              <li>This is a heuristic generator — there’s no backend or external API.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
     </main>
 
-    <div class="disclaimer" style="margin-top:24px">
-      Interpretations are auto-generated for personal reflection and spirituality.
-      They are not medical, psychological, therapeutic, financial, or legal advice.
-      If you're in distress or worried about your safety, please seek qualified professional support.
-    </div>
-
-    <footer class="footer">
-      © <span id="year"></span> PsySymbol — Auto-Generated Meanings ·
-      <a href="/about.html" class="muted">About</a> ·
-      <a href="/editorial.html" class="muted">Methodology</a> ·
-      <a href="/privacy.html" class="muted">Privacy</a> ·
-      <a href="/terms.html" class="muted">Terms</a> ·
-      <a href="/contact.html" class="muted">Contact</a>
+    <footer>
+      <span>© <span id="year"></span> PsySymbol</span>
+      <span class="muted">Single-file build. No cookies. No tracking.</span>
     </footer>
   </div>
 
-  <div id="consent-banner" hidden>
-    <div class="inner">
-      <p>We use cookies for analytics and ads. You can change your choices anytime.</p>
-      <div class="actions">
-        <button id="consent-accept" type="button">Accept all</button>
-        <button id="consent-deny" type="button">Deny</button>
-      </div>
-    </div>
-  </div>
+  <script>
+    // --- Tiny data bank ------------------------------------------------------
+    const SYMBOL_MEANINGS = {
+      "snake": {
+        themes:["transformation","life force","hidden fear"],
+        notes:"Snakes often reflect suppressed energy or a need to shed old patterns."
+      },
+      "water":{
+        themes:["emotion","intuition","cleansing"],
+        notes:"Water mirrors how feelings are flowing — calm waters = ease; storms = turmoil."
+      },
+      "teeth":{
+        themes:["appearance","agency","communication"],
+        notes:"Teeth falling can symbolize anxiety about control, image, or saying the right thing."
+      },
+      "house":{
+        themes:["self","boundaries","life areas"],
+        notes:"Floors/rooms often map to aspects of self; basements = subconscious; attic = plans."
+      },
+      "bridge":{
+        themes:["transition","decision","connection"],
+        notes:"Crossing a bridge = moving through change; fear of crossing = resistance."
+      },
+      "cat":{
+        themes:["independence","mystery","intuition"],
+        notes:"Cats may nudge you toward self-trust and gentle curiosity."
+      },
+      "dog":{
+        themes:["loyalty","protection","friendship"],
+        notes:"Dogs can signal support systems or a need to nurture simple joys."
+      },
+      "flight":{
+        themes:["freedom","perspective","ambition"],
+        notes:"Flying dreams highlight expanding viewpoint and desire to rise above limits."
+      },
+      "death":{
+        themes:["ending","renewal","identity shift"],
+        notes:"Symbolic death points to closures that make space for beginnings."
+      },
+      "baby":{
+        themes:["new beginnings","vulnerability","care"],
+        notes:"A baby can represent a tender project, idea, or part of self that needs attention."
+      }
+    };
 
-  <script src="/app.js" defer></script>
+    const ANGEL_NUMBERS = {
+      0:"Void & reset — a circle of potential. Trust the pause.",
+      1:"Initiation & focus — take the first step and lead.",
+      2:"Balance & partnership — cooperate and listen.",
+      3:"Creativity & expression — speak and build playfully.",
+      4:"Stability & structure — plan, simplify, and commit.",
+      5:"Change & movement — adapt and say yes to growth.",
+      6:"Care & responsibility — tend to home and heart.",
+      7:"Insight & inner work — reflect and study the pattern.",
+      8:"Power & exchange — align effort with value.",
+      9:"Closure & service — release and complete the cycle.",
+      11:"Intuition heightened; portals opening to new paths.",
+      22:"Master builder energy; anchor long-term foundations.",
+      33:"Compassionate leadership; create with the heart.",
+      44:"Angelic scaffolding; structure supports your leap.",
+      55:"Rapid pivots; flexible mindset wins.",
+      66:"Deep care; harmony in relationships.",
+      77:"Mystic study; trust the inner map.",
+      88:"Material momentum; stewardship of resources.",
+      99:"Final wrap-up; graduate to the next chapter.",
+      1010:"Mirrors and milestones; progress in twin steps.",
+      111:"Alignment ping; stay focused on your intention.",
+      222:"Synchronicity in pairs; patience while threads weave.",
+      333:"Speak truth; your ideas want air.",
+      444:"Protected & guided; build with confidence.",
+      555:"Change is ripe; ride the wave.",
+      666:"Re-balance priorities; grounding needed.",
+      777:"Inner wisdom confirmed; keep learning.",
+      888:"Abundance circuitry active; circulate generosity.",
+      999:"Completion; make space for the new."
+    };
+
+    const SUGGESTIONS = {
+      dream:["teeth falling","flying above city","lost in a house","meeting a baby"],
+      symbol:["snake","water","bridge","cat"],
+      number:["111","222","1010","777"]
+    };
+
+    // --- Utilities -----------------------------------------------------------
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    function currentMode(){
+      return (document.querySelector('input[name="mode"]:checked')?.value)||'dream';
+    }
+
+    function tokenize(text){
+      return text.toLowerCase().split(/[,;\n]+|\s{2,}/).map(s=>s.trim()).filter(Boolean);
+    }
+
+    function reduceNumber(n){
+      const s = String(n).replace(/\D/g,"");
+      if(!s) return null;
+      // Keep known angel numbers and repdigits as-is
+      if(ANGEL_NUMBERS[s]) return s;
+      // Digital root (except 11,22,33 treated specially)
+      let x = s.split("").reduce((a,b)=>a+Number(b),0);
+      if([11,22,33].includes(x)) return String(x);
+      while(x>9){ x = String(x).split("").reduce((a,b)=>a+Number(b),0); }
+      return String(x);
+    }
+
+    function capitalize(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+    function sentenceJoin(arr){
+      if(arr.length===1) return arr[0];
+      if(arr.length===2) return arr[0]+" and "+arr[1];
+      return arr.slice(0,-1).join(", ")+", and "+arr.at(-1);
+    }
+
+    // --- Engines -------------------------------------------------------------
+    function interpretSymbol(term){
+      const k = term.toLowerCase();
+      const base = SYMBOL_MEANINGS[k];
+      if(base){
+        const head = `<h3>Symbol: ${capitalize(k)}</h3>`;
+        const themes = `<p><strong>Themes:</strong> ${sentenceJoin(base.themes.map(capitalize))}.</p>`;
+        const note = `<p>${base.notes}</p>`;
+        return head+themes+note+genericAdvice([k]);
+      }
+      // fallback
+      const guess = `<h3>Symbol: ${capitalize(k)}</h3>
+        <p>This symbol points toward something you’re noticing about <em>${k}</em> in waking life — a quality, risk, or desire you want to integrate.</p>`;
+      return guess + genericAdvice([k]);
+    }
+
+    function interpretDream(text){
+      const parts = tokenize(text);
+      if(parts.length===0){ return `<p class="muted">Try entering a short dream phrase, e.g., <em>teeth falling</em>.</p>`; }
+      const bullets = parts.map(p=>{
+        // try symbol mapping first
+        const s = SYMBOL_MEANINGS[p];
+        if(s){
+          return `<li><strong>${capitalize(p)}</strong>: ${sentenceJoin(s.themes.map(capitalize))}. ${s.notes}</li>`
+        }
+        return `<li><strong>${capitalize(p)}</strong>: highlights an aspect of <em>${p}</em> seeking attention or balance.</li>`
+      }).join("");
+
+      return `
+        <h3>Dream focus</h3>
+        <p>Your dream clusters around ${sentenceJoin(parts.map(capitalize))}.</p>
+        <ul>${bullets}</ul>
+        ${genericAdvice(parts)}
+      `;
+    }
+
+    function interpretNumber(text){
+      const raw = String(text).trim();
+      const digits = raw.replace(/\D/g, "");
+      if(!digits) return `<p class="muted">Enter a number like <em>111</em> or <em>1010</em>.</p>`;
+      const known = ANGEL_NUMBERS[digits];
+      const reduced = reduceNumber(digits);
+      const reducedMsg = ANGEL_NUMBERS[reduced];
+      let html = `<h3>Number: ${digits}</h3>`;
+      if(known){ html += `<p>${known}</p>`; }
+      if(reduced && reduced !== digits){
+        html += `<p><strong>Numerology core (${reduced})</strong>: ${reducedMsg || 'Essence distilled to '+reduced+'.'} </p>`;
+      }
+      html += genericAdvice([digits]);
+      return html;
+    }
+
+    function genericAdvice(keywords){
+      const k = keywords[0];
+      return `
+      <h3>How to work with it</h3>
+      <p>Notice where <em>${k}</em> shows up this week. Journal a few lines, take one small action, and revisit the pattern in 3–7 days.</p>
+      <p class="muted">This is a symbolic heuristic — take what resonates, leave the rest.</p>`
+    }
+
+    // --- UI glue -------------------------------------------------------------
+    const form = $("#form");
+    const input = $("#q");
+    const badge = $("#badge");
+    const out = $("#out");
+    const result = $("#result");
+    const copyBtn = $("#copyBtn");
+    const linkBtn = $("#linkBtn");
+    const suggest = $("#suggest");
+    const historyEl = $("#history");
+
+    function setBadge(){
+      const mode = currentMode();
+      badge.textContent = ({dream:"Dream meaning", symbol:"Symbol meaning", number:"Number meaning"})[mode];
+    }
+
+    function renderSuggestions(){
+      suggest.innerHTML = "";
+      const list = SUGGESTIONS[currentMode()] || [];
+      list.forEach(x=>{
+        const b = document.createElement('button');
+        b.className = 'chip'; b.type = 'button'; b.textContent = x;
+        b.addEventListener('click', ()=>{ input.value = x; form.dispatchEvent(new Event('submit', {cancelable:true})); });
+        suggest.appendChild(b);
+      })
+    }
+
+    function saveHistory(entry){
+      try{
+        const key = 'psysymbol.history.v1';
+        const items = JSON.parse(localStorage.getItem(key)||'[]');
+        items.unshift(entry);
+        const trimmed = items.slice(0,12);
+        localStorage.setItem(key, JSON.stringify(trimmed));
+      }catch(e){}
+    }
+
+    function loadHistory(){
+      try{
+        const items = JSON.parse(localStorage.getItem('psysymbol.history.v1')||'[]');
+        if(items.length===0){ historyEl.textContent = 'No interpretations yet.'; return; }
+        historyEl.innerHTML = items.map(i=>{
+          return `<div style="margin:6px 0"><a href="#/${encodeURIComponent(i.mode)}/${encodeURIComponent(i.q)}">${i.mode} — ${escapeHtml(i.q)}</a></div>`
+        }).join('');
+      }catch(e){ historyEl.textContent = '—'; }
+    }
+
+    function escapeHtml(s){
+      return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+    }
+
+    function interpret(mode, query){
+      let html="";
+      if(mode==='dream') html = interpretDream(query);
+      else if(mode==='symbol') html = interpretSymbol(query);
+      else html = interpretNumber(query);
+      out.innerHTML = html;
+      result.classList.remove('hidden');
+      setBadge();
+      saveHistory({mode, q: query});
+      loadHistory();
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const q = input.value.trim();
+      if(!q) return;
+      const mode = currentMode();
+      location.hash = `#/${mode}/${encodeURIComponent(q)}`; // permalink
+      interpret(mode, q);
+    });
+
+    $$('input[name="mode"]').forEach(r=>r.addEventListener('change',()=>{
+      setBadge(); renderSuggestions(); input.focus();
+    }));
+
+    copyBtn.addEventListener('click', ()=>{
+      const temp = out.innerText;
+      navigator.clipboard?.writeText(temp).then(()=>{
+        copyBtn.textContent = 'Copied!';
+        setTimeout(()=>copyBtn.textContent='Copy',1000);
+      });
+    });
+
+    linkBtn.addEventListener('click', ()=>{
+      const url = location.href;
+      navigator.clipboard?.writeText(url).then(()=>{
+        linkBtn.textContent = 'Link copied!';
+        setTimeout(()=>linkBtn.textContent='Share link',1000);
+      });
+    })
+
+    function handleHash(){
+      const m = location.hash.match(/^#\/(dream|symbol|number)\/([^]*)$/);
+      if(m){
+        const mode = m[1];
+        const q = decodeURIComponent(m[2]);
+        const radio = document.querySelector(`input[name="mode"][value="${mode}"]`);
+        if(radio){ radio.checked = true; }
+        input.value = q;
+        renderSuggestions();
+        interpret(mode, q);
+      } else {
+        result.classList.add('hidden');
+        renderSuggestions();
+      }
+    }
+
+    window.addEventListener('hashchange', handleHash);
+
+    // init
+    document.getElementById('year').textContent = new Date().getFullYear();
+    setBadge();
+    renderSuggestions();
+    loadHistory();
+    handleHash();
+  </script>
 </body>
 </html>
