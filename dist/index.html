@@ -3,187 +3,362 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PsySymbol — Instant Meanings for Dreams, Symbols & Numbers</title>
-  <meta name="description" content="Type a dream, symbol, or number. Click Interpret. Get an instant meaning — all on a single page, no backend.">
-  <link rel="canonical" href="/" />
+  <title>PsySymbol — Dream Meanings, Symbols & Numbers</title>
+  <meta name="description" content="Type a dream, symbol, or number and get an instant interpretation. AI‑assisted, with optional web enrichment." />
+  <link rel="canonical" href="https://psysymbol.com/" />
   <meta name="robots" content="index,follow" />
-  <meta property="og:title" content="PsySymbol — Dream, Symbol & Number Meanings" />
-  <meta property="og:description" content="Type a dream, symbol, or number. Click Interpret. Get an instant meaning — single-page, no backend." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/" />
-  <meta property="og:image" content="" />
+
+  <!-- IMPORTANT: replace with your real publisher ID -->
+  <meta name="google-adsense-account" content="ca-pub-3857946786580406" />
+
+  <!-- Google AdSense (do not load until consent granted in EEA) -->
+  <script>
+    // We will conditionally inject the AdSense script after consent in the EEA.
+    window.__PSY_ADS__ = {
+      client: 'ca-pub-3857946786580406', // replaced
+      load() {
+        if (document.getElementById('adsbygooglejs')) return;
+        const s = document.createElement('script');
+        s.async = true;
+        s.id = 'adsbygooglejs';
+        s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(this.client)}`;
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+      }
+    };
+  </script>
+
+  <!-- Google Consent Mode v2 (basic) -->
+  <script>
+    (function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_personalization': 'denied',
+        'ad_user_data': 'denied'
+      });
+      gtag('set', 'url_passthrough', true);
+    })();
+  </script>
+
   <style>
-    :root{--bg:#0b0c10;--card:#12131a;--card-2:#171824;--text:#f5f7fb;--muted:#b9bfd3;--acc:#7c9cff;--acc-2:#6ee7b7;--border:#26283a}
+    :root{
+      --bg:#0b0b0e; --text:#f7f7f7; --muted:#b7b7c0; --card:#14141a; --border:#272732; --brand:#9c7bff; --accent:#24d5a1;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Ubuntu,Cantarell;background:radial-gradient(1200px 600px at 80% -10%,#1a1c2e55,transparent),radial-gradient(900px 500px at -10% 20%,#15303f55,transparent),var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    a{color:var(--acc)}
-    .wrap{max-width:980px;margin:0 auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--acc),var(--acc-2));display:grid;place-items:center;box-shadow:0 6px 24px #0007;cursor:pointer}
-    .logo:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-    .logo span{font-weight:800;color:#0b0c10}
-    .title{display:flex;flex-direction:column}
-    .title h1{font-size:1.15rem;margin:0;letter-spacing:.2px}
-    .title p{margin:2px 0 0;font-size:.86rem;color:var(--muted)}
-    .card{background:linear-gradient(180deg,#151626,#0f1020);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 40px #0005}
-    .pad{padding:18px}
-    .mode-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-    .seg{position:relative}
-    .seg input{position:absolute;opacity:0;pointer-events:none}
-    .seg label{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--card-2);color:var(--muted);cursor:pointer;user-select:none;transition:transform .08s ease,color .2s ease,background .2s ease,border-color .2s ease}
-    .seg input:checked+label{background:linear-gradient(180deg,#1a1d32,#15172a);color:var(--text);border-color:#2c2f46;box-shadow:inset 0 0 0 1px #2f355a}
-    .search{display:grid;grid-template-columns:1fr auto;gap:10px}
-    .search input{width:100%;padding:14px 14px;border-radius:12px;border:1px solid var(--border);background:#0e1020;color:var(--text);font-size:1rem;outline:0}
-    .search button{padding:0 16px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--acc),#98b0ff);color:#0b0c10;font-weight:700;font-size:.98rem;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:48px}
-    .search button:active{transform:translateY(1px)}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#101227;color:#b9bfd3;cursor:pointer}
-    .result{margin-top:18px}
-    .result .head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-    .badge{font-size:.75rem;color:#dfe3ff;background:#192042;border:1px solid #2a2f56;border-radius:999px;padding:6px 10px}
-    .tools{display:flex;gap:8px}
-    .btn{padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:#0f1124;color:#b9bfd3;cursor:pointer}
-    .btn:hover{color:var(--text)}
-    .prose{line-height:1.65;color:#e8eaf7}
-    .prose h3{margin:12px 0 6px;font-size:1.05rem}
-    .prose p{margin:8px 0}
-    .muted{color:#b9bfd3}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
-    @media(min-width:768px){.grid{grid-template-columns:1fr 1fr}}
-    .panel{border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,#121327,#0e1022)}
-    .panel h4{margin:0 0 8px;font-size:.98rem;color:#e9ecff}
-    .panel .pad{padding:14px}
-    footer{margin-top:28px;color:#b9bfd3;font-size:.85rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .hidden{display:none}
-    .test-pass{color:#6ee7b7}
-    .test-fail{color:#ff6b6b}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;background:var(--bg);color:var(--text)}
+    .container{max-width:980px;margin:0 auto;padding:24px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+    .brand .logo{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;font-weight:700}
+    .brand span{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
+    nav a:hover{color:var(--text)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .tabs{display:flex;gap:8px;margin-bottom:10px}
+    .tab{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#0f0f14;color:var(--muted);cursor:pointer}
+    .tab.active{color:#0b0b0e;background:var(--accent);border-color:transparent;font-weight:600}
+    .controls{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .input{flex:1;min-width:220px;background:#0f0f14;border:1px solid var(--border);border-radius:10px;padding:12px;color:var(--text)}
+    .btn{background:var(--brand);border:none;color:#0b0b0e;font-weight:700;padding:12px 14px;border-radius:10px;cursor:pointer}
+    .btn.secondary{background:#1a1a22;color:var(--text);border:1px solid var(--border)}
+    .muted{color:var(--muted);font-size:13px}
+    .output{white-space:pre-wrap;line-height:1.6}
+    .hr{height:1px;background:var(--border);margin:16px 0}
+
+    /* Ads containers (reserve height to prevent CLS) */
+    .ad-slot{width:100%;min-height:120px;display:block}
+    .ad-top{min-height:90px;margin:12px 0}
+    .ad-incontent{min-height:250px;margin:16px 0}
+    .ad-footer{min-height:90px;margin:20px 0}
+
+    /* Footer + legal pages */
+    footer{margin-top:32px;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .footer-grid a{color:var(--muted);text-decoration:none}
+    .footer-grid a:hover{color:var(--text)}
+
+    dialog.legal{max-width:820px;width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:18px}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+
+    /* Cookie banner */
+    .cookie{position:fixed;inset:auto 12px 12px 12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;display:none;z-index:50}
+    .cookie.show{display:block}
+    .cookie .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+
+    @media (max-width:640px){
+      .footer-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" id="homeBtn" role="button" tabindex="0" title="Clear & reset" aria-label="Home — clear and reset"><span>Ψ</span></div>
-        <div class="title">
-          <h1>PsySymbol</h1>
-          <p>Instant meanings for dreams, symbols & numbers — one page, no backend.</p>
+  <header class="container header">
+    <a class="brand" id="brandHome" title="Reset to start">
+      <div class="logo">Ψ</div>
+      <span>PsySymbol</span>
+    </a>
+    <nav>
+      <a href="#about" id="aboutLink">About</a>
+      <a href="#contact" id="contactLink">Contact</a>
+      <a href="#privacy" id="privacyLink">Privacy</a>
+      <a href="#terms" id="termsLink">Terms</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Top Ad (display only after consent) -->
+    <ins class="adsbygoogle ad-slot ad-top" data-ad-client="ca-pub-3857946786580406" data-ad-slot="0000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+    <section class="card">
+      <div class="tabs">
+        <button class="tab active" data-mode="dream">Dream</button>
+        <button class="tab" data-mode="symbol">Symbol</button>
+        <button class="tab" data-mode="number">Number</button>
+      </div>
+      <div class="row">
+        <input id="query" class="input" placeholder="Type your dream, symbol, or number…" />
+        <button id="interpret" class="btn">Interpret</button>
+        <button id="reset" class="btn secondary">Reset</button>
+      </div>
+      <div class="controls">
+        <label class="muted"><input type="checkbox" id="enrichToggle"/> Enrich with web sources (beta)</label>
+      </div>
+      <div class="hr"></div>
+      <div id="result" class="output muted">Enter something above and press <b>Interpret</b>.</div>
+
+      <!-- In-content Ad -->
+      <ins class="adsbygoogle ad-slot ad-incontent" data-ad-client="ca-pub-3857946786580406" data-ad-slot="0000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+    </section>
+
+    <!-- Footer Ad -->
+    <ins class="adsbygoogle ad-slot ad-footer" data-ad-client="ca-pub-3857946786580406" data-ad-slot="0000000003" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="muted">© <span id="year"></span> PsySymbol. All rights reserved.</div>
+        </div>
+        <div style="text-align:right">
+          <a href="#privacy">Privacy</a> · <a href="#cookie">Cookie Policy</a> · <a href="#terms">Terms</a>
         </div>
       </div>
-    </header>
-    <main class="card pad" role="main">
-      <div class="mode-switch" role="tablist" aria-label="Interpretation type">
-        <div class="seg"><input type="radio" id="dream" name="mode" value="dream" checked><label for="dream">💤 Dream</label></div>
-        <div class="seg"><input type="radio" id="symbol" name="mode" value="symbol"><label for="symbol">🔮 Symbol</label></div>
-        <div class="seg"><input type="radio" id="number" name="mode" value="number"><label for="number">🔢 Number</label></div>
-      </div>
-      <form id="form" class="search" autocomplete="off">
-        <input id="q" placeholder="Type your dream, symbol, or number…"><button type="submit">Interpret</button>
-      </form>
-      <div class="chips" id="suggest"></div>
-      <section id="result" class="result hidden">
-        <div class="head"><span id="badge" class="badge">Meaning</span><div class="tools"><button class="btn" id="copyBtn">Copy</button><button class="btn" id="linkBtn">Share link</button></div></div>
-        <div id="out" class="prose"></div>
-      </section>
-      <div class="grid">
-        <aside class="panel"><div class="pad"><h4>Recent</h4><div id="history" class="muted">No interpretations yet.</div></div></aside>
-        <aside class="panel"><div class="pad"><h4>Tips</h4><ul class="muted" style="margin:0;padding-left:18px"><li>Use commas for multiple items: <em>snake, water</em>.</li><li>Numbers like <em>111</em> or <em>1010</em> are recognized.</li><li>No backend, everything runs locally.</li></ul></div></aside>
-      </div>
-    </main>
-    <footer>
-      <span>© <span id="year"></span> PsySymbol</span>
-      <span id="test-status" class="muted" aria-live="polite"></span>
-      <span class="muted">Single-file build. No cookies.</span>
     </footer>
+  </main>
+
+  <!-- LEGAL DIALOGS (kept in-page to stay single-file) -->
+  <dialog id="dlg-privacy" class="legal">
+    <h3>Privacy Policy</h3>
+    <p>Last updated: <span id="privacy-date"></span></p>
+    <p>PsySymbol processes your inputs client‑side to generate interpretations. When “Enrich with web sources (beta)” is enabled, we fetch publicly available summaries to augment the answer. We do not sell personal data. See our Cookie Policy for ad‑related consent.</p>
+    <h4>Information we collect</h4>
+    <ul>
+      <li><b>Query text</b> you type to get an interpretation (not linked to your identity).</li>
+      <li><b>Basic device data</b> (e.g., browser, screen size) to improve compatibility.</li>
+      <li><b>Ad data</b> from Google AdSense, if you consent, which may use cookies.</li>
+    </ul>
+    <h4>Your rights</h4>
+    <p>You can revoke consent at any time via the Cookie controls below.</p>
+    <form method="dialog"><button class="btn secondary">Close</button></form>
+  </dialog>
+
+  <dialog id="dlg-cookie" class="legal">
+    <h3>Cookie Policy & Consent</h3>
+    <p>We use strictly necessary cookies and, if you agree, Google AdSense may set cookies to serve and measure ads. In the EEA/UK we ask for your consent before loading ads.</p>
+    <div class="hr"></div>
+    <div class="row">
+      <button id="cookieAccept" class="btn">Accept Ads Cookies</button>
+      <button id="cookieReject" class="btn secondary">Reject</button>
+    </div>
+    <p class="muted" style="margin-top:10px">You can change this later from the footer: <a href="#cookie">Cookie Policy</a>.</p>
+    <form method="dialog"><button class="btn secondary" style="margin-top:12px">Close</button></form>
+  </dialog>
+
+  <dialog id="dlg-terms" class="legal">
+    <h3>Terms of Service</h3>
+    <p>Using PsySymbol means you accept these terms. Interpretations are informational only and not medical, legal, or psychological advice. Do not submit unlawful content. We may update these terms; continued use means acceptance.</p>
+    <form method="dialog"><button class="btn secondary">Close</button></form>
+  </dialog>
+
+  <dialog id="dlg-about" class="legal">
+    <h3>About PsySymbol</h3>
+    <p>PsySymbol is a single‑page tool for quick interpretations of dreams, symbols, and numbers—with optional web enrichment. No accounts, no downloads.</p>
+    <form method="dialog"><button class="btn secondary">Close</button></form>
+  </dialog>
+
+  <dialog id="dlg-contact" class="legal">
+    <h3>Contact</h3>
+    <p>Have a concern about content or ads? Email: <a href="mailto:hello@psysymbol.com">hello@psysymbol.com</a></p>
+    <form method="dialog"><button class="btn secondary">Close</button></form>
+  </dialog>
+
+  <!-- Simple cookie banner for first‑time visitors (EEA/UK) -->
+  <div id="cookieBanner" class="cookie" role="dialog" aria-live="polite">
+    <div><b>Cookies for ads?</b> We use Google AdSense. Accept to see personalized or contextual ads. You can change this any time.
+      <div class="actions">
+        <button id="bannerReject" class="btn secondary">Reject</button>
+        <button id="bannerAccept" class="btn">Accept</button>
+      </div>
+    </div>
   </div>
+
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // --- SPA state ---
+    const $ = sel => document.querySelector(sel);
+    const result = $('#result');
+    const query = $('#query');
+    const tabs = document.querySelectorAll('.tab');
+    const enrichToggle = $('#enrichToggle');
+    let mode = 'dream';
 
-    // --- Data --------------------------------------------------------------
-    const SYMBOL_MEANINGS = {
-      snake:{themes:["transformation","life force","hidden fear"],notes:"Snakes often reflect suppressed energy or a need to shed old patterns."},
-      water:{themes:["emotion","intuition","cleansing"],notes:"Water mirrors how feelings are flowing — calm waters = ease; storms = turmoil."},
-      teeth:{themes:["appearance","agency","communication"],notes:"Teeth falling can symbolize anxiety about control, image, or saying the right thing."},
-      house:{themes:["self","boundaries","life areas"],notes:"Rooms map to self; basement=subconscious; attic=plans."},
-      bridge:{themes:["transition","decision","connection"],notes:"Crossing a bridge = moving through change; fear of crossing = resistance."},
-      cat:{themes:["independence","mystery","intuition"],notes:"Cats may nudge you toward self-trust and gentle curiosity."},
-      dog:{themes:["loyalty","protection","friendship"],notes:"Dogs can signal support systems or a need to nurture simple joys."},
-      flight:{themes:["freedom","perspective","ambition"],notes:"Flying dreams highlight expanding viewpoint and desire to rise above limits."},
-      death:{themes:["ending","renewal","identity shift"],notes:"Symbolic death points to closures that make space for beginnings."},
-      baby:{themes:["new beginnings","vulnerability","care"],notes:"A baby can represent a tender project, idea, or part of self that needs attention."}
-    };
+    function setMode(m){
+      mode = m; tabs.forEach(t=>t.classList.toggle('active', t.dataset.mode===m));
+      query.placeholder = m==='dream' ? 'Type your dream…' : m==='symbol' ? 'Type a symbol (e.g. owl)…' : 'Type a number (e.g. 222)…';
+      result.classList.add('muted'); result.textContent = 'Enter something above and press Interpret.';
+    }
+    tabs.forEach(t=> t.addEventListener('click', ()=> setMode(t.dataset.mode)));
 
-    const ANGEL_NUMBERS = {
-      0:"Void & reset — a circle of potential. Trust the pause.",1:"Initiation & focus — take the first step and lead.",2:"Balance & partnership — cooperate and listen.",3:"Creativity & expression — speak and build playfully.",4:"Stability & structure — plan, simplify, and commit.",5:"Change & movement — adapt and say yes to growth.",6:"Care & responsibility — tend to home and heart.",7:"Insight & inner work — reflect and study the pattern.",8:"Power & exchange — align effort with value.",9:"Closure & service — release and complete the cycle.",11:"Intuition heightened; portals opening to new paths.",22:"Master builder energy; anchor long-term foundations.",33:"Compassionate leadership; create with the heart.",44:"Angelic scaffolding; structure supports your leap.",55:"Rapid pivots; flexible mindset wins.",66:"Deep care; harmony in relationships.",77:"Mystic study; trust the inner map.",88:"Material momentum; stewardship of resources.",99:"Final wrap-up; graduate to the next chapter.",1010:"Mirrors and milestones; progress in twin steps.",111:"Alignment ping; stay focused on your intention.",222:"Synchronicity in pairs; patience while threads weave.",333:"Speak truth; your ideas want air.",444:"Protected & guided; build with confidence.",555:"Change is ripe; ride the wave.",666:"Re-balance priorities; grounding needed.",777:"Inner wisdom confirmed; keep learning.",888:"Abundance circuitry active; circulate generosity.",999:"Completion; make space for the new."
-    };
+    function resetAll(){ setMode('dream'); query.value=''; result.textContent='Enter something above and press Interpret.'; result.classList.add('muted'); location.hash = ''; }
+    $('#reset').addEventListener('click', resetAll);
+    $('#brandHome').addEventListener('click', resetAll);
 
-    const SUGGESTIONS = { dream:["teeth falling","flying above city","lost in a house","meeting a baby"], symbol:["snake","water","bridge","cat"], number:["111","222","1010","777"] };
-
-    // --- Helpers ------------------------------------------------------------
-    const $ = s => document.querySelector(s);
-    const $$ = s => Array.from(document.querySelectorAll(s));
-    function currentMode(){ return document.querySelector('input[name="mode"]:checked')?.value || 'dream'; }
-    function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
-    function joinx(a){ if(a.length===1) return a[0]; if(a.length===2) return a[0]+" and "+a[1]; return a.slice(0,-1).join(", ")+", and "+a.at(-1); }
-    function toks(t){ return String(t).toLowerCase().split(/[,;\n]+|\s{2,}/).map(s=>s.trim()).filter(Boolean); }
-    function reduceNum(n){ const s=String(n).replace(/\D/g,""); if(!s) return null; if(ANGEL_NUMBERS[s]) return s; let x=s.split("").reduce((a,b)=>a+Number(b),0); if([11,22,33].includes(x)) return String(x); while(x>9){ x=String(x).split("").reduce((a,b)=>a+Number(b),0) } return String(x); }
-
-    // --- Engines ------------------------------------------------------------
-    function interpretSymbol(term){ const k=String(term).toLowerCase(); const s=SYMBOL_MEANINGS[k]; return (s? `<h3>Symbol: ${cap(k)}</h3><p><strong>Themes:</strong> ${joinx(s.themes.map(cap))}.</p><p>${s.notes}</p>`:`<h3>Symbol: ${cap(k)}</h3><p>This symbol highlights something about <em>${k}</em> you’re noticing — a quality, risk, or desire to integrate.</p>`) + genericAdvice(k); }
-
-    function interpretDream(text){ const parts=toks(text); if(parts.length===0) return `<p class="muted">Try a short phrase, e.g., <em>teeth falling</em>.</p>`; const bullets=parts.map(p=>{ const s=SYMBOL_MEANINGS[p]; return s? `<li><strong>${cap(p)}</strong>: ${joinx(s.themes.map(cap))}. ${s.notes}</li>`:`<li><strong>${cap(p)}</strong>: an aspect of <em>${p}</em> asking for attention or balance.</li>` }).join(""); return `<h3>Dream focus</h3><p>Your dream clusters around ${joinx(parts.map(cap))}.</p><ul>${bullets}</ul>` + genericAdvice(parts); }
-
-    function interpretNumber(text){ const raw=String(text).trim(); const digits=raw.replace(/\D/g,""); if(!digits) return `<p class="muted">Enter a number like <em>111</em> or <em>1010</em>.</p>`; const known=ANGEL_NUMBERS[digits]; const reduced=reduceNum(digits); const reducedMsg=ANGEL_NUMBERS[reduced]; let html=`<h3>Number: ${digits}</h3>`; if(known) html+=`<p>${known}</p>`; if(reduced && reduced!==digits){ html+=`<p><strong>Numerology core (${reduced})</strong>: ${reducedMsg || ('Essence distilled to '+reduced)}.</p>` } return html + genericAdvice(digits); }
-
-    function genericAdvice(k){ const x=Array.isArray(k)?k[0]:k; return `<h3>How to work with it</h3><p>Notice where <em>${x}</em> shows up this week. Journal a few lines, take one small action, and revisit in 3–7 days.</p><p class="muted">Symbolic heuristic — take what resonates, leave the rest.</p>` }
-
-    // --- UI wiring ----------------------------------------------------------
-    const form = $('#form'), input = $('#q'), out = $('#out'), result = $('#result'), badge = $('#badge'), suggest = $('#suggest'), copyBtn = $('#copyBtn'), linkBtn = $('#linkBtn'), historyEl = $('#history');
-    function setBadge(){ if(!badge) return; badge.textContent = ({dream:'Dream meaning',symbol:'Symbol meaning',number:'Number meaning'})[currentMode()]; }
-    function renderSuggestions(){ if(!suggest) return; suggest.innerHTML=''; (SUGGESTIONS[currentMode()]||[]).forEach(x=>{ const b=document.createElement('button'); b.className='chip'; b.type='button'; b.textContent=x; b.addEventListener('click',()=>{ input.value=x; form.dispatchEvent(new Event('submit',{cancelable:true}))}); suggest.appendChild(b); }); }
-    function saveHistory(entry){ try{ const key='psysymbol.history.v1'; const arr=JSON.parse(localStorage.getItem(key)||'[]'); arr.unshift(entry); localStorage.setItem(key, JSON.stringify(arr.slice(0,12))); }catch(e){} }
-    function loadHistory(){ try{ const arr=JSON.parse(localStorage.getItem('psysymbol.history.v1')||'[]'); if(arr.length===0){ historyEl.textContent='No interpretations yet.'; return; } historyEl.innerHTML = arr.map(i=>`<div style="margin:6px 0"><a href="#/${encodeURIComponent(i.mode)}/${encodeURIComponent(i.q)}">${i.mode} — ${i.q.replaceAll('<','&lt;').replaceAll('>','&gt;')}</a></div>`).join(''); }catch(e){ historyEl.textContent='—'; } }
-
-    function interpret(mode, query){ let html=''; if(mode==='dream') html=interpretDream(query); else if(mode==='symbol') html=interpretSymbol(query); else html=interpretNumber(query); out.innerHTML=html; result.classList.remove('hidden'); setBadge(); saveHistory({mode,q:query}); loadHistory(); }
-    function handleHash(){ const m = location.hash.match(/^#\/(dream|symbol|number)\/([^]*)$/); if(m){ const mode=m[1]; const q=decodeURIComponent(m[2]); const radio=document.querySelector(`input[name="mode"][value="${mode}"]`); if(radio) radio.checked=true; input.value=q; renderSuggestions(); interpret(mode,q);} else { result.classList.add('hidden'); renderSuggestions(); } }
-
-    if(form){ form.addEventListener('submit', e=>{ e.preventDefault(); const q=input.value.trim(); if(!q) return; const mode=currentMode(); location.hash = `#/${mode}/${encodeURIComponent(q)}`; interpret(mode,q); }); }
-    $$('input[name="mode"]').forEach(r=> r.addEventListener('change',()=>{ setBadge(); renderSuggestions(); input?.focus(); }));
-    if(copyBtn){ copyBtn.addEventListener('click', ()=>{ const txt=out.innerText; navigator.clipboard?.writeText(txt).then(()=>{ copyBtn.textContent='Copied!'; setTimeout(()=>copyBtn.textContent='Copy',1000); }); }); }
-    if(linkBtn){ linkBtn.addEventListener('click', ()=>{ const url=location.href; navigator.clipboard?.writeText(url).then(()=>{ linkBtn.textContent='Link copied!'; setTimeout(()=>linkBtn.textContent='Share link',1000); }); }); }
-
-    // Logo reset (no stray braces here)
-    const homeBtn = document.getElementById('homeBtn');
-    function resetToEmpty(){ if(input) input.value=''; if(out) out.innerHTML=''; if(result) result.classList.add('hidden'); const dream=$('#dream'), symbol=$('#symbol'), number=$('#number'); if(dream) dream.checked=true; if(symbol) symbol.checked=false; if(number) number.checked=false; if(location.hash) history.pushState('', document.title, location.pathname + location.search); setBadge(); renderSuggestions(); input?.focus(); window.scrollTo({top:0, behavior:'smooth'}); }
-    if(homeBtn){
-      homeBtn.addEventListener('click', resetToEmpty);
-      homeBtn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); resetToEmpty(); } });
+    // --- Core interpretation logic (lightweight, no backend) ---
+    function localMeaning(m,q){
+      const s = q.trim().toLowerCase();
+      if(!s) return 'Please type something first.';
+      const dict = {
+        dream: {
+          donut: 'Dreaming of a donut can hint at reward, comfort, or a “hole” you are circling around—something missing in the middle of a sweet situation.'
+        },
+        symbol: {
+          owl: 'Owls often symbolize wisdom, intuition, and seeing in the dark—insight during confusing times.'
+        },
+        number: {
+          '222': '222 commonly points to balance, cooperation, and staying the course while partnerships align.'
+        }
+      };
+      return (dict[m] && dict[m][s]) || `Here\'s a general ${m} interpretation for “${q}”: seek balance, context, and personal resonance.`;
     }
 
-    // Init
-    setBadge(); renderSuggestions(); loadHistory(); handleHash();
-  </script>
-  <script>
-    // ===== Lightweight test harness (kept in-page) ==========================
-    (function(){
-      const T=[]; const el=document.getElementById('test-status');
-      const pass=(name)=>{T.push({name,ok:true}); console.log('✅',name)};
-      const fail=(name,msg)=>{T.push({name,ok:false,msg}); console.error('❌',name,msg)};
-      const expect=(name,cond,msg)=> cond? pass(name): fail(name,msg);
+    async function enrichMeaning(m,q,base){
+      // Simple public enrichment: Wikipedia summary for symbols/terms or numbersapi for numbers.
+      try{
+        if(!enrichToggle.checked) return base;
+        let extra = '';
+        if(m==='number'){
+          const r = await fetch(`https://numbersapi.com/${encodeURIComponent(q)}/trivia`);
+          if(r.ok) extra = await r.text();
+        } else {
+          const r = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`);
+          if(r.ok){ const j = await r.json(); extra = j.extract || ''; }
+        }
+        return base + (extra ? `\n\n— Web enrichment —\n${extra}` : '');
+      }catch(e){ return base + '\n\n(Web enrichment unavailable right now.)'; }
+    }
 
-      // Test cases
-      try { expect('tokenizer basic', JSON.stringify((window.toks||(()=>[]))('snake, water'))==="[\"snake\",\"water\"]", 'should split by comma'); } catch(e){ fail('tokenizer basic', e.message); }
-      try { expect('reduce number 1010→2', (window.reduceNum||(()=>null))(1010)==='2', '1010 reduces to 2'); } catch(e){ fail('reduce number 1010→2', e.message); }
-      try { const html=(window.interpretDream||(()=>''))('donut'); expect('dream generic fallback', /Dream focus/.test(html), 'should render dream focus'); } catch(e){ fail('dream generic fallback', e.message); }
-      try { const html=(window.interpretSymbol||(()=>''))('snake'); expect('symbol known', /Themes:/.test(html), 'should include Themes'); } catch(e){ fail('symbol known', e.message); }
-      try { const html=(window.interpretNumber||(()=>''))('1010'); expect('number reduced core', /Numerology core \(2\)/.test(html), 'should show core (2)'); } catch(e){ fail('number reduced core', e.message); }
+    async function doInterpret(){
+      const q = query.value; if(!q.trim()) { result.textContent = 'Please type something first.'; result.classList.remove('muted'); return; }
+      result.textContent = 'Thinking…'; result.classList.add('muted');
+      const base = localMeaning(mode,q);
+      const out = await enrichMeaning(mode,q,base);
+      result.textContent = out; result.classList.remove('muted');
+      // After first useful interaction, we can try filling an in-content ad.
+      queueAdRenders();
+    }
+    $('#interpret').addEventListener('click', doInterpret);
+    query.addEventListener('keydown', e=>{ if(e.key==='Enter') doInterpret(); });
 
-      // Display summary in footer
-      const ok=T.every(t=>t.ok); const summary=`Tests: ${T.filter(t=>t.ok).length}/${T.length} passed`;
-      if(el){ el.textContent=summary; el.classList.add(ok? 'test-pass':'test-fail'); }
-    })();
+    // --- Lightweight router to open legal dialogs via hashes ---
+    const modals = {
+      '#privacy': $('#dlg-privacy'),
+      '#cookie': $('#dlg-cookie'),
+      '#terms': $('#dlg-terms'),
+      '#about': $('#dlg-about'),
+      '#contact': $('#dlg-contact')
+    };
+    function onHash(){
+      Object.values(modals).forEach(d=> d.open && d.close());
+      const m = modals[location.hash];
+      if(m) m.showModal();
+    }
+    window.addEventListener('hashchange', onHash);
+    onHash();
+
+    // Footer year & dates
+    $('#year').textContent = new Date().getFullYear();
+    $('#privacy-date').textContent = new Date().toLocaleDateString();
+
+    // --- Consent & Ad loading (EEA/UK safe) ---
+    const EEA_COUNTRIES = new Set(['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB']);
+
+    function isEEA(){
+      // Heuristic: check browser language + time zone offset for UK/EEA users.
+      const lang = navigator.language||''; const tz = Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+      return /-(AT|BE|BG|HR|CY|CZ|DK|EE|FI|FR|DE|GR|HU|IE|IT|LV|LT|LU|MT|NL|PL|PT|RO|SK|SI|ES|SE|IS|LI|NO|GB)/i.test(lang) || /Europe\//.test(tz) || true; // default to showing in EEA to be safe
+    }
+
+    const CONSENT_KEY = 'psysymbol-consent';
+    function getConsent(){ try{ return JSON.parse(localStorage.getItem(CONSENT_KEY)||'null'); }catch{return null} }
+    function setConsent(val){ localStorage.setItem(CONSENT_KEY, JSON.stringify({ val, ts: Date.now() })); }
+
+    function applyConsent(val){
+      // Update Consent Mode
+      gtag('consent','update',{
+        'ad_storage': val ? 'granted' : 'denied',
+        'analytics_storage': 'denied',
+        'ad_personalization': val ? 'granted' : 'denied',
+        'ad_user_data': val ? 'granted' : 'denied'
+      });
+      if(val){
+        // Load AdSense and render queued slots
+        window.__PSY_ADS__.load();
+        queueAdRenders();
+      }
+    }
+
+    function showCookieBannerIfNeeded(){
+      const saved = getConsent();
+      if(saved==null && isEEA()){
+        $('#cookieBanner').classList.add('show');
+      }
+    }
+
+    function accept(){ setConsent(true); $('#cookieBanner').classList.remove('show'); applyConsent(true); }
+    function reject(){ setConsent(false); $('#cookieBanner').classList.remove('show'); applyConsent(false); }
+
+    $('#bannerAccept').addEventListener('click', accept);
+    $('#bannerReject').addEventListener('click', reject);
+    $('#cookieAccept').addEventListener('click', accept);
+    $('#cookieReject').addEventListener('click', reject);
+
+    // Initial consent state
+    const saved = getConsent();
+    applyConsent(!!(saved && saved.val));
+    showCookieBannerIfNeeded();
+
+    // Queue ad rendering to avoid calling before script loads.
+    function queueAdRenders(){
+      if(!window.adsbygoogle) return; // Not loaded yet
+      document.querySelectorAll('ins.adsbygoogle').forEach((ins)=>{
+        // Skip if already filled
+        if(ins.dataset.filled) return;
+        try{
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          ins.dataset.filled = '1';
+        }catch(e){ /* ignore */ }
+      });
+    }
+
+    // Expose links that open dialogs
+    document.getElementById('privacyLink').addEventListener('click', e=>{ e.preventDefault(); location.hash = '#privacy'; });
+    document.getElementById('termsLink').addEventListener('click', e=>{ e.preventDefault(); location.hash = '#terms'; });
+    document.getElementById('aboutLink').addEventListener('click', e=>{ e.preventDefault(); location.hash = '#about'; });
+    document.getElementById('contactLink').addEventListener('click', e=>{ e.preventDefault(); location.hash = '#contact'; });
   </script>
 </body>
 </html>
