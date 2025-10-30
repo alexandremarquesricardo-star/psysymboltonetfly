@@ -2,93 +2,436 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PsySymbol — Dream Meanings & Symbolism</title>
-  <meta name="description" content="AI-generated interpretations for dreams, symbols, and numbers — now enriched with real-world sources." />
-  <link rel="canonical" href="https://psysymbol.com/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PsySymbol — Dream · Symbol · Number Interpreter</title>
+  <meta name="description" content="Instant interpretations for dreams, symbols, and numbers. Optional enrichment from Wikipedia and Numbers API." />
   <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://psysymbol.com/" />
 
-  <!-- AdSense -->
-  <meta name="google-adsense-account" content="ca-pub-3857946786580406" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Search Console (replace content value with your verification token) -->
+  <meta name="google-site-verification" content="REPLACE_WITH_YOUR_SEARCH_CONSOLE_TOKEN" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="PsySymbol — Dream · Symbol · Number Interpreter" />
+  <meta property="og:description" content="Type a dream, symbol, or number — get a clean, structured meaning instantly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://psysymbol.com/" />
+  <meta property="og:image" content="https://psysymbol.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- AdSense (replace with your own client ID if different) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857946786580406" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4): set window.PSY_GA_ID = 'G-XXXXXXX' to enable -->
+  <script>
+    window.PSY_GA_ID = window.PSY_GA_ID || '';
+    if (window.PSY_GA_ID) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} // eslint-disable-line
+      gtag('js', new Date());
+      gtag('config', window.PSY_GA_ID);
+    }
+  </script>
+  <script async id="ga-loader"></script>
+  <script>
+    // Load GA only when an ID is present (avoids validation warnings in dev)
+    (function(){
+      if (!window.PSY_GA_ID) return;
+      var s = document.getElementById('ga-loader');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(window.PSY_GA_ID);
+    })();
+  </script>
 
   <style>
     :root{
-      --bg:#0b0b0e;--text:#f7f7f7;--muted:#b7b7c0;--card:#14141a;--border:#272732;
-      --accent:#b991ff;--accent2:#8fd4ff;
+      --bg:#0b0c0f; --card:#13151a; --elev:#171a22; --text:#f6f7fb; --muted:#aeb3c2; --accent:#7c9cff; --accent-2:#9a7cff;
+      --ok:#2ecc71; --warn:#ffcc66; --err:#ff6b6b; --border:#242735; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px; --radius-sm:12px; --radius-lg:28px;
     }
-    *{box-sizing:border-box;font-family:system-ui,Segoe UI,Roboto,Ubuntu}
-    body{margin:0;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px}
-    header{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:20px;cursor:pointer}
-    header h1{font-size:1.6rem;letter-spacing:0.04em}
-    #mode{font-weight:600;margin-left:4px;color:var(--accent)}
-    #controls{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;justify-content:center}
-    input[type=text]{padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);width:260px}
-    button{cursor:pointer;border:none;background:var(--accent);color:#fff;font-weight:600;padding:10px 18px;border-radius:12px;transition:.2s}
-    button:hover{background:var(--accent2);color:#000}
-    #output{max-width:700px;margin-top:12px;text-align:left}
-    .meaning{background:var(--card);padding:18px;border-radius:14px;border:1px solid var(--border)}
-    .meaning h2{margin-top:0;font-size:1.2rem;color:var(--accent2)}
-    .aggCard a{color:var(--accent2)}
-    @media(max-width:600px){input[type=text]{width:100%}}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(124,156,255,.08), transparent 60%),
+                  radial-gradient(1200px 700px at 110% 10%, rgba(154,124,255,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    .container{max-width:980px; margin:0 auto; padding:20px 16px 56px}
+
+    /* Header */
+    .header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 0 18px}
+    .brand{display:flex; align-items:center; gap:12px; user-select:none}
+    .psi{position:relative; width:44px; height:44px; min-width:44px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; cursor:pointer; box-shadow: var(--shadow);}
+    .psi::after{content:""; position:absolute; inset:0; border-radius:inherit; background:radial-gradient(closest-side, rgba(255,255,255,.35), transparent 70%); opacity:0; transform:scale(.6); transition:opacity .35s ease, transform .45s ease}
+    .psi.ripple::after{opacity:1; transform:scale(1.25)}
+    .psi .glyph{font-weight:700; font-size:22px; color:white; letter-spacing:.5px; text-shadow:0 2px 10px rgba(0,0,0,.35)}
+    .title{font-size:18px; letter-spacing:.3px; color:var(--muted)}
+
+    /* Card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015)), var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    /* Tabs */
+    .tabs{display:flex; gap:8px; padding:8px; background:var(--elev); border:1px solid var(--border); border-radius:var(--radius-sm)}
+    .tab{flex:1; text-align:center; padding:12px 14px; font-weight:600; letter-spacing:.2px; border-radius:12px; cursor:pointer; user-select:none; outline:none; border:1px solid transparent; min-height:44px}
+    .tab[aria-selected="true"]{background:linear-gradient(135deg, rgba(124,156,255,.16), rgba(154,124,255,.16)); border-color:rgba(124,156,255,.35)}
+    .tab:focus-visible{box-shadow:0 0 0 2px rgba(124,156,255,.5)}
+
+    /* Input */
+    .panel{padding:18px}
+    .input-wrap{display:flex; flex-direction:column; gap:12px}
+    .textarea, .textinput{
+      width:100%; background: var(--elev); color:var(--text); border:1px solid var(--border); border-radius:14px;
+      padding:14px 14px; font-size:16px; line-height:1.5; min-height:56px; outline:none; transition:border .2s ease, box-shadow .2s ease
+    }
+    .textarea:focus, .textinput:focus{border-color:rgba(124,156,255,.55); box-shadow:0 0 0 2px rgba(124,156,255,.25)}
+    .helper{color:var(--muted); font-size:13px}
+
+    /* Controls */
+    .controls{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .btn{
+      position:relative; overflow:hidden; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 18px; min-height:44px; border-radius:14px; border:1px solid rgba(124,156,255,.35);
+      background:linear-gradient(135deg, rgba(124,156,255,.18), rgba(154,124,255,.18)); color:white; font-weight:700; letter-spacing:.2px; cursor:pointer;
+      transition: transform .12s ease, filter .2s ease, background .3s ease
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn:active{transform:translateY(1px) scale(.99)}
+    .btn .shine{position:absolute; inset:0; background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%);
+      transform:translateX(-120%);
+    }
+    .btn.animate .shine{animation:shine 650ms ease forwards}
+    @keyframes shine{to{transform:translateX(120%)}}
+
+    .toggle{display:flex; align-items:center; gap:8px; user-select:none}
+    .toggle input{appearance:none; width:46px; height:26px; border-radius:26px; background:#2a2f3f; position:relative; outline:none; cursor:pointer; border:1px solid var(--border)}
+    .toggle input:after{content:""; width:22px; height:22px; position:absolute; top:1px; left:1px; border-radius:50%; background:white; transition:left .2s ease}
+    .toggle input:checked{background:linear-gradient(135deg, var(--accent), var(--accent-2))}
+    .toggle input:checked:after{left:23px}
+    .toggle label{font-size:14px; color:var(--muted)}
+
+    /* Results */
+    .results{padding:0; overflow:hidden}
+    .result-inner{opacity:0; transform:translateY(6px); transition:opacity .35s ease, transform .35s ease}
+    .result-inner.show{opacity:1; transform:translateY(0)}
+
+    .section{padding:16px 18px; border-top:1px solid var(--border)}
+    .section:first-child{border-top:none}
+    .sect-title{font-weight:800; font-size:14px; letter-spacing:.35px; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+    .sect-body{font-size:16px; line-height:1.7}
+
+    /* Footer QA row (hidden visually, helpful for validation checks) */
+    .qa{margin-top:18px; color:var(--muted); font-size:12px}
+
+    /* Mobile tweaks */
+    @media (max-width: 640px){
+      .title{display:none}
+      .container{padding:14px 12px 40px}
+      .panel{padding:14px}
+      .sect-body{font-size:15px}
+      .textarea,.textinput{font-size:16px; min-height:56px}
+      .tab{padding:12px 10px}
+    }
   </style>
 </head>
-
 <body>
-  <header id="logo"><h1>Ψ <span id="mode">Dream</span></h1></header>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="psi" id="psiBtn" title="Reset (go to Dream, clear input & results)" aria-label="Reset to Dream">
+          <span class="glyph">Ψ</span>
+        </div>
+        <div class="title">PsySymbol — Instant Meanings</div>
+      </div>
+    </header>
 
-  <div id="controls">
-    <input id="query" type="text" placeholder="Type a dream, symbol, or number…" />
-    <button id="interpret" data-action="interpret">Interpret</button>
-    <label><input type="checkbox" id="enrich" checked /> Enrich with web sources (β)</label>
+    <main class="card" role="application" aria-label="PsySymbol Interpreter">
+      <div class="panel" style="border-bottom:1px solid var(--border)">
+        <div class="tabs" role="tablist" aria-label="Modes">
+          <button class="tab" data-mode="dream" role="tab" aria-selected="true" id="tab-dream">Dream</button>
+          <button class="tab" data-mode="symbol" role="tab" aria-selected="false" id="tab-symbol">Symbol</button>
+          <button class="tab" data-mode="number" role="tab" aria-selected="false" id="tab-number">Number</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="input-wrap">
+          <textarea id="dreamInput" class="textarea" placeholder="Describe your dream in a sentence or two… (Shift+Enter for newline)" aria-label="Dream input" rows="3"></textarea>
+          <input id="symbolInput" class="textinput" placeholder="Type a symbol (e.g., owl, labyrinth, lotus)…" aria-label="Symbol input" style="display:none" />
+          <input id="numberInput" class="textinput" inputmode="numeric" pattern="[0-9xX ]+" placeholder="Enter a number (e.g., 111, 777, 144)…" aria-label="Number input" style="display:none" />
+
+          <div class="controls">
+            <button id="interpretBtn" class="btn" aria-label="Interpret now">
+              <span>Interpret</span>
+              <span class="shine"></span>
+            </button>
+
+            <div class="toggle">
+              <input type="checkbox" id="enrichToggle" aria-checked="false" role="switch" />
+              <label for="enrichToggle">Enrich with web sources (beta)</label>
+            </div>
+
+            <div class="helper" id="helperText">Press Enter to interpret. Shift+Enter for newline.</div>
+          </div>
+        </div>
+      </div>
+
+      <section class="results" id="results" aria-live="polite" aria-busy="false">
+        <div class="result-inner" id="resultInner"></div>
+      </section>
+    </main>
+
+    <div class="qa" id="qaRow" aria-hidden="true">
+      <strong>Diagnostics:</strong>
+      <span id="diag-mode">mode:dream</span>
+      <span id="diag-enrich">· enrich:off</span>
+      <span id="diag-adsense">· AdSense:loaded?</span>
+      <span id="diag-analytics">· GA:off</span>
+      <span id="diag-search-console">· SearchConsole:token set? <span id="sc-token">no</span></span>
+    </div>
   </div>
 
-  <div id="output"></div>
-
-  <!-- Core logic -->
   <script>
-    let currentMode = 'Dream';
-    const modeEl = document.getElementById('mode');
-    const queryEl = document.getElementById('query');
-    const outputEl = document.getElementById('output');
-    const logo = document.getElementById('logo');
+    // ---------- Utilities ----------
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-    logo.onclick = () => {
-      const order = ['Dream','Symbol','Number'];
-      currentMode = order[(order.indexOf(currentMode)+1)%order.length];
-      modeEl.textContent = currentMode;
-      queryEl.value='';outputEl.innerHTML='';
-    };
-
-    function interpretCore(input){
-      const q = input.trim().toLowerCase();
-      if(!q) return 'Type something first.';
-      if(currentMode==='Number') return `The number ${q} may symbolize ${q.length%2?'individuality':'balance'} and ${q.includes('7')?'spiritual insight':'worldly experience'}.`;
-      if(currentMode==='Symbol') return `${q.charAt(0).toUpperCase()+q.slice(1)} often represents ${q.length>6?'complex emotions or transformation':'simplicity or clarity'}.`;
-      return `Dreaming of ${q} may reflect ${q.includes('water')?'emotional flow':'personal energy'} and subconscious ${q.includes('animal')?'instincts':'patterns'}.`;
+    function sanitize(str=''){
+      return String(str).replace(/[\u0000-\u001F\u007F-\u009F]/g, '').trim();
     }
 
-    document.getElementById('interpret').onclick = () => {
-      const q = queryEl.value.trim();
-      const meaning = interpretCore(q);
-      outputEl.innerHTML = `<div class="meaning"><h2>${currentMode} Interpretation</h2><p>${meaning}</p></div>`;
-      if(document.getElementById('enrich').checked) runAggregator(q,currentMode).then(renderAggregator);
-    };
-  </script>
+    function setAriaBusy(b){
+      const res = $('#results');
+      res?.setAttribute('aria-busy', b ? 'true' : 'false');
+    }
 
-  <!-- Aggregator logic -->
-  <script>
-  const SourceAdapters = {
-    wikipedia: async (q,sig)=>{const r=await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`,{signal:sig});if(!r.ok)return[];const j=await r.json();return j.extract?[{source:'Wikipedia',title:j.title||q,snippet:j.extract,url:j.content_urls?.desktop?.page,confidence:.9}]:[]},
-    duckduckgo: async (q,sig)=>{const r=await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(q)}&format=json&no_html=1&skip_disambig=1`,{signal:sig});if(!r.ok)return[];const j=await r.json();const out=[];if(j.AbstractText)out.push({source:'DuckDuckGo',title:j.Heading||q,snippet:j.AbstractText,url:j.AbstractURL,confidence:.7});(j.RelatedTopics||[]).slice(0,3).forEach(t=>{if(t.Text)out.push({source:'DuckDuckGo',title:t.Text.split(' - ')[0],snippet:t.Text,url:t.FirstURL,confidence:.5})});return out},
-    wiktionary: async (q,sig)=>{const r=await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(q)}`,{signal:sig});if(!r.ok)return[];const j=await r.json();if(!Array.isArray(j))return[];const defs=[];j.forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).slice(0,2).forEach(d=>defs.push({source:'Wiktionary',title:`${e.word} — ${m.partOfSpeech||''}`.trim(),snippet:d.definition,url:`https://en.wiktionary.org/wiki/${encodeURIComponent(e.word)}`,confidence:.6}))));return defs.slice(0,4)},
-    numbers: async (q,sig)=>{if(!/^\d+$/.test(String(q).trim()))return[];const r=await fetch(`https://numbersapi.com/${encodeURIComponent(q)}/trivia`,{signal:sig});if(!r.ok)return[];const t=await r.text();return[{source:'Numbers API',title:`Number ${q}`,snippet:t,url:`http://numbersapi.com/${encodeURIComponent(q)}`,confidence:.8}]}
-  };
-  let aggState={enabled:true,use:{wikipedia:true,duckduckgo:true,wiktionary:true,numbers:true}};
-  let currentController=null;
-  function normalizeAndRank(items,mode,q){const seen=new Set();const out=[];for(const it of items){const key=(it.url||'')+'|'+(it.title||'');if(seen.has(key))continue;seen.add(key);let s=it.confidence||.5;if(mode==='Number'&&it.source.includes('Number'))s+=.2;if((it.title||'').toLowerCase().includes(q.toLowerCase()))s+=.05;out.push({...it,score:s})}return out.sort((a,b)=>b.score-a.score).slice(0,12)}
-  async function runAggregator(q,mode){if(!aggState.enabled||!q)return[];if(currentController)currentController.abort();currentController=new AbortController();const sig=currentController.signal;const keys=Object.keys(SourceAdapters).filter(k=>aggState.use[k]);const all=await Promise.all(keys.map(k=>SourceAdapters[k](q,sig).catch(()=>[])));return normalizeAndRank(all.flat(),mode,q)}
-  function renderAggregator(results){let box=document.getElementById('aggResults');if(!box){box=document.createElement('section');box.id='aggResults';box.innerHTML='<h3 style="margin:16px 0 8px">Sources</h3>';outputEl.appendChild(box);}box.querySelectorAll('.aggCard').forEach(n=>n.remove());results.forEach(r=>{const card=document.createElement('article');card.className='aggCard';card.style.border='1px solid var(--border)';card.style.borderRadius='12px';card.style.padding='12px';card.style.margin='8px 0';card.innerHTML=`<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="font-weight:600">${r.title||r.source}</div><p style="margin:6px 0 0;opacity:.85">${r.snippet||''}</p></div><a href="${r.url||'#'}" target="_blank" rel="noopener">Open →</a></div><div style="margin-top:8px;font-size:12px;opacity:.7">via ${r.source}</div>`;box.appendChild(card);});}
+    function fadeInResults(){
+      const inner = $('#resultInner');
+      inner?.classList.remove('show');
+      // force reflow
+      void inner?.offsetWidth;
+      inner?.classList.add('show');
+    }
+
+    function structuredSections({psychological='', spiritual='', cultural=''}){
+      const mk = (title, body) => body ? (`<div class="section"><div class="sect-title">${title}</div><div class="sect-body">${body}</div></div>`) : '';
+      return mk('Psychological', psychological) + mk('Spiritual', spiritual) + mk('Cultural', cultural);
+    }
+
+    function setResults(html){
+      const inner = $('#resultInner');
+      inner.innerHTML = html || '';
+      fadeInResults();
+    }
+
+    function shine(btn){
+      btn.classList.remove('animate');
+      void btn.offsetWidth; // reflow
+      btn.classList.add('animate');
+    }
+
+    function ripplePsi(){
+      const p = $('#psiBtn');
+      p.classList.add('ripple');
+      setTimeout(()=>p.classList.remove('ripple'), 420);
+    }
+
+    // ---------- Mode handling ----------
+    const state = { mode: 'dream' };
+
+    function setMode(mode){
+      state.mode = mode;
+      $$('#tab-dream, #tab-symbol, #tab-number').forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.mode===mode)));
+      $('#dreamInput').style.display = (mode==='dream') ? '' : 'none';
+      $('#symbolInput').style.display = (mode==='symbol') ? '' : 'none';
+      $('#numberInput').style.display = (mode==='number') ? '' : 'none';
+      $('#helperText').textContent = (mode==='dream') ? 'Press Enter to interpret. Shift+Enter for newline.' : 'Press Enter to interpret.';
+      $('#diag-mode').textContent = 'mode:' + mode;
+
+      // placeholders polish
+      if (mode==='symbol') $('#symbolInput').focus();
+      if (mode==='number') $('#numberInput').focus();
+      if (mode==='dream') $('#dreamInput').focus();
+    }
+
+    // ---------- Built-in meaning logic (baseline heuristics) ----------
+    function baseInterpret(mode, input){
+      const text = sanitize(input);
+      if (!text) return { psychological: 'Please enter something to interpret.', spiritual: '', cultural: '' };
+
+      if (mode==='number'){
+        const nText = text.replace(/\s+/g,'');
+        const patterns = [];
+        if (/^(\d)\1\1+$/.test(nText)) patterns.push('Repeating digits often signal emphasis or a nudge to pay attention.');
+        if (/111/.test(nText)) patterns.push('111: new beginnings, alignment, taking the first step.');
+        if (/222/.test(nText)) patterns.push('222: balance, partnership, steady support.');
+        if (/333/.test(nText)) patterns.push('333: creativity, expression, and synthesis.');
+        if (/444/.test(nText)) patterns.push('444: foundations, protection, grounded effort.');
+        if (/555/.test(nText)) patterns.push('555: change, pivot points, adventure.');
+        if (/666/.test(nText)) patterns.push('666: recalibration of priorities, returning to center.');
+        if (/777/.test(nText)) patterns.push('777: insight, intuition, inner knowing.');
+        if (/888/.test(nText)) patterns.push('888: cycles, abundance, compounding returns.');
+        if (/999/.test(nText)) patterns.push('999: closures, integration, completion.');
+        const psychological = `Numbers can work as anchors for meaning. You entered <strong>${text}</strong>. ${patterns.length? ('Highlights: ' + patterns.join(' ')) : 'Notice where this number shows up and what feeling it evokes.'}`;
+        const spiritual = patterns.length ? 'Many traditions view repeating numbers as synchronicities — invitations to notice patterns and act from clarity.' : 'Treat numbers as signals; what action would embody the message you sense?';
+        const cultural = 'In numerology and folklore, sequences are read for themes (beginnings, balance, creativity, structure, change, harmony, intuition, abundance, completion).';
+        return { psychological, spiritual, cultural };
+      }
+
+      if (mode==='symbol'){
+        const psychological = `Symbols mirror inner states. <strong>${text}</strong> may represent qualities you want to integrate or understand.`;
+        const spiritual = `As a sign, <strong>${text}</strong> can be an archetypal messenger — consider what it asks you to notice or embody.`;
+        const cultural = `Across traditions, <strong>${text}</strong> will carry varied meanings; local myths and media shape how it is read.`;
+        return { psychological, spiritual, cultural };
+      }
+
+      // dream
+      const psychological = `Dreams compress feelings into imagery. Key element: <strong>${text}</strong>. Consider mood, tension, and the moment you woke.`;
+      const spiritual = 'Some see dreams as guidance — gentle prompts to realign actions with values.';
+      const cultural = 'Dream motifs are shared across cultures (falling, flying, searching), but your personal associations matter most.';
+      return { psychological, spiritual, cultural };
+    }
+
+    // ---------- Web enrichment (Wikipedia + Numbers API) ----------
+    async function wikiSummary(term){
+      try{
+        const endpoint = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`;
+        const res = await fetch(endpoint, { headers: { 'Accept': 'application/json' } });
+        if (!res.ok) throw new Error('No summary');
+        const data = await res.json();
+        if (data?.extract) return data.extract;
+      }catch(err){ /* silent */ }
+      return '';
+    }
+
+    async function numbersFact(num){
+      try{
+        const endpoint = `https://numbersapi.com/${encodeURIComponent(num)}/trivia`;
+        const res = await fetch(endpoint);
+        if (!res.ok) throw new Error('No number fact');
+        const txt = await res.text();
+        return txt || '';
+      }catch(err){ /* silent */ }
+      return '';
+    }
+
+    function distill(text, max=60){
+      if (!text) return '';
+      const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+      const take=[]; let count=0;
+      for(const s of sentences){ const len=s.split(/\s+/).length; count+=len; take.push(s); if (count>=max) break; }
+      return take.join(' ');
+    }
+
+    async function enrichSections(mode, input){
+      const term = sanitize(input);
+      const out = { psychological:'', spiritual:'', cultural:'' };
+
+      if (mode==='number'){
+        const fact = await numbersFact(term);
+        if (fact) out.cultural = `Trivia: ${fact}`;
+        const generic = await wikiSummary('Numerology');
+        if (!out.spiritual && generic) out.spiritual = distill(generic, 40);
+        return out;
+      }
+
+      const sum = await wikiSummary(term);
+      if (sum){
+        out.cultural = distill(sum, 60);
+      } else {
+        // fallback: try singular/plural basic tweak
+        const alt = term.endsWith('s') ? term.slice(0,-1) : term + ' (symbol)';
+        const sum2 = await wikiSummary(alt);
+        if (sum2) out.cultural = distill(sum2, 60);
+      }
+      return out;
+    }
+
+    // ---------- Interpret orchestration ----------
+    async function interpretNow(){
+      const mode = state.mode;
+      const input = mode==='dream' ? $('#dreamInput').value : mode==='symbol' ? $('#symbolInput').value : $('#numberInput').value;
+      const clean = sanitize(input);
+      if (!clean){ setResults(structuredSections(baseInterpret(mode, clean))); return; }
+
+      const btn = $('#interpretBtn');
+      shine(btn);
+      setAriaBusy(true);
+
+      const base = baseInterpret(mode, clean);
+      let web = {psychological:'', spiritual:'', cultural:''};
+
+      const enrich = $('#enrichToggle').checked;
+      $('#diag-enrich').textContent = '· enrich:' + (enrich ? 'on' : 'off');
+
+      if (enrich){
+        try{ web = await enrichSections(mode, clean); }
+        catch(e){ /* keep base only */ }
+      }
+
+      const merged = {
+        psychological: [base.psychological, web.psychological].filter(Boolean).join(' '),
+        spiritual:     [base.spiritual,     web.spiritual    ].filter(Boolean).join(' '),
+        cultural:      [base.cultural,      web.cultural     ].filter(Boolean).join(' ')
+      };
+
+      setResults(structuredSections(merged));
+      setAriaBusy(false);
+    }
+
+    // ---------- Reset ----------
+    function resetAll(){
+      ripplePsi();
+      setMode('dream');
+      $('#dreamInput').value = '';
+      $('#symbolInput').value = '';
+      $('#numberInput').value = '';
+      setResults('');
+    }
+
+    // ---------- Wiring ----------
+    function wire(){
+      // tabs
+      $$('.tab').forEach(tab=>{
+        tab.addEventListener('click',()=> setMode(tab.dataset.mode));
+        tab.addEventListener('keydown', (e)=>{ if (e.key==='Enter' || e.key===' ') { e.preventDefault(); setMode(tab.dataset.mode); }});
+      });
+
+      // keyboard Enter to interpret (Shift+Enter inserts newline for textarea)
+      const handleKey = (e)=>{
+        if (e.key==='Enter' && !e.shiftKey){ e.preventDefault(); interpretNow(); }
+      };
+      $('#dreamInput').addEventListener('keydown', handleKey);
+      $('#symbolInput').addEventListener('keydown', handleKey);
+      $('#numberInput').addEventListener('keydown', handleKey);
+
+      // button
+      $('#interpretBtn').addEventListener('click', interpretNow);
+
+      // reset
+      $('#psiBtn').addEventListener('click', resetAll);
+
+      // enrich diagnostics
+      $('#enrichToggle').addEventListener('change', ()=>{
+        $('#diag-enrich').textContent = '· enrich:' + ($('#enrichToggle').checked ? 'on' : 'off');
+      });
+
+      // initial focus
+      $('#dreamInput').focus();
+
+      // diagnostics: AdSense and GA
+      const adsReady = typeof window.adsbygoogle !== 'undefined';
+      $('#diag-adsense').textContent = '· AdSense:' + (adsReady ? 'loaded' : 'not loaded yet');
+      const gaOn = !!window.PSY_GA_ID;
+      $('#diag-analytics').textContent = '· GA:' + (gaOn ? 'on' : 'off');
+
+      const scMeta = document.querySelector('meta[name="google-site-verification"]');
+      $('#sc-token').textContent = (scMeta && scMeta.content && scMeta.content!=='REPLACE_WITH_YOUR_SEARCH_CONSOLE_TOKEN') ? 'yes' : 'no';
+    }
+
+    document.addEventListener('DOMContentLoaded', wire);
   </script>
 </body>
 </html>
