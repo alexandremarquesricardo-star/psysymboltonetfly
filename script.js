@@ -1,17 +1,17 @@
-/* PsySymbol — Phase 4 (Content Depth & Authority) */
+/* PsySymbol — Phase 4 Merged: Expand + Compare + All features */
 (() => {
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const nowISO = () => new Date().toISOString();
 
-  // ---------- Storage ----------
+  // Storage
   const storage = {
     get(key, fallback){ try{ return JSON.parse(localStorage.getItem(key)) ?? fallback }catch{ return fallback } },
     set(key, val){ localStorage.setItem(key, JSON.stringify(val)) },
     push(key, item){ const arr = storage.get(key, []); arr.unshift(item); storage.set(key, arr.slice(0,400)); }
   };
 
-  // ---------- Elements ----------
+  // Elements
   const body = document.body;
   const modeTabs = $("#modeTabs");
   const userInput = $("#userInput");
@@ -35,14 +35,19 @@
   const copyPermalink = $("#copyPermalink");
   const expandBtn = $("#expandMeaning");
   const followBtn = $("#followSymbol");
-  const logo = $("#logo");
+  const btnSitemap = $("#btnSitemap");
+
+  // Compare elements
+  const cmpLeft = $("#cmpLeft"), cmpRight = $("#cmpRight");
+  const cmpGo = $("#cmpGo"), cmpLeftTitle = $("#cmpLeftTitle"), cmpRightTitle = $("#cmpRightTitle");
+  const cmpLeftOut = $("#cmpLeftOut"), cmpRightOut = $("#cmpRightOut");
 
   const views = {
     home: $("#view-home"), today: $("#view-today"), trending: $("#view-trending"),
     journal: $("#view-journal"), compare: $("#view-compare")
   };
 
-  // ---------- State ----------
+  // State
   let state = {
     mode: storage.get("psysymbol_mode", "dream"),
     depth: storage.get("psysymbol_depth", false),
@@ -51,7 +56,7 @@
     lastOutput: null, lastQuery: ""
   };
 
-  // ---------- Authority Data ----------
+  // Authority snippets
   const SOURCE_SNIPPETS = {
     Jungian: "Jungian perspective: regards the symbol as an expression of the psyche seeking balance (individuation).",
     Mythic: "Mythic thread: echoes appearing in myths/folklore; consider archetypal narratives and heroic cycles.",
@@ -59,11 +64,11 @@
     Numerical: "Numerical angle: reduction, repetition, and pattern significance across numerological systems."
   };
 
-  // ---------- Helpers ----------
+  // Helpers
   function escapeHtml(s){ return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
   function titleFor(mode, q){ return `${mode.toUpperCase()}: ${q}`; }
 
-  // ---------- Mode ----------
+  // Mode
   function setMode(m){
     state.mode = m; storage.set("psysymbol_mode", m);
     body.classList.remove("mode-dream","mode-symbol","mode-number");
@@ -77,7 +82,7 @@
                                           "Type a number… (e.g., '333', '11:11')");
   }
 
-  // ---------- Context + Core ----------
+  // Context + Core
   const contextEngine = {
     analyze(text, mode){
       const t = (text||"").toLowerCase();
@@ -120,7 +125,7 @@
     }
   };
 
-  // ---------- Authority Engine ----------
+  // Authority Engine
   const authorityEngine = {
     tagSources(mode, q){
       const tags = [];
@@ -134,9 +139,8 @@
     }
   };
 
-  // ---------- Expansion Engine ----------
-  function expandMeaning(mode, q){
-    const lower = (q||"").toLowerCase();
+  // Expansion
+  function expansionThreads(mode, q){
     const parts = [];
     if (mode==="symbol"){
       parts.push("Jungian depth: consider how this symbol compensates for an attitude in the conscious mind.");
@@ -152,7 +156,7 @@
     return "▼ Expanded threads\n" + parts.map(p => "• " + p).join("\n");
   }
 
-  // ---------- Enrichment ----------
+  // Enrichment
   async function enrichFromWeb(query, mode){
     const out = [];
     try{
@@ -161,15 +165,15 @@
     }catch{}
     if (mode === "number"){
       try{
-        const n = query.replace(/\\D/g,"") || "0";
+        const n = query.replace(/\D/g,"") || "0";
         const text = await fetch(`http://numbersapi.com/${n}/trivia`).then(r => r.ok ? r.text() : "");
         if (text) out.push(`Numbers: ${text}`);
       }catch{}
     }
-    return out.join("\\n\\n");
+    return out.join("\n\n");
   }
 
-  // ---------- Related ----------
+  // Related
   function suggestRelated(query, mode){
     const seed = (query||"").toLowerCase();
     if (mode === "dream") return ["falling","flying","teeth","water","being chased"].filter(x => !seed.includes(x));
@@ -177,7 +181,7 @@
     return ["111","222","333","444","777"].filter(x => !seed.includes(x));
   }
 
-  // ---------- SEO Controller ----------
+  // SEO
   function updateSEO(mode, q, output){
     const canonical = location.origin + location.pathname + `#/interpret?m=${encodeURIComponent(mode)}&q=${encodeURIComponent(q)}`;
     $("#canonicalLink").setAttribute("href", canonical);
@@ -195,7 +199,7 @@
     $("#jsonld").textContent = JSON.stringify(jsonld, null, 2);
   }
 
-  // ---------- Rendering ----------
+  // UI rendering
   function displayBadges(tags){
     badgesEl.innerHTML = "";
     for (const t of tags){
@@ -209,7 +213,7 @@
 
   function displayResult(text, related, enrichment){
     resultEl.classList.remove("muted");
-    resultEl.textContent = text + (enrichment ? ("\\n\\n" + enrichment) : "");
+    resultEl.textContent = text + (enrichment ? ("\n\n" + enrichment) : "");
     relatedEl.innerHTML = "";
     for (const r of related){
       const el = document.createElement("button");
@@ -234,7 +238,7 @@
         const tags = authorityEngine.tagSources(it.mode, it.query);
         displayBadges(tags);
         sourcesList.innerHTML = authorityEngine.listSnippets(tags);
-        displayResult(it.output, it.related, false);
+        displayResult(it.output, it.related||[], false);
         updateSEO(it.mode, it.query, it.output);
       });
       historyEl.appendChild(div);
@@ -253,12 +257,11 @@
     }
   }
 
-  // ---------- Journal ----------
+  // Journal
   const journalText = $("#journalText");
   const journalSave = $("#journalSave");
   const journalClear = $("#journalClear");
   const journalList = $("#journalList");
-
   function renderJournal(){
     if (!journalList) return;
     const entries = storage.get("psysymbol_journal", []);
@@ -277,19 +280,19 @@
   journalSave && (journalSave.onclick = () => { const text = (journalText.value||"").trim(); if (!text) return; storage.push("psysymbol_journal", { ts: nowISO(), text }); journalText.value = ""; renderJournal(); });
   journalClear && (journalClear.onclick = () => { journalText.value=""; });
 
-  // ---------- Favorites ----------
+  // Favorites
   function favKey(mode, query){ return `${mode}:${(query||"").toLowerCase()}` }
   function isFavorited(key){ const fav = storage.get("psysymbol_favorites", {}); return !!fav[key]; }
   function setFavorite(key, data, on){ const fav = storage.get("psysymbol_favorites", {}); if (on) fav[key] = data; else delete fav[key]; storage.set("psysymbol_favorites", fav); }
   function updateFavUI(){ const key = favKey(state.mode, state.lastQuery||""); favStar.textContent = isFavorited(key) ? "★" : "☆"; }
   favBtn && (favBtn.onclick = () => { if (!state.lastQuery) return; const key = favKey(state.mode, state.lastQuery); const data = { ts: nowISO(), mode: state.mode, query: state.lastQuery, output: state.lastOutput }; const on = !isFavorited(key); setFavorite(key, data, on); updateFavUI(); });
-  saveJournalBtn && (saveJournalBtn.onclick = () => { if (!state.lastQuery || !state.lastOutput) return; const text = `[${state.mode.toUpperCase()}] ${state.lastQuery}\\n\\n${state.lastOutput}`; storage.push("psysymbol_journal", { ts: nowISO(), text }); renderJournal(); });
+  saveJournalBtn && (saveJournalBtn.onclick = () => { if (!state.lastQuery || !state.lastOutput) return; const text = `[${state.mode.toUpperCase()}] ${state.lastQuery}\n\n${state.lastOutput}`; storage.push("psysymbol_journal", { ts: nowISO(), text }); renderJournal(); });
 
-  // ---------- Share Links ----------
+  // Share
   function wireShareLinks(){
     const q = state.lastQuery || "";
     const title = titleFor(state.mode, q);
-    const summary = (state.lastOutput||"").split("\\n").slice(0,3).join(" ");
+    const summary = (state.lastOutput||"").split("\n").slice(0,3).join(" ");
     const url = location.origin + location.pathname + `#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`;
     $("#shareX").href = `https://x.com/intent/tweet?text=${encodeURIComponent(title + " — " + summary)}&url=${encodeURIComponent(url)}`;
     $("#shareReddit").href = `https://www.reddit.com/submit?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
@@ -298,13 +301,13 @@
     $("#shareNative").onclick = async () => { if (navigator.share){ try{ await navigator.share({ title, text: summary, url }); }catch{} } else { alert("Native share not supported. Use the share links."); } };
   }
 
-  // ---------- Permalink ----------
+  // Permalink
   copyPermalink && (copyPermalink.onclick = async () => {
     const url = location.origin + location.pathname + `#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(state.lastQuery||"")}`;
     try{ await navigator.clipboard.writeText(url); copyPermalink.textContent = "Copied!"; setTimeout(()=>copyPermalink.textContent="Copy Permalink",1200); }catch{ alert(url); }
   });
 
-  // ---------- Follow (local notifications) ----------
+  // Follow (local notifications)
   followBtn && (followBtn.onclick = async () => {
     if (!state.lastQuery) return;
     if (!("Notification" in window)) return alert("Notifications not supported in this browser.");
@@ -314,25 +317,33 @@
     new Notification("Following symbol", { body: `You'll get gentle reminders about "${state.lastQuery}".` });
   });
 
-  // ---------- Compare ----------
-  const cmpLeft = $("#cmpLeft"), cmpRight = $("#cmpRight");
-  const cmpGo = $("#cmpGo"), cmpLeftTitle = $("#cmpLeftTitle"), cmpRightTitle = $("#cmpRightTitle");
-  const cmpLeftOut = $("#cmpLeftOut"), cmpRightOut = $("#cmpRightOut");
-  cmpGo && (cmpGo.onclick = () => {
-    const L = (cmpLeft.value||"").trim(), R = (cmpRight.value||"").trim();
-    if (!L || !R) return;
-    cmpLeftTitle.textContent = "SYMBOL: " + L; cmpRightTitle.textContent = "SYMBOL: " + R;
-    cmpLeftOut.textContent = coreInterpreter.interpret(L, "symbol", true);
-    cmpRightOut.textContent = coreInterpreter.interpret(R, "symbol", true);
+  // Expand Meaning
+  const EXPAND_BLOCK_ID = "expandBlock";
+  function removeExpandBlock(){
+    const existing = document.getElementById(EXPAND_BLOCK_ID);
+    if (existing) existing.remove();
+    if (expandBtn) expandBtn.textContent = "Expand meaning";
+  }
+  expandBtn && (expandBtn.onclick = () => {
+    if (!state.lastQuery) return;
+    const existing = document.getElementById(EXPAND_BLOCK_ID);
+    if (existing){ removeExpandBlock(); return; }
+    const pre = document.createElement("pre");
+    pre.id = EXPAND_BLOCK_ID;
+    pre.className = "result";
+    pre.textContent = expansionThreads(state.mode, state.lastQuery);
+    resultEl.parentElement.appendChild(pre);
+    pre.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (expandBtn) expandBtn.textContent = "Collapse";
   });
 
-  // ---------- Interpret ----------
+  // Interpret
   async function interpret(){
     const q = (userInput.value||"").trim(); if (!q) return;
     const cacheKey = `${state.mode}:${state.depth?'d':'s'}:${q.toLowerCase()}`;
     let output = state.cache[cacheKey];
     if (!output){ output = coreInterpreter.interpret(q, state.mode, state.depth); state.cache[cacheKey] = output; storage.set("psysymbol_cache", state.cache); }
-    if (state.enrich){ try{ const enrichment = await enrichFromWeb(q, state.mode); if (enrichment) output += "\\n\\n" + enrichment; }catch{} }
+    if (state.enrich){ try{ const enrichment = await enrichFromWeb(q, state.mode); if (enrichment) output += "\n\n" + enrichment; }catch{} }
 
     state.lastOutput = output; state.lastQuery = q;
     titleOut.textContent = titleFor(state.mode, q);
@@ -340,7 +351,7 @@
     const tags = authorityEngine.tagSources(state.mode, q);
     displayBadges(tags);
     sourcesList.innerHTML = authorityEngine.listSnippets(tags);
-    sourcesBlock.open = true;
+    $("#sourcesBlock").open = true;
 
     const related = suggestRelated(q, state.mode);
     displayResult(output, related, false);
@@ -349,54 +360,52 @@
     bumpCloud(q);
     renderHistory(); renderCloud();
     updateFavUI(); wireShareLinks(); updateSEO(state.mode, q, output);
-    // If URL already includes interpret hash, update params for copy/share
+    removeExpandBlock();
     location.hash = `#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`;
   }
 
-  // ---------- Cloud & Trending ----------
+  // Cloud & Trending
   function bumpCloud(q){ const cloud = storage.get("psysymbol_cloud", {}); const key = (q||"").toLowerCase(); cloud[key] = (cloud[key]||0) + 1; storage.set("psysymbol_cloud", cloud); }
-  function weeklyTrending(){
-    const items = storage.get("psysymbol_history", []);
-    const cutoff = Date.now() - 7*24*60*60*1000;
-    const counts = {};
-    for (const it of items){ if (new Date(it.ts).getTime() >= cutoff){ const k = it.query.toLowerCase(); counts[k] = (counts[k]||0) + 1; } }
-    return Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,20);
-  }
-  function renderTrending(){
-    const list = $("#trendingList"); if (!list) return;
-    const top = weeklyTrending(); list.innerHTML = "";
-    if (!top.length){ list.innerHTML = "<li class='muted'>No local searches this week yet.</li>"; return; }
-    top.forEach(([term, n]) => {
-      const li = document.createElement("li"); const a = document.createElement("a");
-      a.href = "#/"; a.textContent = `${term} (${n})`;
-      a.onclick = (e) => { e.preventDefault(); routeTo("#/"); userInput.value = term; interpret(); };
-      li.appendChild(a); list.appendChild(li);
-    });
-  }
+  function weeklyTrending(){ const items = storage.get("psysymbol_history", []); const cutoff = Date.now() - 7*24*60*60*1000; const counts = {}; for (const it of items){ if (new Date(it.ts).getTime() >= cutoff){ const k = it.query.toLowerCase(); counts[k] = (counts[k]||0) + 1; } } return Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,20); }
+  function renderTrending(){ const list = $("#trendingList"); if (!list) return; const top = weeklyTrending(); list.innerHTML = ""; if (!top.length){ list.innerHTML = "<li class='muted'>No local searches this week yet.</li>"; return; } top.forEach(([term, n]) => { const li = document.createElement("li"); const a = document.createElement("a"); a.href = "#/"; a.textContent = `${term} (${n})`; a.onclick = (e) => { e.preventDefault(); routeTo("#/"); userInput.value = term; interpret(); }; li.appendChild(a); list.appendChild(li); }); }
 
-  // ---------- Today ----------
+  // Today
   function pseudoRandomPick(dateStr, arr){ let h = 0; for (let i=0;i<dateStr.length;i++) h = (h*31 + dateStr.charCodeAt(i)) >>> 0; return arr[h % arr.length]; }
-  function renderToday(){
-    const out = $("#todayOut"); if (!out) return;
-    const dateStr = new Date().toISOString().slice(0,10);
-    const symbols = ["lion","key","mirror","tree","snake","owl","boat","door","moon","sun"];
-    const numbers = ["111","222","333","444","555","777","888","999","1010","1111"];
-    const pickType = (new Date().getDate() % 2 === 0) ? "symbol" : "number";
-    const pick = pickType === "symbol" ? pseudoRandomPick(dateStr, symbols) : pseudoRandomPick(dateStr, numbers);
-    const meaning = coreInterpreter.interpret(pick, pickType, true);
-    out.innerHTML = `<b>${pickType.toUpperCase()} of the Day — ${pick}</b>\\n\\n${meaning}`;
+  function renderToday(){ const out = $("#todayOut"); if (!out) return; const dateStr = new Date().toISOString().slice(0,10); const symbols = ["lion","key","mirror","tree","snake","owl","boat","door","moon","sun"]; const numbers = ["111","222","333","444","555","777","888","999","1010","1111"]; const pickType = (new Date().getDate() % 2 === 0) ? "symbol" : "number"; const pick = pickType === "symbol" ? pseudoRandomPick(dateStr, symbols) : pseudoRandomPick(dateStr, numbers); const meaning = coreInterpreter.interpret(pick, pickType, true); out.innerHTML = `<b>${pickType.toUpperCase()} of the Day — ${pick}</b>\n\n${meaning}`; }
+
+  // Compare logic
+  function doCompare(L, R){
+    if (!L || !R) return;
+    cmpLeftTitle.textContent = "SYMBOL: " + L;
+    cmpRightTitle.textContent = "SYMBOL: " + R;
+    cmpLeftOut.textContent = coreInterpreter.interpret(L, "symbol", true);
+    cmpRightOut.textContent = coreInterpreter.interpret(R, "symbol", true);
+    location.hash = `#/compare?l=${encodeURIComponent(L)}&r=${encodeURIComponent(R)}`;
+  }
+  if (cmpGo){
+    cmpGo.onclick = () => doCompare((cmpLeft.value||"").trim(), (cmpRight.value||"").trim());
+    [cmpLeft, cmpRight].forEach(inp => inp && inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") doCompare((cmpLeft.value||"").trim(), (cmpRight.value||"").trim());
+    }));
   }
 
-  // ---------- Routing ----------
+  // Routing
   function routeTo(hash){
     Object.values(views).forEach(v => v.classList.remove("active"));
     if (hash.startsWith("#/today")) { views.today.classList.add("active"); renderToday(); }
     else if (hash.startsWith("#/trending")) { views.trending.classList.add("active"); renderTrending(); }
     else if (hash.startsWith("#/journal")) { views.journal.classList.add("active"); renderJournal(); }
-    else if (hash.startsWith("#/compare")) { views.compare.classList.add("active"); }
+    else if (hash.startsWith("#/compare")) {
+      views.compare.classList.add("active");
+      const params = new URLSearchParams(hash.split("?")[1]||"");
+      const L = (params.get("l")||"").trim();
+      const R = (params.get("r")||"").trim();
+      if (L) cmpLeft.value = L;
+      if (R) cmpRight.value = R;
+      if (L && R) doCompare(L, R);
+    }
     else { views.home.classList.add("active"); }
 
-    // Parse interpret route for deep-link
     if (hash.startsWith("#/interpret")){
       const params = new URLSearchParams(hash.split("?")[1]||"");
       const m = params.get("m"); const q = params.get("q")||"";
@@ -407,7 +416,7 @@
   window.addEventListener("hashchange", () => routeTo(location.hash||"#/"));
   routeTo(location.hash||"#/");
 
-  // ---------- Events ----------
+  // Events
   modeTabs.addEventListener("click", (e) => { const tab = e.target.closest(".tab"); if (!tab) return; setMode(tab.dataset.mode); });
   interpretBtn.addEventListener("click", interpret);
   clearBtn.addEventListener("click", () => { userInput.value = ""; userInput.focus(); });
@@ -415,9 +424,34 @@
   $("#clearHistory").addEventListener("click", () => { localStorage.removeItem("psysymbol_history"); renderHistory(); });
   $("#enrichBtn").addEventListener("click", () => { state.enrich = !state.enrich; storage.set("psysymbol_enrich", state.enrich); $("#enrichState").textContent = state.enrich ? "On" : "Off"; });
   $("#depthBtn").addEventListener("click", () => { state.depth = !state.depth; storage.set("psysymbol_depth", state.depth); $("#depthState").textContent = state.depth ? "On" : "Off"; });
-  $("#logo").addEventListener("click", () => { userInput.value = ""; setMode("dream"); resultEl.textContent = "Enter something above and tap Interpret."; resultEl.classList.add("muted"); relatedEl.innerHTML = ""; location.hash = "#/"; });
 
-  // ---------- Init ----------
+  // Sitemap (client-side)
+  function buildSitemap(){
+    const get = (k)=>{ try{ return JSON.parse(localStorage.getItem(k))||[] }catch{ return [] } };
+    const history = get("psysymbol_history");
+    const favs = Object.values(JSON.parse(localStorage.getItem("psysymbol_favorites")||"{}"));
+    const cloud = JSON.parse(localStorage.getItem("psysymbol_cloud")||"{}");
+    const terms = new Set();
+    history.forEach(it => terms.add(`${it.mode}:${it.query.toLowerCase()}`));
+    favs.forEach(it => terms.add(`${it.mode}:${it.query.toLowerCase()}`));
+    Object.keys(cloud).forEach(k => terms.add(`symbol:${k}`));
+    const base = location.origin + location.pathname.replace(/\/index\.html?$/,"");
+    const urls = Array.from(terms).map(t => {
+      const [m,q] = t.split(":");
+      const loc = `${base}#/interpret?m=${encodeURIComponent(m)}&q=${encodeURIComponent(q)}`;
+      return `<url><loc>${loc}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`;
+    }).join("");
+    return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`;
+  }
+  btnSitemap && (btnSitemap.onclick = () => {
+    const blob = new Blob([buildSitemap()], {type: "application/xml"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "sitemap.xml"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  });
+
+  // Init
   setMode(state.mode);
   $("#depthState").textContent = state.depth ? "On" : "Off";
   $("#enrichState").textContent = state.enrich ? "On" : "Off";
