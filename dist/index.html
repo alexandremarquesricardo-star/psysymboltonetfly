@@ -26,7 +26,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8MGL1TJRY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-S8MGL1TJRY');
   </script>
@@ -176,8 +176,8 @@
       <span id="diag-mode">mode:dream</span>
       <span id="diag-enrich">· enrich:off</span>
       <span id="diag-adsense">· AdSense:loaded?</span>
-      <span id="diag-analytics">· GA:off</span>
-      <span id="diag-search-console">· SearchConsole:token set? <span id="sc-token">no</span></span>
+      <span id="diag-analytics">· GA:on</span>
+      <span id="diag-search-console">· SearchConsole:token set? <span id="sc-token">yes</span></span>
     </div>
   </div>
 
@@ -205,7 +205,7 @@
     }
 
     function structuredSections({psychological='', spiritual='', cultural=''}){
-      const mk = (title, body) => body ? (`<div class=\"section\"><div class=\"sect-title\">${title}</div><div class=\"sect-body\">${body}</div></div>`) : '';
+      const mk = (title, body) => body ? (`<div class="section"><div class="sect-title">${title}</div><div class="sect-body">${body}</div></div>`) : '';
       return mk('Psychological', psychological) + mk('Spiritual', spiritual) + mk('Cultural', cultural);
     }
 
