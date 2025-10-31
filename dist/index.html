@@ -4,27 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PsySymbol — Dream · Symbol · Number Interpreter</title>
-  <meta name="description" content="Instant interpretations for dreams, symbols, and numbers. Shareable results, daily pick, trending feed, and a local dream journal." />
+  <meta name="description" content="Instant interpretations for dreams, symbols, and numbers with source-backed depth, shareability, and local journal." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://psysymbol.com/" />
+  <link rel="canonical" href="https://psysymbol.com/" id="canonicalLink" />
+  <meta property="og:title" content="PsySymbol — Dream · Symbol · Number Interpreter" id="ogTitle" />
+  <meta property="og:description" content="Source-backed interpretations with share cards, /today, /trending, and journal." id="ogDesc" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://psysymbol.com/" id="ogUrl" />
+  <meta property="og:image" content="https://psysymbol.com/og.png" id="ogImage" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/icon-192.png">
   <meta name="theme-color" content="#0d0f14" />
   <style>
     :root{
-      --bg:#0d0f14;
-      --panel:#121622;
-      --muted:#8d96a7;
-      --text:#e6ecff;
-      --dream:#7fb3ff;
-      --symbol:#f6c453;
-      --number:#b3b6c9;
-      --ok:#4ade80;
-      --bad:#f87171;
-      --link:#82aaff;
+      --bg:#0d0f14; --panel:#121622; --muted:#8d96a7; --text:#e6ecff;
+      --dream:#7fb3ff; --symbol:#f6c453; --number:#b3b6c9;
+      --link:#82aaff; --ok:#4ade80; --bad:#f87171;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
     a{color:var(--link);text-decoration:none}
     .app{max-width:1100px;margin:0 auto;padding:20px}
@@ -41,29 +39,28 @@
     .card{background:var(--panel);border:1px solid #1a2238;border-radius:14px;padding:14px}
     .muted{color:var(--muted)}
     .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    input[type="text"], textarea{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #263255;background:#0f1421;color:var(--text);outline:none}
-    textarea{min-height:100px;resize:vertical}
+    input[type="text"], textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #263255;background:#0f1421;color:var(--text);outline:none}
     button{padding:12px 14px;border-radius:12px;border:1px solid #2a355a;background:#1a2238;color:var(--text);cursor:pointer}
-    button.primary{background:#2b3a6a}
-    button.ghost{background:transparent}
+    button.primary{background:#2b3a6a} button.ghost{background:transparent}
     .hint{font-size:12px;color:var(--muted)}
     .result{white-space:pre-wrap}
     .tags{display:flex;gap:8px;flex-wrap:wrap}
     .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #2a355a;color:#c9d4ff;background:#0f1421}
     .sharebar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .sharebar .pill{display:inline-flex;gap:6px;align-items:center}
     .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .history{max-height:60vh;overflow:auto}
     .history-item{padding:10px;border-radius:10px;border:1px solid #1a2238;cursor:pointer;margin-bottom:8px;background:#0f1421}
     .history-item small{display:block;color:var(--muted)}
-    .view{display:none}
-    .view.active{display:block}
-    canvas{max-width:100%;border-radius:10px;border:1px solid #2a355a;background:#0f1421}
-    .star{cursor:pointer}
+    .view{display:none} .view.active{display:block}
+    details.sources{margin-top:12px;border-top:1px dashed #2a355a;padding-top:8px}
+    .badges{display:flex;gap:6px;flex-wrap:wrap}
+    .badge{font-size:11px;padding:4px 6px;border-radius:6px;border:1px solid #2a355a;background:#0f1421}
+    .permablock{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
     footer{margin-top:24px;color:var(--muted);text-align:center;font-size:13px}
     @media (max-width:980px){ .grid{grid-template-columns:1fr} }
   </style>
   <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json" id="jsonld">{}</script>
 </head>
 <body class="mode-dream">
   <div class="app">
@@ -74,6 +71,7 @@
         <a class="pill" href="#/today">/today</a>
         <a class="pill" href="#/trending">/trending</a>
         <a class="pill" href="#/journal">Journal</a>
+        <a class="pill" href="#/compare">Compare</a>
       </nav>
     </header>
 
@@ -102,20 +100,35 @@
               <input id="userInput" type="text" placeholder="Type a dream, symbol, or number… (e.g., 'falling', 'lion', '333')" aria-label="Input" />
               <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret</button>
               <button id="clearBtn" class="ghost" title="Clear input">Clear</button>
+              <button id="copyPermalink" class="pill" title="Copy permalink">Copy Permalink</button>
             </div>
-            <div class="hint">Tip: Press Enter to interpret quickly • Click ★ to favorite</div>
+            <div class="hint">Tip: Press Enter to interpret • Click ★ to favorite • Use Compare to view side-by-side</div>
           </div>
 
           <section class="card" aria-live="polite">
             <div style="display:flex;justify-content:space-between;align-items:center">
-              <h2 class="accent" id="titleOut">Interpretation</h2>
+              <div>
+                <h1 class="accent" id="titleOut" style="margin:0">Interpretation</h1>
+                <div class="badges" id="sourceBadges"></div>
+              </div>
               <div class="row">
                 <button class="pill" id="favBtn" title="Favorite"><span class="star" id="favStar">☆</span> Favorite</button>
                 <button class="pill" id="saveJournalBtn" title="Save to Journal">📝 Save</button>
               </div>
             </div>
+
             <div id="result" class="result muted">Enter something above and tap <b>Interpret</b>.</div>
             <div id="related" class="tags" style="margin-top:10px;"></div>
+
+            <div class="permablock">
+              <button class="pill" id="expandMeaning">Expand meaning</button>
+              <button class="pill" id="followSymbol">Follow this</button>
+            </div>
+
+            <details class="sources" id="sourcesBlock">
+              <summary>Sources & Context</summary>
+              <div id="sourcesList" class="result muted"></div>
+            </details>
 
             <div class="sharebar" id="sharebar">
               <button class="pill" id="shareNative">Share</button>
@@ -123,11 +136,7 @@
               <a class="pill" id="shareReddit" target="_blank" rel="noopener">Reddit</a>
               <a class="pill" id="sharePinterest" target="_blank" rel="noopener">Pinterest</a>
               <a class="pill" id="shareWhatsApp" target="_blank" rel="noopener">WhatsApp</a>
-              <button class="pill" id="makeCardBtn">Make Share Image</button>
-              <a class="pill" id="downloadCard" download="psysymbol-card.png" style="display:none">Download Card</a>
             </div>
-
-            <canvas id="shareCanvas" width="1200" height="630" style="display:none;margin-top:10px;"></canvas>
           </section>
         </section>
 
@@ -181,11 +190,33 @@
       </div>
     </main>
 
+    <main id="view-compare" class="view">
+      <div class="card">
+        <h2>Compare Symbols</h2>
+        <div class="controls">
+          <input id="cmpLeft" placeholder="Left (e.g., lion)" />
+          <input id="cmpRight" placeholder="Right (e.g., snake)" />
+          <button id="cmpGo" class="primary">Compare</button>
+        </div>
+      </div>
+      <div class="grid">
+        <section class="card">
+          <h3 id="cmpLeftTitle"></h3>
+          <pre id="cmpLeftOut" class="result"></pre>
+        </section>
+        <section class="card">
+          <h3 id="cmpRightTitle"></h3>
+          <pre id="cmpRightOut" class="result"></pre>
+        </section>
+      </div>
+    </main>
+
     <footer>
-      <span class="muted">v3 — Shareability & Content Flow • Client-side • Local storage</span>
+      <span class="muted">v4 — Content Depth & Authority • Source-backed • Client-side • Local storage</span>
     </footer>
   </div>
 
   <script src="script.js" defer></script>
+  <script src="sitemap.js" defer></script>
 </body>
 </html>
