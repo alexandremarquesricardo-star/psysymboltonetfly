@@ -1,5 +1,9 @@
-/* PsySymbol Phase 3 — extra styles */
+/* Phase 4 extras */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .result{animation:fadeInUp .3s ease}
 .history-item{transition:transform .12s ease, border-color .12s ease}
 .history-item:hover{transform:translateY(-2px);border-color:#33406e}
+.badge[data-type="Jungian"]{border-color:#4f6cff}
+.badge[data-type="Mythic"]{border-color:#ffb84f}
+.badge[data-type="Cultural"]{border-color:#5cd1b5}
+.badge[data-type="Numerical"]{border-color:#b3b6c9}

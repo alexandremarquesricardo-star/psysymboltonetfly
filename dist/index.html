@@ -4,147 +4,219 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PsySymbol — Dream · Symbol · Number Interpreter</title>
-  <meta name="description" content="Instant interpretations for dreams, symbols, and numbers. Optional enrichment from Wikipedia and Numbers API.">
+  <meta name="description" content="Source-backed interpretations with shareability, daily/trending feeds, and a local journal." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://psysymbol.com/" />
+  <link rel="canonical" href="https://psysymbol.com/" id="canonicalLink" />
+  <meta property="og:title" content="PsySymbol — Dream · Symbol · Number Interpreter" id="ogTitle" />
+  <meta property="og:description" content="Source-backed interpretations with share cards, /today, /trending, and journal." id="ogDesc" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://psysymbol.com/" id="ogUrl" />
+  <meta property="og:image" content="https://psysymbol.com/og.png" id="ogImage" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/icon-192.png">
   <meta name="theme-color" content="#0d0f14" />
   <style>
-    /* Inline critical styles; rest in style.css */
     :root{
-      --bg:#0d0f14;
-      --panel:#121622;
-      --muted:#8d96a7;
-      --text:#e6ecff;
-      --dream:#7fb3ff;
-      --symbol:#f6c453;
-      --number:#b3b6c9;
-      --ok:#4ade80;
-      --bad:#f87171;
+      --bg:#0d0f14; --panel:#121622; --muted:#8d96a7; --text:#e6ecff;
+      --dream:#7fb3ff; --symbol:#f6c453; --number:#b3b6c9;
+      --link:#82aaff;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-    a{color:inherit}
+    a{color:var(--link);text-decoration:none}
     .app{max-width:1100px;margin:0 auto;padding:20px}
     header{display:flex;align-items:center;gap:14px}
     .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#5b6cfa,transparent 60%),linear-gradient(225deg,#00e0ff33,transparent 55%),#1b2234;display:grid;place-items:center;cursor:pointer}
     .logo span{font-weight:800}
     .brand{font-weight:700;letter-spacing:.4px}
-    .mode-tabs{margin-left:auto;display:flex;gap:6px;background:#0f1421;padding:6px;border-radius:12px;border:1px solid #1e2741}
-    .tab{padding:8px 12px;border-radius:9px;cursor:pointer;color:var(--muted);border:1px solid transparent;user-select:none}
+    nav.primary{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .pill{padding:8px 12px;border-radius:999px;border:1px solid #2a355a;background:#0f1421;color:#c9d4ff;cursor:pointer}
+    .mode-tabs{display:flex;gap:6px;background:#0f1421;padding:6px;border-radius:12px;border:1px solid #1e2741}
+    .tab{padding:8px 12px;border-radius:9px;cursor:pointer;color:var(--muted);border:1px solid transparent}
     .tab.active{color:var(--text);background:#1a2238;border-color:#2a355a}
     .grid{display:grid;grid-template-columns: 1fr 320px; gap:16px; margin-top:16px}
     .card{background:var(--panel);border:1px solid #1a2238;border-radius:14px;padding:14px}
     .muted{color:var(--muted)}
     .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    input[type="text"], textarea{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #263255;background:#0f1421;color:var(--text);outline:none}
-    textarea{min-height:100px;resize:vertical}
+    input[type="text"], textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #263255;background:#0f1421;color:var(--text);outline:none}
     button{padding:12px 14px;border-radius:12px;border:1px solid #2a355a;background:#1a2238;color:var(--text);cursor:pointer}
-    button.primary{background:#2b3a6a}
-    button.ghost{background:transparent}
-    .hint{font-size:12px;color:var(--muted)}
+    button.primary{background:#2b3a6a} button.ghost{background:transparent}
     .result{white-space:pre-wrap}
     .tags{display:flex;gap:8px;flex-wrap:wrap}
     .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #2a355a;color:#c9d4ff;background:#0f1421}
-    .feedback{display:flex;gap:8px}
-    .chip{border-radius:999px;padding:8px 10px;border:1px solid #2a355a;background:#0f1421;cursor:pointer}
-    .ok{border-color:#235c3c}
-    .off{border-color:#5c2323}
-    .history{max-height:72vh;overflow:auto}
+    .sharebar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .history{max-height:60vh;overflow:auto}
     .history-item{padding:10px;border-radius:10px;border:1px solid #1a2238;cursor:pointer;margin-bottom:8px;background:#0f1421}
     .history-item small{display:block;color:var(--muted)}
-    .mode-dream .accent{color:var(--dream)}
-    .mode-symbol .accent{color:var(--symbol)}
-    .mode-number .accent{color:var(--number)}
-    .kbd{padding:2px 6px;border-radius:6px;border:1px solid #2a355a;background:#0f1421;color:#aab3d1;font-size:11px}
-    .switch{display:inline-flex;align-items:center;gap:8px}
-    .switch input{accent-color:#6ea0ff}
-    .cloud{display:flex;flex-wrap:wrap;gap:8px}
-    .cloud span{font-size:12px}
+    .view{display:none} .view.active{display:block}
+    details.sources{margin-top:12px;border-top:1px dashed #2a355a;padding-top:8px}
+    .badges{display:flex;gap:6px;flex-wrap:wrap}
+    .badge{font-size:11px;padding:4px 6px;border-radius:6px;border:1px solid #2a355a;background:#0f1421}
+    .permablock{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
     footer{margin-top:24px;color:var(--muted);text-align:center;font-size:13px}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .result{animation:fadeInUp .3s ease}
     @media (max-width:980px){ .grid{grid-template-columns:1fr} }
   </style>
-  <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json" id="jsonld">{}</script>
 </head>
 <body class="mode-dream">
   <div class="app">
     <header>
       <div class="logo" id="logo" title="Reset (Ψ)"><span>Ψ</span></div>
       <div class="brand">PsySymbol</div>
-      <nav class="mode-tabs" id="modeTabs" role="tablist" aria-label="Modes">
-        <div class="tab active" role="tab" aria-selected="true" data-mode="dream">Dream</div>
-        <div class="tab" role="tab" aria-selected="false" data-mode="symbol">Symbol</div>
-        <div class="tab" role="tab" aria-selected="false" data-mode="number">Number</div>
+      <nav class="primary">
+        <a class="pill" href="#/today">/today</a>
+        <a class="pill" href="#/trending">/trending</a>
+        <a class="pill" href="#/journal">Journal</a>
+        <a class="pill" href="#/compare">Compare</a>
       </nav>
     </header>
 
-    <div class="grid">
-      <!-- Left: main -->
-      <main>
-        <div class="card">
-          <div class="controls">
-            <input id="userInput" type="text" placeholder="Type a dream, symbol, or number… (e.g., 'falling', 'lion', '333')" aria-label="Input" />
-            <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret</button>
-            <button id="clearBtn" class="ghost" title="Clear input"><span class="kbd">Esc</span></button>
-          </div>
-          <div class="controls" style="margin-top:8px">
-            <div class="switch">
-              <input type="checkbox" id="depthToggle" />
-              <label for="depthToggle">Depth mode</label>
-            </div>
-            <div class="switch">
-              <input type="checkbox" id="enrichToggle" />
-              <label for="enrichToggle">Enrich with web sources (beta)</label>
-            </div>
-            <div class="hint">Tip: Press <span class="kbd">Enter</span> to interpret quickly.</div>
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <div class="row">
+          <div class="mode-tabs" id="modeTabs" role="tablist" aria-label="Modes">
+            <div class="tab active" role="tab" aria-selected="true" data-mode="dream">Dream</div>
+            <div class="tab" role="tab" aria-selected="false" data-mode="symbol">Symbol</div>
+            <div class="tab" role="tab" aria-selected="false" data-mode="number">Number</div>
           </div>
         </div>
-
-        <section class="card" aria-live="polite">
-          <h2 class="accent">Interpretation</h2>
-          <div id="result" class="result muted">Enter something above and tap <b>Interpret</b>.</div>
-          <div id="related" class="tags" style="margin-top:10px;"></div>
-          <div class="feedback" style="margin-top:12px;">
-            <button class="chip ok" id="fbAccurate" title="Accurate">👍 Accurate</button>
-            <button class="chip off" id="fbOff" title="Off">👎 Off</button>
-            <button class="chip" id="fbSurprising" title="Surprising">✨ Surprising</button>
-          </div>
-        </section>
-
-        <section class="card">
-          <h3 class="accent">Insight cloud (local</h3>
-          <div id="cloud" class="cloud"></div>
-        </section>
-      </main>
-
-      <!-- Right: history/sidebar -->
-      <aside>
-        <div class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3 class="accent" style="margin:0">History</h3>
-            <button id="clearHistory" class="ghost">Clear</button>
-          </div>
-          <div id="history" class="history"></div>
+        <div class="row">
+          <button id="depthBtn" class="pill">Depth: <span id="depthState">Off</span></button>
+          <button id="enrichBtn" class="pill">Enrich: <span id="enrichState">Off</span></button>
         </div>
-
-        <div class="card">
-          <h3 class="accent" style="margin:0 0 6px">Mode theme</h3>
-          <div class="tags">
-            <span class="tag">Dream: soft blue</span>
-            <span class="tag">Symbol: gold</span>
-            <span class="tag">Number: silver</span>
-          </div>
-        </div>
-      </aside>
+      </div>
     </div>
 
+    <!-- Views -->
+    <main id="view-home" class="view active">
+      <div class="grid">
+        <section>
+          <div class="card">
+            <div class="controls">
+              <input id="userInput" type="text" placeholder="Type a dream, symbol, or number… (e.g., 'falling', 'lion', '333')" aria-label="Input" />
+              <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret</button>
+              <button id="clearBtn" class="ghost" title="Clear input">Clear</button>
+              <button id="copyPermalink" class="pill" title="Copy permalink">Copy Permalink</button>
+            </div>
+            <div class="hint">Tip: Press Enter to interpret • Click ★ to favorite • Use Compare to view side-by-side</div>
+          </div>
+
+          <section class="card" aria-live="polite">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <h1 class="accent" id="titleOut" style="margin:0">Interpretation</h1>
+                <div class="badges" id="sourceBadges"></div>
+              </div>
+              <div class="row">
+                <button class="pill" id="favBtn" title="Favorite"><span class="star" id="favStar">☆</span> Favorite</button>
+                <button class="pill" id="saveJournalBtn" title="Save to Journal">📝 Save</button>
+              </div>
+            </div>
+
+            <div id="result" class="result muted">Enter something above and tap <b>Interpret</b>.</div>
+            <div id="related" class="tags" style="margin-top:10px;"></div>
+
+            <div class="permablock">
+              <button class="pill" id="expandMeaning">Expand meaning</button>
+              <button class="pill" id="followSymbol">Follow this</button>
+            </div>
+
+            <details class="sources" id="sourcesBlock">
+              <summary>Sources & Context</summary>
+              <div id="sourcesList" class="result muted"></div>
+            </details>
+
+            <div class="sharebar" id="sharebar">
+              <button class="pill" id="shareNative">Share</button>
+              <a class="pill" id="shareX" target="_blank" rel="noopener">𝕏</a>
+              <a class="pill" id="shareReddit" target="_blank" rel="noopener">Reddit</a>
+              <a class="pill" id="sharePinterest" target="_blank" rel="noopener">Pinterest</a>
+              <a class="pill" id="shareWhatsApp" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </section>
+        </section>
+
+        <aside>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <h3 class="accent" style="margin:0">History</h3>
+              <button id="clearHistory" class="ghost">Clear</button>
+            </div>
+            <div id="history" class="history"></div>
+          </div>
+
+          <div class="card">
+            <h3 class="accent" style="margin:0 0 6px">Insight cloud (local)</h3>
+            <div id="cloud" class="tags"></div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <main id="view-today" class="view">
+      <div class="card">
+        <h2>/today — Symbol or Number of the Day</h2>
+        <div id="todayOut" class="result"></div>
+      </div>
+    </main>
+
+    <main id="view-trending" class="view">
+      <div class="card">
+        <h2>/trending — Top searched this week</h2>
+        <ol id="trendingList"></ol>
+      </div>
+    </main>
+
+    <main id="view-journal" class="view">
+      <div class="grid">
+        <section class="card">
+          <h2>Dream Journal</h2>
+          <div class="controls">
+            <textarea id="journalText" placeholder="Write a dream or note…"></textarea>
+            <div class="row">
+              <button id="journalSave" class="primary">Save Entry</button>
+              <button id="journalClear" class="ghost">Clear</button>
+            </div>
+          </div>
+        </section>
+        <aside class="card">
+          <h3>Entries</h3>
+          <div id="journalList"></div>
+        </aside>
+      </div>
+    </main>
+
+    <main id="view-compare" class="view">
+      <div class="card">
+        <h2>Compare Symbols</h2>
+        <div class="controls">
+          <input id="cmpLeft" placeholder="Left (e.g., lion)" />
+          <input id="cmpRight" placeholder="Right (e.g., snake)" />
+          <button id="cmpGo" class="primary">Compare</button>
+        </div>
+      </div>
+      <div class="grid">
+        <section class="card">
+          <h3 id="cmpLeftTitle"></h3>
+          <pre id="cmpLeftOut" class="result"></pre>
+        </section>
+        <section class="card">
+          <h3 id="cmpRightTitle"></h3>
+          <pre id="cmpRightOut" class="result"></pre>
+        </section>
+      </div>
+    </main>
+
     <footer>
-      <span class="muted">v3 • Client‑side only • Caches locally • No login</span>
+      <span class="muted">v4 — Content Depth & Authority • Source-backed • Client-side • Local storage</span>
     </footer>
   </div>
 
   <script src="script.js" defer></script>
+  <script src="sitemap.js" defer></script>
 </body>
 </html>

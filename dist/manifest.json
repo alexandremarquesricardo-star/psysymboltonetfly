@@ -1,7 +1,7 @@
 {
   "name": "PsySymbol",
   "short_name": "PsySymbol",
-  "description": "Dream \u00b7 Symbol \u00b7 Number Interpreter \u2014 client-side with optional web enrichment.",
+  "description": "Source-backed interpretations with shareability, daily/trending feeds, and a local journal.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0d0f14",
