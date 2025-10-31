@@ -4,443 +4,147 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PsySymbol — Dream · Symbol · Number Interpreter</title>
-  <meta name="description" content="Instant interpretations for dreams, symbols, and numbers. Optional enrichment from Wikipedia and Numbers API." />
+  <meta name="description" content="Instant interpretations for dreams, symbols, and numbers. Optional enrichment from Wikipedia and Numbers API.">
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://psysymbol.com/" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="PsySymbol — Dream · Symbol · Number Interpreter" />
-  <meta property="og:description" content="Type a dream, symbol, or number — get a clean, structured meaning instantly." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://psysymbol.com/" />
-
-  <!-- PWA hooks -->
-  <meta name="theme-color" content="#0b0b0e" />
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon-192.png">
+  <meta name="theme-color" content="#0d0f14" />
   <style>
+    /* Inline critical styles; rest in style.css */
     :root{
-      --bg:#0b0b0e; --text:#f7f7f7; --muted:#b7b7c0; --card:#14141a; --border:#2a2a34; --brand:#7c5cff;
-      --accent:#52d1b3; --warn:#ffb347; --error:#ff6868; --link:#8fd5ff;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    :root.light{
-      --bg:#fafafa; --text:#0b0b0e; --muted:#4b4b55; --card:#ffffff; --border:#e6e6ee; --brand:#5b3df0; --accent:#1aa38a; --link:#1769aa;
-      --shadow: 0 10px 25px rgba(0,0,0,.08);
+      --bg:#0d0f14;
+      --panel:#121622;
+      --muted:#8d96a7;
+      --text:#e6ecff;
+      --dream:#7fb3ff;
+      --symbol:#f6c453;
+      --number:#b3b6c9;
+      --ok:#4ade80;
+      --bad:#f87171;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
-      background:var(--bg); color:var(--text); line-height:1.55}
-
-    .container{max-width:980px;margin:0 auto;padding:24px}
-    .header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--brand),var(--accent)); color:white; font-weight:900; box-shadow:var(--shadow); cursor:pointer}
-    .logo span{font-size:22px}
-    .title{font-weight:800;letter-spacing:.3px}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+    a{color:inherit}
+    .app{max-width:1100px;margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;gap:14px}
+    .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#5b6cfa,transparent 60%),linear-gradient(225deg,#00e0ff33,transparent 55%),#1b2234;display:grid;place-items:center;cursor:pointer}
+    .logo span{font-weight:800}
+    .brand{font-weight:700;letter-spacing:.4px}
+    .mode-tabs{margin-left:auto;display:flex;gap:6px;background:#0f1421;padding:6px;border-radius:12px;border:1px solid #1e2741}
+    .tab{padding:8px 12px;border-radius:9px;cursor:pointer;color:var(--muted);border:1px solid transparent;user-select:none}
+    .tab.active{color:var(--text);background:#1a2238;border-color:#2a355a}
+    .grid{display:grid;grid-template-columns: 1fr 320px; gap:16px; margin-top:16px}
+    .card{background:var(--panel);border:1px solid #1a2238;border-radius:14px;padding:14px}
     .muted{color:var(--muted)}
-
-    .tools{display:flex;align-items:center;gap:10px}
-    .toggle, .chip{border:1px solid var(--border); background:var(--card); color:var(--text);
-      padding:8px 10px;border-radius:12px; cursor:pointer; transition:transform .12s ease, background .2s}
-    .toggle:active, .chip:active{transform:scale(.98)}
-
-    .modebar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .mode-btn{border:1.5px solid var(--border); background:var(--card); padding:10px 14px; border-radius:16px; cursor:pointer;
-      transition:all .2s; font-weight:700}
-    .mode-btn.active{border-color:var(--brand); box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent)}
-
-    .panel{margin-top:18px; border:1px solid var(--border); background:var(--card); border-radius:18px; box-shadow:var(--shadow)}
-    .panel-inner{padding:16px}
-    textarea{width:100%; resize:vertical; min-height:90px; max-height:300px; border:1px solid var(--border); border-radius:14px;
-      background:transparent; color:var(--text); padding:12px 14px; outline:none; font-size:16px}
-
-    .actions{display:flex;gap:10px;flex-wrap:wrap; justify-content:space-between; align-items:center; margin-top:12px}
-    .left-actions, .right-actions{display:flex;gap:10px; align-items:center}
-    .btn{padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, color-mix(in srgb, var(--brand) 18%, transparent), transparent);
-      color:var(--text); font-weight:800; cursor:pointer}
-    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--accent)); border:none}
-
-    .interpretations{margin-top:16px; display:grid; gap:12px}
-    .card{border:1px solid var(--border); background:var(--card); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
-    .card-hd{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:14px 16px; cursor:pointer}
-    .card-hd h3{margin:0; font-size:18px}
-    .pill{font-size:12px; padding:6px 10px; border-radius:100px; border:1px solid var(--border); background:rgba(125,125,125,.08)}
-    .card-bd{padding:0 16px 16px 16px; display:none}
-    .card.open .card-bd{display:block}
-
-    details.enrich{border-top:1px dashed var(--border); padding:12px 0 0; margin-top:12px}
-    details.enrich > summary{cursor:pointer; list-style:none}
-    details.enrich > summary::-webkit-details-marker{display:none}
-    details.enrich > summary{font-weight:700}
-    .enrich-slot{margin-top:8px; font-size:15px}
-    .small{font-size:12px}
-    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:12px; padding:2px 6px; border-radius:6px; border:1px solid var(--border)}
-
-    .footer{margin:40px 0 16px; color:var(--muted); font-size:13px}
-    .tip{border-left:3px solid var(--accent); padding:10px 12px; background:rgba(82,209,179,.08); border-radius:10px}
-
-    .fade-enter{opacity:0; transform:translateY(6px)}
-    .fade-enter.fade-in{opacity:1; transform:none; transition:opacity .22s ease, transform .22s ease}
-
-    a{color:var(--link)}
+    .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    input[type="text"], textarea{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #263255;background:#0f1421;color:var(--text);outline:none}
+    textarea{min-height:100px;resize:vertical}
+    button{padding:12px 14px;border-radius:12px;border:1px solid #2a355a;background:#1a2238;color:var(--text);cursor:pointer}
+    button.primary{background:#2b3a6a}
+    button.ghost{background:transparent}
+    .hint{font-size:12px;color:var(--muted)}
+    .result{white-space:pre-wrap}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #2a355a;color:#c9d4ff;background:#0f1421}
+    .feedback{display:flex;gap:8px}
+    .chip{border-radius:999px;padding:8px 10px;border:1px solid #2a355a;background:#0f1421;cursor:pointer}
+    .ok{border-color:#235c3c}
+    .off{border-color:#5c2323}
+    .history{max-height:72vh;overflow:auto}
+    .history-item{padding:10px;border-radius:10px;border:1px solid #1a2238;cursor:pointer;margin-bottom:8px;background:#0f1421}
+    .history-item small{display:block;color:var(--muted)}
+    .mode-dream .accent{color:var(--dream)}
+    .mode-symbol .accent{color:var(--symbol)}
+    .mode-number .accent{color:var(--number)}
+    .kbd{padding:2px 6px;border-radius:6px;border:1px solid #2a355a;background:#0f1421;color:#aab3d1;font-size:11px}
+    .switch{display:inline-flex;align-items:center;gap:8px}
+    .switch input{accent-color:#6ea0ff}
+    .cloud{display:flex;flex-wrap:wrap;gap:8px}
+    .cloud span{font-size:12px}
+    footer{margin-top:24px;color:var(--muted);text-align:center;font-size:13px}
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} }
   </style>
-
-  <!-- JSON-LD Schema for SEO -->
-  <script type="application/ld+json" id="schema-seo">{
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "PsySymbol",
-    "url": "https://psysymbol.com/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://psysymbol.com/?q={query}",
-      "query-input": "required name=query"
-    }
-  }</script>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <header class="header">
-      <div class="brand">
-        <div id="logo" class="logo" title="Reset (click)"><span>Ψ</span></div>
-        <div>
-          <div class="title">PsySymbol</div>
-          <div class="muted small">Dream · Symbol · Number Interpreter</div>
-        </div>
-      </div>
-      <div class="tools">
-        <button id="themeToggle" class="toggle" aria-label="Toggle theme">🌗 Theme</button>
-        <label class="chip row" title="Use online references to enrich results">
-          <input id="enrichToggle" type="checkbox" style="accent-color:var(--brand)" />
-          <span>Enrich with web sources (beta)</span>
-        </label>
-      </div>
+<body class="mode-dream">
+  <div class="app">
+    <header>
+      <div class="logo" id="logo" title="Reset (Ψ)"><span>Ψ</span></div>
+      <div class="brand">PsySymbol</div>
+      <nav class="mode-tabs" id="modeTabs" role="tablist" aria-label="Modes">
+        <div class="tab active" role="tab" aria-selected="true" data-mode="dream">Dream</div>
+        <div class="tab" role="tab" aria-selected="false" data-mode="symbol">Symbol</div>
+        <div class="tab" role="tab" aria-selected="false" data-mode="number">Number</div>
+      </nav>
     </header>
 
-    <nav class="modebar" role="tablist" aria-label="Modes">
-      <button class="mode-btn active" data-mode="dream" role="tab" aria-selected="true">Dream</button>
-      <button class="mode-btn" data-mode="symbol" role="tab" aria-selected="false">Symbol</button>
-      <button class="mode-btn" data-mode="number" role="tab" aria-selected="false">Number</button>
-    </nav>
-
-    <section class="panel" aria-live="polite">
-      <div class="panel-inner">
-        <textarea id="input" placeholder="Type a dream description, a symbol, or a number…"></textarea>
-        <div class="actions">
-          <div class="left-actions row">
-            <span class="muted small">Press <span class="kbd">Enter</span> to interpret</span>
+    <div class="grid">
+      <!-- Left: main -->
+      <main>
+        <div class="card">
+          <div class="controls">
+            <input id="userInput" type="text" placeholder="Type a dream, symbol, or number… (e.g., 'falling', 'lion', '333')" aria-label="Input" />
+            <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret</button>
+            <button id="clearBtn" class="ghost" title="Clear input"><span class="kbd">Esc</span></button>
           </div>
-          <div class="right-actions row">
-            <button id="resetBtn" class="btn" title="Clear input & results">Reset</button>
-            <button id="goBtn" class="btn primary" title="Interpret now">Interpret →</button>
+          <div class="controls" style="margin-top:8px">
+            <div class="switch">
+              <input type="checkbox" id="depthToggle" />
+              <label for="depthToggle">Depth mode</label>
+            </div>
+            <div class="switch">
+              <input type="checkbox" id="enrichToggle" />
+              <label for="enrichToggle">Enrich with web sources (beta)</label>
+            </div>
+            <div class="hint">Tip: Press <span class="kbd">Enter</span> to interpret quickly.</div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="results" class="interpretations"></section>
+        <section class="card" aria-live="polite">
+          <h2 class="accent">Interpretation</h2>
+          <div id="result" class="result muted">Enter something above and tap <b>Interpret</b>.</div>
+          <div id="related" class="tags" style="margin-top:10px;"></div>
+          <div class="feedback" style="margin-top:12px;">
+            <button class="chip ok" id="fbAccurate" title="Accurate">👍 Accurate</button>
+            <button class="chip off" id="fbOff" title="Off">👎 Off</button>
+            <button class="chip" id="fbSurprising" title="Surprising">✨ Surprising</button>
+          </div>
+        </section>
 
-    <footer class="footer">
-      <div class="tip small">Tip: Click the Ψ logo to instantly reset to Dream mode with empty input.</div>
+        <section class="card">
+          <h3 class="accent">Insight cloud (local</h3>
+          <div id="cloud" class="cloud"></div>
+        </section>
+      </main>
+
+      <!-- Right: history/sidebar -->
+      <aside>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 class="accent" style="margin:0">History</h3>
+            <button id="clearHistory" class="ghost">Clear</button>
+          </div>
+          <div id="history" class="history"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="accent" style="margin:0 0 6px">Mode theme</h3>
+          <div class="tags">
+            <span class="tag">Dream: soft blue</span>
+            <span class="tag">Symbol: gold</span>
+            <span class="tag">Number: silver</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <span class="muted">v3 • Client‑side only • Caches locally • No login</span>
     </footer>
   </div>
 
-<script>
-(function(){
-  // ---- State ----
-  const els = {
-    modes: Array.from(document.querySelectorAll('.mode-btn')),
-    input: document.getElementById('input'),
-    go: document.getElementById('goBtn'),
-    reset: document.getElementById('resetBtn'),
-    results: document.getElementById('results'),
-    enrich: document.getElementById('enrichToggle'),
-    theme: document.getElementById('themeToggle'),
-    logo: document.getElementById('logo')
-  };
-  const state = {
-    mode: 'dream',
-    enrich: false
-  };
-
-  // ---- Theme ----
-  const applyTheme = (t)=>{
-    const root = document.documentElement;
-    if(t==='light') root.classList.add('light'); else root.classList.remove('light');
-    localStorage.setItem('psysymbol:theme', t);
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', t==='light'?'#fafafa':'#0b0b0e');
-  };
-  const savedTheme = localStorage.getItem('psysymbol:theme') || (matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  applyTheme(savedTheme);
-  els.theme.addEventListener('click', ()=> applyTheme(document.documentElement.classList.contains('light')?'dark':'light'));
-
-  // ---- Mode switching ----
-  function setMode(m){
-    state.mode = m;
-    els.modes.forEach(btn=>{
-      const is = btn.dataset.mode===m;
-      btn.classList.toggle('active', is);
-      btn.setAttribute('aria-selected', is);
-    });
-    els.input.placeholder = m==='dream' ? 'Type a dream description…' : m==='symbol' ? 'Type a symbol (e.g., snake)…' : 'Type a number (e.g., 111, 23)…';
-    els.input.focus();
-  }
-  els.modes.forEach(btn=>btn.addEventListener('click', ()=> setMode(btn.dataset.mode)));
-
-  // Reset via Ψ logo
-  function hardReset(){ els.input.value=''; els.results.innerHTML=''; setMode('dream'); animateFade(els.results); }
-  els.logo.addEventListener('click', hardReset);
-
-  // Reset button
-  els.reset.addEventListener('click', ()=>{ els.input.value=''; els.results.innerHTML=''; animateFade(els.results); });
-
-  // Enrichment toggle
-  const savedEnrich = localStorage.getItem('psysymbol:enrich')==='true';
-  els.enrich.checked = savedEnrich; state.enrich = savedEnrich;
-  els.enrich.addEventListener('change', ()=>{ state.enrich = els.enrich.checked; localStorage.setItem('psysymbol:enrich', state.enrich); });
-
-  // Enter key to interpret
-  els.input.addEventListener('keydown', (e)=>{
-    if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); interpret(); }
-  });
-  els.go.addEventListener('click', interpret);
-
-  // ---- Core Meaning Logic (kept, refined) ----
-  const synonyms = {
-    snake:['transformation','rebirth','fear','healing','kundalini','hidden threats'],
-    water:['emotion','cleansing','flow','unconscious'],
-    teeth:['anxiety','appearance','loss','change'],
-    flying:['freedom','escape','ambition'],
-    cat:['independence','intuition','mystery'],
-    dog:['loyalty','protection','companionship'],
-    spider:['creativity','patience','weaving fate'],
-    fire:['purification','passion','anger','energy']
-  };
-
-  const emotionLex = {
-    fear:['chased','falling','snake','dark','lost','monster','teeth falling','late'],
-    joy:['flying','sun','ocean','dance','laugh','friends'],
-    grief:['death','funeral','cry','loss','goodbye'],
-    desire:['kiss','sex','money','house','car','success'],
-    stress:['exam','work','deadline','meeting','presentation']
-  };
-
-  const numberHints = (n)=>{
-    const s = String(n);
-    const allSame = /^([0-9])\1+$/.test(s);
-    const seqUp = '01234567890'.includes(s);
-    const seqDown = '09876543210'.includes(s);
-    const digitSum = s.split('').reduce((a,b)=>a+Number(b),0);
-    const root = (x)=>{ while(x>9) x = String(x).split('').reduce((a,b)=>a+Number(b),0); return x; };
-    return { allSame, seqUp, seqDown, digitSum, lifePath: root(digitSum) };
-  };
-
-  function generateMeaning(mode, raw){
-    const input = raw.trim();
-    if(!input) return {error:'Please type something first.'};
-
-    if(mode==='number'){
-      const num = Number(input.replace(/[^0-9]/g,''));
-      if(Number.isNaN(num)) return {error:'Enter a valid number (e.g., 7, 23, 111).'};
-      const hints = numberHints(num);
-      const bullets = [];
-      if(hints.allSame) bullets.push('Repeating digits amplify the core energy.');
-      if(hints.seqUp) bullets.push('Ascending sequence suggests momentum and growth.');
-      if(hints.seqDown) bullets.push('Descending sequence can point to release or grounding.');
-      bullets.push(`Digit sum: ${hints.digitSum} → Root: ${hints.lifePath}`);
-      return {
-        title:`Interpretation for ${num}`,
-        summary:`Number ${num} resonates with archetype ${hints.lifePath}.` ,
-        bullets: bullets,
-        meta:{ lifePath:hints.lifePath, digitSum:hints.digitSum, num }
-      };
-    }
-
-    if(mode==='symbol'){
-      const key = input.toLowerCase();
-      const syns = synonyms[key] || [];
-      const primary = syns[0] || 'personal association';
-      return {
-        title:`Symbol: ${capitalize(input)}`,
-        summary:`Often linked to ${listify(syns.length?syns:['your unique meaning'])}.`,
-        bullets:[
-          `Core theme: ${primary}.`,
-          syns.length?`Also consider: ${listify(syns)}.`: 'Explore your first feeling about this symbol.'
-        ],
-        meta:{ symbol:key, associations:syns }
-      };
-    }
-
-    // dream
-    const text = input.toLowerCase();
-    const emoHits = scoreEmotions(text);
-    const topEmo = Object.entries(emoHits).sort((a,b)=>b[1]-a[1])[0]?.[0] || 'mixed';
-    const symbols = Object.keys(synonyms).filter(s=> text.includes(s));
-    const assoc = symbols.flatMap(s=> synonyms[s]).slice(0,6);
-    return {
-      title:'Dream interpretation',
-      summary:`Emotional tone: ${capitalize(topEmo)}. Key motifs: ${symbols.length?listify(symbols):'personal imagery'}.`,
-      bullets:[
-        symbols.length?`Symbol links: ${listify(assoc||['personal meaning'])}.`:'Consider your personal associations with the imagery.',
-        `Context tip: What happened *before* and *after* the scene?`,
-        `Actionable: Write a 1–2 line takeaway you can apply today.`
-      ],
-      meta:{ emotion:topEmo, symbols }
-    };
-  }
-
-  function scoreEmotions(text){
-    const score = {fear:0, joy:0, grief:0, desire:0, stress:0};
-    for(const [emo,words] of Object.entries(emotionLex)){
-      for(const w of words){ if(text.includes(w)) score[emo]++; }
-    }
-    return score;
-  }
-
-  // ---- Enrichment (Wikipedia + Numbers API) ----
-  async function enrichMeaning(data){
-    const slots = [];
-    if(state.mode==='symbol'){
-      const term = encodeURIComponent(data.meta.symbol || extractFirstWord(els.input.value));
-      slots.push(fetchWiki(term));
-    } else if(state.mode==='dream'){
-      const sym = (data.meta.symbols?.[0]) || extractFirstWord(els.input.value);
-      if(sym) slots.push(fetchWiki(encodeURIComponent(sym)));
-    } else if(state.mode==='number'){
-      const n = data.meta.num;
-      slots.push(fetch(`https://numbersapi.com/${n}/trivia?json`).then(r=>r.json()).then(j=>({type:'numbers', html:`<strong>Numbers API:</strong> ${escapeHTML(j.text)}`})).catch(()=>null));
-    }
-    const results = (await Promise.all(slots)).filter(Boolean);
-    return results;
-  }
-
-  async function fetchWiki(term){
-    try{
-      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${term}`;
-      const res = await fetch(url, {headers:{'Accept':'application/json'}});
-      if(!res.ok) throw new Error('wiki');
-      const j = await res.json();
-      const title = j.title || term;
-      const extract = j.extract || '';
-      const link = j.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${term}`;
-      return {type:'wiki', html:`<strong>Wikipedia:</strong> <a href="${link}" target="_blank" rel="noopener">${escapeHTML(title)}</a> — ${escapeHTML(extract)}`};
-    }catch(e){ return null; }
-  }
-
-  // ---- Rendering ----
-  function interpret(){
-    const raw = els.input.value;
-    const data = generateMeaning(state.mode, raw);
-    if(data.error){ notify(data.error, 'error'); return; }
-    const node = renderCard(data);
-    prependResult(node);
-    if(state.enrich){
-      enrichMeaning(data).then(slots=>{
-        if(!slots.length) return;
-        const details = node.querySelector('details.enrich .enrich-slot');
-        details.innerHTML = slots.map(s=>`<div>${s.html}</div>`).join('');
-      });
-    }
-    bumpTrending(raw);
-  }
-
-  function renderCard(data){
-    const card = el('article',{class:'card fade-enter', role:'article'});
-    const head = el('div',{class:'card-hd', role:'button', tabindex:'0', 'aria-expanded':'true'});
-    const title = el('h3',{}, data.title);
-    const pill = el('div',{class:'pill small muted'}, prettyPill(data.meta));
-    head.append(title, pill);
-    const body = el('div',{class:'card-bd'});
-    const sum = el('p',{}, data.summary);
-    const ul = el('ul',{});
-    (data.bullets||[]).forEach(b=> ul.append(el('li',{}, b)) );
-
-    const enrich = el('details',{class:'enrich', open:false});
-    enrich.append(el('summary',{}, 'Explore deeper (web)')); 
-    const slot = el('div',{class:'enrich-slot muted small'}, state.enrich? 'Fetching… Toggle off if slow.' : 'Enable “Enrich with web sources (beta)” to fetch references.');
-    enrich.append(slot);
-
-    body.append(sum, ul, enrich);
-    card.append(head, body);
-
-    // open/close
-    card.classList.add('open');
-    head.addEventListener('click', ()=> card.classList.toggle('open'));
-    head.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('open'); }});
-
-    // animate in
-    requestAnimationFrame(()=> card.classList.add('fade-in'));
-    return card;
-  }
-
-  function prependResult(node){
-    els.results.prepend(node);
-    animateFade(els.results);
-  }
-
-  function animateFade(el){ el.classList.add('fade-enter'); requestAnimationFrame(()=> el.classList.add('fade-in')); setTimeout(()=>{ el.classList.remove('fade-enter','fade-in'); }, 260); }
-
-  function prettyPill(meta){
-    if(state.mode==='dream') return `Emotion: ${capitalize(meta.emotion)}${meta.symbols?.length?` · Symbols: ${meta.symbols.slice(0,2).join(', ')}`:''}`;
-    if(state.mode==='symbol') return meta.associations?.length? `Themes: ${meta.associations.slice(0,2).join(', ')}` : 'Themes: personal';
-    if(state.mode==='number') return `Root ${meta.lifePath} · Sum ${meta.digitSum}`;
-    return '';
-  }
-
-  // ---- Utilities ----
-  function el(tag, attrs={}, text){
-    const n = document.createElement(tag);
-    for(const [k,v] of Object.entries(attrs)){
-      if(k==='class') n.className=v; else n.setAttribute(k,v);
-    }
-    if(text!=null) n.textContent = text;
-    return n;
-  }
-  function listify(arr){ return arr.map(capitalize).join(', '); }
-  function capitalize(s){ return (s||'').charAt(0).toUpperCase()+s.slice(1); }
-  function extractFirstWord(s){ return (s||'').trim().split(/\s+/)[0]; }
-  function escapeHTML(s){ return String(s).replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
-
-  // ---- Trending (local, anonymous) ----
-  function bumpTrending(text){
-    try{
-      const key = 'psysymbol:trending';
-      const obj = JSON.parse(localStorage.getItem(key)||'{}');
-      const k = (state.mode+':'+extractFirstWord(text).toLowerCase()).slice(0,50);
-      obj[k] = (obj[k]||0)+1;
-      localStorage.setItem(key, JSON.stringify(obj));
-    }catch(e){}
-  }
-
-  // ---- Safety: keep URL clean; optional query support ----
-  const urlParams = new URLSearchParams(location.search);
-  const q = urlParams.get('q'); const m = urlParams.get('m');
-  if(q){ els.input.value = q; }
-  if(m && ['dream','symbol','number'].includes(m)) setMode(m); else setMode('dream');
-
-  // ---- PWA: register service worker (non-fatal if it fails) ----
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
-    });
-  }
-
-  // ---- Toast/notify (minimal) ----
-  function notify(msg, type='info'){
-    // Simple inline accessible alert
-    const div = document.createElement('div');
-    div.setAttribute('role','status');
-    div.style.cssText = 'position:fixed;bottom:16px;left:50%;transform:translateX(-50%);padding:10px 12px;border-radius:10px;background:rgba(0,0,0,.7);color:#fff;z-index:9999;font-size:14px;';
-    div.textContent = msg;
-    document.body.appendChild(div);
-    setTimeout(()=> div.remove(), 1800);
-  }
-
-})();</script>
+  <script src="script.js" defer></script>
 </body>
 </html>
