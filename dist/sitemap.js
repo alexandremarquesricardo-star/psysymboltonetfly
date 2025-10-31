@@ -1,6 +1,5 @@
 // Client-side sitemap builder for PsySymbol
 (() => {
-  // Collect locally known terms from history, favorites, and cloud, then offer a download of sitemap.xml
   function collectTerms(){
     const get = (k)=>{ try{ return JSON.parse(localStorage.getItem(k))||[] }catch{ return [] } };
     const history = get("psysymbol_history");
@@ -9,13 +8,12 @@
     const terms = new Set();
     history.forEach(it => terms.add(`${it.mode}:${it.query.toLowerCase()}`));
     favs.forEach(it => terms.add(`${it.mode}:${it.query.toLowerCase()}`));
-    Object.keys(cloud).forEach(k => terms.add(`symbol:${k}`)); // assume symbol for cloud entries
+    Object.keys(cloud).forEach(k => terms.add(`symbol:${k}`));
     return Array.from(terms);
   }
-
   function buildSitemap(){
     const terms = collectTerms();
-    const base = location.origin + location.pathname.replace(/\\/index\\.html?$/,"");
+    const base = location.origin + location.pathname.replace(/\/index\.html?$/,"");
     const urls = terms.map(t => {
       const [m,q] = t.split(":");
       const loc = `${base}#/interpret?m=${encodeURIComponent(m)}&q=${encodeURIComponent(q)}`;
@@ -24,8 +22,6 @@
     const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`;
     return xml;
   }
-
-  // Expose button if needed
   document.addEventListener("DOMContentLoaded", () => {
     const footer = document.querySelector("footer .muted");
     if (!footer) return;
