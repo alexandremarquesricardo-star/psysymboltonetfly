@@ -1,4 +1,4 @@
-/* PsySymbol — Phase 4 (Content Depth & Authority) — Complete */
+/* PsySymbol — Phase 4 Merged: Expand + Compare + All features */
 (() => {
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
@@ -35,6 +35,12 @@
   const copyPermalink = $("#copyPermalink");
   const expandBtn = $("#expandMeaning");
   const followBtn = $("#followSymbol");
+  const btnSitemap = $("#btnSitemap");
+
+  // Compare elements
+  const cmpLeft = $("#cmpLeft"), cmpRight = $("#cmpRight");
+  const cmpGo = $("#cmpGo"), cmpLeftTitle = $("#cmpLeftTitle"), cmpRightTitle = $("#cmpRightTitle");
+  const cmpLeftOut = $("#cmpLeftOut"), cmpRightOut = $("#cmpRightOut");
 
   const views = {
     home: $("#view-home"), today: $("#view-today"), trending: $("#view-trending"),
@@ -133,7 +139,7 @@
     }
   };
 
-  // Expansion Engine
+  // Expansion
   function expansionThreads(mode, q){
     const parts = [];
     if (mode==="symbol"){
@@ -150,6 +156,7 @@
     return "▼ Expanded threads\n" + parts.map(p => "• " + p).join("\n");
   }
 
+  // Enrichment
   async function enrichFromWeb(query, mode){
     const out = [];
     try{
@@ -166,6 +173,7 @@
     return out.join("\n\n");
   }
 
+  // Related
   function suggestRelated(query, mode){
     const seed = (query||"").toLowerCase();
     if (mode === "dream") return ["falling","flying","teeth","water","being chased"].filter(x => !seed.includes(x));
@@ -173,6 +181,7 @@
     return ["111","222","333","444","777"].filter(x => !seed.includes(x));
   }
 
+  // SEO
   function updateSEO(mode, q, output){
     const canonical = location.origin + location.pathname + `#/interpret?m=${encodeURIComponent(mode)}&q=${encodeURIComponent(q)}`;
     $("#canonicalLink").setAttribute("href", canonical);
@@ -190,6 +199,7 @@
     $("#jsonld").textContent = JSON.stringify(jsonld, null, 2);
   }
 
+  // UI rendering
   function displayBadges(tags){
     badgesEl.innerHTML = "";
     for (const t of tags){
@@ -307,13 +317,11 @@
     new Notification("Following symbol", { body: `You'll get gentle reminders about "${state.lastQuery}".` });
   });
 
-  // Expand Meaning (fully wired)
-  let expandedOn = false;
+  // Expand Meaning
   const EXPAND_BLOCK_ID = "expandBlock";
   function removeExpandBlock(){
     const existing = document.getElementById(EXPAND_BLOCK_ID);
     if (existing) existing.remove();
-    expandedOn = false;
     if (expandBtn) expandBtn.textContent = "Expand meaning";
   }
   expandBtn && (expandBtn.onclick = () => {
@@ -324,11 +332,9 @@
     pre.id = EXPAND_BLOCK_ID;
     pre.className = "result";
     pre.textContent = expansionThreads(state.mode, state.lastQuery);
-    // place after main result section
     resultEl.parentElement.appendChild(pre);
     pre.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    expandedOn = true;
-    expandBtn.textContent = "Collapse";
+    if (expandBtn) expandBtn.textContent = "Collapse";
   });
 
   // Interpret
@@ -354,7 +360,7 @@
     bumpCloud(q);
     renderHistory(); renderCloud();
     updateFavUI(); wireShareLinks(); updateSEO(state.mode, q, output);
-    removeExpandBlock(); // reset expanded view on new interpretation
+    removeExpandBlock();
     location.hash = `#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`;
   }
 
@@ -367,16 +373,39 @@
   function pseudoRandomPick(dateStr, arr){ let h = 0; for (let i=0;i<dateStr.length;i++) h = (h*31 + dateStr.charCodeAt(i)) >>> 0; return arr[h % arr.length]; }
   function renderToday(){ const out = $("#todayOut"); if (!out) return; const dateStr = new Date().toISOString().slice(0,10); const symbols = ["lion","key","mirror","tree","snake","owl","boat","door","moon","sun"]; const numbers = ["111","222","333","444","555","777","888","999","1010","1111"]; const pickType = (new Date().getDate() % 2 === 0) ? "symbol" : "number"; const pick = pickType === "symbol" ? pseudoRandomPick(dateStr, symbols) : pseudoRandomPick(dateStr, numbers); const meaning = coreInterpreter.interpret(pick, pickType, true); out.innerHTML = `<b>${pickType.toUpperCase()} of the Day — ${pick}</b>\n\n${meaning}`; }
 
+  // Compare logic
+  function doCompare(L, R){
+    if (!L || !R) return;
+    cmpLeftTitle.textContent = "SYMBOL: " + L;
+    cmpRightTitle.textContent = "SYMBOL: " + R;
+    cmpLeftOut.textContent = coreInterpreter.interpret(L, "symbol", true);
+    cmpRightOut.textContent = coreInterpreter.interpret(R, "symbol", true);
+    location.hash = `#/compare?l=${encodeURIComponent(L)}&r=${encodeURIComponent(R)}`;
+  }
+  if (cmpGo){
+    cmpGo.onclick = () => doCompare((cmpLeft.value||"").trim(), (cmpRight.value||"").trim());
+    [cmpLeft, cmpRight].forEach(inp => inp && inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") doCompare((cmpLeft.value||"").trim(), (cmpRight.value||"").trim());
+    }));
+  }
+
   // Routing
   function routeTo(hash){
     Object.values(views).forEach(v => v.classList.remove("active"));
     if (hash.startsWith("#/today")) { views.today.classList.add("active"); renderToday(); }
     else if (hash.startsWith("#/trending")) { views.trending.classList.add("active"); renderTrending(); }
     else if (hash.startsWith("#/journal")) { views.journal.classList.add("active"); renderJournal(); }
-    else if (hash.startsWith("#/compare")) { views.compare.classList.add("active"); }
+    else if (hash.startsWith("#/compare")) {
+      views.compare.classList.add("active");
+      const params = new URLSearchParams(hash.split("?")[1]||"");
+      const L = (params.get("l")||"").trim();
+      const R = (params.get("r")||"").trim();
+      if (L) cmpLeft.value = L;
+      if (R) cmpRight.value = R;
+      if (L && R) doCompare(L, R);
+    }
     else { views.home.classList.add("active"); }
 
-    // interpret deep-link
     if (hash.startsWith("#/interpret")){
       const params = new URLSearchParams(hash.split("?")[1]||"");
       const m = params.get("m"); const q = params.get("q")||"";
@@ -395,6 +424,32 @@
   $("#clearHistory").addEventListener("click", () => { localStorage.removeItem("psysymbol_history"); renderHistory(); });
   $("#enrichBtn").addEventListener("click", () => { state.enrich = !state.enrich; storage.set("psysymbol_enrich", state.enrich); $("#enrichState").textContent = state.enrich ? "On" : "Off"; });
   $("#depthBtn").addEventListener("click", () => { state.depth = !state.depth; storage.set("psysymbol_depth", state.depth); $("#depthState").textContent = state.depth ? "On" : "Off"; });
+
+  // Sitemap (client-side)
+  function buildSitemap(){
+    const get = (k)=>{ try{ return JSON.parse(localStorage.getItem(k))||[] }catch{ return [] } };
+    const history = get("psysymbol_history");
+    const favs = Object.values(JSON.parse(localStorage.getItem("psysymbol_favorites")||"{}"));
+    const cloud = JSON.parse(localStorage.getItem("psysymbol_cloud")||"{}");
+    const terms = new Set();
+    history.forEach(it => terms.add(`${it.mode}:${it.query.toLowerCase()}`));
+    favs.forEach(it => terms.add(`${it.mode}:${it.query.toLowerCase()}`));
+    Object.keys(cloud).forEach(k => terms.add(`symbol:${k}`));
+    const base = location.origin + location.pathname.replace(/\/index\.html?$/,"");
+    const urls = Array.from(terms).map(t => {
+      const [m,q] = t.split(":");
+      const loc = `${base}#/interpret?m=${encodeURIComponent(m)}&q=${encodeURIComponent(q)}`;
+      return `<url><loc>${loc}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`;
+    }).join("");
+    return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`;
+  }
+  btnSitemap && (btnSitemap.onclick = () => {
+    const blob = new Blob([buildSitemap()], {type: "application/xml"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "sitemap.xml"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  });
 
   // Init
   setMode(state.mode);
