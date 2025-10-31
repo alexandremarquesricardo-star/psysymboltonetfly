@@ -1,4 +1,4 @@
-/* PsySymbol Phase 3 — extra styles */
+/* Extra animations and polish */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .result{animation:fadeInUp .3s ease}
 .history-item{transition:transform .12s ease, border-color .12s ease}
