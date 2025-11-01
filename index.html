@@ -52,6 +52,7 @@
 <div class="sharebar" id="sharebar"><button class="pill" id="shareNative">Share</button>
   <a class="pill" id="shareX" target="_blank" rel="noopener">𝕏</a><a class="pill" id="shareReddit" target="_blank" rel="noopener">Reddit</a>
   <a class="pill" id="sharePinterest" target="_blank" rel="noopener">Pinterest</a><a class="pill" id="shareWhatsApp" target="_blank" rel="noopener">WhatsApp</a>
+  <button class="pill" id="shareImage">🖼️ Generate Share Image</button>
 </div>
 </section></section>
 
@@ -63,11 +64,19 @@
   <div class="card"><h3 class="accent" style="margin:0 0 6px">Insight cloud (local)</h3><div id="cloud" class="tags"></div></div>
 </aside></div></main>
 
-<main id="view-today" class="view"><div class="card"><h2>/today — Symbol or Number of the Day</h2><div id="todayOut" class="result"></div></div></main>
+<main id="view-today" class="view"><div class="card">
+  <h2>/today — Symbol or Number of the Day</h2>
+  <p class="muted">Daily feature: we pick a symbol or number deterministically from the local corpus to inspire reflection.</p>
+  <div id="todayOut" class="result"></div></div></main>
 
-<main id="view-trending" class="view"><div class="card"><h2>/trending — Top searched this week</h2><ol id="trendingList"></ol></div></main>
+<main id="view-trending" class="view"><div class="card">
+  <h2>/trending — Top searched this week</h2>
+  <p class="muted">This list is built from your device’s recent searches and updates in real-time.</p>
+  <ol id="trendingList"></ol></div></main>
 
-<main id="view-dashboard" class="view"><div class="card"><h2>Symbol Trends Dashboard</h2>
+<main id="view-dashboard" class="view"><div class="card">
+  <h2>Symbol Trends Dashboard</h2>
+  <p class="muted">A compact weekly view of your most-searched terms, useful for content planning and curiosity.</p>
   <div id="trendBars"></div>
 </div></main>
 

@@ -5,6 +5,7 @@ const subModal=$("#subModal"),subClose=$("#subClose"),subEmail=$("#subEmail"),su
 const cmpLeft=$("#cmpLeft"),cmpRight=$("#cmpRight"),cmpGo=$("#cmpGo"),cmpLeftTitle=$("#cmpLeftTitle"),cmpRightTitle=$("#cmpRightTitle"),cmpLeftOut=$("#cmpLeftOut"),cmpRightOut=$("#cmpRightOut");
 const analystRun=$("#analystRun"),analystOut=$("#analystOut"),trendBars=$("#trendBars");
 const journalText=$("#journalText"),journalSave=$("#journalSave"),journalClear=$("#journalClear"),journalList=$("#journalList");
+const shareImageBtn=$("#shareImage");
 let state={mode:storage.get("psysymbol_mode","dream"),depth:storage.get("psysymbol_depth",false),enrich:storage.get("psysymbol_enrich",false),cache:storage.get("psysymbol_cache",{}),lastOutput:null,lastQuery:"",corpus:null,price:storage.get("psysymbol_price",2)};
 
 function setMode(m){state.mode=m;storage.set("psysymbol_mode",m);body.classList.remove("mode-dream","mode-symbol","mode-number");body.classList.add(`mode-${m}`);$$(".tab",modeTabs).forEach(t=>{t.classList.toggle("active",t.dataset.mode===m);t.setAttribute("aria-selected",t.dataset.mode===m?"true":"false")});userInput&&(userInput.placeholder=m==="dream"?"Describe a dream… (e.g., 'falling into water')":m==="symbol"?"Name a symbol… (e.g., 'lion', 'mirror')":"Type a number… (e.g., '333', '11:11')");}
@@ -23,14 +24,32 @@ const EXPAND_BLOCK_ID="expandBlock";function removeExpand(){const el=document.ge
 function expansionThreads(mode,q){const p=[];if(mode==="symbol"){p.push("Jungian depth: how does this image compensate your conscious stance?");p.push("Cross-culture: compare at least two traditions; where does the meaning shift?");p.push("Practice: track 3 appearances; note feeling-tone each time.")}else if(mode==="dream"){p.push("Projection check: which dream figures carry your disowned qualities?");p.push("Somatic: name the first body sensation on waking.");p.push("Ritual: one tiny action that honors what the dream asks.")}else{p.push("Number ladder: reduce to a digit; compare with the unreduced pattern.");p.push("Notebook: log where it appears for 3 days; note the theme present.")}return "▼ Expanded threads\n"+p.map(x=>"• "+x).join("\n")}
 expandBtn&& (expandBtn.onclick=()=>{if(!state.lastQuery)return;const ex=document.getElementById(EXPAND_BLOCK_ID);if(ex){removeExpand();return}const pre=document.createElement("pre");pre.id=EXPAND_BLOCK_ID;pre.className="result";pre.textContent=expansionThreads(state.mode,state.lastQuery);resultEl.parentElement.appendChild(pre);expandBtn.textContent="Collapse"});
 
-function injectAdAfterFirstParagraph(c){try{if(!window.adsbygoogle)return;if(c.dataset.adInjected==="1")return;const ins=document.createElement("ins");ins.className="adsbygoogle";ins.style.display="block";ins.setAttribute("data-ad-client","ca-pub-3857946786580406");ins.setAttribute("data-ad-format","auto");ins.setAttribute("data-full-width-responsive","true");c.appendChild(ins);(adsbygoogle=window.adsbygoogle||[]).push({});c.dataset.adInjected="1"}catch{}}
+// AdSense: safe injection — only after interpretation with enough content
+function injectAdAfterFirstParagraph(container){try{
+  if(!window.adsbygoogle) return;
+  if(container.dataset.adInjected==="1") return;
+  const textLength = (container.textContent||"").trim().length;
+  if(textLength < 120) return; // guard: only on meaningful publisher content
+  const ins=document.createElement("ins");
+  ins.className="adsbygoogle";
+  ins.style.display="block";
+  ins.setAttribute("data-ad-client","ca-pub-3857946786580406");
+  ins.setAttribute("data-ad-format","auto");
+  ins.setAttribute("data-full-width-responsive","true");
+  container.appendChild(ins);
+  (adsbygoogle=window.adsbygoogle||[]).push({});
+  container.dataset.adInjected="1";
+}catch{}}
+
 function unlockKey(m,q){return `unlocked:${m}:${(q||'').toLowerCase()}`} function isUnlocked(m,q){return !!localStorage.getItem(unlockKey(m,q))} function markUnlocked(m,q){localStorage.setItem(unlockKey(m,q),JSON.stringify({ts:Date.now()}))}
 function renderUnlockCTA(m,q){const price=Number(state.price||2);const b=document.createElement("button");b.className="pill";b.textContent=`Unlock Full Interpretation ($${price})`;b.onclick=()=>{if(confirm(`Unlock full interpretation for $${price}?`)){markUnlocked(m,q);alert("Thanks! Unlocked.");interpret()}};return b}
+
 async function requestDaily(){if(!("Notification"in window))return alert("Notifications not supported.");const p=await Notification.requestPermission();if(p!=="granted")return;localStorage.setItem("psysymbol_daily_notif","on");alert("Daily notifications enabled while the site is open.")}
 btnDaily&& (btnDaily.onclick=requestDaily);function maybeFireDaily(){try{if(localStorage.getItem("psysymbol_daily_notif")!=="on")return;const last=+localStorage.getItem("psysymbol_daily_notif_last")||0;const now=Date.now(),DAY=86400000;if(now-last>DAY){localStorage.setItem("psysymbol_daily_notif_last",String(now));new Notification("Symbol of the Day",{body:"Tap to receive today’s sign."})}}catch{}} setInterval(maybeFireDaily,60000);
+
 function displayBadges(tags){badgesEl.innerHTML="";for(const t of tags){const b=document.createElement("span");b.className="badge";b.dataset.type=t;b.textContent=t;badgesEl.appendChild(b)}sourcesList.innerHTML=tags.map(t=>`— <b>${t}</b>: ${SOURCE_SNIPPETS[t]||""}`).join("<br>")}
 
-function personalContext(){ // analyze journal + history
+function personalContext(){ // local analyst context
   const entries = storage.get("psysymbol_journal", []).slice(0,50).map(e=>e.text.toLowerCase());
   const hist = storage.get("psysymbol_history", []).slice(0,200).map(h=>h.query.toLowerCase());
   const text = entries.join(" ")+" "+hist.join(" ");
@@ -66,7 +85,7 @@ function renderCloud(){const cloud=storage.get("psysymbol_cloud",{});const items
 
 function routeTo(hash){$$("#view-home, #view-today, #view-trending, #view-dashboard, #view-analyst, #view-journal, #view-compare").forEach(v=>v.classList.remove("active"));
 if(hash.startsWith("#/today")){$("#view-today").classList.add("active");renderToday()}
-else if(hash.startsWith("#/trending")){$("#view-trending").classList.add("active");}
+else if(hash.startsWith("#/trending")){$("#view-trending").classList.add("active");renderTrending()}
 else if(hash.startsWith("#/dashboard")){$("#view-dashboard").classList.add("active");renderDashboard()}
 else if(hash.startsWith("#/analyst")){$("#view-analyst").classList.add("active");}
 else if(hash.startsWith("#/journal")){$("#view-journal").classList.add("active");renderJournal()}
@@ -75,24 +94,49 @@ else{$("#view-home").classList.add("active");renderHistory();renderCloud()}
 if(hash.startsWith("#/interpret")){const p=new URLSearchParams(hash.split("?")[1]||"");const m=p.get("m");const q=p.get("q")||"";if(m)setMode(m);if(q){userInput.value=q;interpret()}}}
 window.addEventListener("hashchange",()=>routeTo(location.hash||"#/"));
 
-function buildSitemap(){const base=location.origin+location.pathname.replace(/\/index\.html?$/,"");const urls=[`${base}#/`,`${base}#/today`,`${base}#/trending`,`${base}#/dashboard`,`${base}#/analyst`,`${base}#/journal`,`${base}#/compare`,`${base}about.html`,`${base}privacy.html`,`${base}mobile.html`];const xml=urls.map(u=>`<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>`).join("");return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`}
-btnSitemap&&(btnSitemap.onclick=()=>{const blob=new Blob([buildSitemap()],{type:"application/xml"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="sitemap.xml";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+// Share image (minimal card)
+function downloadURI(uri, name){const link=document.createElement("a");link.download=name;link.href=uri;document.body.appendChild(link);link.click();link.remove()}
+function drawShareCard(title,text){const c=document.createElement("canvas");const W=1200,H=630; c.width=W; c.height=H; const ctx=c.getContext("2d");
+const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,"#0e1630"); g.addColorStop(1,"#1a2246"); ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+ctx.fillStyle="#fff"; ctx.font="bold 64px system-ui,Segoe UI,Roboto"; ctx.fillText(title.slice(0,40), 60, 140);
+ctx.fillStyle="#c9d4ff"; ctx.font="28px system-ui,Segoe UI,Roboto";
+const words=text.replace(/\s+/g," ").trim().split(" "); let line=""; let y=200; const maxW=W-120; const lines=[];
+for(const w of words){ const test=line+w+" "; if(ctx.measureText(test).width>maxW){ lines.push(line.trim()); line=w+" "; } else { line=test; } if(lines.length>=7) break; }
+lines.push(line.trim()); for(const ln of lines){ ctx.fillText(ln,60,y); y+=44; }
+ctx.fillStyle="#8aa0ff"; ctx.font="22px system-ui,Segoe UI,Roboto"; ctx.fillText("psysymbol.com  ·  Ψ", 60, H-60);
+return c.toDataURL("image/png")}
+shareImageBtn&& (shareImageBtn.onclick=()=>{ if(!state.lastQuery||!state.lastOutput){alert("Generate an interpretation first.");return;} const title=`${state.mode.toUpperCase()}: ${state.lastQuery}`; const essence=(state.lastOutput||"").replace(/^•\s*/gm,"").slice(0,280); const uri=drawShareCard(title, essence); downloadURI(uri, "psysymbol-share.png"); });
 
-modeTabs.addEventListener("click",(e)=>{const tab=e.target.closest(".tab");if(!tab)return;setMode(tab.dataset.mode)});
-interpretBtn.addEventListener("click",()=>{interpret();bumpCloud((userInput.value||"").trim())});
-clearBtn.addEventListener("click",()=>{userInput.value="";userInput.focus()});
-document.addEventListener("keydown",(e)=>{if(e.key==="Enter"&&document.activeElement===userInput)interpret();if(e.key==="Escape"){userInput.value=""}});
-
+// Subscribe modal
 btnSubscribe&& (btnSubscribe.onclick=()=>{subModal.hidden=false});
 subClose&& (subClose.onclick=()=>{subModal.hidden=true});
 function renderSubs(){const list=storage.get("psysymbol_subs",[]);subList.innerHTML="";list.forEach(em=>{const d=document.createElement("div");d.className="history-item";d.textContent=em;subList.appendChild(d)})}
 subAdd&& (subAdd.onclick=()=>{const em=(subEmail.value||"").trim();if(!em||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))return alert("Enter a valid email");const list=storage.get("psysymbol_subs",[]);if(!list.includes(em)){list.push(em);storage.set("psysymbol_subs",list);subEmail.value="";renderSubs()}});
-subExport&& (subExport.onclick=()=>{const list=storage.get("psysymbol_subs",[]);const csv="email\n"+list.join("\n");const blob=new Blob([csv],{type:"text/csv"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="psysymbol-subscribers.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+subExport&& (subExport.onclick=()=>{const list=storage.get("psysymbol_subs",[]);const csv="email\n"+list.join("\n");const blob=new Blob([csv],{type:"text/csv"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url; a.download="psysymbol-subscribers.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 
+// Analyst
 analystRun&& (analystRun.onclick=()=>{const motifs=personalContext();if(!motifs){analystOut.textContent="No journal or history yet. Add entries or search a few symbols.";return}const tips=[
   "Track a symbol across 3 days; note feeling-tone.",
   "Dialogue with a dream figure; ask what it wants for you.",
   "Place the number where you’ll see it; notice what changes."
 ];const suggestion=tips[new Date().getDate()%tips.length];analystOut.textContent=`Your motifs: ${motifs}\n\nAnalyst view:\n• What this points to: compensation and balancing forces at work.\n• Try: ${suggestion}\n• Journal prompt: “If this image could speak, it would say…”`;});
+
+// PWA registration (for offline)
+if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}
+
+// Routing + boot
+function buildSitemap(){const base=location.origin+location.pathname.replace(/\/index\.html?$/,"");const urls=[`${base}#/`,`${base}#/today`,`${base}#/trending`,`${base}#/dashboard`,`${base}#/analyst`,`${base}#/journal`,`${base}#/compare`,`${base}about.html`,`${base}privacy.html`,`${base}mobile.html`];const xml=urls.map(u=>`<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>`).join("");return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`}
+btnSitemap&&(btnSitemap.onclick=()=>{const blob=new Blob([buildSitemap()],{type:"application/xml"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="sitemap.xml";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+
+function routeTo(hash){$$("#view-home, #view-today, #view-trending, #view-dashboard, #view-analyst, #view-journal, #view-compare").forEach(v=>v.classList.remove("active"));
+if(hash.startsWith("#/today")){$("#view-today").classList.add("active");renderToday()}
+else if(hash.startsWith("#/trending")){$("#view-trending").classList.add("active");renderTrending()}
+else if(hash.startsWith("#/dashboard")){$("#view-dashboard").classList.add("active");renderDashboard()}
+else if(hash.startsWith("#/analyst")){$("#view-analyst").classList.add("active");}
+else if(hash.startsWith("#/journal")){$("#view-journal").classList.add("active");renderJournal()}
+else if(hash.startsWith("#/compare")){$("#view-compare").classList.add("active");const p=new URLSearchParams(hash.split("?")[1]||"");const L=(p.get("l")||"").trim();const R=(p.get("r")||"").trim();if(L)cmpLeft.value=L;if(R)cmpRight.value=R;if(L&&R)doCompare(L,R)}
+else{$("#view-home").classList.add("active");renderHistory();renderCloud()}
+if(hash.startsWith("#/interpret")){const p=new URLSearchParams(hash.split("?")[1]||"");const m=p.get("m");const q=p.get("q")||"";if(m)setMode(m);if(q){userInput.value=q;interpret()}}}
+window.addEventListener("hashchange",()=>routeTo(location.hash||"#/"));
 
 async function boot(){await loadCorpus();setMode(state.mode);routeTo(location.hash||"#/");renderSubs()} boot();})();
