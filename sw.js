@@ -1,1 +1,1 @@
-const CACHE='psysymbol-v6';const FILES=['index.html','style.css','script.js','data/corpus.json','about.html','privacy.html','mobile.html'];self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})
+self.addEventListener('fetch', e=>{});
