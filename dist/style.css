@@ -1,1 +1,47 @@
-/* styles omitted here for brevity in notebook; kept similar to earlier build */
+/* Phase 4 visuals (fixed full CSS) */
+:root{
+  --bg:#0d0f14; --panel:#121622; --muted:#8d96a7; --text:#e6ecff;
+  --dream:#7fb3ff; --symbol:#f6c453; --number:#b3b6c9; --link:#82aaff;
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+a{color:var(--link);text-decoration:none}
+.app{max-width:1100px;margin:0 auto;padding:20px}
+header{display:flex;align-items:center;gap:14px}
+.logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#5b6cfa,transparent 60%),linear-gradient(225deg,#00e0ff33,transparent 55%),#1b2234;display:grid;place-items:center;cursor:pointer}
+.logo span{font-weight:800}
+.brand{font-weight:700;letter-spacing:.4px}
+nav.primary{margin-left:auto;display:flex;gap:10px;align-items:center}
+.pill{padding:8px 12px;border-radius:999px;border:1px solid #2a355a;background:#0f1421;color:#c9d4ff;cursor:pointer}
+.mode-tabs{display:flex;gap:6px;background:#0f1421;padding:6px;border-radius:12px;border:1px solid #1e2741}
+.tab{padding:8px 12px;border-radius:9px;cursor:pointer;color:var(--muted);border:1px solid transparent}
+.tab.active{color:var(--text);background:#1a2238;border-color:#2a355a}
+.grid{display:grid;grid-template-columns: 1fr 320px; gap:16px; margin-top:16px}
+.card{background:var(--panel);border:1px solid #1a2238;border-radius:14px;padding:14px}
+.muted{color:var(--muted)}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+input[type="text"], textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #263255;background:#0f1421;color:var(--text);outline:none}
+button{padding:12px 14px;border-radius:12px;border:1px solid #2a355a;background:#1a2238;color:var(--text);cursor:pointer}
+button.primary{background:#2b3a6a}
+button.ghost{background:transparent}
+.result{white-space:pre-wrap}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #2a355a;color:#c9d4ff;background:#0f1421;cursor:pointer}
+.sharebar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.history{max-height:60vh;overflow:auto}
+.history-item{padding:10px;border-radius:10px;border:1px solid #1a2238;cursor:pointer;margin-bottom:8px;background:#0f1421;transition:transform .12s ease,border-color .12s ease}
+.history-item:hover{transform:translateY(-2px);border-color:#33406e}
+.view{display:none} .view.active{display:block}
+details.sources{margin-top:12px;border-top:1px dashed #2a355a;padding-top:8px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:11px;padding:4px 6px;border-radius:6px;border:1px solid #2a355a;background:#0f1421}
+.badge[data-type="Jungian"]{border-color:#4f6cff}
+.badge[data-type="Mythic"]{border-color:#ffb84f}
+.badge[data-type="Cultural"]{border-color:#5cd1b5}
+.badge[data-type="Numerical"]{border-color:#b3b6c9}
+.permablock{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+footer{margin-top:24px;color:var(--muted);text-align:center;font-size:13px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.result{animation:fadeInUp .3s ease}
+@media (max-width:980px){ .grid{grid-template-columns:1fr} }
