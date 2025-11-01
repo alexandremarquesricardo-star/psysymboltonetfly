@@ -1,8 +1,6 @@
-/* Phase 4 visuals (fixed full CSS) */
-:root{
-  --bg:#0d0f14; --panel:#121622; --muted:#8d96a7; --text:#e6ecff;
-  --dream:#7fb3ff; --symbol:#f6c453; --number:#b3b6c9; --link:#82aaff;
-}
+/* Phase 5 visuals */
+:root{--bg:#0d0f14; --panel:#121622; --muted:#8d96a7; --text:#e6ecff;
+--dream:#7fb3ff; --symbol:#f6c453; --number:#b3b6c9; --link:#82aaff;}
 *{box-sizing:border-box} html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
 a{color:var(--link);text-decoration:none}
@@ -36,10 +34,6 @@ button.ghost{background:transparent}
 details.sources{margin-top:12px;border-top:1px dashed #2a355a;padding-top:8px}
 .badges{display:flex;gap:6px;flex-wrap:wrap}
 .badge{font-size:11px;padding:4px 6px;border-radius:6px;border:1px solid #2a355a;background:#0f1421}
-.badge[data-type="Jungian"]{border-color:#4f6cff}
-.badge[data-type="Mythic"]{border-color:#ffb84f}
-.badge[data-type="Cultural"]{border-color:#5cd1b5}
-.badge[data-type="Numerical"]{border-color:#b3b6c9}
 .permablock{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
 footer{margin-top:24px;color:var(--muted);text-align:center;font-size:13px}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
