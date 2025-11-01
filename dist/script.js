@@ -1,57 +1,54 @@
-
-(() => {
-  const $ = (s, r=document)=>r.querySelector(s);
-  const nowISO = () => new Date().toISOString();
-  const resultEl = $("#result"); const metaLine = $("#metaLine"); const seeAlsoEl = $("#seeAlso");
-  let state = { mode:"symbol", depth:false, corpus:null, lastQuery:"" };
-
-  async function loadCorpus(){ try{ const r = await fetch("data/corpus.json"); if (r.ok){ state.corpus = await r.json(); } }catch{} }
-  function lookupSymbol(q){
-    if (!state.corpus) return null; const k = (q||"").toLowerCase().trim();
-    const lists = ["archetypes","symbols","numbers"];
-    for (const L of lists){ const hit = (state.corpus[L]||[]).find(e => (e.term||"").toLowerCase()===k); if (hit) return hit; }
-    return null;
-  }
-  function interpret(q){
-    if (!q) return;
-    const entry = lookupSymbol(q);
-    const base = `• Core meaning: archetypal energy\n• Light: growth, guidance, alignment.\n• Dark: excess, fixation, imbalance.`;
-    metaLine.textContent = entry?.meta || "";
-    resultEl.textContent = base;
-    state.lastQuery = q;
-    // inject ad
-    try{
-      if (window.adsbygoogle && resultEl.dataset.adInjected!=="1"){
-        const ins = document.createElement("ins"); ins.className="adsbygoogle"; ins.style.display="block";
-        ins.setAttribute("data-ad-client","ca-pub-3857946786580406"); ins.setAttribute("data-ad-format","auto"); ins.setAttribute("data-full-width-responsive","true");
-        resultEl.appendChild(ins); (adsbygoogle = window.adsbygoogle || []).push({}); resultEl.dataset.adInjected="1";
-      }
-    }catch{}
-    // unlock
-    const holder = document.createElement("div"); holder.style.marginTop="8px";
-    const btn = document.createElement("button"); btn.className="pill"; btn.textContent="Unlock Full Interpretation ($2)";
-    btn.onclick = ()=>{ alert("Thanks! Unlocked."); holder.remove(); };
-    holder.appendChild(btn); resultEl.parentElement.appendChild(holder);
-    // see also
-    seeAlsoEl.innerHTML=""; const terms = entry?.see || []; if (terms.length){ const label=document.createElement("span"); label.className="muted"; label.textContent="See also:"; seeAlsoEl.appendChild(label); for (const t of terms){ const b=document.createElement("button"); b.className="pill"; b.textContent=t; b.onclick=()=>interpret(t); seeAlsoEl.appendChild(b); } }
-  }
-
-  $("#interpretBtn").onclick = () => { const q = $("#userInput").value.trim(); if (q) interpret(q); };
-  $("#clearBtn").onclick = () => { $("#userInput").value=""; metaLine.textContent=""; resultEl.textContent="Enter something and tap Interpret."; seeAlsoEl.innerHTML=""; };
-
-  function buildSitemap(){
-    const base = location.origin + location.pathname.replace(/\/index\.html?$/,"");
-    const urls = [`${base}#/`, `${base}privacy.html`, `${base}about.html`];
-    const xml = urls.map(u=>`<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>`).join("");
-    return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`;
-  }
-  $("#btnSitemap").onclick = ()=>{ const blob=new Blob([buildSitemap()],{type:"application/xml"}); const url=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=url; a.download="sitemap.xml"; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000); };
-
-  $("#btnDaily").onclick = async ()=>{
-    if (!("Notification" in window)) return alert("Notifications not supported.");
-    const perm = await Notification.requestPermission(); if (perm!=="granted") return;
-    new Notification("Symbol of the Day",{ body:"Tap to receive today’s sign."});
-  };
-
-  (async()=>{ await loadCorpus(); })();
-})();
+(()=>{const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));const nowISO=()=>new Date().toISOString();
+const storage={get(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))},push(k,item){const a=storage.get(k,[]);a.unshift(item);storage.set(k,a.slice(0,400));}};
+const body=document.body,modeTabs=$("#modeTabs"),userInput=$("#userInput"),interpretBtn=$("#interpretBtn"),clearBtn=$("#clearBtn"),titleOut=$("#titleOut"),metaLine=$("#metaLine"),resultEl=$("#result"),seeAlsoEl=$("#seeAlso"),badgesEl=$("#sourceBadges"),sourcesList=$("#sourcesList"),copyPermalink=$("#copyPermalink"),expandBtn=$("#expandMeaning"),btnSitemap=$("#btnSitemap"),btnDaily=$("#btnDaily"),historyEl=$("#history"),clearHistory=$("#clearHistory"),cloudEl=$("#cloud");
+const cmpLeft=$("#cmpLeft"),cmpRight=$("#cmpRight"),cmpGo=$("#cmpGo"),cmpLeftTitle=$("#cmpLeftTitle"),cmpRightTitle=$("#cmpRightTitle"),cmpLeftOut=$("#cmpLeftOut"),cmpRightOut=$("#cmpRightOut");
+const journalText=$("#journalText"),journalSave=$("#journalSave"),journalClear=$("#journalClear"),journalList=$("#journalList");
+let state={mode:storage.get("psysymbol_mode","dream"),depth:storage.get("psysymbol_depth",false),enrich:storage.get("psysymbol_enrich",false),cache:storage.get("psysymbol_cache",{}),lastOutput:null,lastQuery:"",corpus:null};
+function setMode(m){state.mode=m;storage.set("psysymbol_mode",m);body.classList.remove("mode-dream","mode-symbol","mode-number");body.classList.add(`mode-${m}`);$$(".tab",modeTabs).forEach(t=>{t.classList.toggle("active",t.dataset.mode===m);t.setAttribute("aria-selected",t.dataset.mode===m?"true":"false")});userInput&&(userInput.placeholder=m==="dream"?"Describe a dream… (e.g., 'falling into water')":m==="symbol"?"Name a symbol… (e.g., 'lion', 'mirror')":"Type a number… (e.g., '333', '11:11')");}
+const SOURCE_SNIPPETS={Jungian:"Jungian perspective: the symbol speaks for a balancing movement in the psyche.",Mythic:"Mythic thread: echoes in folklore and ritual across cultures.",Cultural:"Cultural lens: meanings shaped by time, place, and language.",Numerical:"Numerical angle: repetition, reduction, and pattern significance."};
+function tagSources(m){if(m==="symbol")return["Jungian","Mythic","Cultural"];if(m==="dream")return["Jungian","Cultural"];return["Numerical","Cultural"];}
+const contextEngine={analyze(text,mode){const t=(text||"").toLowerCase();const f=[];if(t.includes("water"))f.push("emotion, flow, subconscious");if(t.includes("fall"))f.push("loss of control, surrender");if(/\b\d{2,}\b/.test(t)||mode==="number")f.push("numerology, pattern");if(t.includes("chased"))f.push("anxiety, avoidance");if(t.includes("teeth"))f.push("appearance, vulnerability");if(t.includes("mirror"))f.push("self-image, reflection");if(t.includes("lion"))f.push("courage, leadership, pride");return{facets:f}}};
+const coreInterpreter={interpret(text,mode,depth){const base=(text||"").trim();if(!base)return"Please type something to interpret.";const {facets}=contextEngine.analyze(base,mode);const b=[];if(mode==="dream"){b.push(`Theme: ${facets[0]??"personal narrative & emotion"}`);b.push(`Processing: ${facets.slice(1,3).join(" · ")||"recent change or latent wish"}`);if(depth){b.push("Shadow: what are you avoiding or denying?");b.push("Action: note one feeling on waking + one tiny change to try today.")}}else if(mode==="symbol"){b.push(`Core meaning: ${facets[0]??"archetypal energy"}`);b.push("Light: growth, guidance, alignment.");b.push("Dark: excess, fixation, imbalance.");if(depth)b.push("Practice: log the symbol for 3 days — where/when it appears.")}else{const rep=/(\d)\1{1,}/.test(base);b.push(`Numerology: ${rep?"repeating/master pattern":"sum & reduction"}`);if(depth)b.push("Prompt: 5-minute journal — earliest memory of this number.")}return "• "+b.join("\n• ")}};
+async function loadCorpus(){try{const r=await fetch("data/corpus.json");if(r.ok){state.corpus=await r.json()}}catch{}}
+function getKind(){return state.mode==="dream"?"archetypes":(state.mode==="symbol"?"symbols":"numbers")}
+function lookup(q){if(!state.corpus)return null;const list=state.corpus[getKind()]||[];const k=(q||"").toLowerCase().trim();return list.find(e=>(e.term||"").toLowerCase()===k)||null}
+function renderSeeAlso(terms){seeAlsoEl.innerHTML="";if(!terms||!terms.length)return;const label=document.createElement("span");label.className="muted";label.textContent="See also:";seeAlsoEl.appendChild(label);for(const t of terms){const b=document.createElement("button");b.className="tag";b.textContent=t;b.onclick=()=>{userInput.value=t;interpret()};seeAlsoEl.appendChild(b)}}
+function updateSEO(mode,q,desc){const canonical=location.origin+location.pathname+`#/interpret?m=${encodeURIComponent(mode)}&q=${encodeURIComponent(q)}`;$("#canonicalLink").setAttribute("href",canonical);$("#ogUrl").setAttribute("content",canonical);$("#ogTitle").setAttribute("content",`PsySymbol — ${mode.toUpperCase()}: ${q}`);const d=(desc||"").slice(0,160)||"Archetypal meanings with Jungian psychology & numerology.";$("#ogDesc").setAttribute("content",d);$("#metaDesc").setAttribute("content",d);const jsonld={"@context":"https://schema.org","@type":mode==="number"?"Thing":"CreativeWork","name":`${mode.toUpperCase()}: ${q}`,"description":d,"inLanguage":"en","dateModified":new Date().toISOString()};$("#jsonld").textContent=JSON.stringify(jsonld,null,2)}
+const EXPAND_BLOCK_ID="expandBlock";function removeExpand(){const el=document.getElementById(EXPAND_BLOCK_ID);if(el)el.remove();if(expandBtn)expandBtn.textContent="Expand meaning"}
+function expansionThreads(mode,q){const p=[];if(mode==="symbol"){p.push("Jungian depth: how does this image compensate your conscious stance?");p.push("Cross-culture: compare at least two traditions; where does the meaning shift?");p.push("Practice: track 3 appearances; note feeling-tone each time.")}else if(mode==="dream"){p.push("Projection check: which dream figures carry your disowned qualities?");p.push("Somatic: name the first body sensation on waking.");p.push("Ritual: one tiny action that honors what the dream asks.")}else{p.push("Number ladder: reduce to a digit; compare with the unreduced pattern.");p.push("Notebook: log where it appears for 3 days; note the theme present.")}return "▼ Expanded threads\n"+p.map(x=>"• "+x).join("\n")}
+expandBtn&& (expandBtn.onclick=()=>{if(!state.lastQuery)return;const ex=document.getElementById(EXPAND_BLOCK_ID);if(ex){removeExpand();return}const pre=document.createElement("pre");pre.id=EXPAND_BLOCK_ID;pre.className="result";pre.textContent=expansionThreads(state.mode,state.lastQuery);resultEl.parentElement.appendChild(pre);expandBtn.textContent="Collapse"});
+function injectAdAfterFirstParagraph(c){try{if(!window.adsbygoogle)return;if(c.dataset.adInjected==="1")return;const ins=document.createElement("ins");ins.className="adsbygoogle";ins.style.display="block";ins.setAttribute("data-ad-client","ca-pub-3857946786580406");ins.setAttribute("data-ad-format","auto");ins.setAttribute("data-full-width-responsive","true");c.appendChild(ins);(adsbygoogle=window.adsbygoogle||[]).push({});c.dataset.adInjected="1"}catch{}}
+function unlockKey(m,q){return `unlocked:${m}:${(q||'').toLowerCase()}`} function isUnlocked(m,q){return !!localStorage.getItem(unlockKey(m,q))} function markUnlocked(m,q){localStorage.setItem(unlockKey(m,q),JSON.stringify({ts:Date.now()}))}
+function renderUnlockCTA(m,q){const b=document.createElement("button");b.className="pill";b.textContent="Unlock Full Interpretation ($2)";b.onclick=()=>{if(confirm("Unlock full interpretation for $2?")){markUnlocked(m,q);alert("Thanks! Unlocked.");interpret()}};return b}
+async function requestDaily(){if(!("Notification"in window))return alert("Notifications not supported.");const p=await Notification.requestPermission();if(p!=="granted")return;localStorage.setItem("psysymbol_daily_notif","on");alert("Daily notifications enabled while the site is open.")}
+btnDaily&& (btnDaily.onclick=requestDaily);function maybeFireDaily(){try{if(localStorage.getItem("psysymbol_daily_notif")!=="on")return;const last=+localStorage.getItem("psysymbol_daily_notif_last")||0;const now=Date.now(),DAY=86400000;if(now-last>DAY){localStorage.setItem("psysymbol_daily_notif_last",String(now));new Notification("Symbol of the Day",{body:"Tap to receive today’s sign."})}}catch{}} setInterval(maybeFireDaily,60000);
+function displayBadges(tags){badgesEl.innerHTML="";for(const t of tags){const b=document.createElement("span");b.className="badge";b.dataset.type=t;b.textContent=t;badgesEl.appendChild(b)}sourcesList.innerHTML=tags.map(t=>`— <b>${t}</b>: ${SOURCE_SNIPPETS[t]||""}`).join("<br>")}
+async function interpret(){const q=(userInput.value||"").trim();if(!q)return;if(/^\d+([:.-]\d+)?$/.test(q)&&state.mode!=="number"){setMode("number")}const k=`${state.mode}:${state.depth?'d':'s'}:${q.toLowerCase()}`;let out=state.cache[k];if(!out){out=coreInterpreter.interpret(q,state.mode,state.depth);state.cache[k]=out;storage.set("psysymbol_cache",state.cache)}const entry=lookup(q);metaLine.textContent=entry?.meta||"";renderSeeAlso(entry?.see||[]);titleOut&&(titleOut.textContent=`${state.mode.toUpperCase()}: ${q}`);resultEl.classList.remove("muted");resultEl.textContent=out;injectAdAfterFirstParagraph(resultEl);const holder=document.createElement("div");holder.style.marginTop="8px";if(!isUnlocked(state.mode,q)){holder.appendChild(renderUnlockCTA(state.mode,q))}resultEl.parentElement.appendChild(holder);displayBadges(tagSources(state.mode));$("#sourcesBlock").open=true;state.lastOutput=out;state.lastQuery=q;storage.push("psysymbol_history",{ts:nowISO(),mode:state.mode,query:q,output:out});updateSEO(state.mode,q,entry?.meta||out);const url=location.origin+location.pathname+`#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`;copyPermalink&&(copyPermalink.onclick=async()=>{try{await navigator.clipboard.writeText(url);copyPermalink.textContent="Copied ✓";setTimeout(()=>copyPermalink.textContent="Copy Permalink",1200)}catch{}});location.hash=`#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`}
+function doCompare(L,R){if(!L||!R)return;cmpLeftTitle.textContent="SYMBOL: "+L;cmpRightTitle.textContent="SYMBOL: "+R;cmpLeftOut.textContent=coreInterpreter.interpret(L,"symbol",true);cmpRightOut.textContent=coreInterpreter.interpret(R,"symbol",true);location.hash=`#/compare?l=${encodeURIComponent(L)}&r=${encodeURIComponent(R)}`}
+if(cmpGo){cmpGo.onclick=()=>doCompare((cmpLeft.value||"").trim(),(cmpRight.value||"").trim());[cmpLeft,cmpRight].forEach(inp=>inp&&inp.addEventListener("keydown",(e)=>{if(e.key==="Enter")doCompare((cmpLeft.value||"").trim(),(cmpRight.value||"").trim())}))}
+function weeklyTrending(){const items=storage.get("psysymbol_history",[]);const cutoff=Date.now()-604800000;const c={};for(const it of items){if(new Date(it.ts).getTime()>=cutoff){const k=it.query.toLowerCase();c[k]=(c[k]||0)+1}}return Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,20)}
+function renderTrending(){const list=$("#trendingList");if(!list)return;const top=weeklyTrending();list.innerHTML="";if(!top.length){list.innerHTML="<li class='muted'>No local searches this week yet.</li>";return}top.forEach(([term,n])=>{const li=document.createElement("li");const a=document.createElement("a");a.href="#/";a.textContent=`${term} (${n})`;a.onclick=(e)=>{e.preventDefault();routeTo("#/");userInput.value=term;interpret()};li.appendChild(a);list.appendChild(li)})}
+function pseudoRandomPick(seed,arr){let h=0;for(let i=0;i<seed.length;i++)h=(h*31+seed.charCodeAt(i))>>>0;return arr[h%arr.length]}
+function renderToday(){const out=$("#todayOut");if(!out||!state.corpus)return;const dateStr=new Date().toISOString().slice(0,10);const symbols=state.corpus.symbols?.map(e=>e.term)||["lion","snake","mirror"];const numbers=state.corpus.numbers?.map(e=>e.term)||["111","222","333"];const type=(new Date().getDate()%2===0)?"symbol":"number";const pick=type==="symbol"?pseudoRandomPick(dateStr,symbols):pseudoRandomPick(dateStr,numbers);const meaning=coreInterpreter.interpret(pick,type,true);out.innerHTML=`<b>${type.toUpperCase()} of the Day — ${pick}</b>\n\n${meaning}`}
+function renderJournal(){if(!journalList)return;const items=storage.get("psysymbol_journal",[]);journalList.innerHTML="";items.forEach(it=>{const card=document.createElement("div");card.className="history-item";card.textContent=`${it.date}: ${it.text.slice(0,80)}`;journalList.appendChild(card)})}
+journalSave&&(journalSave.onclick=()=>{const text=(journalText.value||"").trim();if(!text)return;const items=storage.get("psysymbol_journal",[]);items.unshift({date:new Date().toISOString().slice(0,10),text});storage.set("psysymbol_journal",items.slice(0,200));journalText.value="";renderJournal()});
+journalClear&&(journalClear.onclick=()=>{storage.set("psysymbol_journal",[]);renderJournal()});
+function renderHistory(){const items=storage.get("psysymbol_history",[]);historyEl.innerHTML="";items.slice(0,50).forEach(it=>{const d=document.createElement("div");d.className="history-item";d.textContent=`${it.mode.toUpperCase()}: ${it.query}`;d.onclick=()=>{setMode(it.mode);userInput.value=it.query;interpret()};historyEl.appendChild(d)})}
+clearHistory&&(clearHistory.onclick=()=>{storage.set("psysymbol_history",[]);renderHistory()});
+function bumpCloud(term){const cloud=storage.get("psysymbol_cloud",{});const k=(term||"").toLowerCase();cloud[k]=(cloud[k]||0)+1;storage.set("psysymbol_cloud",cloud);renderCloud()}
+function renderCloud(){const cloud=storage.get("psysymbol_cloud",{});const items=Object.entries(cloud).sort((a,b)=>b[1]-a[1]).slice(0,30);cloudEl.innerHTML="";items.forEach(([term,n])=>{const b=document.createElement("button");b.className="tag";b.textContent=`${term} (${n})`;b.onclick=()=>{userInput.value=term;interpret()};cloudEl.appendChild(b)})}
+function routeTo(hash){$$("#view-home, #view-today, #view-trending, #view-journal, #view-compare").forEach(v=>v.classList.remove("active"));
+if(hash.startsWith("#/today")){$("#view-today").classList.add("active");renderToday()}
+else if(hash.startsWith("#/trending")){$("#view-trending").classList.add("active");renderTrending()}
+else if(hash.startsWith("#/journal")){$("#view-journal").classList.add("active");renderJournal()}
+else if(hash.startsWith("#/compare")){$("#view-compare").classList.add("active");const p=new URLSearchParams(hash.split("?")[1]||"");const L=(p.get("l")||"").trim();const R=(p.get("r")||"").trim();if(L)cmpLeft.value=L;if(R)cmpRight.value=R;if(L&&R)doCompare(L,R)}
+else{$("#view-home").classList.add("active");renderHistory();renderCloud()}
+if(hash.startsWith("#/interpret")){const p=new URLSearchParams(hash.split("?")[1]||"");const m=p.get("m");const q=p.get("q")||"";if(m)setMode(m);if(q){userInput.value=q;interpret()}}}
+window.addEventListener("hashchange",()=>routeTo(location.hash||"#/"));
+function buildSitemap(){const base=location.origin+location.pathname.replace(/\/index\.html?$/,"");const urls=[`${base}#/`,`${base}#/today`,`${base}#/trending`,`${base}#/journal`,`${base}#/compare`,`${base}about.html`,`${base}privacy.html`];const xml=urls.map(u=>`<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>`).join("");return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`}
+btnSitemap&&(btnSitemap.onclick=()=>{const blob=new Blob([buildSitemap()],{type:"application/xml"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="sitemap.xml";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+modeTabs.addEventListener("click",(e)=>{const tab=e.target.closest(".tab");if(!tab)return;setMode(tab.dataset.mode)});
+interpretBtn.addEventListener("click",()=>{interpret();bumpCloud((userInput.value||"").trim())});
+clearBtn.addEventListener("click",()=>{userInput.value="";userInput.focus()});
+document.addEventListener("keydown",(e)=>{if(e.key==="Enter"&&document.activeElement===userInput)interpret();if(e.key==="Escape"){userInput.value=""}});
+async function boot(){await loadCorpus();setMode(state.mode);routeTo(location.hash||"#/")} boot();})();
