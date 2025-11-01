@@ -2,7 +2,7 @@
   "name": "PsySymbol",
   "short_name": "PsySymbol",
   "description": "Archetypal meanings with Jungian psychology & numerology; daily insights with shareable cards.",
-  "start_url": ".",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0d0f14",
   "theme_color": "#0d0f14",
@@ -17,5 +17,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope": "."
 }
