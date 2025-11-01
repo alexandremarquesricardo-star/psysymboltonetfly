@@ -10,108 +10,108 @@
       "term": "falling",
       "meta": "Falling \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "stranger",
+        "shadow",
         "forest",
-        "water"
+        "trickster"
       ]
     },
     {
       "term": "flying",
       "meta": "Flying \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
+        "trickster",
         "shadow",
-        "water",
-        "house"
+        "forest"
       ]
     },
     {
       "term": "teeth",
       "meta": "Teeth \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "flying",
-        "house",
-        "snake"
+        "water",
+        "shadow",
+        "house"
       ]
     },
     {
       "term": "water",
       "meta": "Water \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "snake",
-        "stranger",
-        "bridge"
+        "forest",
+        "mother",
+        "mountain"
       ]
     },
     {
       "term": "forest",
       "meta": "Forest \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "shadow",
-        "door",
-        "hero"
+        "house",
+        "hero",
+        "falling"
       ]
     },
     {
       "term": "mountain",
       "meta": "Mountain \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
+        "trickster",
         "father",
-        "lover",
-        "flying"
+        "forest"
       ]
     },
     {
       "term": "house",
       "meta": "House \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "child",
-        "hero",
-        "window"
+        "bridge",
+        "snake",
+        "falling"
       ]
     },
     {
       "term": "door",
       "meta": "Door \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "stranger",
         "guardian",
-        "window"
+        "water",
+        "mountain"
       ]
     },
     {
       "term": "window",
       "meta": "Window \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "snake",
-        "house",
-        "shadow"
+        "stranger",
+        "trickster",
+        "teeth"
       ]
     },
     {
       "term": "bridge",
       "meta": "Bridge \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "stranger",
-        "water",
-        "guardian"
+        "father",
+        "falling",
+        "snake"
       ]
     },
     {
       "term": "child",
       "meta": "Child \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "mother",
-        "stranger",
-        "forest"
+        "house",
+        "door",
+        "guardian"
       ]
     },
     {
       "term": "mother",
       "meta": "Mother \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "snake",
-        "father",
-        "child"
+        "flying",
+        "water",
+        "house"
       ]
     },
     {
@@ -119,71 +119,71 @@
       "meta": "Father \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
         "guardian",
-        "falling",
-        "window"
+        "bridge",
+        "mountain"
       ]
     },
     {
       "term": "lover",
       "meta": "Lover \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "child",
-        "house",
-        "teeth"
+        "door",
+        "teeth",
+        "bridge"
       ]
     },
     {
       "term": "stranger",
       "meta": "Stranger \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "door",
-        "hero",
-        "falling"
+        "shadow",
+        "child",
+        "flying"
       ]
     },
     {
       "term": "shadow",
       "meta": "Shadow \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "water",
-        "guardian",
-        "window"
+        "trickster",
+        "snake",
+        "falling"
       ]
     },
     {
       "term": "hero",
       "meta": "Hero \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "flying",
-        "falling",
-        "mountain"
+        "house",
+        "mother",
+        "falling"
       ]
     },
     {
       "term": "trickster",
       "meta": "Trickster \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "snake",
-        "flying",
-        "door"
+        "lover",
+        "guardian",
+        "water"
       ]
     },
     {
       "term": "guardian",
       "meta": "Guardian \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "door",
+        "water",
         "flying",
-        "child"
+        "house"
       ]
     },
     {
       "term": "snake",
       "meta": "Snake \u2014 the psyche staging a scene so the heart can listen.",
       "see": [
-        "bridge",
-        "window",
-        "lover"
+        "guardian",
+        "trickster",
+        "teeth"
       ]
     }
   ],
@@ -192,17 +192,17 @@
       "term": "lion",
       "meta": "Lion \u2014 an archetypal image stirring insight.",
       "see": [
-        "lotus",
-        "rose",
-        "eagle"
+        "key",
+        "phoenix",
+        "anchor"
       ]
     },
     {
       "term": "snake",
       "meta": "Snake \u2014 an archetypal image stirring insight.",
       "see": [
+        "gate",
         "wolf",
-        "lion",
         "eagle"
       ]
     },
@@ -210,99 +210,99 @@
       "term": "eagle",
       "meta": "Eagle \u2014 an archetypal image stirring insight.",
       "see": [
-        "wolf",
-        "sword",
-        "crown"
+        "labyrinth",
+        "snake",
+        "wheel"
       ]
     },
     {
       "term": "owl",
       "meta": "Owl \u2014 an archetypal image stirring insight.",
       "see": [
-        "eagle",
-        "phoenix",
-        "tower"
+        "gate",
+        "anchor",
+        "key"
       ]
     },
     {
       "term": "wolf",
       "meta": "Wolf \u2014 an archetypal image stirring insight.",
       "see": [
-        "phoenix",
-        "lotus",
-        "rose"
+        "eagle",
+        "gate",
+        "sword"
       ]
     },
     {
       "term": "dragon",
       "meta": "Dragon \u2014 an archetypal image stirring insight.",
       "see": [
-        "lion",
         "phoenix",
-        "snake"
+        "owl",
+        "ladder"
       ]
     },
     {
       "term": "phoenix",
       "meta": "Phoenix \u2014 an archetypal image stirring insight.",
       "see": [
-        "tower",
         "owl",
-        "mirror"
+        "snake",
+        "dragon"
       ]
     },
     {
       "term": "mirror",
       "meta": "Mirror \u2014 an archetypal image stirring insight.",
       "see": [
-        "tower",
         "labyrinth",
-        "anchor"
+        "shield",
+        "owl"
       ]
     },
     {
       "term": "key",
       "meta": "Key \u2014 an archetypal image stirring insight.",
       "see": [
-        "rose",
-        "anchor",
-        "lion"
+        "owl",
+        "shield",
+        "crown"
       ]
     },
     {
       "term": "crown",
       "meta": "Crown \u2014 an archetypal image stirring insight.",
       "see": [
-        "wolf",
-        "gate",
-        "lion"
+        "anchor",
+        "shield",
+        "rose"
       ]
     },
     {
       "term": "rose",
       "meta": "Rose \u2014 an archetypal image stirring insight.",
       "see": [
-        "lotus",
-        "labyrinth",
-        "eagle"
+        "owl",
+        "gate",
+        "labyrinth"
       ]
     },
     {
       "term": "lotus",
       "meta": "Lotus \u2014 an archetypal image stirring insight.",
       "see": [
-        "tower",
+        "owl",
         "key",
-        "anchor"
+        "wheel"
       ]
     },
     {
       "term": "sword",
       "meta": "Sword \u2014 an archetypal image stirring insight.",
       "see": [
-        "crown",
-        "mirror",
-        "lion"
+        "ladder",
+        "snake",
+        "lotus"
       ]
     },
     {
@@ -310,34 +310,34 @@
       "meta": "Shield \u2014 an archetypal image stirring insight.",
       "see": [
         "eagle",
-        "snake",
-        "lion"
+        "crown",
+        "lotus"
       ]
     },
     {
       "term": "anchor",
       "meta": "Anchor \u2014 an archetypal image stirring insight.",
       "see": [
-        "lion",
+        "crown",
         "shield",
-        "dragon"
+        "sword"
       ]
     },
     {
       "term": "ladder",
       "meta": "Ladder \u2014 an archetypal image stirring insight.",
       "see": [
-        "lotus",
-        "eagle",
-        "wheel"
+        "key",
+        "dragon",
+        "anchor"
       ]
     },
     {
       "term": "wheel",
       "meta": "Wheel \u2014 an archetypal image stirring insight.",
       "see": [
-        "dragon",
-        "labyrinth",
+        "anchor",
+        "snake",
         "gate"
       ]
     },
@@ -345,8 +345,8 @@
       "term": "labyrinth",
       "meta": "Labyrinth \u2014 an archetypal image stirring insight.",
       "see": [
-        "lotus",
-        "rose",
+        "key",
+        "eagle",
         "dragon"
       ]
     },
@@ -354,18 +354,18 @@
       "term": "tower",
       "meta": "Tower \u2014 an archetypal image stirring insight.",
       "see": [
-        "gate",
-        "ladder",
-        "owl"
+        "lotus",
+        "phoenix",
+        "labyrinth"
       ]
     },
     {
       "term": "gate",
       "meta": "Gate \u2014 an archetypal image stirring insight.",
       "see": [
-        "crown",
-        "wolf",
-        "labyrinth"
+        "ladder",
+        "owl",
+        "dragon"
       ]
     }
   ],
@@ -374,36 +374,36 @@
       "term": "0",
       "meta": "0 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "11",
-        "333",
-        "111"
+        "2",
+        "1111",
+        "555"
       ]
     },
     {
       "term": "1",
       "meta": "1 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "222",
-        "888",
-        "111"
+        "111",
+        "1212",
+        "222"
       ]
     },
     {
       "term": "2",
       "meta": "2 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "1010",
-        "11",
-        "22"
+        "333",
+        "444",
+        "0"
       ]
     },
     {
       "term": "3",
       "meta": "3 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "33",
-        "1111",
-        "1212"
+        "1212",
+        "1010",
+        "111"
       ]
     },
     {
@@ -411,34 +411,34 @@
       "meta": "7 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
         "9",
-        "1111",
-        "22"
+        "2",
+        "1111"
       ]
     },
     {
       "term": "9",
       "meta": "9 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "11",
-        "3",
-        "999"
+        "333",
+        "22",
+        "888"
       ]
     },
     {
       "term": "11",
       "meta": "11 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "7",
-        "1",
-        "2"
+        "444",
+        "22",
+        "0"
       ]
     },
     {
       "term": "22",
       "meta": "22 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "777",
-        "33",
+        "9",
+        "888",
         "11"
       ]
     },
@@ -446,98 +446,98 @@
       "term": "33",
       "meta": "33 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "1111",
-        "11",
-        "888"
+        "777",
+        "22",
+        "9"
       ]
     },
     {
       "term": "111",
       "meta": "111 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "1111",
-        "9",
-        "1"
+        "777",
+        "22",
+        "3"
       ]
     },
     {
       "term": "222",
       "meta": "222 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "11",
-        "1010",
-        "1111"
+        "22",
+        "444",
+        "2"
       ]
     },
     {
       "term": "333",
       "meta": "333 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "777",
-        "22",
-        "111"
+        "1010",
+        "7",
+        "33"
       ]
     },
     {
       "term": "444",
       "meta": "444 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "9",
-        "111",
-        "333"
+        "333",
+        "22",
+        "1111"
       ]
     },
     {
       "term": "555",
       "meta": "555 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "1010",
-        "1212",
-        "222"
+        "222",
+        "33",
+        "333"
       ]
     },
     {
       "term": "777",
       "meta": "777 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "0",
-        "3",
-        "444"
+        "333",
+        "444",
+        "3"
       ]
     },
     {
       "term": "888",
       "meta": "888 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "555",
-        "22",
-        "1111"
+        "111",
+        "33",
+        "1212"
       ]
     },
     {
       "term": "999",
       "meta": "999 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "9",
-        "777",
-        "11"
+        "33",
+        "1212",
+        "222"
       ]
     },
     {
       "term": "1010",
       "meta": "1010 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "3",
-        "2",
-        "888"
+        "33",
+        "444",
+        "9"
       ]
     },
     {
       "term": "1111",
       "meta": "1111 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "3",
-        "0",
+        "1212",
+        "555",
         "9"
       ]
     },
@@ -545,9 +545,9 @@
       "term": "1212",
       "meta": "1212 \u2014 rhythm and lesson; align thought, feeling, deed.",
       "see": [
-        "111",
-        "555",
-        "33"
+        "22",
+        "2",
+        "1111"
       ]
     }
   ]
