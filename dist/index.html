@@ -1,4 +1,5 @@
 <!doctype html><html lang="en"><head>
+<meta name="google-adsense-account" content="ca-pub-3857946786580406">
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>PsySymbol — Dream · Symbol · Number Interpreter</title>
 <meta name="description" content="Archetypal meanings with Jungian psychology & numerology; daily insights with shareable cards." id="metaDesc"/>
@@ -9,7 +10,7 @@
 <meta property="og:image" content="https://psysymbol.com/og.png" id="ogImage"/><meta name="twitter:card" content="summary_large_image"/>
 <link rel="manifest" href="manifest.json"><link rel="icon" href="assets/icon-192.png"><meta name="theme-color" content="#0d0f14"/>
 <link rel="stylesheet" href="style.css"><script type="application/ld+json" id="jsonld">{}</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857946786580406" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
 </head><body class="mode-dream"><div class="app"><header>
 <div class="logo" id="logo" title="Reset (Ψ)"><span>Ψ</span></div><div class="brand">PsySymbol</div>
 <nav class="primary">
@@ -116,75 +117,4 @@
 <div id="subList" class="history" style="margin-top:10px"></div>
 </div></div>
 
-<script src="script.js" defer></script>
-<script>
-// --- PsySymbol: Full UI reset for "Clear" button ---
-(function() {
-  function fullReset() {
-    try {
-      const userInput = document.getElementById('userInput');
-      const titleOut = document.getElementById('titleOut');
-      const result = document.getElementById('result');
-      const metaLine = document.getElementById('metaLine');
-      const seeAlso = document.getElementById('seeAlso');
-      const related = document.getElementById('related');
-      const sourcesList = document.getElementById('sourcesList');
-      const sourceBadges = document.getElementById('sourceBadges');
-      const favStar = document.getElementById('favStar');
-      const sourcesBlock = document.getElementById('sourcesBlock');
-
-      if (userInput) userInput.value = '';
-      if (titleOut) titleOut.textContent = 'Interpretation';
-      if (result) result.innerHTML = 'Enter something above and tap <b>Interpret</b>.';
-      if (metaLine) metaLine.textContent = '';
-      if (seeAlso) seeAlso.innerHTML = '';
-      if (related) related.innerHTML = '';
-      if (sourcesList) sourcesList.innerHTML = '';
-      if (sourceBadges) sourceBadges.innerHTML = '';
-      if (favStar) favStar.textContent = '☆';
-      if (sourcesBlock && sourcesBlock.open) sourcesBlock.open = false;
-
-      // Remove any unlock buttons if present
-      document.querySelectorAll('.unlock-button').forEach(btn => btn.remove());
-      // Extra safety: remove any buttons that look like "Unlock Full Interpretation ..."
-      Array.from(document.querySelectorAll('button')).forEach(btn => {
-        if (typeof btn.textContent === 'string' && btn.textContent.trim().startsWith('Unlock Full Interpretation')) {
-          btn.remove();
-        }
-      });
-
-      // Optional: clear share links to avoid stale permalinks
-      const shareIds = ['shareX','shareReddit','sharePinterest','shareWhatsApp'];
-      shareIds.forEach(id => { const el = document.getElementById(id); if (el) el.removeAttribute('href'); });
-
-      // Keep depth/enrich toggles as-is (intentional).
-    } catch (e) {
-      // no-op
-    }
-  }
-
-  function bindClear() {
-    const clearBtn = document.getElementById('clearBtn');
-    if (!clearBtn) return;
-    // Avoid double-binding
-    clearBtn.removeEventListener('click', fullReset);
-    clearBtn.addEventListener('click', fullReset);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindClear, { once: true });
-  } else {
-    bindClear();
-  }
-
-  // Also map logo (Ψ) to full reset for convenience
-  (function mapLogo() {
-    const logo = document.getElementById('logo');
-    if (!logo) return;
-    logo.addEventListener('click', fullReset);
-  })();
-
-})();
-</script>
-
-</body></html>
+<script src="script.js" defer></script></body></html>
