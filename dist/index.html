@@ -118,63 +118,72 @@
 
 <script src="script.js" defer></script>
 <script>
-// --- PsySymbol: de-duplicate "Unlock Full Interpretation ($2)" buttons ---
+// --- PsySymbol: Full UI reset for "Clear" button ---
 (function() {
-  function isUnlock(el) {
-    return el && el.nodeType === 1 &&
-      el.tagName === 'BUTTON' &&
-      typeof el.textContent === 'string' &&
-      el.textContent.trim().startsWith('Unlock Full Interpretation');
-  }
-
-  function dedupe() {
+  function fullReset() {
     try {
-      const all = Array.from(document.querySelectorAll('button')).filter(isUnlock);
-      if (all.length > 1) {
-        // Keep the earliest one in DOM order
-        all.slice(1).forEach(btn => btn.remove());
-      }
+      const userInput = document.getElementById('userInput');
+      const titleOut = document.getElementById('titleOut');
+      const result = document.getElementById('result');
+      const metaLine = document.getElementById('metaLine');
+      const seeAlso = document.getElementById('seeAlso');
+      const related = document.getElementById('related');
+      const sourcesList = document.getElementById('sourcesList');
+      const sourceBadges = document.getElementById('sourceBadges');
+      const favStar = document.getElementById('favStar');
+      const sourcesBlock = document.getElementById('sourcesBlock');
+
+      if (userInput) userInput.value = '';
+      if (titleOut) titleOut.textContent = 'Interpretation';
+      if (result) result.innerHTML = 'Enter something above and tap <b>Interpret</b>.';
+      if (metaLine) metaLine.textContent = '';
+      if (seeAlso) seeAlso.innerHTML = '';
+      if (related) related.innerHTML = '';
+      if (sourcesList) sourcesList.innerHTML = '';
+      if (sourceBadges) sourceBadges.innerHTML = '';
+      if (favStar) favStar.textContent = '☆';
+      if (sourcesBlock && sourcesBlock.open) sourcesBlock.open = false;
+
+      // Remove any unlock buttons if present
+      document.querySelectorAll('.unlock-button').forEach(btn => btn.remove());
+      // Extra safety: remove any buttons that look like "Unlock Full Interpretation ..."
+      Array.from(document.querySelectorAll('button')).forEach(btn => {
+        if (typeof btn.textContent === 'string' && btn.textContent.trim().startsWith('Unlock Full Interpretation')) {
+          btn.remove();
+        }
+      });
+
+      // Optional: clear share links to avoid stale permalinks
+      const shareIds = ['shareX','shareReddit','sharePinterest','shareWhatsApp'];
+      shareIds.forEach(id => { const el = document.getElementById(id); if (el) el.removeAttribute('href'); });
+
+      // Keep depth/enrich toggles as-is (intentional).
     } catch (e) {
-      // Fail-safe: do nothing
+      // no-op
     }
   }
 
-  function setupObserver() {
-    const obs = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        if (!m.addedNodes || m.addedNodes.length === 0) continue;
-        for (const node of m.addedNodes) {
-          if (isUnlock(node)) { dedupe(); return; }
-          if (node && node.querySelector) {
-            // If any button inside matches, dedupe
-            const found = node.querySelector('button');
-            if (found && isUnlock(found)) { dedupe(); return; }
-            // Or if new subtree includes any buttons, check quickly
-            const anyBtns = node.querySelectorAll ? node.querySelectorAll('button') : [];
-            for (const b of anyBtns) { if (isUnlock(b)) { dedupe(); return; } }
-          }
-        }
-      }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
-  }
-
-  function init() {
-    dedupe();
-    setupObserver();
-    // Also dedupe on common UI actions if present
-    const ids = ['interpretBtn','expandMeaning','followSymbol'];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('click', () => setTimeout(dedupe, 0));
-    });
+  function bindClear() {
+    const clearBtn = document.getElementById('clearBtn');
+    if (!clearBtn) return;
+    // Avoid double-binding
+    clearBtn.removeEventListener('click', fullReset);
+    clearBtn.addEventListener('click', fullReset);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', bindClear, { once: true });
   } else {
-    init();
+    bindClear();
   }
+
+  // Also map logo (Ψ) to full reset for convenience
+  (function mapLogo() {
+    const logo = document.getElementById('logo');
+    if (!logo) return;
+    logo.addEventListener('click', fullReset);
+  })();
+
 })();
 </script>
 
