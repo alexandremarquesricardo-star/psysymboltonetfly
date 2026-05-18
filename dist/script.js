@@ -41,7 +41,7 @@ async function interpret(){const q=(userInput.value||"").trim();if(!q)return;if(
   if(!out){out=coreInterpreter.interpret(q,state.mode,state.depth, personalContext());state.cache[k]=out;storage.set("psysymbol_cache",state.cache)}
   const entry=lookup(q);metaLine.textContent=entry?.meta||"";renderSeeAlso(entry?.see||[]);titleOut&&(titleOut.textContent=`${state.mode.toUpperCase()}: ${q}`);
   resultEl.classList.remove("muted");resultEl.textContent=out;
-  displayBadges(tagSources(state.mode));$("#sourcesBlock").open=true;state.lastOutput=out;state.lastQuery=q;showDeepRead(q,state.mode);
+  displayBadges(tagSources(state.mode));$("#sourcesBlock").open=true;state.lastOutput=out;state.lastQuery=q;showDeepRead(q,state.mode);showAmazonShelf(state.mode);
   storage.push("psysymbol_history",{ts:nowISO(),mode:state.mode,query:q,output:out});updateSEO(state.mode,q,entry?.meta||out);
   const url=location.origin+location.pathname+`#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`;
   copyPermalink&&(copyPermalink.onclick=async()=>{try{await navigator.clipboard.writeText(url);copyPermalink.textContent="Copied ✓";setTimeout(()=>copyPermalink.textContent="Copy Permalink",1200)}catch{}});
@@ -62,7 +62,31 @@ function renderCloud(){const cloud=storage.get("psysymbol_cloud",{});const items
 
 // Deep Read
 function escDR(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function clearDeepRead(){const c=$("#deep-read-container");if(c){c.hidden=true;c.innerHTML=""}}
+function clearDeepRead(){const c=$("#deep-read-container");if(c){c.hidden=true;c.innerHTML=""}const s=$("#amazon-shelf-container");if(s){s.hidden=true;s.innerHTML=""}}
+const SPA_AFFILIATE_TAG="psysymbol-21";
+const SPA_BOOKS={
+  dream:[{t:"Man and His Symbols",a:"Carl Jung",q:"man and his symbols jung"},{t:"Inner Work",a:"Robert A. Johnson",q:"inner work robert johnson dreams"},{t:"The Interpretation of Dreams",a:"Sigmund Freud",q:"interpretation of dreams freud"}],
+  symbol:[{t:"The Book of Symbols",a:"ARAS / Taschen",q:"book of symbols taschen aras"},{t:"A Dictionary of Symbols",a:"J. E. Cirlot",q:"dictionary of symbols cirlot"},{t:"Man and His Symbols",a:"Carl Jung",q:"man and his symbols jung"}],
+  number:[{t:"The Complete Book of Numerology",a:"David A. Phillips",q:"complete book of numerology david phillips"},{t:"Numerology and the Divine Triangle",a:"Faith Javane",q:"numerology divine triangle javane"},{t:"Angel Numbers",a:"Kyle Gray",q:"angel numbers kyle gray"}]
+};
+function showAmazonShelf(mode){
+  const c=$("#amazon-shelf-container");if(!c)return;
+  const picks=SPA_BOOKS[mode];if(!picks){c.hidden=true;c.innerHTML="";return}
+  c.hidden=false;c.className="reading-shelf";
+  c.innerHTML=`
+    <h2>Related reading</h2>
+    <p class="muted">If you want to go deeper than any single page can, these are the books we keep returning to.</p>
+    <div class="reading-shelf__items">
+      ${picks.map(p=>`
+        <a class="reading-shelf__item" href="https://www.amazon.co.uk/s?k=${encodeURIComponent(p.q)}&tag=${SPA_AFFILIATE_TAG}" target="_blank" rel="sponsored noopener">
+          <div class="reading-shelf__title">${escDR(p.t)}</div>
+          <div class="reading-shelf__author muted">${escDR(p.a)}</div>
+        </a>
+      `).join("")}
+    </div>
+    <p class="reading-shelf__disclosure">As an Amazon Associate we earn from qualifying purchases at no cost to you. Links open Amazon UK in a new tab. See our <a href="/privacy.html#affiliates">affiliate disclosure</a>.</p>
+  `;
+}
 function showDeepRead(topic,mode){
   const c=$("#deep-read-container");if(!c)return;
   const apiMode=mode==="dream"||mode==="symbol"||mode==="number"?mode:"symbol";

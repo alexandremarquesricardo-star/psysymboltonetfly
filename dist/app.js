@@ -176,9 +176,65 @@
     if (meta) injectDeepRead(meta);
   }
 
+  // ---------- Amazon affiliate shelf ----------
+  const AFFILIATE_TAG = 'psysymbol-21';
+  const BOOK_PICKS = {
+    dream: [
+      { title: 'Man and His Symbols', author: 'Carl Jung', q: 'man and his symbols jung' },
+      { title: 'Inner Work', author: 'Robert A. Johnson', q: 'inner work robert johnson dreams' },
+      { title: 'The Interpretation of Dreams', author: 'Sigmund Freud', q: 'interpretation of dreams freud' },
+    ],
+    symbol: [
+      { title: 'The Book of Symbols', author: 'ARAS / Taschen', q: 'book of symbols taschen aras' },
+      { title: 'A Dictionary of Symbols', author: 'J. E. Cirlot', q: 'dictionary of symbols cirlot' },
+      { title: 'Man and His Symbols', author: 'Carl Jung', q: 'man and his symbols jung' },
+    ],
+    number: [
+      { title: 'The Complete Book of Numerology', author: 'David A. Phillips', q: 'complete book of numerology david phillips' },
+      { title: 'Numerology and the Divine Triangle', author: 'Faith Javane', q: 'numerology divine triangle javane' },
+      { title: 'Angel Numbers', author: 'Kyle Gray', q: 'angel numbers kyle gray' },
+    ],
+  };
+
+  function amazonURL(query) {
+    return `https://www.amazon.co.uk/s?k=${encodeURIComponent(query)}&tag=${AFFILIATE_TAG}`;
+  }
+
+  function injectAmazonShelf(mode) {
+    const picks = BOOK_PICKS[mode];
+    if (!picks) return;
+    const anchor =
+      document.querySelector('.deep-read') ||
+      document.querySelector('main.card');
+    if (!anchor) return;
+
+    const shelf = document.createElement('section');
+    shelf.className = 'reading-shelf';
+    shelf.innerHTML = `
+      <h2>Related reading</h2>
+      <p class="muted">If you want to go deeper than any single page can, these are the books we keep returning to.</p>
+      <div class="reading-shelf__items">
+        ${picks.map(p => `
+          <a class="reading-shelf__item" href="${amazonURL(p.q)}" target="_blank" rel="sponsored noopener">
+            <div class="reading-shelf__title">${escapeHtml(p.title)}</div>
+            <div class="reading-shelf__author muted">${escapeHtml(p.author)}</div>
+          </a>
+        `).join('')}
+      </div>
+      <p class="reading-shelf__disclosure">As an Amazon Associate we earn from qualifying purchases at no cost to you. Links open Amazon UK in a new tab. See our <a href="/privacy.html#affiliates">affiliate disclosure</a>.</p>
+    `;
+    anchor.after(shelf);
+  }
+
+  function initAmazonShelf() {
+    const meta = detectInterpretation();
+    if (meta) injectAmazonShelf(meta.mode);
+  }
+
   // ---------- Boot ----------
   setYear();
   writeJsonLd();
   initConsent();
   initDeepRead();
+  initAmazonShelf();
 })();
