@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="100%" stop-color="#10131c"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="35%">
+      <stop offset="0%" stop-color="rgba(212,165,116,0.22)"/>
+      <stop offset="100%" stop-color="rgba(212,165,116,0)"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Subtle border ring -->
+  <rect x="32" y="32" width="1136" height="566" rx="20" fill="none" stroke="rgba(212,165,116,0.18)" stroke-width="1"/>
+
+  <!-- Ψ glyph (scaled from favicon path), centered around (600, 250) -->
+  <g transform="translate(490, 100) scale(3.4)" fill="#d4a574">
+    <path d="M20 16h6v12c0 6.6-2.9 11.9-8.6 15.9l3 4.3C27.1 44.1 30 37.5 30 28V16h4v12c0 9.5 2.9 16.1 9.6 20.2l3-4.3C41 39.9 38 34.6 38 28V16h6v-4H20v4z"/>
+  </g>
+
+  <!-- Brand -->
+  <text x="600" y="430" text-anchor="middle"
+        font-family="Iowan Old Style, Hoefler Text, Garamond, Cambria, Times New Roman, serif"
+        font-size="84" font-weight="600" fill="#ece6d8" letter-spacing="-1.5">PsySymbol</text>
+
+  <!-- Pillar subhead -->
+  <text x="600" y="488" text-anchor="middle"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+        font-size="26" fill="#9a96a8" letter-spacing="4">DREAM  ·  SYMBOL  ·  NUMBER</text>
+
+  <!-- Tagline -->
+  <text x="600" y="548" text-anchor="middle"
+        font-family="Iowan Old Style, Hoefler Text, Garamond, serif"
+        font-size="22" font-style="italic" fill="#d4a574">thought through, not fortune-teller theatre</text>
+
+  <!-- URL -->
+  <text x="600" y="592" text-anchor="middle"
+        font-family="system-ui, sans-serif"
+        font-size="14" fill="#6a6678" letter-spacing="3">PSYSYMBOL.COM</text>
+</svg>
