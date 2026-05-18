@@ -24,34 +24,24 @@
   <p>Type any term below for the templated reading. Or read one of our long-form interpretations and click <strong>Get a Deep Read</strong> for a fresh, personalised take written by Claude Haiku — three or four paragraphs, qualified throughout. Five free per day. No sign-up. Nothing saved.</p>
 </section>
 
-<div class="card"><div class="row" style="justify-content:space-between"><div class="row">
-<div class="mode-tabs" id="modeTabs" role="tablist" aria-label="Modes">
-  <div class="tab active" role="tab" aria-selected="true" data-mode="dream">Dream</div>
-  <div class="tab" role="tab" aria-selected="false" data-mode="symbol">Symbol</div>
-  <div class="tab" role="tab" aria-selected="false" data-mode="number">Number</div>
-</div></div>
-<div class="row">
-  <button id="depthBtn" class="pill">Depth: <span id="depthState">Off</span></button>
-  <button id="enrichBtn" class="pill">Enrich: <span id="enrichState">Off</span></button>
-</div></div></div>
+<div class="interpreter-mode" id="modeTabs" role="tablist" aria-label="Modes">
+  <button class="tab active" role="tab" aria-selected="true" data-mode="dream">Dream</button>
+  <button class="tab" role="tab" aria-selected="false" data-mode="symbol">Symbol</button>
+  <button class="tab" role="tab" aria-selected="false" data-mode="number">Number</button>
+</div>
 
 <main id="view-home" class="view active"><div class="grid"><section>
-<div class="card"><div class="controls">
-  <input id="userInput" type="text" placeholder="Type a dream, symbol, or number… (e.g., 'falling', 'lion', '333')" aria-label="Input"/>
-  <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret</button>
-  <button id="clearBtn" class="ghost" title="Clear input">Clear</button>
-  <button id="copyPermalink" class="pill" title="Copy permalink">Copy Permalink</button>
-</div><div class="hint">Tip: Press Enter to interpret.</div></div>
+<div class="interpreter-input">
+  <input id="userInput" type="text" placeholder="A dream, a symbol, a number…" aria-label="Type a dream, symbol, or number"/>
+  <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret →</button>
+</div>
+<p class="interpreter-hint">Press Enter, or pick from the examples below.</p>
 
-<section class="card" aria-live="polite">
-<h1 class="accent" id="titleOut" style="margin:0">Interpretation</h1>
-<div class="badges" id="sourceBadges"></div>
-<div id="metaLine" class="result muted" style="margin-top:4px;"></div>
-<div id="result" class="result muted" style="margin-top:4px;">Enter something above and tap <b>Interpret</b>.</div>
-<div id="seeAlso" class="tags" style="margin-top:10px;"></div>
-<div class="permablock"><button class="pill" id="expandMeaning">Expand meaning</button></div>
-<details class="sources" id="sourcesBlock"><summary>Sources & Context</summary><div id="sourcesList" class="result muted"></div></details>
-<div class="sharebar" id="sharebar"><button class="pill" id="shareImage">🖼️ Generate Share Image</button></div>
+<section class="card interpreter-result" aria-live="polite" id="resultCard" hidden>
+<h2 class="accent" id="titleOut" style="margin:0 0 var(--space-3)">Interpretation</h2>
+<div id="metaLine" class="muted"></div>
+<div id="result" class="result"></div>
+<div id="seeAlso" class="tags"></div>
 </section>
 <section id="deep-read-container" hidden></section>
 <section id="amazon-shelf-container" hidden></section>
