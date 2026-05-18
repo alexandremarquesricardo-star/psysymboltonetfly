@@ -41,7 +41,7 @@ async function interpret(){const q=(userInput.value||"").trim();if(!q)return;if(
   if(!out){out=coreInterpreter.interpret(q,state.mode,state.depth, personalContext());state.cache[k]=out;storage.set("psysymbol_cache",state.cache)}
   const entry=lookup(q);metaLine.textContent=entry?.meta||"";renderSeeAlso(entry?.see||[]);titleOut&&(titleOut.textContent=`${state.mode.toUpperCase()}: ${q}`);
   resultEl.classList.remove("muted");resultEl.textContent=out;
-  displayBadges(tagSources(state.mode));$("#sourcesBlock").open=true;state.lastOutput=out;state.lastQuery=q;
+  displayBadges(tagSources(state.mode));$("#sourcesBlock").open=true;state.lastOutput=out;state.lastQuery=q;showDeepRead(q,state.mode);
   storage.push("psysymbol_history",{ts:nowISO(),mode:state.mode,query:q,output:out});updateSEO(state.mode,q,entry?.meta||out);
   const url=location.origin+location.pathname+`#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`;
   copyPermalink&&(copyPermalink.onclick=async()=>{try{await navigator.clipboard.writeText(url);copyPermalink.textContent="Copied ✓";setTimeout(()=>copyPermalink.textContent="Copy Permalink",1200)}catch{}});
@@ -59,6 +59,63 @@ clearHistory&&(clearHistory.onclick=()=>{storage.set("psysymbol_history",[]);ren
 
 function bumpCloud(term){const cloud=storage.get("psysymbol_cloud",{});const k=(term||"").toLowerCase();cloud[k]=(cloud[k]||0)+1;storage.set("psysymbol_cloud",cloud);renderCloud()}
 function renderCloud(){const cloud=storage.get("psysymbol_cloud",{});const items=Object.entries(cloud).sort((a,b)=>b[1]-a[1]).slice(0,30);cloudEl.innerHTML="";items.forEach(([term,n])=>{const b=document.createElement("button");b.className="tag";b.textContent=`${term} (${n})`;b.onclick=()=>{userInput.value=term;interpret()};cloudEl.appendChild(b)})}
+
+// Deep Read
+function escDR(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function clearDeepRead(){const c=$("#deep-read-container");if(c){c.hidden=true;c.innerHTML=""}}
+function showDeepRead(topic,mode){
+  const c=$("#deep-read-container");if(!c)return;
+  const apiMode=mode==="dream"||mode==="symbol"||mode==="number"?mode:"symbol";
+  c.hidden=false;
+  c.className="deep-read";
+  c.innerHTML=`
+    <h2>Want a personalised Deep Read of ${escDR(topic)}?</h2>
+    <p class="muted">The result above is the templated reading. The Deep Read is the upgrade — a fresh interpretation written for you, optionally tailored to anything specific about your experience. Powered by Claude Haiku.</p>
+    <button class="deep-read__trigger" type="button">Get a Deep Read</button>
+    <div class="deep-read__panel" hidden>
+      <label class="deep-read__label" for="dr-context">Anything specific about your experience? <span class="muted">(optional)</span></label>
+      <textarea id="dr-context" class="deep-read__context" rows="3" maxlength="2000" placeholder="e.g. I keep dreaming this on Sunday nights"></textarea>
+      <div class="deep-read__actions">
+        <button class="deep-read__submit" type="button">Generate Deep Read</button>
+        <span class="muted deep-read__limit">~5 free per day · nothing is saved</span>
+      </div>
+      <div class="deep-read__output" hidden></div>
+    </div>`;
+  const trigger=c.querySelector(".deep-read__trigger");
+  const panel=c.querySelector(".deep-read__panel");
+  const submit=c.querySelector(".deep-read__submit");
+  const ctxEl=c.querySelector(".deep-read__context");
+  const out=c.querySelector(".deep-read__output");
+  trigger.onclick=()=>{panel.hidden=false;trigger.hidden=true;ctxEl.focus()};
+  submit.onclick=async()=>{
+    submit.disabled=true;submit.textContent="Generating…";
+    out.hidden=false;out.textContent="";out.classList.remove("deep-read__output--error");
+    try{
+      const resp=await fetch("/api/deep-read",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({topic,mode:apiMode,text:ctxEl.value})});
+      const reader=resp.body.getReader();const dec=new TextDecoder();let buf="",done=false;
+      while(!done){
+        const ch=await reader.read();if(ch.done)break;
+        buf+=dec.decode(ch.value,{stream:true});
+        const evs=buf.split("\n\n");buf=evs.pop()??"";
+        for(const ev of evs){
+          if(!ev.startsWith("data: "))continue;
+          const raw=ev.slice(6).trim();
+          if(raw==="[DONE]"){done=true;break}
+          try{
+            const p=JSON.parse(raw);
+            if(p.text)out.textContent+=p.text;
+            else if(p.error){out.textContent=p.error;out.classList.add("deep-read__output--error");done=true;break}
+          }catch(_){}
+        }
+      }
+    }catch(_){
+      out.textContent="Something went wrong reaching the Deep Read service. Please try again in a moment.";
+      out.classList.add("deep-read__output--error");
+    }finally{
+      submit.disabled=false;submit.textContent="Generate another";
+    }
+  };
+}
 
 // Routing
 function routeTo(hash){$$("#view-home, #view-today, #view-trending, #view-dashboard").forEach(v=>v.classList.remove("active"));
@@ -99,6 +156,7 @@ logo&& logo.addEventListener("click",()=>{
   resultEl.classList.add("muted");
   resultEl.textContent="Enter something above and tap Interpret.";
   removeExpand();
+  clearDeepRead();
   localStorage.setItem("psysymbol_history", JSON.stringify([]));
   localStorage.setItem("psysymbol_cloud", JSON.stringify({}));
   const evt = new Event("hashchange");
