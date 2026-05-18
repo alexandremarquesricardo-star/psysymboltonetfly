@@ -101,6 +101,84 @@ aside h3{font-family:var(--font-serif);color:var(--accent);margin:0 0 var(--spac
 .app .card{max-width:none;margin:0}
 .app aside .card{padding:var(--space-4)}
 
+/* Hero — anchors the SPA homepage above the interpreter */
+.hero{
+  max-width:760px;
+  margin:var(--space-7) auto var(--space-5);
+  padding:0 var(--space-3);
+  text-align:center;
+}
+.hero h1{
+  font-family:var(--font-serif);
+  font-size:clamp(28px,4.5vw,46px);
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  margin:0 0 var(--space-4);
+  color:var(--text);
+}
+.hero h1 em{
+  color:var(--accent);
+  font-style:italic;
+  font-weight:500;
+}
+.hero p{
+  font-size:clamp(15px,1.8vw,17px);
+  color:var(--text-muted);
+  max-width:600px;
+  margin:0 auto;
+  line-height:1.6;
+}
+.hero p strong{color:var(--accent);font-weight:600}
+
+/* Popular topics surface below the interpreter result */
+.topics{
+  margin-top:var(--space-7);
+  padding:var(--space-6) var(--space-5);
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+}
+.topics h2{
+  font-family:var(--font-serif);
+  font-size:clamp(20px,2.4vw,24px);
+  margin:0 0 var(--space-2);
+  color:var(--text);
+}
+.topics > p.muted{margin:0 0 var(--space-5);font-size:14px}
+.topics__grid{
+  display:grid;
+  gap:var(--space-5);
+  grid-template-columns:1fr;
+}
+@media(min-width:640px){.topics__grid{grid-template-columns:repeat(3,1fr)}}
+.topics__col h3{
+  font-family:var(--font-serif);
+  font-size:17px;
+  margin:0 0 var(--space-2);
+  color:var(--accent);
+}
+.topics__col h3 a{color:inherit;border-bottom:0}
+.topics__col h3 a:hover{color:var(--accent-hover)}
+.topics__col ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.topics__col li{
+  margin:0;
+  padding:var(--space-1) 0;
+  border-bottom:1px solid var(--border);
+}
+.topics__col li:last-child{border-bottom:0}
+.topics__col li a{
+  display:block;
+  padding:6px 0;
+  font-size:15px;
+  color:var(--text-muted);
+  border-bottom:0;
+}
+.topics__col li a:hover{color:var(--accent)}
+
 /* SPA footer override */
 footer{
   margin-top:var(--space-7);

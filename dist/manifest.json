@@ -1,22 +1,18 @@
 {
-  "name": "PsySymbol",
+  "name": "PsySymbol — Dream · Symbol · Number",
   "short_name": "PsySymbol",
-  "description": "Archetypal meanings with Jungian psychology & numerology; daily insights with shareable cards.",
-  "start_url": "index.html",
+  "description": "Thoughtful, qualified interpretations of dreams, symbols, and recurring numbers — plus personalised Deep Reads on demand.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#0d0f14",
-  "theme_color": "#0d0f14",
+  "background_color": "#10131c",
+  "theme_color": "#10131c",
   "icons": [
     {
-      "src": "assets/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
     }
   ],
-  "scope": "."
+  "scope": "/"
 }
