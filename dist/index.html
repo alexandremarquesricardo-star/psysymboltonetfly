@@ -16,9 +16,6 @@
   <a class="pill" href="#/today">/today</a>
   <a class="pill" href="#/trending">/trending</a>
   <a class="pill" href="#/dashboard">Dashboard</a>
-  <a class="pill" href="#/analyst">Analyst</a>
-  <a class="pill" href="#/journal">Journal</a>
-  <a class="pill" href="#/compare">Compare</a>
 </nav>
 </header>
 
@@ -39,23 +36,17 @@
   <button id="interpretBtn" class="primary" aria-label="Interpret">Interpret</button>
   <button id="clearBtn" class="ghost" title="Clear input">Clear</button>
   <button id="copyPermalink" class="pill" title="Copy permalink">Copy Permalink</button>
-</div><div class="hint">Tip: Press Enter to interpret • Click ★ to favorite • Use Compare to view side-by-side</div></div>
+</div><div class="hint">Tip: Press Enter to interpret.</div></div>
 
-<section class="card" aria-live="polite"><div style="display:flex;justify-content:space-between;align-items:center">
-  <div><h1 class="accent" id="titleOut" style="margin:0">Interpretation</h1><div class="badges" id="sourceBadges"></div></div>
-  <div class="row"><button class="pill" id="favBtn" title="Favorite"><span class="star" id="favStar">☆</span> Favorite</button><button class="pill" id="saveJournalBtn" title="Save to Journal">📝 Save</button></div>
-</div>
+<section class="card" aria-live="polite">
+<h1 class="accent" id="titleOut" style="margin:0">Interpretation</h1>
+<div class="badges" id="sourceBadges"></div>
 <div id="metaLine" class="result muted" style="margin-top:4px;"></div>
 <div id="result" class="result muted" style="margin-top:4px;">Enter something above and tap <b>Interpret</b>.</div>
 <div id="seeAlso" class="tags" style="margin-top:10px;"></div>
-<div id="related" class="tags" style="margin-top:10px;"></div>
-<div class="permablock"><button class="pill" id="expandMeaning">Expand meaning</button><button class="pill" id="followSymbol">Follow this</button></div>
+<div class="permablock"><button class="pill" id="expandMeaning">Expand meaning</button></div>
 <details class="sources" id="sourcesBlock"><summary>Sources & Context</summary><div id="sourcesList" class="result muted"></div></details>
-<div class="sharebar" id="sharebar"><button class="pill" id="shareNative">Share</button>
-  <a class="pill" id="shareX" target="_blank" rel="noopener">𝕏</a><a class="pill" id="shareReddit" target="_blank" rel="noopener">Reddit</a>
-  <a class="pill" id="sharePinterest" target="_blank" rel="noopener">Pinterest</a><a class="pill" id="shareWhatsApp" target="_blank" rel="noopener">WhatsApp</a>
-  <button class="pill" id="shareImage">🖼️ Generate Share Image</button>
-</div>
+<div class="sharebar" id="sharebar"><button class="pill" id="shareImage">🖼️ Generate Share Image</button></div>
 </section></section>
 
 <aside>
@@ -82,29 +73,11 @@
   <div id="trendBars"></div>
 </div></main>
 
-<main id="view-analyst" class="view"><div class="card">
-  <h2>AI Dream Analyst (local)</h2>
-  <p class="muted">Reads your local journal & recent searches to tailor interpretations. Nothing leaves your browser.</p>
-  <div class="controls"><button id="analystRun" class="primary">Analyze my journal</button></div>
-  <pre id="analystOut" class="result"></pre>
-</div></main>
-
-<main id="view-journal" class="view"><div class="grid"><section class="card"><h2>Dream Journal</h2>
-  <div class="controls"><textarea id="journalText" placeholder="Write a dream or note…"></textarea><div class="row">
-    <button id="journalSave" class="primary">Save Entry</button><button id="journalClear" class="ghost">Clear</button></div></div></section>
-  <aside class="card"><h3>Entries</h3><div id="journalList"></div></aside></div></main>
-
-<main id="view-compare" class="view"><div class="card"><h2>Compare Symbols</h2>
-  <div class="controls"><input id="cmpLeft" placeholder="Left (e.g., lion)"/><input id="cmpRight" placeholder="Right (e.g., snake)"/><button id="cmpGo" class="primary">Compare</button></div></div>
-  <div class="grid"><section class="card"><h3 id="cmpLeftTitle"></h3><pre id="cmpLeftOut" class="result"></pre></section>
-  <section class="card"><h3 id="cmpRightTitle"></h3><pre id="cmpRightOut" class="result"></pre></section></div></main>
-
-<footer><span class="muted">v6 — Ecosystem Expansion • Analyst • Trends Dashboard • Mobile concept • Extension</span>
+<footer>
   <a class="pill" href="privacy.html">Privacy</a>
+  <a class="pill" href="terms.html">Terms</a>
   <a class="pill" href="about.html">About</a>
-  <a class="pill" href="mobile.html">Mobile</a>
-  <button id="btnSitemap" class="pill" style="margin-left:8px">Download sitemap.xml</button>
-  <button id="btnDaily" class="pill">🔔 Notify me daily</button>
+  <a class="pill" href="contact.html">Contact</a>
 </footer>
 </div>
 

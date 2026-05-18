@@ -1,10 +1,8 @@
 (()=>{const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));const nowISO=()=>new Date().toISOString();
 const storage={get(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))},push(k,item){const a=storage.get(k,[]);a.unshift(item);storage.set(k,a.slice(0,400));}};
-const body=document.body,modeTabs=$("#modeTabs"),userInput=$("#userInput"),interpretBtn=$("#interpretBtn"),clearBtn=$("#clearBtn"),titleOut=$("#titleOut"),metaLine=$("#metaLine"),resultEl=$("#result"),seeAlsoEl=$("#seeAlso"),badgesEl=$("#sourceBadges"),sourcesList=$("#sourcesList"),copyPermalink=$("#copyPermalink"),expandBtn=$("#expandMeaning"),btnSitemap=$("#btnSitemap"),btnDaily=$("#btnDaily"),historyEl=$("#history"),clearHistory=$("#clearHistory"),cloudEl=$("#cloud");
+const body=document.body,modeTabs=$("#modeTabs"),userInput=$("#userInput"),interpretBtn=$("#interpretBtn"),clearBtn=$("#clearBtn"),titleOut=$("#titleOut"),metaLine=$("#metaLine"),resultEl=$("#result"),seeAlsoEl=$("#seeAlso"),badgesEl=$("#sourceBadges"),sourcesList=$("#sourcesList"),copyPermalink=$("#copyPermalink"),expandBtn=$("#expandMeaning"),historyEl=$("#history"),clearHistory=$("#clearHistory"),cloudEl=$("#cloud");
 const depthBtn=$("#depthBtn"),enrichBtn=$("#enrichBtn"),depthState=$("#depthState"),enrichState=$("#enrichState"),logo=$("#logo");
-const cmpLeft=$("#cmpLeft"),cmpRight=$("#cmpRight"),cmpGo=$("#cmpGo"),cmpLeftTitle=$("#cmpLeftTitle"),cmpRightTitle=$("#cmpRightTitle"),cmpLeftOut=$("#cmpLeftOut"),cmpRightOut=$("#cmpRightOut");
-const analystRun=$("#analystRun"),analystOut=$("#analystOut"),trendBars=$("#trendBars");
-const journalText=$("#journalText"),journalSave=$("#journalSave"),journalClear=$("#journalClear"),journalList=$("#journalList");
+const trendBars=$("#trendBars");
 const shareImageBtn=$("#shareImage");
 let state={mode:storage.get("psysymbol_mode","dream"),depth:storage.get("psysymbol_depth",false),enrich:storage.get("psysymbol_enrich",false),cache:storage.get("psysymbol_cache",{}),lastOutput:null,lastQuery:"",corpus:null};
 
@@ -28,9 +26,6 @@ const EXPAND_BLOCK_ID="expandBlock";function removeExpand(){const el=document.ge
 function expansionThreads(mode,q){const p=[];if(mode==="symbol"){p.push("Jungian depth: how does this image compensate your conscious stance?");p.push("Cross-culture: compare at least two traditions; where does the meaning shift?");p.push("Practice: track 3 appearances; note feeling-tone each time.")}else if(mode==="dream"){p.push("Projection check: which dream figures carry your disowned qualities?");p.push("Somatic: name the first body sensation on waking.");p.push("Ritual: one tiny action that honors what the dream asks.")}else{p.push("Number ladder: reduce to a digit; compare with the unreduced pattern.");p.push("Notebook: log where it appears for 3 days; note the theme present.")}return "▼ Expanded threads\n"+p.map(x=>"• "+x).join("\n")}
 expandBtn&& (expandBtn.onclick=()=>{if(!state.lastQuery)return;const ex=document.getElementById(EXPAND_BLOCK_ID);if(ex){removeExpand();return}const pre=document.createElement("pre");pre.id=EXPAND_BLOCK_ID;pre.className="result";pre.textContent=expansionThreads(state.mode,state.lastQuery);resultEl.parentElement.appendChild(pre);expandBtn.textContent="Collapse"});
 
-async function requestDaily(){if(!("Notification"in window))return alert("Notifications not supported.");const p=await Notification.requestPermission();if(p!=="granted")return;localStorage.setItem("psysymbol_daily_notif","on");alert("Daily notifications enabled while the site is open.")}
-btnDaily&& (btnDaily.onclick=requestDaily);function maybeFireDaily(){try{if(localStorage.getItem("psysymbol_daily_notif")!=="on")return;const last=+localStorage.getItem("psysymbol_daily_notif_last")||0;const now=Date.now(),DAY=86400000;if(now-last>DAY){localStorage.setItem("psysymbol_daily_notif_last",String(now));new Notification("Symbol of the Day",{body:"Tap to receive today’s sign."})}}catch{}} setInterval(maybeFireDaily,60000);
-
 function displayBadges(tags){badgesEl.innerHTML="";for(const t of tags){const b=document.createElement("span");b.className="badge";b.dataset.type=t;b.textContent=t;badgesEl.appendChild(b)}sourcesList.innerHTML=tags.map(t=>`— <b>${t}</b>: ${SOURCE_SNIPPETS[t]||""}`).join("<br>")}
 
 function personalContext(){const entries = storage.get("psysymbol_journal", []).slice(0,50).map(e=>e.text.toLowerCase());
@@ -52,19 +47,12 @@ async function interpret(){const q=(userInput.value||"").trim();if(!q)return;if(
   copyPermalink&&(copyPermalink.onclick=async()=>{try{await navigator.clipboard.writeText(url);copyPermalink.textContent="Copied ✓";setTimeout(()=>copyPermalink.textContent="Copy Permalink",1200)}catch{}});
   location.hash=`#/interpret?m=${encodeURIComponent(state.mode)}&q=${encodeURIComponent(q)}`}
 
-function doCompare(L,R){if(!L||!R)return;cmpLeftTitle.textContent="SYMBOL: "+L;cmpRightTitle.textContent="SYMBOL: "+R;cmpLeftOut.textContent=coreInterpreter.interpret(L,"symbol",true, personalContext());cmpRightOut.textContent=coreInterpreter.interpret(R,"symbol",true, personalContext());location.hash=`#/compare?l=${encodeURIComponent(L)}&r=${encodeURIComponent(R)}`}
-if(cmpGo){cmpGo.onclick=()=>doCompare((cmpLeft.value||"").trim(),(cmpRight.value||"").trim());[cmpLeft,cmpRight].forEach(inp=>inp&&inp.addEventListener("keydown",(e)=>{if(e.key==="Enter")doCompare((cmpLeft.value||"").trim(),(cmpRight.value||"").trim())}))}
-
 function weeklyTrending(){const items=storage.get("psysymbol_history",[]);const cutoff=Date.now()-604800000;const c={};for(const it of items){if(new Date(it.ts).getTime()>=cutoff){const k=it.query.toLowerCase();c[k]=(c[k]||0)+1}}return Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,20)}
 function renderTrending(){const list=$("#trendingList");if(!list)return;const top=weeklyTrending();list.innerHTML="";if(!top.length){list.innerHTML="<li class='muted'>No local searches this week yet.</li>";return}top.forEach(([term,n])=>{const li=document.createElement("li");const a=document.createElement("a");a.href="#/";a.textContent=`${term} (${n})`;a.onclick=(e)=>{e.preventDefault();routeTo("#/");userInput.value=term;interpret()};li.appendChild(a);list.appendChild(li)})}
 function renderDashboard(){ if(!trendBars) return; trendBars.innerHTML=""; const top=weeklyTrending().slice(0,10); const max= top.length? top[0][1] : 1; top.forEach(([term,n])=>{ const bar=document.createElement("div"); bar.className="bar"; bar.style.width = Math.max(10, Math.round((n/max)*100))+'%'; const span=document.createElement("span"); span.textContent = `${term} — ${n}`; bar.appendChild(span); trendBars.appendChild(bar); }); if(!top.length){ trendBars.innerHTML = "<div class='muted'>No data yet. Search a few symbols to populate.</div>"; } }
 
 function pseudoRandomPick(seed,arr){let h=0;for(let i=0;i<seed.length;i++)h=(h*31+seed.charCodeAt(i))>>>0;return arr[h%arr.length]}
 function renderToday(){const out=$("#todayOut");if(!out||!state.corpus)return;const dateStr=new Date().toISOString().slice(0,10);const symbols=state.corpus.symbols?.map(e=>e.term)||["lion","snake","mirror"];const numbers=state.corpus.numbers?.map(e=>e.term)||["111","222","333"];const type=(new Date().getDate()%2===0)?"symbol":"number";const pick=type==="symbol"?pseudoRandomPick(dateStr,symbols):pseudoRandomPick(dateStr,numbers);const meaning=coreInterpreter.interpret(pick,type,true, personalContext());out.innerHTML=`<b>${type.toUpperCase()} of the Day — ${pick}</b>\n\n${meaning}`}
-
-function renderJournal(){if(!journalList)return;const items=storage.get("psysymbol_journal",[]);journalList.innerHTML="";items.forEach(it=>{const card=document.createElement("div");card.className="history-item";card.textContent=`${it.date}: ${it.text.slice(0,80)}`;journalList.appendChild(card)})}
-journalSave&&(journalSave.onclick=()=>{const text=(journalText.value||"").trim();if(!text)return;const items=storage.get("psysymbol_journal",[]);items.unshift({date:new Date().toISOString().slice(0,10),text});storage.set("psysymbol_journal",items.slice(0,200));journalText.value="";renderJournal()});
-journalClear&&(journalClear.onclick=()=>{storage.set("psysymbol_journal",[]);renderJournal()});
 
 function renderHistory(){const items=storage.get("psysymbol_history",[]);historyEl.innerHTML="";items.slice(0,50).forEach(it=>{const d=document.createElement("div");d.className="history-item";d.textContent=`${it.mode.toUpperCase()}: ${it.query}`;d.onclick=()=>{setMode(it.mode);userInput.value=it.query;interpret()};historyEl.appendChild(d)})}
 clearHistory&&(clearHistory.onclick=()=>{storage.set("psysymbol_history",[]);renderHistory()});
@@ -73,13 +61,10 @@ function bumpCloud(term){const cloud=storage.get("psysymbol_cloud",{});const k=(
 function renderCloud(){const cloud=storage.get("psysymbol_cloud",{});const items=Object.entries(cloud).sort((a,b)=>b[1]-a[1]).slice(0,30);cloudEl.innerHTML="";items.forEach(([term,n])=>{const b=document.createElement("button");b.className="tag";b.textContent=`${term} (${n})`;b.onclick=()=>{userInput.value=term;interpret()};cloudEl.appendChild(b)})}
 
 // Routing
-function routeTo(hash){$$("#view-home, #view-today, #view-trending, #view-dashboard, #view-analyst, #view-journal, #view-compare").forEach(v=>v.classList.remove("active"));
+function routeTo(hash){$$("#view-home, #view-today, #view-trending, #view-dashboard").forEach(v=>v.classList.remove("active"));
 if(hash.startsWith("#/today")){$("#view-today").classList.add("active");renderToday()}
 else if(hash.startsWith("#/trending")){$("#view-trending").classList.add("active");renderTrending()}
 else if(hash.startsWith("#/dashboard")){$("#view-dashboard").classList.add("active");renderDashboard()}
-else if(hash.startsWith("#/analyst")){$("#view-analyst").classList.add("active");}
-else if(hash.startsWith("#/journal")){$("#view-journal").classList.add("active");renderJournal()}
-else if(hash.startsWith("#/compare")){$("#view-compare").classList.add("active");const p=new URLSearchParams(hash.split("?")[1]||"");const L=(p.get("l")||"").trim();const R=(p.get("r")||"").trim();if(L)cmpLeft.value=L;if(R)cmpRight.value=R;if(L&&R)doCompare(L,R)}
 else{$("#view-home").classList.add("active");renderHistory();renderCloud()}
 if(hash.startsWith("#/interpret")){const p=new URLSearchParams(hash.split("?")[1]||"");const m=p.get("m");const q=p.get("q")||"";if(m)setMode(m);if(q){userInput.value=q;interpret()}}}
 window.addEventListener("hashchange",()=>routeTo(location.hash||"#/"));
@@ -129,7 +114,4 @@ document.addEventListener("keydown",(e)=>{if(e.key==="Enter"&&document.activeEle
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}
 
 // Boot
-function buildSitemap(){const base=location.origin+location.pathname.replace(/\/index\.html?$/,"");const urls=[`${base}#/`,`${base}#/today`,`${base}#/trending`,`${base}#/dashboard`,`${base}#/analyst`,`${base}#/journal`,`${base}#/compare`,`${base}about.html`,`${base}privacy.html`,`${base}mobile.html`];const xml=urls.map(u=>`<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>`).join("");return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`}
-btnSitemap&&(btnSitemap.onclick=()=>{const blob=new Blob([buildSitemap()],{type:"application/xml"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="sitemap.xml";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
-
 async function boot(){await loadCorpus();setMode(state.mode);syncToggles();routeTo(location.hash||"#/");} boot();})();
