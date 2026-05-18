@@ -9,6 +9,8 @@ const RELATED = ["intuition","transformation","protection","rebirth","balance","
 
 // -------------------- Utils --------------------
 function titleCase(s){return s.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase()).replace(/\s+/g," ").trim()}
+const HTML_ESC = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>HTML_ESC[c])}
 
 function prng(seedStr){
   let h = 2166136261>>>0;
@@ -69,30 +71,22 @@ function render(topic, mode){
   el.innerHTML = `
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-        <h2 style="margin:0">${d.h2}</h2>
-        <div class="muted" style="font-size:12px">By PsySymbol Team · Updated ${updated}</div>
+        <h2 style="margin:0">${esc(d.h2)}</h2>
+        <div class="muted" style="font-size:12px">By PsySymbol Team · Updated ${esc(updated)}</div>
       </div>
-      <p class="muted">${d.excerpt}</p>
-
-      <ins class="adsbygoogle ads-slot"
-        data-ad-client="ca-pub-3857946786580406" data-ad-slot="1234567890"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <p class="muted">${esc(d.excerpt)}</p>
 
       <h3>Core Themes</h3>
-      <ul>${d.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+      <ul>${d.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
       <h3>When It Appears</h3>
-      <ul>${d.scenarios.map(s=>`<li>${s}</li>`).join("")}</ul>
+      <ul>${d.scenarios.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
       <h3>Journal Prompts</h3>
-      <ul>${d.prompts.map(p=>`<li>${p}</li>`).join("")}</ul>
+      <ul>${d.prompts.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
       <h3>Cautions</h3>
-      <ul>${d.cautions.map(c=>`<li>${c}</li>`).join("")}</ul>
-
-      <ins class="adsbygoogle ads-slot"
-        data-ad-client="ca-pub-3857946786580406" data-ad-slot="9876543210"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <ul>${d.cautions.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
 
       <h3>Related</h3>
-      <div class="badges">${d.related.map(r=>`<span class="badge">${r}</span>`).join("")}</div>
+      <div class="badges">${d.related.map(r=>`<span class="badge">${esc(r)}</span>`).join("")}</div>
       <div class="disclaimer">Generated programmatically for reflection; not medical or legal advice.</div>
     </div>
   `;
@@ -110,7 +104,7 @@ function setTab(tab){
 function renderSuggestions(){
   const box = document.getElementById("suggestions");
   const items = SAMPLES[activeTab] || [];
-  box.innerHTML = items.map(s=>`<button class="badge" data-x="${s}" type="button">${s}</button>`).join("");
+  box.innerHTML = items.map(s=>`<button class="badge" data-x="${esc(s)}" type="button">${esc(s)}</button>`).join("");
   box.querySelectorAll(".badge").forEach(b=>b.addEventListener("click",()=> interpret(b.dataset.x)));
 }
 
