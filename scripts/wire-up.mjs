@@ -178,10 +178,13 @@ await import("./enrich-schema.mjs");
 // ---------- 5. Related-interpretation links (internal linking density) ----------
 await import("./enrich-related-links.mjs");
 
-// ---------- 6. Plausible analytics injection ----------
+// ---------- 6. Navigation: brand-as-link + breadcrumb on hubs/pages ----------
+await import("./add-nav.mjs");
+
+// ---------- 7. Plausible analytics injection ----------
 await import("./add-plausible.mjs");
 
-// ---------- 7. Bump SW cache ----------
+// ---------- 8. Bump SW cache ----------
 const swPath = resolve(DIST, "sw.js");
 let sw = readFileSync(swPath, "utf8");
 const m = sw.match(/psysymbol-v(\d+)/);

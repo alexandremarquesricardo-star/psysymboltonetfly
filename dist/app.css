@@ -101,13 +101,45 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius
   border-bottom:1px solid var(--border);
   margin-bottom:var(--space-6);
 }
-.brand{display:flex;gap:var(--space-3);align-items:center}
+.brand{
+  display:flex;
+  gap:var(--space-3);
+  align-items:center;
+  color:inherit;
+  text-decoration:none;
+  transition:color var(--t-fast);
+}
+a.brand:hover{color:var(--accent)}
+a.brand:hover .logo{color:var(--accent-hover)}
+a.brand:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:var(--radius-sm)}
 .logo{
   width:36px;height:36px;
   color:var(--accent);
   flex-shrink:0;
 }
 .brand div div:first-child{font-family:var(--font-serif);letter-spacing:.02em}
+
+/* Breadcrumb — Home > Dreams > Snake */
+.breadcrumb{
+  max-width:var(--max-prose);
+  margin:0 auto var(--space-4);
+  padding:var(--space-2) 0;
+  font-size:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-2);
+  align-items:center;
+  color:var(--text-muted);
+}
+.breadcrumb a{
+  color:var(--text-muted);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:color var(--t-fast),border-color var(--t-fast);
+}
+.breadcrumb a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.breadcrumb__sep{color:var(--text-faint);font-size:14px}
+.breadcrumb [aria-current="page"]{color:var(--text);font-weight:500}
 
 /* Card — the primary content container */
 .card{
@@ -313,6 +345,79 @@ input[type=text]:focus,input[type=email]:focus,textarea:focus{border-color:var(-
   line-height:1.5;
 }
 .reading-shelf__disclosure a{color:var(--text-muted);text-decoration:underline}
+
+/* 404 page */
+.not-found{text-align:left}
+.not-found__code{
+  font-family:var(--font-serif);
+  font-size:clamp(64px,12vw,128px);
+  font-weight:700;
+  margin:0 0 var(--space-3);
+  color:var(--accent);
+  line-height:1;
+  letter-spacing:-0.02em;
+}
+.not-found h1{
+  font-family:var(--font-serif);
+  font-size:clamp(24px,3.2vw,36px);
+  margin:0 0 var(--space-3);
+  color:var(--text);
+}
+.not-found__suggestions{margin-top:var(--space-6)}
+.not-found__suggestions h2,
+.not-found__popular h2{
+  font-family:var(--font-serif);
+  font-size:clamp(18px,2vw,22px);
+  margin:0 0 var(--space-3);
+  color:var(--accent);
+}
+.not-found__grid{
+  display:grid;
+  gap:var(--space-3);
+  grid-template-columns:1fr;
+}
+@media(min-width:640px){.not-found__grid{grid-template-columns:repeat(2,1fr)}}
+.not-found__card{
+  display:block;
+  padding:var(--space-4);
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  text-decoration:none;
+  color:var(--text);
+  transition:border-color var(--t-fast),transform var(--t-fast);
+}
+.not-found__card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.not-found__card h3{
+  font-family:var(--font-serif);
+  margin:0 0 var(--space-2);
+  font-size:18px;
+  color:var(--text);
+}
+.not-found__card p{margin:0;font-size:14px;color:var(--text-muted);line-height:1.5}
+.not-found__popular{margin-top:var(--space-6)}
+.not-found__popular ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-2);
+}
+.not-found__popular li{margin:0}
+.not-found__popular a{
+  display:inline-block;
+  padding:6px 14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-full);
+  color:var(--text);
+  text-decoration:none;
+  font-size:14px;
+  transition:border-color var(--t-fast),color var(--t-fast);
+}
+.not-found__popular a:hover{border-color:var(--accent);color:var(--accent)}
+.not-found__contact{margin-top:var(--space-6);font-size:14px}
 
 /* Hub-page intro + FAQ — long-form prose surfaces on /dream/, /symbol/, /number/ */
 .hub-intro{
