@@ -15,3 +15,24 @@
 
 /robots.txt
   Cache-Control: public, max-age=3600
+
+# CSS / JS — moderate cache. SW bumps cache version on each deploy.
+/*.css
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/*.js
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Static images — long cache. Pin PNGs change rarely.
+/*.svg
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.png
+  Cache-Control: public, max-age=2592000, immutable
+
+/pins/*
+  Cache-Control: public, max-age=2592000, immutable
+
+# Fonts (if any added later)
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable

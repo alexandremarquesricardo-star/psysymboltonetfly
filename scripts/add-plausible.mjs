@@ -15,6 +15,7 @@ const MARKER_END = "<!-- /analytics:plausible -->";
 
 const BLOCK = [
   MARKER_START,
+  `<link rel="preconnect" href="https://plausible.io" crossorigin>`,
   `<script async src="https://plausible.io/js/pa-DnYMJlIWE2k5g7HR2EuqP.js"></script>`,
   `<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>`,
   MARKER_END,
