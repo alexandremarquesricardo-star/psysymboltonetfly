@@ -38,7 +38,7 @@
 
     <main style="margin-top:16px" class="card">
       <h1>Privacy Policy</h1>
-      <p class="muted">Last updated: 18 May 2026</p>
+      <p class="muted">Last updated: 20 May 2026</p>
 
       <section style="margin-top:16px">
         <h2>1. Who we are</h2>
@@ -49,6 +49,7 @@
         <h2>2. What we collect</h2>
         <ul>
           <li><strong>Server logs (Netlify hosting):</strong> IP address, user agent, requested URL, timestamp, and HTTP referrer. Retained by Netlify per their policy.</li>
+          <li><strong>Privacy-friendly analytics (Plausible):</strong> aggregated pageviews, referrer domains, country (not city), browser, and OS. No cookies are set, no personal data is collected, and no individual is identifiable. See section 5a.</li>
           <li><strong>Local storage on your device:</strong> consent choice, interface preferences, and recent searches/notes. This data never leaves your browser unless you choose to share it.</li>
           <li><strong>Cookies and identifiers from third parties</strong> — only if you accept the cookie banner. See section 5.</li>
         </ul>
@@ -76,9 +77,22 @@
       </section>
 
       <section style="margin-top:16px">
+        <h2>5a. Plausible Analytics</h2>
+        <p>We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a> to understand which of our pages are useful to readers. Plausible is a privacy-friendly alternative to Google Analytics, hosted in the EU (Germany), and is GDPR / CCPA / PECR compliant by design:</p>
+        <ul>
+          <li>No cookies are set.</li>
+          <li>No personal data is collected. We do not see your IP address — Plausible hashes it server-side immediately and discards the original.</li>
+          <li>You are not tracked across sites, sessions, or visits.</li>
+          <li>We see only aggregated metrics: pageviews per URL, referring domain, country-level location, device type.</li>
+        </ul>
+        <p>Because Plausible does not store personal data, no consent is required under GDPR for this analytics. Plausible's own data practices are described at <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">plausible.io/data-policy</a>.</p>
+      </section>
+
+      <section style="margin-top:16px">
         <h2>6. Recipients and processors</h2>
         <ul>
           <li><strong>Netlify, Inc.</strong> — site hosting and CDN.</li>
+          <li><strong>Plausible Insights OÜ</strong> — privacy-friendly analytics (EU-hosted, no cookies). See section 5a.</li>
           <li><strong>Google LLC / Google Ireland Ltd</strong> — advertising (AdSense), only after consent.</li>
           <li><strong>Anthropic, PBC</strong> — Claude Haiku 4.5 API for the "Deep Read" feature, only when you click the Deep Read button. Your input is sent to Anthropic for the duration of the request and is not retained by us. Anthropic's data handling is described in <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">their privacy policy</a>.</li>
           <li><strong>name.com</strong> — domain registration and authoritative DNS.</li>
