@@ -1,5 +1,6 @@
-// Pinterest pin generator. One 1000x1500 PNG per interpretation page.
-// Editorial-twilight palette matching dist/app.css.
+// Pinterest pin generator v2.
+// One 1000x1500 PNG per interpretation page, editorial-twilight palette.
+// Teasers are pulled from each page's <meta name="description"> (first sentence).
 //
 // Output: dist/pins/{pillar}/{slug}.png + dist/pins/index.json (catalogue).
 // Idempotent: skips files that already exist on disk unless --force is passed.
@@ -20,7 +21,6 @@ const FORCE = process.argv.includes("--force");
 
 const SITE = "psysymbol.com";
 
-// Visual constants — editorial-twilight palette.
 const W = 1000;
 const H = 1500;
 const BG = "#10131c";
@@ -29,9 +29,9 @@ const ACCENT = "#d4a574";
 const INDIGO = "#b3a0e5";
 const TEXT = "#ece6d8";
 const TEXT_MUTED = "#9a96a8";
+const TEXT_FAINT = "#6a6678";
 const BORDER = "#2a2f42";
 
-// Title overrides — same vocabulary as wire-up.mjs / enrich-related-links.mjs.
 const DISPLAY_OVERRIDES = {
   "being-chased": "Being Chased",
   "teeth-falling-out": "Teeth Falling Out",
@@ -74,12 +74,41 @@ function displayName(slug) {
     .join(" ");
 }
 
-function teaserFor(pillar, slug) {
-  const name = displayName(slug);
-  if (pillar === "dream") return `What it means when you dream of ${name.toLowerCase()}`;
-  if (pillar === "symbol") return `The meaning of ${name.toLowerCase()} as a symbol`;
-  if (pillar === "number") return `The meaning of seeing ${name}`;
-  return name;
+// Pull the meta description from the corresponding HTML page, return the
+// first sentence (or a smart-truncated chunk) for use as a Pinterest teaser.
+function teaserFromPage(pillar, slug, headline) {
+  const pagePath = resolve(DIST, pillar, `${slug}.html`);
+  if (!existsSync(pagePath)) return fallbackTeaser(pillar, headline);
+
+  const html = readFileSync(pagePath, "utf8");
+  const m = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
+  if (!m) return fallbackTeaser(pillar, headline);
+
+  const desc = m[1]
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .trim();
+
+  // Take the first sentence — most descriptions lead with a strong line.
+  const firstSentence = desc.split(/(?<=[.!?])\s+/)[0];
+  if (firstSentence.length <= 110) return firstSentence;
+
+  // Otherwise truncate at word boundary near 100 chars, stripping any
+  // trailing punctuation before the ellipsis so we never produce ",…".
+  const cut = desc.slice(0, 100);
+  const lastSpace = cut.lastIndexOf(" ");
+  const slice = desc.slice(0, lastSpace > 50 ? lastSpace : 100);
+  return slice.replace(/[,;:—-]+$/, "").trimEnd() + "…";
+}
+
+function fallbackTeaser(pillar, headline) {
+  if (pillar === "dream") return `The dream meaning of ${headline.toLowerCase()}`;
+  if (pillar === "symbol") return `The symbolism of ${headline.toLowerCase()}`;
+  if (pillar === "number") return `The meaning of seeing ${headline}`;
+  return headline;
 }
 
 function escapeXml(s) {
@@ -88,7 +117,6 @@ function escapeXml(s) {
   }[c]));
 }
 
-// Manual word-wrap. Returns array of lines fitting ~maxCharsPerLine.
 function wrap(text, maxCharsPerLine) {
   const words = text.split(/\s+/);
   const lines = [];
@@ -108,64 +136,72 @@ function wrap(text, maxCharsPerLine) {
 
 function buildSvg(pillar, slug) {
   const headline = displayName(slug);
-  const teaser = teaserFor(pillar, slug);
+  const teaser = teaserFromPage(pillar, slug, headline);
 
-  // Headline sizing: 1-2 short words → big (140px), 3+ words or long → medium (105px).
-  const wc = headline.split(" ").length;
+  // Headline sizing — conservative because resvg fallback font runs tall.
   const totalLen = headline.length;
   let headlineSize;
-  if (wc === 1 && totalLen <= 9) headlineSize = 150;
-  else if (totalLen <= 14) headlineSize = 130;
-  else if (totalLen <= 22) headlineSize = 105;
-  else headlineSize = 88;
+  if (totalLen <= 6) headlineSize = 130;
+  else if (totalLen <= 10) headlineSize = 115;
+  else if (totalLen <= 16) headlineSize = 95;
+  else if (totalLen <= 24) headlineSize = 80;
+  else headlineSize = 68;
 
-  const headlineLines = wrap(headline, headlineSize >= 130 ? 11 : headlineSize >= 105 ? 15 : 18);
-  const teaserLines = wrap(teaser, 32);
+  const headlineLines = wrap(headline, headlineSize >= 110 ? 9 : headlineSize >= 90 ? 14 : 20);
+  const teaserLines = wrap(teaser, 30);
 
-  // Layout calc: pillar tag → headline → divider → teaser → brand mark.
-  const headlineStartY = 460;
-  const lineHeight = headlineSize * 1.02;
-  const headlineBlockH = headlineLines.length * lineHeight;
-  const dividerY = headlineStartY + headlineBlockH + 30;
+  // Compositional layout — vertically balanced, no overlap.
+  const pillarY = 195;
+  const eyebrowY = 290;
+  const headlineStartY = 480;
+  const headlineLineH = headlineSize * 1.05;
+  const headlineBlockH = headlineLines.length * headlineLineH;
+  const dividerY = headlineStartY + headlineBlockH + 40;
   const teaserStartY = dividerY + 70;
-  const teaserLineHeight = 40;
+  const teaserLineH = 44;
+  const teaserBlockH = teaserLines.length * teaserLineH;
+  const ornamentY = Math.min(teaserStartY + teaserBlockH + 70, H - 320);
+  const brandY = H - 220;
 
   const headlineTspans = headlineLines
-    .map((line, i) => `<tspan x="500" dy="${i === 0 ? 0 : lineHeight}">${escapeXml(line)}</tspan>`)
+    .map((line, i) => `<tspan x="500" dy="${i === 0 ? 0 : headlineLineH}">${escapeXml(line)}</tspan>`)
     .join("");
 
   const teaserTspans = teaserLines
-    .map((line, i) => `<tspan x="500" dy="${i === 0 ? 0 : teaserLineHeight}">${escapeXml(line)}</tspan>`)
+    .map((line, i) => `<tspan x="500" dy="${i === 0 ? 0 : teaserLineH}">${escapeXml(line)}</tspan>`)
     .join("");
 
-  // Decorative star (the PsySymbol mark) — five-pointed at bottom.
+  // Constellation ornament — 5 dots, alternating sizes.
+  const ornamentDots = [
+    { x: 380, r: 3 },
+    { x: 430, r: 5 },
+    { x: 500, r: 7 },
+    { x: 570, r: 5 },
+    { x: 620, r: 3 },
+  ].map(d => `<circle cx="${d.x}" cy="${ornamentY}" r="${d.r}" fill="${ACCENT}" opacity="0.6" />`).join("");
+
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
-    <radialGradient id="bgGrad" cx="50%" cy="35%" r="70%">
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="75%">
       <stop offset="0%" stop-color="${BG_GRAD_INNER}" />
       <stop offset="100%" stop-color="${BG}" />
     </radialGradient>
   </defs>
 
-  <!-- Background -->
   <rect width="${W}" height="${H}" fill="url(#bgGrad)" />
+  <rect x="40" y="40" width="${W - 80}" height="${H - 80}" fill="none" stroke="${BORDER}" stroke-width="2" rx="20" />
 
-  <!-- Border accent -->
-  <rect x="40" y="40" width="${W - 80}" height="${H - 80}" fill="none"
-        stroke="${BORDER}" stroke-width="2" rx="20" />
-
-  <!-- Pillar tag -->
-  <rect x="${500 - 110}" y="200" width="220" height="56" rx="28"
-        fill="none" stroke="${ACCENT}" stroke-width="2" />
-  <text x="500" y="237" text-anchor="middle"
+  <!-- Pillar pill -->
+  <rect x="${500 - 110}" y="${pillarY - 35}" width="220" height="56" rx="28" fill="none" stroke="${ACCENT}" stroke-width="2" />
+  <text x="500" y="${pillarY}" text-anchor="middle"
         font-family="'Iowan Old Style', 'Georgia', serif"
         font-size="22" font-weight="600" letter-spacing="6"
         fill="${ACCENT}">${PILLAR_LABEL[pillar]}</text>
 
-  <!-- Topic word above headline -->
-  <text x="500" y="330" text-anchor="middle"
+  <!-- "on the meaning of" eyebrow -->
+  <text x="500" y="${eyebrowY}" text-anchor="middle"
         font-family="'Iowan Old Style', 'Georgia', serif"
-        font-size="38" font-style="italic"
+        font-size="36" font-style="italic"
         fill="${TEXT_MUTED}">on the meaning of</text>
 
   <!-- Headline -->
@@ -175,28 +211,30 @@ function buildSvg(pillar, slug) {
         fill="${TEXT}">${headlineTspans}</text>
 
   <!-- Gold divider -->
-  <line x1="${500 - 80}" y1="${dividerY}" x2="${500 + 80}" y2="${dividerY}"
-        stroke="${ACCENT}" stroke-width="2" />
+  <line x1="${500 - 80}" y1="${dividerY}" x2="${500 + 80}" y2="${dividerY}" stroke="${ACCENT}" stroke-width="2" />
 
-  <!-- Teaser -->
+  <!-- Teaser (page meta description, first sentence) -->
   <text x="500" y="${teaserStartY}" text-anchor="middle"
-        font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
-        font-size="32" font-style="italic"
+        font-family="'Iowan Old Style', 'Georgia', serif"
+        font-size="34" font-style="italic"
         fill="${INDIGO}">${teaserTspans}</text>
 
-  <!-- Brand mark: Ψ glyph in gold + wordmark -->
-  <text x="500" y="${H - 165}" text-anchor="middle"
+  <!-- Constellation ornament -->
+  ${ornamentDots}
+
+  <!-- Brand mark: Ψ glyph + wordmark + URL -->
+  <text x="500" y="${brandY}" text-anchor="middle"
         font-family="'Iowan Old Style', 'Georgia', serif"
         font-size="96" font-weight="700"
         fill="${ACCENT}">Ψ</text>
-  <text x="500" y="${H - 95}" text-anchor="middle"
+  <text x="500" y="${brandY + 70}" text-anchor="middle"
         font-family="'Iowan Old Style', 'Georgia', serif"
         font-size="36" font-weight="600" letter-spacing="3"
         fill="${TEXT}">PsySymbol</text>
-  <text x="500" y="${H - 55}" text-anchor="middle"
+  <text x="500" y="${brandY + 110}" text-anchor="middle"
         font-family="system-ui, -apple-system, sans-serif"
         font-size="22" letter-spacing="4"
-        fill="${TEXT_MUTED}">${SITE}</text>
+        fill="${TEXT_FAINT}">${SITE}</text>
 </svg>`;
 }
 
@@ -222,15 +260,16 @@ for (const pillar of PILLARS) {
 
   for (const slug of readSlugs(pillar)) {
     const outPath = resolve(pillarDir, `${slug}.png`);
+    const description = displayName(slug);
 
     if (existsSync(outPath) && !FORCE) {
       skipped++;
       catalogue.push({
         pillar, slug,
-        title: displayName(slug),
+        title: description,
         page_url: `https://${SITE}/${pillar}/${slug}.html`,
         pin_url: `https://${SITE}/pins/${pillar}/${slug}.png`,
-        alt_text: `${displayName(slug)} ${pillar} meaning — PsySymbol`,
+        alt_text: `${description} ${pillar} meaning — PsySymbol`,
       });
       continue;
     }
@@ -246,15 +285,14 @@ for (const pillar of PILLARS) {
 
     catalogue.push({
       pillar, slug,
-      title: displayName(slug),
+      title: description,
       page_url: `https://${SITE}/${pillar}/${slug}.html`,
       pin_url: `https://${SITE}/pins/${pillar}/${slug}.png`,
-      alt_text: `${displayName(slug)} ${pillar} meaning — PsySymbol`,
+      alt_text: `${description} ${pillar} meaning — PsySymbol`,
     });
   }
 }
 
-// Write catalogue — used by future upload automation or manual scheduling.
 catalogue.sort((a, b) => {
   const pa = PILLARS.indexOf(a.pillar);
   const pb = PILLARS.indexOf(b.pillar);
@@ -264,4 +302,4 @@ catalogue.sort((a, b) => {
 writeFileSync(resolve(PINS_DIR, "index.json"), JSON.stringify(catalogue, null, 2));
 
 const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
-console.log(`Pins: ${generated} generated, ${skipped} skipped (already on disk). ${elapsed}s. Catalogue: ${catalogue.length} entries.`);
+console.log(`Pins v2: ${generated} generated, ${skipped} skipped. ${elapsed}s. Catalogue: ${catalogue.length} entries.`);
