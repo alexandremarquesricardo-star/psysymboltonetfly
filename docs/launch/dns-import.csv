@@ -1,0 +1,3 @@
+Type,Host,Answer,TTL,Priority
+A,,75.2.60.5,300,
+CNAME,www,psysymbol1.netlify.app,300,
