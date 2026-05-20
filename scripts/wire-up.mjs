@@ -196,7 +196,13 @@ ${items}
   console.log(`  ✓ ${pillar}/index.html`);
 }
 
-// ---------- 4. Bump SW cache ----------
+// ---------- 4. Schema enrichment (Article + BreadcrumbList JSON-LD) ----------
+await import("./enrich-schema.mjs");
+
+// ---------- 5. Related-interpretation links (internal linking density) ----------
+await import("./enrich-related-links.mjs");
+
+// ---------- 6. Bump SW cache ----------
 const swPath = resolve(DIST, "sw.js");
 let sw = readFileSync(swPath, "utf8");
 const m = sw.match(/psysymbol-v(\d+)/);

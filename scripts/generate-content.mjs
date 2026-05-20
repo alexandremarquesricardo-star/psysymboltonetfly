@@ -13,7 +13,7 @@ const DIST = resolve(ROOT, "dist");
 
 const MODEL = "claude-opus-4-7";
 const MAX_USD = parseFloat(process.argv[2] ?? "32.00"); // ~£25 at current rate
-const MAX_OUTPUT_TOKENS = 3500;
+const MAX_OUTPUT_TOKENS = 8000;
 const CONCURRENCY = 5;
 
 // Opus 4.7 pricing per 1M tokens (USD)
@@ -119,6 +119,14 @@ async function generateOne(pillar, kw) {
       pagesFailed++;
       console.log(`  FAIL ${pillar}/${kw.slug} — did not start with doctype`);
       return { pillar, slug: kw.slug, status: "bad-format" };
+    }
+
+    // Guard against truncated output — page must contain the closing script tag,
+    // otherwise it's missing the footer + scripts (Sprint 8 truncation defect).
+    if (!html.includes('<script src="/app.js"') || !html.trim().endsWith("</html>")) {
+      pagesFailed++;
+      console.log(`  FAIL ${pillar}/${kw.slug} — truncated output (no closing block / </html>)`);
+      return { pillar, slug: kw.slug, status: "truncated" };
     }
 
     mkdirSync(dirname(outPath), { recursive: true });
