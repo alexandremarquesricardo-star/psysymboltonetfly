@@ -314,6 +314,70 @@ input[type=text]:focus,input[type=email]:focus,textarea:focus{border-color:var(-
 }
 .reading-shelf__disclosure a{color:var(--text-muted);text-decoration:underline}
 
+/* Hub-page intro + FAQ — long-form prose surfaces on /dream/, /symbol/, /number/ */
+.hub-intro{
+  max-width:var(--max-prose);
+  margin:var(--space-5) auto var(--space-6);
+}
+.hub-intro p{
+  margin:0 0 var(--space-4);
+  font-size:17px;
+  line-height:1.7;
+  color:var(--text);
+}
+.hub-intro p strong{color:var(--text);font-weight:700}
+.hub-intro p em{color:var(--text-muted)}
+
+.hub-faq{
+  max-width:var(--max-prose);
+  margin:var(--space-6) auto 0;
+}
+.hub-faq > h2{
+  font-family:var(--font-serif);
+  font-size:clamp(20px,2.4vw,26px);
+  margin:0 0 var(--space-4);
+  color:var(--accent);
+}
+.hub-faq details{
+  margin:0 0 var(--space-2);
+  padding:var(--space-3) var(--space-4);
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  transition:border-color var(--t-fast);
+}
+.hub-faq details[open]{border-color:var(--border-strong)}
+.hub-faq summary{
+  font-family:var(--font-serif);
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+  color:var(--text);
+  list-style:none;
+  padding:var(--space-1) 0;
+  position:relative;
+  padding-right:30px;
+}
+.hub-faq summary::-webkit-details-marker{display:none}
+.hub-faq summary::after{
+  content:"+";
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:24px;
+  color:var(--accent);
+  font-weight:300;
+  transition:transform var(--t-fast);
+}
+.hub-faq details[open] summary::after{content:"−"}
+.hub-faq details > p{
+  margin:var(--space-3) 0 0;
+  font-size:16px;
+  line-height:1.7;
+  color:var(--text-muted);
+}
+
 /* Related interpretations (internal-linking section) */
 .related-interpretations{
   max-width:var(--max-prose);

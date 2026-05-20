@@ -166,35 +166,11 @@ spaHtml = spaHtml.replace(
 writeFileSync(indexPath, spaHtml, "utf8");
 console.log("  ✓ SPA topics surface");
 
-// ---------- 3. Hub pages (dream/, symbol/, number/) ----------
-// Minimal approach: replace the <h2>Featured...</h2> + all <article> entries with a simple alphabetized list.
-// Keeps existing page header, intro, disclaimer, footer.
-
-for (const pillar of PILLARS) {
-  const hubPath = resolve(DIST, pillar, "index.html");
-  if (!existsSync(hubPath)) continue;
-  let hub = readFileSync(hubPath, "utf8");
-
-  const items = corpus[pillar]
-    .map((slug) => `        <li><a href="/${pillar}/${slug}.html">${displayName(slug)}</a></li>`)
-    .join("\n");
-
-  const newSection = `      <section style="margin-top:24px">
-        <h2>All ${pillar === "dream" ? "Dreams" : pillar === "symbol" ? "Symbols" : "Numbers"} (${corpus[pillar].length})</h2>
-        <ul class="hub-list">
-${items}
-        </ul>
-      </section>`;
-
-  // Replace from <section style="margin-top:24px"> up to the end of the last </article> followed by </section>
-  hub = hub.replace(
-    /<section style="margin-top:24px">[\s\S]*?<\/section>(?=\s*<div class="disclaimer")/,
-    newSection
-  );
-
-  writeFileSync(hubPath, hub, "utf8");
-  console.log(`  ✓ ${pillar}/index.html`);
-}
+// ---------- 3. Hub pages — intro essay + FAQ + FAQPage schema ----------
+// Featured-card sections are owned by the hub HTML; enrich-hubs.mjs handles
+// intro + FAQ injection via markers. Comprehensive "All N" list is intentionally
+// not injected on hubs — the curated Featured cards are the SEO surface.
+await import("./enrich-hubs.mjs");
 
 // ---------- 4. Schema enrichment (Article + BreadcrumbList JSON-LD) ----------
 await import("./enrich-schema.mjs");
