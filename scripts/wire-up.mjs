@@ -181,6 +181,9 @@ await import("./enrich-related-links.mjs");
 // ---------- 6. Navigation: brand-as-link + breadcrumb on hubs/pages ----------
 await import("./add-nav.mjs");
 
+// ---------- 6.5. Home link on static pages (brand div → home anchor) ----------
+await import("./add-home-link.mjs");
+
 // ---------- 7. Plausible analytics injection ----------
 await import("./add-plausible.mjs");
 
