@@ -166,8 +166,8 @@ function buildBlock(pillar, slug) {
 
   return [
     MARKER_START,
-    `    <section class="related-interpretations" aria-label="Related interpretations">`,
-    `      <h2>Related interpretations</h2>`,
+    `    <section class="related-interpretations" aria-label="More interpretations to explore">`,
+    `      <h2>More interpretations to explore</h2>`,
     `      <ul class="related-interpretations__list">`,
     items,
     `      </ul>`,
