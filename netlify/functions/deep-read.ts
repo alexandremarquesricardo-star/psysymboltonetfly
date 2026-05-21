@@ -4,6 +4,11 @@ import { getStore } from "@netlify/blobs";
 
 const MODEL = "claude-haiku-4-5-20251001";
 const DAILY_LIMIT = 5;
+// Site-wide daily cap across ALL IPs — protects the shared API balance from a
+// traffic spike (e.g. a launch) draining it in one day. At ~$0.005/read this caps
+// worst-case daily spend near $GLOBAL_DAILY_LIMIT * $0.005. Tune via the Netlify
+// env var DEEP_READ_GLOBAL_DAILY_LIMIT (raise it for a launch, lower to conserve).
+const GLOBAL_DAILY_LIMIT_DEFAULT = 400;
 const MAX_OUTPUT_TOKENS = 600;
 const MAX_TOPIC_LEN = 200;
 const MAX_TEXT_LEN = 2000;
@@ -153,7 +158,28 @@ export default async (request: Request, _context: Context) => {
     );
   }
 
+  // Site-wide daily cap — hard ceiling so a traffic spike can't drain the balance.
+  const globalLimit = parseInt(
+    Netlify.env.get("DEEP_READ_GLOBAL_DAILY_LIMIT") ??
+      String(GLOBAL_DAILY_LIMIT_DEFAULT),
+    10,
+  );
+  const globalKey = `global:${date}`;
+  const globalRaw = await store.get(globalKey);
+  const globalCount = globalRaw ? parseInt(globalRaw, 10) : 0;
+
+  if (globalCount >= globalLimit) {
+    return sseFinal(
+      {
+        error:
+          "Deep Read is in high demand right now — please try again tomorrow.",
+      },
+      429,
+    );
+  }
+
   await store.set(key, String(current + 1));
+  await store.set(globalKey, String(globalCount + 1));
 
   const userPrompt =
     `Mode: ${mode}\n` +
