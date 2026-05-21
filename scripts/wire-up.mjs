@@ -184,6 +184,9 @@ await import("./add-nav.mjs");
 // ---------- 7. Plausible analytics injection ----------
 await import("./add-plausible.mjs");
 
+// ---------- 7.4. AdSense loader (Auto Ads) injection ----------
+await import("./add-adsense.mjs");
+
 // ---------- 7.5. Newsletter signup block + /newsletter.js + CSS ----------
 await import("./add-newsletter.mjs");
 
