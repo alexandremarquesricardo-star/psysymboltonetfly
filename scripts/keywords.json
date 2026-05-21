@@ -1,308 +1,2054 @@
 {
   "dream": [
-    { "slug": "snake-biting", "title": "Snake Biting You in a Dream", "h1": "Dreams About a Snake Biting You", "context": "the snake-bite variant specifically — the moment of strike rather than just the snake's presence. Often signals that something you've been wary of has finally connected. Worth distinguishing from general snake dreams." },
-    { "slug": "drowning", "title": "Drowning Dreams", "h1": "Dreams About Drowning", "context": "the overwhelm register — being pulled under by what was supposed to be navigable. Often signals emotion or responsibility currently exceeding capacity. Distinct from broader water dreams." },
-    { "slug": "snake-attacking", "title": "Snake Attacking Dream", "h1": "Dreams About a Snake Attacking You", "context": "the attacking-snake variant. Aggressive, sustained, often pursuit. The instinct or person you've been keeping at bay refusing to be kept anymore." },
-    { "slug": "car-accident", "title": "Car Accident Dreams", "h1": "Dreams About a Car Accident", "context": "loss of control on a path you'd been moving down. The car as life-direction; the accident as the moment when momentum became danger. Common during high-pressure stretches." },
-    { "slug": "being-late", "title": "Being Late Dreams", "h1": "Dreams About Being Late", "context": "missing the train, the meeting, the wedding — the late-arrival anxiety dream. Almost always about a sense of falling behind on something significant. Worth identifying what." },
-    { "slug": "exam", "title": "Exam Dreams", "h1": "Dreams About Exams and Tests", "context": "the unprepared-for-the-test dream. One of the most common adult anxiety dreams, often appearing decades after school ended. The 'judged on inadequate preparation' register." },
-    { "slug": "naked-in-public", "title": "Being Naked in Public Dreams", "h1": "Dreams About Being Naked in Public", "context": "exposure, vulnerability, the fear of being seen for who you really are. Sometimes shame; sometimes the inverse register where the dream-self isn't bothered, signalling readiness to be visible." },
-    { "slug": "losing-keys", "title": "Losing Keys Dreams", "h1": "Dreams About Losing Keys", "context": "access lost. The thing that gave you entry — to home, to status, to a relationship — feeling temporarily out of reach. Often appears during transitions." },
-    { "slug": "lost-wallet", "title": "Losing Your Wallet Dreams", "h1": "Dreams About Losing Your Wallet", "context": "identity and resources both at risk. The wallet holds ID, money, cards — the dream-loss usually points at a felt threat to one or both." },
-    { "slug": "stranger", "title": "Strangers in Dreams", "h1": "Dreams About Strangers", "context": "the unknown figure who shows up in your dream as familiar. Almost always an aspect of self not yet integrated, or someone real you've barely registered consciously." },
-    { "slug": "dead-person-alive", "title": "Dead Person Alive in a Dream", "h1": "Dreams Where a Dead Person Is Alive", "context": "the deceased loved one showing up alive in your dream. Comfort, unresolved grief, sometimes message-receiving. The reading depends on the felt tone." },
-    { "slug": "lost", "title": "Getting Lost Dreams", "h1": "Dreams About Getting Lost", "context": "the disorientation dream. Familiar place becomes unfamiliar; you can't find your way. Almost always reflects a waking-life loss of orientation in some domain." },
-    { "slug": "murder", "title": "Murder Dreams", "h1": "Dreams About Murder", "context": "the killing or being-killed dream. Rarely literal. Usually represents a part of self being violently ended — sometimes by you, sometimes by circumstance. Significant dream-energy." },
-    { "slug": "kissing", "title": "Kissing Dreams", "h1": "Dreams About Kissing", "context": "intimacy, connection, sometimes desire surfacing. The identity of the kiss partner often tells you more than the act itself." },
-    { "slug": "fighting", "title": "Fighting Dreams", "h1": "Dreams About Fighting", "context": "physical conflict in the dream. Often represents a real conflict you've been avoiding, or an internal battle between competing parts of self." },
-    { "slug": "house-on-fire", "title": "House on Fire Dreams", "h1": "Dreams About a House on Fire", "context": "the house-as-self burning. Significant transformation, sometimes loss, sometimes the necessary destruction of a life-structure that's no longer working." },
-    { "slug": "ocean", "title": "Ocean Dreams", "h1": "Dreams About the Ocean", "context": "the vast water register. The unconscious in its largest form. Often appears during stretches when emotional depth feels overwhelming or finally accessible." },
-    { "slug": "swimming", "title": "Swimming Dreams", "h1": "Dreams About Swimming", "context": "navigating emotion successfully. Where drowning is being overcome by water, swimming is being capable in it. Often signals real emotional competence developing." },
-    { "slug": "dolphin", "title": "Dolphin Dreams", "h1": "Dreams About Dolphins", "context": "intelligence in water — the conscious mind meeting emotional depth gracefully. Often appears during productive therapeutic or creative stretches." },
-    { "slug": "shark", "title": "Shark Dreams", "h1": "Dreams About Sharks", "context": "the predator in emotional waters. Sometimes literal predator-person; more often the instinct or fear that's been circling beneath the surface." },
-    { "slug": "tornado", "title": "Tornado Dreams", "h1": "Dreams About Tornadoes", "context": "destructive change moving through your life. Often appears during periods when external chaos is threatening internal structure. Worth honouring the alarm." },
-    { "slug": "earthquake", "title": "Earthquake Dreams", "h1": "Dreams About Earthquakes", "context": "the ground itself becoming unstable. The structures you thought were permanent shifting. Often appears at major life-foundation upheavals." },
-    { "slug": "flood", "title": "Flood Dreams", "h1": "Dreams About Floods", "context": "overwhelming emotion at scale. The wider-context version of drowning — not just you under water but the world around you." },
-    { "slug": "rain", "title": "Rain Dreams", "h1": "Dreams About Rain", "context": "emotional release, grief, sometimes cleansing. The state of the rain — gentle, torrential, freezing — usually matches the emotional register being processed." },
-    { "slug": "snow", "title": "Snow Dreams", "h1": "Dreams About Snow", "context": "feelings frozen or quiet. Beauty that holds stillness. Sometimes emotional dormancy; sometimes the peace that follows clarity." },
-    { "slug": "mountain", "title": "Mountain Dreams", "h1": "Dreams About Mountains", "context": "the long climb, spiritual ascent, the obstacle that requires real effort. Often appears during stretches of substantial personal challenge." },
-    { "slug": "forest", "title": "Forest Dreams", "h1": "Dreams About Forests", "context": "the unconscious as landscape. Lost in the forest, walking through it, finding clearings — each variant maps onto a different relationship with inner depth." },
-    { "slug": "school", "title": "School Dreams", "h1": "Dreams About School", "context": "the learning register, often coupled with judgement and inadequacy. Frequently appears for adults during stretches when they feel evaluated or behind." },
-    { "slug": "old-house", "title": "Old House Dreams", "h1": "Dreams About an Old House", "context": "the previous-self structure. Childhood home, former residences — visiting the architecture of who you used to be. Common during integration phases." },
-    { "slug": "elevator", "title": "Elevator Dreams", "h1": "Dreams About Elevators", "context": "vertical movement between levels of awareness or status. Stuck elevators, malfunctioning ones, the unexpected stop — each tells you something about transition." },
-    { "slug": "stairs", "title": "Stairs Dreams", "h1": "Dreams About Stairs", "context": "ascent or descent between levels of self. Climbing usually signals development; descending often signals integration with unconscious material." },
-    { "slug": "hospital", "title": "Hospital Dreams", "h1": "Dreams About Hospitals", "context": "the healing register, often with vulnerability. Common during illness, recovery, or stretches when something in you genuinely needs care." },
-    { "slug": "church", "title": "Church Dreams", "h1": "Dreams About Churches", "context": "the sacred architecture. Sometimes literal faith material; sometimes the part of you that holds reverence for what's larger than ordinary life." },
-    { "slug": "graveyard", "title": "Graveyard Dreams", "h1": "Dreams About Graveyards", "context": "ancestors, the dead, what's been laid to rest. Not always grim — sometimes peaceful integration of what's complete." },
-    { "slug": "wallet", "title": "Wallet Dreams", "h1": "Dreams About Your Wallet", "context": "identity and resources. The wallet as the container of who-you-are-to-the-world. Loss, theft, finding it — each variant tells a different story." },
-    { "slug": "phone", "title": "Phone Dreams", "h1": "Dreams About Phones", "context": "communication and connection in contemporary symbolic register. Lost phones, broken phones, calls you can't make — all variants of communication strain." },
-    { "slug": "money", "title": "Money Dreams", "h1": "Dreams About Money", "context": "value, exchange, what you're worth and what you can afford. Finding money, losing it, gaining it suddenly — each carries different waking correlates." },
-    { "slug": "food", "title": "Food Dreams", "h1": "Dreams About Food", "context": "nourishment, appetite, what you're consuming literally and metaphorically. Often appears when something in your life needs feeding or has been over-fed." },
-    { "slug": "rats", "title": "Rat Dreams", "h1": "Dreams About Rats", "context": "the unwanted intruder, the hidden problem, sometimes betrayal. The instinctive disgust response makes the symbol charged." },
-    { "slug": "mouse", "title": "Mouse Dreams", "h1": "Dreams About Mice", "context": "the small overlooked thing. Sometimes timidity, sometimes the unconscious noticing of something tiny but real." },
-    { "slug": "horse", "title": "Horse Dreams", "h1": "Dreams About Horses", "context": "vitality, freedom, harnessed power. The horse running free versus the horse you can ride — different registers of the same energy." },
-    { "slug": "cow", "title": "Cow Dreams", "h1": "Dreams About Cows", "context": "nourishment, motherhood, sustained giving. In some traditions sacred; in dreams often about the sources that have been feeding you." },
-    { "slug": "fish", "title": "Fish Dreams", "h1": "Dreams About Fish", "context": "the unconscious surfacing into awareness. Catching fish is often associated with insight; fish dying is often associated with intuition being suppressed." },
-    { "slug": "bird", "title": "Bird Dreams", "h1": "Dreams About Birds", "context": "the soul-image across cultures. Free bird, trapped bird, dying bird — each carries a different message about the soaring or grounded register of your life." },
-    { "slug": "elephant", "title": "Elephant Dreams", "h1": "Dreams About Elephants", "context": "memory, wisdom, long-held emotional weight. The elephant carrying what no one else can carry. Significant dream-energy when present." },
-    { "slug": "monkey", "title": "Monkey Dreams", "h1": "Dreams About Monkeys", "context": "the playful or mischievous part of mind. Often the trickster register surfacing — sometimes mocking, sometimes liberating." },
-    { "slug": "tiger", "title": "Tiger Dreams", "h1": "Dreams About Tigers", "context": "primal power with discipline. Where the lion is sovereignty, the tiger is concentrated, solitary intensity. Often appears during stretches of focused inner strength." },
-    { "slug": "bee", "title": "Bee Dreams", "h1": "Dreams About Bees", "context": "industry, community, the small productive work that adds up. Bee dreams sometimes signal real concerns about collective wellbeing too." },
-    { "slug": "butterfly-flying", "title": "Butterfly Flying Dream", "h1": "Dreams About a Butterfly Flying", "context": "transformation complete, the new self moving freely. Distinct from generic butterfly symbolism — the flight register specifically." },
-    { "slug": "moth", "title": "Moth Dreams", "h1": "Dreams About Moths", "context": "the night-counterpart to the butterfly. Drawn to light, sometimes destructively. The desire that consumes is the classic moth register." },
-    { "slug": "ant", "title": "Ant Dreams", "h1": "Dreams About Ants", "context": "the collective working in patterns invisible to individuals. Sometimes signals overwhelm by small accumulating tasks; sometimes admiration for distributed effort." },
-    { "slug": "wasp", "title": "Wasp Dreams", "h1": "Dreams About Wasps", "context": "the sharp, defensive insect. Often signals concern about a person or situation that could sting if approached wrongly." },
-    { "slug": "scorpion", "title": "Scorpion Dreams", "h1": "Dreams About Scorpions", "context": "the hidden danger with the visible weapon. Often appears when something carrying both warning and threat is in your environment." },
-    { "slug": "frog", "title": "Frog Dreams", "h1": "Dreams About Frogs", "context": "transformation, the threshold creature. Frogs cross between water and land — the dream-frog often signals movement between emotional and practical registers." },
-    { "slug": "lizard", "title": "Lizard Dreams", "h1": "Dreams About Lizards", "context": "adaptation, primal awareness, the reptilian brain noticing. Often signals instinct registering something the conscious mind hasn't named." },
-    { "slug": "snail", "title": "Snail Dreams", "h1": "Dreams About Snails", "context": "patience, slowness, the home you carry with you. Sometimes signals that progress is slower than wanted but still happening." },
-    { "slug": "worm", "title": "Worm Dreams", "h1": "Dreams About Worms", "context": "decay, decomposition, the unsettling reality that makes new growth possible. Often appears during difficult transformation phases." },
-    { "slug": "deer", "title": "Deer Dreams", "h1": "Dreams About Deer", "context": "gentleness, vigilance, the wild that yields without breaking. Often appears during stretches when softness without weakness is being learned." },
-    { "slug": "fox", "title": "Fox Dreams", "h1": "Dreams About Foxes", "context": "cleverness, adaptability, the cunning that survives. Often signals a situation requiring intelligence over force." },
-    { "slug": "rabbit", "title": "Rabbit Dreams", "h1": "Dreams About Rabbits", "context": "fertility, vulnerability, sometimes anxiety. Where the deer is wild gentleness, the rabbit is domestic gentleness — and the alert tension that comes with prey-status." },
-    { "slug": "whale", "title": "Whale Dreams", "h1": "Dreams About Whales", "context": "the largest emotional weight made conscious. The unconscious in its most majestic form. Often appears at significant moments of inner depth becoming visible." },
-    { "slug": "abandonment", "title": "Abandonment Dreams", "h1": "Dreams About Being Abandoned", "context": "left behind, forgotten, suddenly alone. The dream tracks the felt fear — sometimes from real history, sometimes from current relational anxiety." },
-    { "slug": "betrayal", "title": "Betrayal Dreams", "h1": "Dreams About Betrayal", "context": "trust broken in the dream. Sometimes literal premonition-feel; usually the unconscious processing a trust-issue the conscious mind hasn't fully named." },
-    { "slug": "boyfriend", "title": "Boyfriend Dreams", "h1": "Dreams About Your Boyfriend", "context": "the current partner appearing in dream form. Usually the unconscious processing the relationship's current state — the felt tone tells you more than the imagery." },
-    { "slug": "girlfriend", "title": "Girlfriend Dreams", "h1": "Dreams About Your Girlfriend", "context": "the current partner showing up in dream form. The state of the dream-relationship usually mirrors something currently active between you waking." },
-    { "slug": "father", "title": "Father Dreams", "h1": "Dreams About Your Father", "context": "the paternal principle — authority, protection, sometimes absence. The state of the dream-father often tracks your current relationship with structure, authority, or your own father directly." },
-    { "slug": "mother", "title": "Mother Dreams", "h1": "Dreams About Your Mother", "context": "the maternal principle — nurture, conditional love, sometimes engulfment. Often appears during stretches when the mother-register (real or symbolic) is active." },
-    { "slug": "siblings", "title": "Sibling Dreams", "h1": "Dreams About Siblings", "context": "the lateral family relationships. Rivalry, alliance, the shared-history version of self. Sometimes literal sibling material; sometimes peer relationships taking sibling form." },
-    { "slug": "child", "title": "Dreams About Children", "h1": "Dreams About Children", "context": "the inner child or a real child in your life. Sometimes the part of you needing care; sometimes the actual children you're responsible for surfacing in dream." },
-    { "slug": "boss", "title": "Boss Dreams", "h1": "Dreams About Your Boss", "context": "authority, judgement, professional standing. Often appears during work stress or career-transition stretches." },
-    { "slug": "coworker", "title": "Coworker Dreams", "h1": "Dreams About Coworkers", "context": "the workplace relational web. Coworkers in dreams often represent aspects of your professional self or relational dynamics with colleagues." },
-    { "slug": "celebrity", "title": "Celebrity Dreams", "h1": "Dreams About Celebrities", "context": "the famous figure showing up in your dream. Usually represents projected qualities — what they represent culturally is often what your unconscious is engaging." },
-    { "slug": "teacher", "title": "Teacher Dreams", "h1": "Dreams About Teachers", "context": "the instructive figure. Sometimes literal mentor; sometimes the inner teacher surfacing. The lesson the dream-teacher gives usually matters." },
-    { "slug": "police", "title": "Police Dreams", "h1": "Dreams About Police", "context": "authority, judgement, the structures of social order. Sometimes literal anxiety about rules; sometimes the inner critic in uniform." },
-    { "slug": "soldiers", "title": "Soldier Dreams", "h1": "Dreams About Soldiers", "context": "conflict at scale, discipline under duress, sometimes the militarised part of self. Significant dream-energy when present." },
-    { "slug": "war", "title": "War Dreams", "h1": "Dreams About War", "context": "large-scale conflict, often internal. The war in your dream is usually being fought between parts of yourself rather than predicting external events." },
-    { "slug": "doctor", "title": "Doctor Dreams", "h1": "Dreams About Doctors", "context": "the diagnostic and healing figure. Often appears when something in your life — body, mind, or situation — is asking to be examined more carefully." },
-    { "slug": "dentist", "title": "Dentist Dreams", "h1": "Dreams About Dentists", "context": "the procedure register, often coupled with anxiety. Frequently linked to teeth-falling-out dreams; closely related symbolic territory." },
-    { "slug": "haircut", "title": "Haircut Dreams", "h1": "Dreams About Getting a Haircut", "context": "self-image change, sometimes loss of vitality (hair as life-force in many traditions), sometimes welcome renewal." },
-    { "slug": "shopping", "title": "Shopping Dreams", "h1": "Dreams About Shopping", "context": "the choice-making register applied to material acquisition. Often signals current decisions about what to keep, what to invest in, what to bring into your life." },
-    { "slug": "money-found", "title": "Finding Money Dreams", "h1": "Dreams About Finding Money", "context": "unexpected resources or value surfacing. Sometimes literal financial intuition; usually the noticing of value you hadn't recognised." },
-    { "slug": "snake-many", "title": "Many Snakes in a Dream", "h1": "Dreams About Many Snakes", "context": "multiple instinctive forces active at once. Often appears during stretches of substantial transformation involving multiple aspects of self." },
-    { "slug": "purple-snake", "title": "Purple Snake Dream", "h1": "Dreams About a Purple Snake", "context": "the colour register applied to the snake symbol. Purple traditionally carries spiritual and royal connotations — the spiritual-transformation snake specifically." },
-    { "slug": "white-snake", "title": "White Snake Dream", "h1": "Dreams About a White Snake", "context": "the white snake's specific symbolism — purity, spiritual transformation, sometimes divine messenger across Asian traditions." },
-    { "slug": "yellow-snake", "title": "Yellow Snake Dream", "h1": "Dreams About a Yellow Snake", "context": "the warning register of the snake. Yellow traditionally carries caution; the dream-yellow-snake often signals instinct flagging something specific." },
-    { "slug": "green-snake", "title": "Green Snake Dream", "h1": "Dreams About a Green Snake", "context": "the growth-and-healing snake. Green carries vitality and renewal; the green snake often signals a healing instinct activating." },
-    { "slug": "red-snake", "title": "Red Snake Dream", "h1": "Dreams About a Red Snake", "context": "the passionate or dangerous snake. Red as both vitality and warning; the felt tone in the dream tells you which register is active." },
-    { "slug": "black-snake", "title": "Black Snake Dream", "h1": "Dreams About a Black Snake", "context": "the shadow-snake. The instinct or transformation operating in the unconscious register specifically. Significant when this variant appears." },
-    { "slug": "dead-grandmother", "title": "Deceased Grandmother Dreams", "h1": "Dreams About Your Deceased Grandmother", "context": "the grandmother who has passed appearing in dream. Often comfort-message register; sometimes ancestral wisdom; sometimes unresolved grief surfacing." },
-    { "slug": "dead-grandfather", "title": "Deceased Grandfather Dreams", "h1": "Dreams About Your Deceased Grandfather", "context": "the grandfather who has passed appearing in dream. Often the ancestral-masculine register; comfort, guidance, or unresolved material." },
-    { "slug": "wedding-ring", "title": "Wedding Ring Dreams", "h1": "Dreams About a Wedding Ring", "context": "the specific symbolic object — commitment made concrete. Lost rings, broken rings, gifted rings each carry distinct readings." },
-    { "slug": "engagement-ring", "title": "Engagement Ring Dreams", "h1": "Dreams About an Engagement Ring", "context": "the promise register specifically. Sometimes literal upcoming engagement; usually the inner version of preparing for commitment." },
-    { "slug": "ex-husband", "title": "Ex-Husband Dreams", "h1": "Dreams About Your Ex-Husband", "context": "the former marriage partner appearing in dream. Almost never about wanting to return; usually unresolved psychic material from that chapter." },
-    { "slug": "ex-wife", "title": "Ex-Wife Dreams", "h1": "Dreams About Your Ex-Wife", "context": "the former marriage partner appearing in dream. The relational pattern more often than the literal person. Worth examining what that relationship represented." },
-    { "slug": "old-friend", "title": "Old Friend Dreams", "h1": "Dreams About an Old Friend", "context": "the past relationship surfacing. Often coincides with stretches when the quality that friendship had is currently missing in your life." },
-    { "slug": "missing-flight", "title": "Missing Your Flight Dreams", "h1": "Dreams About Missing Your Flight", "context": "the transition-anxiety dream specifically. The plane as transformation-vehicle; missing it as fear of failing a major life crossing." },
-    { "slug": "airport", "title": "Airport Dreams", "h1": "Dreams About Airports", "context": "the transit zone — between places, between identities, in motion. Often appears during major life transitions or stretches of in-betweenness." },
-    { "slug": "train", "title": "Train Dreams", "h1": "Dreams About Trains", "context": "directed movement on a fixed path. Catching trains, missing them, derailment — each variant tells you about your current relationship with chosen direction." },
-    { "slug": "broken-mirror", "title": "Broken Mirror Dreams", "h1": "Dreams About a Broken Mirror", "context": "fractured self-image. The reflection that won't hold together. Often appears during identity crises or after major shocks to self-perception." },
-    { "slug": "haunted-house", "title": "Haunted House Dreams", "h1": "Dreams About a Haunted House", "context": "the self with unprocessed history living in it. Hauntings represent material that won't stay buried until properly attended to." },
-    { "slug": "basement", "title": "Basement Dreams", "h1": "Dreams About a Basement", "context": "the lower level of the self-as-house. The unconscious, the buried, what's been stored away. Going to the basement is often a deep-work signal." },
-    { "slug": "attic", "title": "Attic Dreams", "h1": "Dreams About an Attic", "context": "the upper level — memory, abstract thought, what's been put aside but not lost. Often appears during stretches of remembering or reframing the past." },
-    { "slug": "secret-room", "title": "Secret Room Dreams", "h1": "Dreams About Finding a Secret Room", "context": "the discovery of self-territory you didn't know you had. Often appears during developmental stretches when previously unavailable capacity becomes visible." }
+    {
+      "slug": "snake-biting",
+      "title": "Snake Biting You in a Dream",
+      "h1": "Dreams About a Snake Biting You",
+      "context": "the snake-bite variant specifically — the moment of strike rather than just the snake's presence. Often signals that something you've been wary of has finally connected. Worth distinguishing from general snake dreams."
+    },
+    {
+      "slug": "drowning",
+      "title": "Drowning Dreams",
+      "h1": "Dreams About Drowning",
+      "context": "the overwhelm register — being pulled under by what was supposed to be navigable. Often signals emotion or responsibility currently exceeding capacity. Distinct from broader water dreams."
+    },
+    {
+      "slug": "snake-attacking",
+      "title": "Snake Attacking Dream",
+      "h1": "Dreams About a Snake Attacking You",
+      "context": "the attacking-snake variant. Aggressive, sustained, often pursuit. The instinct or person you've been keeping at bay refusing to be kept anymore."
+    },
+    {
+      "slug": "car-accident",
+      "title": "Car Accident Dreams",
+      "h1": "Dreams About a Car Accident",
+      "context": "loss of control on a path you'd been moving down. The car as life-direction; the accident as the moment when momentum became danger. Common during high-pressure stretches."
+    },
+    {
+      "slug": "being-late",
+      "title": "Being Late Dreams",
+      "h1": "Dreams About Being Late",
+      "context": "missing the train, the meeting, the wedding — the late-arrival anxiety dream. Almost always about a sense of falling behind on something significant. Worth identifying what."
+    },
+    {
+      "slug": "exam",
+      "title": "Exam Dreams",
+      "h1": "Dreams About Exams and Tests",
+      "context": "the unprepared-for-the-test dream. One of the most common adult anxiety dreams, often appearing decades after school ended. The 'judged on inadequate preparation' register."
+    },
+    {
+      "slug": "naked-in-public",
+      "title": "Being Naked in Public Dreams",
+      "h1": "Dreams About Being Naked in Public",
+      "context": "exposure, vulnerability, the fear of being seen for who you really are. Sometimes shame; sometimes the inverse register where the dream-self isn't bothered, signalling readiness to be visible."
+    },
+    {
+      "slug": "losing-keys",
+      "title": "Losing Keys Dreams",
+      "h1": "Dreams About Losing Keys",
+      "context": "access lost. The thing that gave you entry — to home, to status, to a relationship — feeling temporarily out of reach. Often appears during transitions."
+    },
+    {
+      "slug": "lost-wallet",
+      "title": "Losing Your Wallet Dreams",
+      "h1": "Dreams About Losing Your Wallet",
+      "context": "identity and resources both at risk. The wallet holds ID, money, cards — the dream-loss usually points at a felt threat to one or both."
+    },
+    {
+      "slug": "stranger",
+      "title": "Strangers in Dreams",
+      "h1": "Dreams About Strangers",
+      "context": "the unknown figure who shows up in your dream as familiar. Almost always an aspect of self not yet integrated, or someone real you've barely registered consciously."
+    },
+    {
+      "slug": "dead-person-alive",
+      "title": "Dead Person Alive in a Dream",
+      "h1": "Dreams Where a Dead Person Is Alive",
+      "context": "the deceased loved one showing up alive in your dream. Comfort, unresolved grief, sometimes message-receiving. The reading depends on the felt tone."
+    },
+    {
+      "slug": "lost",
+      "title": "Getting Lost Dreams",
+      "h1": "Dreams About Getting Lost",
+      "context": "the disorientation dream. Familiar place becomes unfamiliar; you can't find your way. Almost always reflects a waking-life loss of orientation in some domain."
+    },
+    {
+      "slug": "murder",
+      "title": "Murder Dreams",
+      "h1": "Dreams About Murder",
+      "context": "the killing or being-killed dream. Rarely literal. Usually represents a part of self being violently ended — sometimes by you, sometimes by circumstance. Significant dream-energy."
+    },
+    {
+      "slug": "kissing",
+      "title": "Kissing Dreams",
+      "h1": "Dreams About Kissing",
+      "context": "intimacy, connection, sometimes desire surfacing. The identity of the kiss partner often tells you more than the act itself."
+    },
+    {
+      "slug": "fighting",
+      "title": "Fighting Dreams",
+      "h1": "Dreams About Fighting",
+      "context": "physical conflict in the dream. Often represents a real conflict you've been avoiding, or an internal battle between competing parts of self."
+    },
+    {
+      "slug": "house-on-fire",
+      "title": "House on Fire Dreams",
+      "h1": "Dreams About a House on Fire",
+      "context": "the house-as-self burning. Significant transformation, sometimes loss, sometimes the necessary destruction of a life-structure that's no longer working."
+    },
+    {
+      "slug": "ocean",
+      "title": "Ocean Dreams",
+      "h1": "Dreams About the Ocean",
+      "context": "the vast water register. The unconscious in its largest form. Often appears during stretches when emotional depth feels overwhelming or finally accessible."
+    },
+    {
+      "slug": "swimming",
+      "title": "Swimming Dreams",
+      "h1": "Dreams About Swimming",
+      "context": "navigating emotion successfully. Where drowning is being overcome by water, swimming is being capable in it. Often signals real emotional competence developing."
+    },
+    {
+      "slug": "dolphin",
+      "title": "Dolphin Dreams",
+      "h1": "Dreams About Dolphins",
+      "context": "intelligence in water — the conscious mind meeting emotional depth gracefully. Often appears during productive therapeutic or creative stretches."
+    },
+    {
+      "slug": "shark",
+      "title": "Shark Dreams",
+      "h1": "Dreams About Sharks",
+      "context": "the predator in emotional waters. Sometimes literal predator-person; more often the instinct or fear that's been circling beneath the surface."
+    },
+    {
+      "slug": "tornado",
+      "title": "Tornado Dreams",
+      "h1": "Dreams About Tornadoes",
+      "context": "destructive change moving through your life. Often appears during periods when external chaos is threatening internal structure. Worth honouring the alarm."
+    },
+    {
+      "slug": "earthquake",
+      "title": "Earthquake Dreams",
+      "h1": "Dreams About Earthquakes",
+      "context": "the ground itself becoming unstable. The structures you thought were permanent shifting. Often appears at major life-foundation upheavals."
+    },
+    {
+      "slug": "flood",
+      "title": "Flood Dreams",
+      "h1": "Dreams About Floods",
+      "context": "overwhelming emotion at scale. The wider-context version of drowning — not just you under water but the world around you."
+    },
+    {
+      "slug": "rain",
+      "title": "Rain Dreams",
+      "h1": "Dreams About Rain",
+      "context": "emotional release, grief, sometimes cleansing. The state of the rain — gentle, torrential, freezing — usually matches the emotional register being processed."
+    },
+    {
+      "slug": "snow",
+      "title": "Snow Dreams",
+      "h1": "Dreams About Snow",
+      "context": "feelings frozen or quiet. Beauty that holds stillness. Sometimes emotional dormancy; sometimes the peace that follows clarity."
+    },
+    {
+      "slug": "mountain",
+      "title": "Mountain Dreams",
+      "h1": "Dreams About Mountains",
+      "context": "the long climb, spiritual ascent, the obstacle that requires real effort. Often appears during stretches of substantial personal challenge."
+    },
+    {
+      "slug": "forest",
+      "title": "Forest Dreams",
+      "h1": "Dreams About Forests",
+      "context": "the unconscious as landscape. Lost in the forest, walking through it, finding clearings — each variant maps onto a different relationship with inner depth."
+    },
+    {
+      "slug": "school",
+      "title": "School Dreams",
+      "h1": "Dreams About School",
+      "context": "the learning register, often coupled with judgement and inadequacy. Frequently appears for adults during stretches when they feel evaluated or behind."
+    },
+    {
+      "slug": "old-house",
+      "title": "Old House Dreams",
+      "h1": "Dreams About an Old House",
+      "context": "the previous-self structure. Childhood home, former residences — visiting the architecture of who you used to be. Common during integration phases."
+    },
+    {
+      "slug": "elevator",
+      "title": "Elevator Dreams",
+      "h1": "Dreams About Elevators",
+      "context": "vertical movement between levels of awareness or status. Stuck elevators, malfunctioning ones, the unexpected stop — each tells you something about transition."
+    },
+    {
+      "slug": "stairs",
+      "title": "Stairs Dreams",
+      "h1": "Dreams About Stairs",
+      "context": "ascent or descent between levels of self. Climbing usually signals development; descending often signals integration with unconscious material."
+    },
+    {
+      "slug": "hospital",
+      "title": "Hospital Dreams",
+      "h1": "Dreams About Hospitals",
+      "context": "the healing register, often with vulnerability. Common during illness, recovery, or stretches when something in you genuinely needs care."
+    },
+    {
+      "slug": "church",
+      "title": "Church Dreams",
+      "h1": "Dreams About Churches",
+      "context": "the sacred architecture. Sometimes literal faith material; sometimes the part of you that holds reverence for what's larger than ordinary life."
+    },
+    {
+      "slug": "graveyard",
+      "title": "Graveyard Dreams",
+      "h1": "Dreams About Graveyards",
+      "context": "ancestors, the dead, what's been laid to rest. Not always grim — sometimes peaceful integration of what's complete."
+    },
+    {
+      "slug": "wallet",
+      "title": "Wallet Dreams",
+      "h1": "Dreams About Your Wallet",
+      "context": "identity and resources. The wallet as the container of who-you-are-to-the-world. Loss, theft, finding it — each variant tells a different story."
+    },
+    {
+      "slug": "phone",
+      "title": "Phone Dreams",
+      "h1": "Dreams About Phones",
+      "context": "communication and connection in contemporary symbolic register. Lost phones, broken phones, calls you can't make — all variants of communication strain."
+    },
+    {
+      "slug": "money",
+      "title": "Money Dreams",
+      "h1": "Dreams About Money",
+      "context": "value, exchange, what you're worth and what you can afford. Finding money, losing it, gaining it suddenly — each carries different waking correlates."
+    },
+    {
+      "slug": "food",
+      "title": "Food Dreams",
+      "h1": "Dreams About Food",
+      "context": "nourishment, appetite, what you're consuming literally and metaphorically. Often appears when something in your life needs feeding or has been over-fed."
+    },
+    {
+      "slug": "rats",
+      "title": "Rat Dreams",
+      "h1": "Dreams About Rats",
+      "context": "the unwanted intruder, the hidden problem, sometimes betrayal. The instinctive disgust response makes the symbol charged."
+    },
+    {
+      "slug": "mouse",
+      "title": "Mouse Dreams",
+      "h1": "Dreams About Mice",
+      "context": "the small overlooked thing. Sometimes timidity, sometimes the unconscious noticing of something tiny but real."
+    },
+    {
+      "slug": "horse",
+      "title": "Horse Dreams",
+      "h1": "Dreams About Horses",
+      "context": "vitality, freedom, harnessed power. The horse running free versus the horse you can ride — different registers of the same energy."
+    },
+    {
+      "slug": "cow",
+      "title": "Cow Dreams",
+      "h1": "Dreams About Cows",
+      "context": "nourishment, motherhood, sustained giving. In some traditions sacred; in dreams often about the sources that have been feeding you."
+    },
+    {
+      "slug": "fish",
+      "title": "Fish Dreams",
+      "h1": "Dreams About Fish",
+      "context": "the unconscious surfacing into awareness. Catching fish is often associated with insight; fish dying is often associated with intuition being suppressed."
+    },
+    {
+      "slug": "bird",
+      "title": "Bird Dreams",
+      "h1": "Dreams About Birds",
+      "context": "the soul-image across cultures. Free bird, trapped bird, dying bird — each carries a different message about the soaring or grounded register of your life."
+    },
+    {
+      "slug": "elephant",
+      "title": "Elephant Dreams",
+      "h1": "Dreams About Elephants",
+      "context": "memory, wisdom, long-held emotional weight. The elephant carrying what no one else can carry. Significant dream-energy when present."
+    },
+    {
+      "slug": "monkey",
+      "title": "Monkey Dreams",
+      "h1": "Dreams About Monkeys",
+      "context": "the playful or mischievous part of mind. Often the trickster register surfacing — sometimes mocking, sometimes liberating."
+    },
+    {
+      "slug": "tiger",
+      "title": "Tiger Dreams",
+      "h1": "Dreams About Tigers",
+      "context": "primal power with discipline. Where the lion is sovereignty, the tiger is concentrated, solitary intensity. Often appears during stretches of focused inner strength."
+    },
+    {
+      "slug": "bee",
+      "title": "Bee Dreams",
+      "h1": "Dreams About Bees",
+      "context": "industry, community, the small productive work that adds up. Bee dreams sometimes signal real concerns about collective wellbeing too."
+    },
+    {
+      "slug": "butterfly-flying",
+      "title": "Butterfly Flying Dream",
+      "h1": "Dreams About a Butterfly Flying",
+      "context": "transformation complete, the new self moving freely. Distinct from generic butterfly symbolism — the flight register specifically."
+    },
+    {
+      "slug": "moth",
+      "title": "Moth Dreams",
+      "h1": "Dreams About Moths",
+      "context": "the night-counterpart to the butterfly. Drawn to light, sometimes destructively. The desire that consumes is the classic moth register."
+    },
+    {
+      "slug": "ant",
+      "title": "Ant Dreams",
+      "h1": "Dreams About Ants",
+      "context": "the collective working in patterns invisible to individuals. Sometimes signals overwhelm by small accumulating tasks; sometimes admiration for distributed effort."
+    },
+    {
+      "slug": "wasp",
+      "title": "Wasp Dreams",
+      "h1": "Dreams About Wasps",
+      "context": "the sharp, defensive insect. Often signals concern about a person or situation that could sting if approached wrongly."
+    },
+    {
+      "slug": "scorpion",
+      "title": "Scorpion Dreams",
+      "h1": "Dreams About Scorpions",
+      "context": "the hidden danger with the visible weapon. Often appears when something carrying both warning and threat is in your environment."
+    },
+    {
+      "slug": "frog",
+      "title": "Frog Dreams",
+      "h1": "Dreams About Frogs",
+      "context": "transformation, the threshold creature. Frogs cross between water and land — the dream-frog often signals movement between emotional and practical registers."
+    },
+    {
+      "slug": "lizard",
+      "title": "Lizard Dreams",
+      "h1": "Dreams About Lizards",
+      "context": "adaptation, primal awareness, the reptilian brain noticing. Often signals instinct registering something the conscious mind hasn't named."
+    },
+    {
+      "slug": "snail",
+      "title": "Snail Dreams",
+      "h1": "Dreams About Snails",
+      "context": "patience, slowness, the home you carry with you. Sometimes signals that progress is slower than wanted but still happening."
+    },
+    {
+      "slug": "worm",
+      "title": "Worm Dreams",
+      "h1": "Dreams About Worms",
+      "context": "decay, decomposition, the unsettling reality that makes new growth possible. Often appears during difficult transformation phases."
+    },
+    {
+      "slug": "deer",
+      "title": "Deer Dreams",
+      "h1": "Dreams About Deer",
+      "context": "gentleness, vigilance, the wild that yields without breaking. Often appears during stretches when softness without weakness is being learned."
+    },
+    {
+      "slug": "fox",
+      "title": "Fox Dreams",
+      "h1": "Dreams About Foxes",
+      "context": "cleverness, adaptability, the cunning that survives. Often signals a situation requiring intelligence over force."
+    },
+    {
+      "slug": "rabbit",
+      "title": "Rabbit Dreams",
+      "h1": "Dreams About Rabbits",
+      "context": "fertility, vulnerability, sometimes anxiety. Where the deer is wild gentleness, the rabbit is domestic gentleness — and the alert tension that comes with prey-status."
+    },
+    {
+      "slug": "whale",
+      "title": "Whale Dreams",
+      "h1": "Dreams About Whales",
+      "context": "the largest emotional weight made conscious. The unconscious in its most majestic form. Often appears at significant moments of inner depth becoming visible."
+    },
+    {
+      "slug": "abandonment",
+      "title": "Abandonment Dreams",
+      "h1": "Dreams About Being Abandoned",
+      "context": "left behind, forgotten, suddenly alone. The dream tracks the felt fear — sometimes from real history, sometimes from current relational anxiety."
+    },
+    {
+      "slug": "betrayal",
+      "title": "Betrayal Dreams",
+      "h1": "Dreams About Betrayal",
+      "context": "trust broken in the dream. Sometimes literal premonition-feel; usually the unconscious processing a trust-issue the conscious mind hasn't fully named."
+    },
+    {
+      "slug": "boyfriend",
+      "title": "Boyfriend Dreams",
+      "h1": "Dreams About Your Boyfriend",
+      "context": "the current partner appearing in dream form. Usually the unconscious processing the relationship's current state — the felt tone tells you more than the imagery."
+    },
+    {
+      "slug": "girlfriend",
+      "title": "Girlfriend Dreams",
+      "h1": "Dreams About Your Girlfriend",
+      "context": "the current partner showing up in dream form. The state of the dream-relationship usually mirrors something currently active between you waking."
+    },
+    {
+      "slug": "father",
+      "title": "Father Dreams",
+      "h1": "Dreams About Your Father",
+      "context": "the paternal principle — authority, protection, sometimes absence. The state of the dream-father often tracks your current relationship with structure, authority, or your own father directly."
+    },
+    {
+      "slug": "mother",
+      "title": "Mother Dreams",
+      "h1": "Dreams About Your Mother",
+      "context": "the maternal principle — nurture, conditional love, sometimes engulfment. Often appears during stretches when the mother-register (real or symbolic) is active."
+    },
+    {
+      "slug": "siblings",
+      "title": "Sibling Dreams",
+      "h1": "Dreams About Siblings",
+      "context": "the lateral family relationships. Rivalry, alliance, the shared-history version of self. Sometimes literal sibling material; sometimes peer relationships taking sibling form."
+    },
+    {
+      "slug": "child",
+      "title": "Dreams About Children",
+      "h1": "Dreams About Children",
+      "context": "the inner child or a real child in your life. Sometimes the part of you needing care; sometimes the actual children you're responsible for surfacing in dream."
+    },
+    {
+      "slug": "boss",
+      "title": "Boss Dreams",
+      "h1": "Dreams About Your Boss",
+      "context": "authority, judgement, professional standing. Often appears during work stress or career-transition stretches."
+    },
+    {
+      "slug": "coworker",
+      "title": "Coworker Dreams",
+      "h1": "Dreams About Coworkers",
+      "context": "the workplace relational web. Coworkers in dreams often represent aspects of your professional self or relational dynamics with colleagues."
+    },
+    {
+      "slug": "celebrity",
+      "title": "Celebrity Dreams",
+      "h1": "Dreams About Celebrities",
+      "context": "the famous figure showing up in your dream. Usually represents projected qualities — what they represent culturally is often what your unconscious is engaging."
+    },
+    {
+      "slug": "teacher",
+      "title": "Teacher Dreams",
+      "h1": "Dreams About Teachers",
+      "context": "the instructive figure. Sometimes literal mentor; sometimes the inner teacher surfacing. The lesson the dream-teacher gives usually matters."
+    },
+    {
+      "slug": "police",
+      "title": "Police Dreams",
+      "h1": "Dreams About Police",
+      "context": "authority, judgement, the structures of social order. Sometimes literal anxiety about rules; sometimes the inner critic in uniform."
+    },
+    {
+      "slug": "soldiers",
+      "title": "Soldier Dreams",
+      "h1": "Dreams About Soldiers",
+      "context": "conflict at scale, discipline under duress, sometimes the militarised part of self. Significant dream-energy when present."
+    },
+    {
+      "slug": "war",
+      "title": "War Dreams",
+      "h1": "Dreams About War",
+      "context": "large-scale conflict, often internal. The war in your dream is usually being fought between parts of yourself rather than predicting external events."
+    },
+    {
+      "slug": "doctor",
+      "title": "Doctor Dreams",
+      "h1": "Dreams About Doctors",
+      "context": "the diagnostic and healing figure. Often appears when something in your life — body, mind, or situation — is asking to be examined more carefully."
+    },
+    {
+      "slug": "dentist",
+      "title": "Dentist Dreams",
+      "h1": "Dreams About Dentists",
+      "context": "the procedure register, often coupled with anxiety. Frequently linked to teeth-falling-out dreams; closely related symbolic territory."
+    },
+    {
+      "slug": "haircut",
+      "title": "Haircut Dreams",
+      "h1": "Dreams About Getting a Haircut",
+      "context": "self-image change, sometimes loss of vitality (hair as life-force in many traditions), sometimes welcome renewal."
+    },
+    {
+      "slug": "shopping",
+      "title": "Shopping Dreams",
+      "h1": "Dreams About Shopping",
+      "context": "the choice-making register applied to material acquisition. Often signals current decisions about what to keep, what to invest in, what to bring into your life."
+    },
+    {
+      "slug": "money-found",
+      "title": "Finding Money Dreams",
+      "h1": "Dreams About Finding Money",
+      "context": "unexpected resources or value surfacing. Sometimes literal financial intuition; usually the noticing of value you hadn't recognised."
+    },
+    {
+      "slug": "snake-many",
+      "title": "Many Snakes in a Dream",
+      "h1": "Dreams About Many Snakes",
+      "context": "multiple instinctive forces active at once. Often appears during stretches of substantial transformation involving multiple aspects of self."
+    },
+    {
+      "slug": "purple-snake",
+      "title": "Purple Snake Dream",
+      "h1": "Dreams About a Purple Snake",
+      "context": "the colour register applied to the snake symbol. Purple traditionally carries spiritual and royal connotations — the spiritual-transformation snake specifically."
+    },
+    {
+      "slug": "white-snake",
+      "title": "White Snake Dream",
+      "h1": "Dreams About a White Snake",
+      "context": "the white snake's specific symbolism — purity, spiritual transformation, sometimes divine messenger across Asian traditions."
+    },
+    {
+      "slug": "yellow-snake",
+      "title": "Yellow Snake Dream",
+      "h1": "Dreams About a Yellow Snake",
+      "context": "the warning register of the snake. Yellow traditionally carries caution; the dream-yellow-snake often signals instinct flagging something specific."
+    },
+    {
+      "slug": "green-snake",
+      "title": "Green Snake Dream",
+      "h1": "Dreams About a Green Snake",
+      "context": "the growth-and-healing snake. Green carries vitality and renewal; the green snake often signals a healing instinct activating."
+    },
+    {
+      "slug": "red-snake",
+      "title": "Red Snake Dream",
+      "h1": "Dreams About a Red Snake",
+      "context": "the passionate or dangerous snake. Red as both vitality and warning; the felt tone in the dream tells you which register is active."
+    },
+    {
+      "slug": "black-snake",
+      "title": "Black Snake Dream",
+      "h1": "Dreams About a Black Snake",
+      "context": "the shadow-snake. The instinct or transformation operating in the unconscious register specifically. Significant when this variant appears."
+    },
+    {
+      "slug": "dead-grandmother",
+      "title": "Deceased Grandmother Dreams",
+      "h1": "Dreams About Your Deceased Grandmother",
+      "context": "the grandmother who has passed appearing in dream. Often comfort-message register; sometimes ancestral wisdom; sometimes unresolved grief surfacing."
+    },
+    {
+      "slug": "dead-grandfather",
+      "title": "Deceased Grandfather Dreams",
+      "h1": "Dreams About Your Deceased Grandfather",
+      "context": "the grandfather who has passed appearing in dream. Often the ancestral-masculine register; comfort, guidance, or unresolved material."
+    },
+    {
+      "slug": "wedding-ring",
+      "title": "Wedding Ring Dreams",
+      "h1": "Dreams About a Wedding Ring",
+      "context": "the specific symbolic object — commitment made concrete. Lost rings, broken rings, gifted rings each carry distinct readings."
+    },
+    {
+      "slug": "engagement-ring",
+      "title": "Engagement Ring Dreams",
+      "h1": "Dreams About an Engagement Ring",
+      "context": "the promise register specifically. Sometimes literal upcoming engagement; usually the inner version of preparing for commitment."
+    },
+    {
+      "slug": "ex-husband",
+      "title": "Ex-Husband Dreams",
+      "h1": "Dreams About Your Ex-Husband",
+      "context": "the former marriage partner appearing in dream. Almost never about wanting to return; usually unresolved psychic material from that chapter."
+    },
+    {
+      "slug": "ex-wife",
+      "title": "Ex-Wife Dreams",
+      "h1": "Dreams About Your Ex-Wife",
+      "context": "the former marriage partner appearing in dream. The relational pattern more often than the literal person. Worth examining what that relationship represented."
+    },
+    {
+      "slug": "old-friend",
+      "title": "Old Friend Dreams",
+      "h1": "Dreams About an Old Friend",
+      "context": "the past relationship surfacing. Often coincides with stretches when the quality that friendship had is currently missing in your life."
+    },
+    {
+      "slug": "missing-flight",
+      "title": "Missing Your Flight Dreams",
+      "h1": "Dreams About Missing Your Flight",
+      "context": "the transition-anxiety dream specifically. The plane as transformation-vehicle; missing it as fear of failing a major life crossing."
+    },
+    {
+      "slug": "airport",
+      "title": "Airport Dreams",
+      "h1": "Dreams About Airports",
+      "context": "the transit zone — between places, between identities, in motion. Often appears during major life transitions or stretches of in-betweenness."
+    },
+    {
+      "slug": "train",
+      "title": "Train Dreams",
+      "h1": "Dreams About Trains",
+      "context": "directed movement on a fixed path. Catching trains, missing them, derailment — each variant tells you about your current relationship with chosen direction."
+    },
+    {
+      "slug": "broken-mirror",
+      "title": "Broken Mirror Dreams",
+      "h1": "Dreams About a Broken Mirror",
+      "context": "fractured self-image. The reflection that won't hold together. Often appears during identity crises or after major shocks to self-perception."
+    },
+    {
+      "slug": "haunted-house",
+      "title": "Haunted House Dreams",
+      "h1": "Dreams About a Haunted House",
+      "context": "the self with unprocessed history living in it. Hauntings represent material that won't stay buried until properly attended to."
+    },
+    {
+      "slug": "basement",
+      "title": "Basement Dreams",
+      "h1": "Dreams About a Basement",
+      "context": "the lower level of the self-as-house. The unconscious, the buried, what's been stored away. Going to the basement is often a deep-work signal."
+    },
+    {
+      "slug": "attic",
+      "title": "Attic Dreams",
+      "h1": "Dreams About an Attic",
+      "context": "the upper level — memory, abstract thought, what's been put aside but not lost. Often appears during stretches of remembering or reframing the past."
+    },
+    {
+      "slug": "secret-room",
+      "title": "Secret Room Dreams",
+      "h1": "Dreams About Finding a Secret Room",
+      "context": "the discovery of self-territory you didn't know you had. Often appears during developmental stretches when previously unavailable capacity becomes visible."
+    },
+    {
+      "slug": "giving-birth",
+      "title": "Giving Birth in a Dream",
+      "h1": "Dreams About Giving Birth",
+      "context": "the dream of giving birth specifically — distinct from being pregnant. Something new in you reaching the point of arrival: a project, identity, or capacity ready to enter the world. Labour, effort, and the threshold of a new chapter."
+    },
+    {
+      "slug": "dead-mother",
+      "title": "Dreaming of a Dead Mother",
+      "h1": "Dreams About a Deceased Mother",
+      "context": "dreaming of a mother who has died: grief still being processed, the internalised maternal voice, longing for comfort or guidance. Distinct from dreams of a living mother. Handle with warmth, never as omen."
+    },
+    {
+      "slug": "dead-father",
+      "title": "Dreaming of a Dead Father",
+      "h1": "Dreams About a Deceased Father",
+      "context": "dreaming of a father who has died: unfinished conversations, the internalised paternal authority, seeking approval or closure. Distinct from a living father. Compassionate, not predictive."
+    },
+    {
+      "slug": "tsunami",
+      "title": "Tsunami Dreams",
+      "h1": "Dreams About a Tsunami",
+      "context": "the towering wave that overwhelms: emotion or change of a scale that can't be resisted, only survived. Distinct from a flood (slow rising) — the tsunami is sudden and total. Often anxiety seeking a container."
+    },
+    {
+      "slug": "zombies",
+      "title": "Zombie Dreams",
+      "h1": "Dreams About Zombies",
+      "context": "the zombie horde or apocalypse: feeling drained by relentless demands, moving through life on autopilot, fear of losing individuality to the crowd or to numbness."
+    },
+    {
+      "slug": "ghost",
+      "title": "Dreaming of a Ghost",
+      "h1": "Dreams About Ghosts",
+      "context": "encountering a ghost: the unresolved past returning, something 'dead' that won't rest — a memory, a person, an old version of yourself. Distinct from a haunted house (the place itself)."
+    },
+    {
+      "slug": "being-shot",
+      "title": "Being Shot in a Dream",
+      "h1": "Dreams About Being Shot",
+      "context": "being shot: a sudden wounding, feeling targeted or attacked, a shock that 'hits' you. Where on the body, and by whom, shapes the meaning. Not literal — emotional impact made vivid."
+    },
+    {
+      "slug": "funeral",
+      "title": "Funeral Dreams",
+      "h1": "Dreams About a Funeral",
+      "context": "attending a funeral: an ending being formally acknowledged; saying goodbye to a phase, role, or relationship. Whose funeral it is, and your feelings there, shape the reading. Distinct from a graveyard."
+    },
+    {
+      "slug": "crocodile",
+      "title": "Crocodile Dreams",
+      "h1": "Dreams About a Crocodile or Alligator",
+      "context": "the crocodile or alligator: a hidden danger beneath calm water, a primal threat that waits then strikes; deception, or a person who is not what they appear to be."
+    },
+    {
+      "slug": "lion",
+      "title": "Lion Dreams",
+      "h1": "Dreams About a Lion",
+      "context": "dreaming of a lion: raw power, authority, courage — or a threat from someone dominant. Whether the lion is calm, attacking, or caged changes the whole reading."
+    },
+    {
+      "slug": "bear",
+      "title": "Bear Dreams",
+      "h1": "Dreams About a Bear",
+      "context": "dreaming of a bear: a powerful force that can protect or maul; introspection and withdrawal (hibernation), a domineering presence, or your own suppressed strength."
+    }
   ],
   "symbol": [
-    { "slug": "dolphin", "title": "Dolphin Symbolism", "h1": "Dolphin Symbolism & Meaning", "context": "intelligence in water, joy as wisdom, community of the deep. The dolphin as the conscious mind meeting emotional depth gracefully — common across maritime cultures." },
-    { "slug": "whale", "title": "Whale Symbolism", "h1": "Whale Symbolism & Meaning", "context": "the largest emotional weight made conscious. Ancient depth, song across distance, the unconscious in its most majestic form. Significant cross-cultural symbolic load." },
-    { "slug": "shark", "title": "Shark Symbolism", "h1": "Shark Symbolism & Meaning", "context": "the apex predator of emotional depths. Survival intelligence, raw instinct, sometimes the part of the psyche that doesn't ask permission. Honest about its appetite." },
-    { "slug": "deer", "title": "Deer Symbolism", "h1": "Deer Symbolism & Meaning", "context": "gentleness, alertness, the wild that yields without breaking. Across cultures associated with spiritual purity and the vulnerable-watchful register of being." },
-    { "slug": "fox", "title": "Fox Symbolism", "h1": "Fox Symbolism & Meaning", "context": "cleverness, adaptability, the trickster who survives by intelligence rather than force. The fox as the practical version of the magical mind." },
-    { "slug": "horse", "title": "Horse Symbolism", "h1": "Horse Symbolism & Meaning", "context": "harnessed power, partnership across species, vitality in motion. The horse as the relationship between strength and direction. Strong cross-cultural symbolic register." },
-    { "slug": "elephant", "title": "Elephant Symbolism", "h1": "Elephant Symbolism & Meaning", "context": "memory, wisdom, ancestral knowledge held in the body. Strong religious and cultural symbolism across Asia and Africa. The slow mover that doesn't forget." },
-    { "slug": "tiger", "title": "Tiger Symbolism", "h1": "Tiger Symbolism & Meaning", "context": "concentrated power, solitary intensity, primal sovereignty in the East. Where the lion is the western king-figure, the tiger is the eastern apex of fierce dignity." },
-    { "slug": "rabbit", "title": "Rabbit Symbolism", "h1": "Rabbit Symbolism & Meaning", "context": "fertility, vulnerability, the alertness that keeps prey alive. The rabbit as gentleness with persistent watchfulness." },
-    { "slug": "hummingbird", "title": "Hummingbird Symbolism", "h1": "Hummingbird Symbolism & Meaning", "context": "joy, lightness, the impossible flight made possible. The hummingbird as concentrated vital energy. Often associated with messages from departed loved ones in contemporary tradition." },
-    { "slug": "swan", "title": "Swan Symbolism", "h1": "Swan Symbolism & Meaning", "context": "transformation, grace, the white bird of the soul. Often associated with mature beauty and the integration that comes after the ugly-duckling phase." },
-    { "slug": "peacock", "title": "Peacock Symbolism", "h1": "Peacock Symbolism & Meaning", "context": "beauty made visible, pride, sometimes the integration of shadow (the 'eyes' on the feathers as the watchful unconscious made decorative). Strong Hindu and Christian symbolic traditions." },
-    { "slug": "dragonfly", "title": "Dragonfly Symbolism", "h1": "Dragonfly Symbolism & Meaning", "context": "transformation, illusion meeting clarity, the brief brilliant life. Strong contemporary association with messages from the spiritual realm." },
-    { "slug": "ladybug", "title": "Ladybug Symbolism", "h1": "Ladybug Symbolism & Meaning", "context": "luck, gentle protection, the small beautiful thing that doesn't ask for attention. Strong folk-tradition load — landing on you traditionally good fortune." },
-    { "slug": "ant", "title": "Ant Symbolism", "h1": "Ant Symbolism & Meaning", "context": "industry, collective, the small effort that builds large outcomes. Across cultures associated with patience and cooperative achievement." },
-    { "slug": "bee", "title": "Bee Symbolism", "h1": "Bee Symbolism & Meaning", "context": "industry, community, sweetness produced through patient work. Strong cross-cultural symbolic load — from Egyptian solar associations to contemporary ecological concern." },
-    { "slug": "frog", "title": "Frog Symbolism", "h1": "Frog Symbolism & Meaning", "context": "transformation, threshold-crossing, the creature that lives between water and land. Strong rebirth associations across cultures." },
-    { "slug": "turtle", "title": "Turtle Symbolism", "h1": "Turtle Symbolism & Meaning", "context": "longevity, patience, carrying home with you. The turtle as the symbol of slow steady wisdom that outlasts faster things." },
-    { "slug": "octopus", "title": "Octopus Symbolism", "h1": "Octopus Symbolism & Meaning", "context": "intelligence in unfamiliar form, multiplicity, the mind that operates on many fronts at once. Contemporary associations with adaptive genius." },
-    { "slug": "spider-symbol", "title": "Spider Symbolism", "h1": "Spider Symbolism & Meaning", "context": "the weaver, the patient builder of structure, sometimes the trap-maker. Cross-cultural symbolic register from creation mythology to contemporary noticing." },
-    { "slug": "ouroboros", "title": "Ouroboros Symbolism", "h1": "Ouroboros Symbolism & Meaning", "context": "the serpent eating its own tail. Eternity, cyclicity, the unity of beginning and end. Foundational symbol in alchemy and across many ancient cultures." },
-    { "slug": "yin-yang", "title": "Yin Yang Symbolism", "h1": "Yin Yang Symbolism & Meaning", "context": "the complementary opposites that contain each other. The most universal eastern symbol of balance — and the western misreadings worth knowing." },
-    { "slug": "lotus", "title": "Lotus Symbolism", "h1": "Lotus Symbolism & Meaning", "context": "spiritual emergence from muddy water. Central symbol across Buddhist and Hindu traditions — beauty that requires the difficulty it rises through." },
-    { "slug": "tree-of-life", "title": "Tree of Life Symbolism", "h1": "Tree of Life Symbolism & Meaning", "context": "the cosmic axis. Yggdrasil, the Kabbalistic Tree, the biblical Tree of Life — the cross-cultural image of connection across realms." },
-    { "slug": "pentagram", "title": "Pentagram Symbolism", "h1": "Pentagram Symbolism & Meaning", "context": "the five-pointed star with deep symbolic load. The protective version (point up), the inverted version, and the cultural baggage worth separating from the symbol." },
-    { "slug": "hexagram", "title": "Hexagram Symbolism", "h1": "Hexagram Symbolism & Meaning", "context": "the six-pointed star — Star of David, Seal of Solomon, the I Ching hexagrams. Different traditions, different meanings, all carrying balance and integration." },
-    { "slug": "triangle", "title": "Triangle Symbolism", "h1": "Triangle Symbolism & Meaning", "context": "the simplest stable shape. Point up, point down, equilateral — each variation carries distinct meaning. The trinity register across many traditions." },
-    { "slug": "circle", "title": "Circle Symbolism", "h1": "Circle Symbolism & Meaning", "context": "wholeness, completion, the unbroken line. The mandala register. Across cultures the symbol that needs no further qualification." },
-    { "slug": "square", "title": "Square Symbolism", "h1": "Square Symbolism & Meaning", "context": "stability, the four directions, the foundation. Where the circle is spiritual completion, the square is earthly stability and structure." },
-    { "slug": "spiral", "title": "Spiral Symbolism", "h1": "Spiral Symbolism & Meaning", "context": "growth that returns to itself at a higher level. The cross-cultural symbol of evolution, return, the journey that's circular and progressive at once." },
-    { "slug": "infinity", "title": "Infinity Symbol Symbolism", "h1": "Infinity Symbol Meaning", "context": "the lemniscate. Mathematical concept, mystical symbol, contemporary tattoo. The single line that contains no end." },
-    { "slug": "anchor", "title": "Anchor Symbolism", "h1": "Anchor Symbolism & Meaning", "context": "stability, hope, the holding-fast register. Early Christian secret-symbol; contemporary tattoo of steadiness. The thing that keeps you from drift." },
-    { "slug": "compass", "title": "Compass Symbolism", "h1": "Compass Symbolism & Meaning", "context": "direction, guidance, finding your true north. Both the literal navigational tool and the metaphorical inner-compass register." },
-    { "slug": "cross", "title": "Cross Symbolism", "h1": "Cross Symbolism & Meaning", "context": "the intersection of heaven and earth, sacrifice and salvation in Christian register, the four directions in older traditions. Pre-Christian symbolic depth worth knowing." },
-    { "slug": "ankh", "title": "Ankh Symbolism", "h1": "Ankh Symbolism & Meaning", "context": "the Egyptian symbol of life. The looped cross carried by deities. One of the most distinctive ancient symbols still actively in use." },
-    { "slug": "eye-of-horus", "title": "Eye of Horus Symbolism", "h1": "Eye of Horus Symbolism & Meaning", "context": "protection, royal power, the all-seeing register. Distinct from the Eye of Ra. Strong Egyptian symbolic load, modern jewelry and tattoo presence." },
-    { "slug": "eye-of-providence", "title": "Eye of Providence Symbolism", "h1": "Eye of Providence Symbolism & Meaning", "context": "the eye in the triangle. American currency, Masonic tradition, divine watchfulness. The contemporary conspiracy-baggage worth separating from the symbol." },
-    { "slug": "hamsa", "title": "Hamsa Symbolism", "h1": "Hamsa Symbolism & Meaning", "context": "the hand-shaped amulet across Jewish, Islamic, and Mediterranean cultures. Protection against the evil eye. The most cross-cultural protective symbol still actively worn." },
-    { "slug": "evil-eye", "title": "Evil Eye Symbolism", "h1": "Evil Eye Symbolism & Meaning", "context": "the protective eye amulet — the symbol that watches back against malevolent attention. Strong Mediterranean and Middle Eastern presence; contemporary global circulation." },
-    { "slug": "trinity-knot", "title": "Trinity Knot Symbolism", "h1": "Trinity Knot Symbolism & Meaning", "context": "the Celtic triquetra. Three interlocked arcs. Pre-Christian Celtic symbol later adopted into Christian Trinity iconography. The symbol of threes." },
-    { "slug": "celtic-cross", "title": "Celtic Cross Symbolism", "h1": "Celtic Cross Symbolism & Meaning", "context": "the cross within the circle — Christian crucifix meeting older sun-wheel imagery. Distinctively Irish and Scottish presence. Cultural inheritance worth understanding." },
-    { "slug": "om", "title": "Om Symbolism", "h1": "Om / Aum Symbolism & Meaning", "context": "the primordial sound made visual. Central in Hindu, Buddhist, and Jain traditions. The symbol that represents the vibration underlying existence." },
-    { "slug": "chakra", "title": "Chakra Symbolism", "h1": "Chakra Symbolism & Meaning", "context": "the seven energy centres in the body. Indian Tantric origin, contemporary global wellness adoption. The system worth understanding before invoking." },
-    { "slug": "third-eye", "title": "Third Eye Symbolism", "h1": "Third Eye Symbolism & Meaning", "context": "the ajna chakra, the inner sight, the intuitive register. Cross-cultural symbol of insight beyond ordinary perception." },
-    { "slug": "phoenix", "title": "Phoenix Symbolism", "h1": "Phoenix Symbolism & Meaning", "context": "rebirth through fire. The bird that rises from its own ashes. Cross-cultural with significant variations between Greek, Egyptian (Bennu), and Chinese (Fenghuang) versions." },
-    { "slug": "dragon", "title": "Dragon Symbolism", "h1": "Dragon Symbolism & Meaning", "context": "the great difference between Eastern and Western dragons. Western: predator to be defeated. Eastern: powerful protective spirit. The most starkly divided cross-cultural symbol." },
-    { "slug": "unicorn", "title": "Unicorn Symbolism", "h1": "Unicorn Symbolism & Meaning", "context": "purity, the wild that cannot be tamed except by the truly worthy. Medieval European symbolic load, contemporary cultural reframing." },
-    { "slug": "mermaid", "title": "Mermaid Symbolism", "h1": "Mermaid Symbolism & Meaning", "context": "the boundary between conscious and unconscious depths. Sailor-tradition warnings, contemporary feminine-power reclamation, the seductive register of what's not fully visible." },
-    { "slug": "snake-shedding", "title": "Snake Shedding Skin Symbolism", "h1": "Snake Shedding Skin Symbolism", "context": "the specific symbol of the snake's molting. Renewal, transformation, the shedding of identity. Distinct from broader snake symbolism." },
-    { "slug": "feather-white", "title": "White Feather Symbolism", "h1": "White Feather Meaning", "context": "the specific white-feather find. Contemporary association with messages from departed loved ones. Older traditions of peace and surrender. Worth knowing both." },
-    { "slug": "feather-black", "title": "Black Feather Symbolism", "h1": "Black Feather Meaning", "context": "the specific black-feather find. Protection, mystery, sometimes warning across traditions. Different register from the white-feather find." },
-    { "slug": "rainbow", "title": "Rainbow Symbolism", "h1": "Rainbow Symbolism & Meaning", "context": "promise after difficulty across cultures. Biblical covenant; Hindu Indra's bow; Norse Bifrost. Contemporary pride-flag reclamation as additional layer." },
-    { "slug": "star-of-david", "title": "Star of David Symbolism", "h1": "Star of David Symbolism & Meaning", "context": "the hexagram in its specifically Jewish register. The shield, the seal, the modern Israeli national symbol. Historical and contemporary significance." },
-    { "slug": "celtic-knot", "title": "Celtic Knot Symbolism", "h1": "Celtic Knot Symbolism & Meaning", "context": "the interlaced patterns without beginning or end. Pre-Christian Celtic origin, later monastic adoption. Eternity and connection across the various knot forms." },
-    { "slug": "mandala", "title": "Mandala Symbolism", "h1": "Mandala Symbolism & Meaning", "context": "the radial spiritual diagram. Buddhist and Hindu traditions, Jung's psychological adoption, contemporary therapeutic and meditative use. The whole-self diagram." },
-    { "slug": "sun-and-moon", "title": "Sun and Moon Symbolism", "h1": "Sun and Moon Symbolism & Meaning", "context": "the pair held together — the cross-cultural image of conscious and unconscious, masculine and feminine, day and night in balance." },
-    { "slug": "key-and-lock", "title": "Key and Lock Symbolism", "h1": "Key and Lock Symbolism & Meaning", "context": "the matched pair. Access requires the right key for the specific lock. The symbolic register of fitness — not every key opens every door." },
-    { "slug": "skull", "title": "Skull Symbolism", "h1": "Skull Symbolism & Meaning", "context": "mortality, the memento mori register, Día de los Muertos celebration. The honest reminder, not the macabre threat. Cross-cultural depth worth knowing." },
-    { "slug": "scarab", "title": "Scarab Symbolism", "h1": "Scarab Symbolism & Meaning", "context": "the Egyptian beetle of regeneration. Rolling the sun across the sky. Resurrection and rebirth in the most specific archaeological register." },
-    { "slug": "lily", "title": "Lily Symbolism", "h1": "Lily Symbolism & Meaning", "context": "purity, renewal, often funerary. The white lily's specific symbolic register across Christian and broader traditions." },
-    { "slug": "sunflower", "title": "Sunflower Symbolism", "h1": "Sunflower Symbolism & Meaning", "context": "loyalty to light, the face that follows the sun. Contemporary cheerful register, deeper symbolic load about devoted attention to source." },
-    { "slug": "oak-tree", "title": "Oak Tree Symbolism", "h1": "Oak Tree Symbolism & Meaning", "context": "strength, longevity, sacred status in Druidic and Norse traditions. The specific oak-symbol, distinct from generic tree symbolism." },
-    { "slug": "willow-tree", "title": "Willow Tree Symbolism", "h1": "Willow Tree Symbolism & Meaning", "context": "flexibility through grief, the tree that bends and survives. Strong association with mourning across cultures, balanced by the resilience register." },
-    { "slug": "olive-branch", "title": "Olive Branch Symbolism", "h1": "Olive Branch Symbolism & Meaning", "context": "peace, the offering of reconciliation. Biblical dove-and-branch, Greek Athena, contemporary diplomatic register." },
-    { "slug": "thorn", "title": "Thorn Symbolism", "h1": "Thorn Symbolism & Meaning", "context": "the cost of beauty, the protective edge. Biblical crown-of-thorns register, the rose-and-thorn pairing, the symbol that doesn't lie about cost." },
-    { "slug": "wheat", "title": "Wheat Symbolism", "h1": "Wheat Symbolism & Meaning", "context": "harvest, sustenance, the patient agricultural cycle. Strong religious register across grain-cultivating civilisations." },
-    { "slug": "candle", "title": "Candle Symbolism", "h1": "Candle Symbolism & Meaning", "context": "light in darkness, the small flame that holds against the dark. Religious, romantic, memorial — the candle's symbolic load is multilayered." },
-    { "slug": "fire", "title": "Fire Symbolism", "h1": "Fire Symbolism & Meaning", "context": "transformation, destruction, vitality. The element that purifies and consumes. Cross-cultural sacred-fire traditions and contemporary symbolic register." },
-    { "slug": "water-symbol", "title": "Water Symbolism", "h1": "Water Symbolism & Meaning", "context": "emotion, the unconscious, life-giving and dangerous at once. The element that holds the most symbolic load in dream and waking imagery alike." },
-    { "slug": "earth", "title": "Earth Symbolism", "h1": "Earth Element Symbolism & Meaning", "context": "ground, stability, the body as element. Across elemental traditions the foundational register — Mother Earth, grounding, the practical material." },
-    { "slug": "wind", "title": "Wind Symbolism", "h1": "Wind Symbolism & Meaning", "context": "spirit, change, the invisible that moves everything. The Hebrew ruach, the Greek pneuma, the breath of life across traditions." },
-    { "slug": "labyrinth", "title": "Labyrinth Symbolism", "h1": "Labyrinth Symbolism & Meaning", "context": "the single-path winding to a centre. Distinct from a maze — labyrinths cannot be lost in. Spiritual walking tradition across cultures." },
-    { "slug": "pyramid", "title": "Pyramid Symbolism", "h1": "Pyramid Symbolism & Meaning", "context": "ascent to a point, the structure rising to apex. Egyptian funerary architecture, Mesoamerican ceremony, contemporary New Age inheritance worth separating." },
-    { "slug": "all-seeing-eye", "title": "All Seeing Eye Symbolism", "h1": "All Seeing Eye Symbolism & Meaning", "context": "divine omniscience across traditions. The eye in the triangle, the eye of Horus, the eye of God. Contemporary conspiracy baggage versus traditional reading." },
-    { "slug": "lotus-flower", "title": "Lotus Flower Symbolism", "h1": "Lotus Flower Symbolism & Meaning", "context": "the spiritual flower of the East. Buddhist and Hindu central symbol — beauty rising from mud. Detailed colour-register across traditions." },
-    { "slug": "totem", "title": "Totem Symbolism", "h1": "Totem Symbolism & Meaning", "context": "the spirit-animal or spirit-symbol associated with a person, family, or clan. Indigenous origins worth respecting, contemporary popular adoption worth examining critically." },
-    { "slug": "spirit-animal", "title": "Spirit Animal Meaning", "h1": "Spirit Animal Symbolism & Meaning", "context": "the concept across indigenous traditions and contemporary popular interpretation. What it means to claim one, what cultural appropriation concerns matter, and the deeper register." },
-    { "slug": "salt", "title": "Salt Symbolism", "h1": "Salt Symbolism & Meaning", "context": "preservation, purification, the cost of necessity (salary-from-salt). Cross-cultural sacred register from the Roman empire to contemporary folk magic." },
-    { "slug": "honey", "title": "Honey Symbolism", "h1": "Honey Symbolism & Meaning", "context": "sweetness, preservation, the gift produced by patient work. Cross-cultural sacred register, often associated with divine sustenance and language of love." },
-    { "slug": "blood-symbol", "title": "Blood Symbolism", "h1": "Blood Symbolism & Meaning", "context": "vitality, lineage, the sacred cost. Eucharistic register, ancestral blood-bonds, the most charged liquid in the symbolic vocabulary." },
-    { "slug": "rose-red", "title": "Red Rose Symbolism", "h1": "Red Rose Symbolism & Meaning", "context": "the specific red-rose register — romantic love, passion, the most universal flower-colour pairing. Distinct from broader rose symbolism." },
-    { "slug": "rose-white", "title": "White Rose Symbolism", "h1": "White Rose Symbolism & Meaning", "context": "purity, new beginnings, sometimes mourning. The white-rose specific register including the dual wedding/funeral presence." },
-    { "slug": "rose-black", "title": "Black Rose Symbolism", "h1": "Black Rose Symbolism & Meaning", "context": "endings, mourning, the love that has cost. Beneath the goth-aesthetic baggage there's real symbolic weight worth knowing." },
-    { "slug": "cobweb", "title": "Cobweb Symbolism", "h1": "Cobweb Symbolism & Meaning", "context": "abandoned structure, dormancy, the trap that no longer catches. Different register from the active spider's web." },
-    { "slug": "broken-clock", "title": "Broken Clock Symbolism", "h1": "Broken Clock Symbolism & Meaning", "context": "time stopped, the moment that won't move forward. Sometimes literal grief; sometimes the felt sense of being stuck. Contemporary symbolic register." },
-    { "slug": "north-star", "title": "North Star Symbolism", "h1": "North Star Symbolism & Meaning", "context": "guidance, fixed reference point, the bright thing that doesn't move. Polaris in literal terms; the inner compass register in symbolic terms." },
-    { "slug": "shooting-star", "title": "Shooting Star Symbolism", "h1": "Shooting Star Symbolism & Meaning", "context": "the brief brilliant moment, the wish-granted register, sometimes the soul departing. Cross-cultural significance worth knowing." },
-    { "slug": "eclipse", "title": "Eclipse Symbolism", "h1": "Eclipse Symbolism & Meaning", "context": "the temporary obscuring of usually-present light. Solar versus lunar eclipses; the contemporary astrological register; the deeper symbolic load." },
-    { "slug": "comet", "title": "Comet Symbolism", "h1": "Comet Symbolism & Meaning", "context": "the rare visitor, traditionally an omen across cultures. Sometimes good, often disruptive — the harbinger register." },
-    { "slug": "lightning", "title": "Lightning Symbolism", "h1": "Lightning Symbolism & Meaning", "context": "sudden illumination, divine power, the strike that changes everything. Zeus, Thor, the contemporary symbolic register of breakthrough." },
-    { "slug": "thunder", "title": "Thunder Symbolism", "h1": "Thunder Symbolism & Meaning", "context": "the divine voice, the announcement of something larger. Distinct from lightning — thunder is the registering, not the strike." },
-    { "slug": "mountain-symbol", "title": "Mountain Symbolism", "h1": "Mountain Symbolism & Meaning", "context": "ascent, obstacle, the sacred high place. Mount Olympus, Sinai, Meru — cross-cultural symbolism of the elevated and the difficult." },
-    { "slug": "river", "title": "River Symbolism", "h1": "River Symbolism & Meaning", "context": "the directional flow of time and life. Crossing the river, following it, the source-to-sea register. The Styx, the Ganges, the cross-cultural significance." },
-    { "slug": "well", "title": "Well Symbolism", "h1": "Well Symbolism & Meaning", "context": "the depth that gives life. Drawing from the well, falling into one, the secret-depths register. Strong fairy-tale and biblical presence." },
-    { "slug": "bridge", "title": "Bridge Symbolism", "h1": "Bridge Symbolism & Meaning", "context": "transition, connection across divide. Burning bridges, crossing them, the under-the-bridge register. Cross-cultural symbolic depth." },
-    { "slug": "door", "title": "Door Symbolism", "h1": "Door Symbolism & Meaning", "context": "threshold, choice, opportunity. Open doors, closed doors, doors that aren't really there. The symbolic register of options." },
-    { "slug": "window", "title": "Window Symbolism", "h1": "Window Symbolism & Meaning", "context": "seeing without entering, the perspective from inside. Different register from the door — windows reveal, doors decide." },
-    { "slug": "stairs-symbol", "title": "Stairs Symbolism", "h1": "Stairs Symbolism & Meaning", "context": "ascent and descent between levels. Spiral, straight, broken — each variant carries a distinct register of progress or interruption." },
-    { "slug": "ladder", "title": "Ladder Symbolism", "h1": "Ladder Symbolism & Meaning", "context": "ascent, achievement, the climb between levels. Jacob's ladder, the corporate ladder, the symbol that holds aspiration." }
+    {
+      "slug": "dolphin",
+      "title": "Dolphin Symbolism",
+      "h1": "Dolphin Symbolism & Meaning",
+      "context": "intelligence in water, joy as wisdom, community of the deep. The dolphin as the conscious mind meeting emotional depth gracefully — common across maritime cultures."
+    },
+    {
+      "slug": "whale",
+      "title": "Whale Symbolism",
+      "h1": "Whale Symbolism & Meaning",
+      "context": "the largest emotional weight made conscious. Ancient depth, song across distance, the unconscious in its most majestic form. Significant cross-cultural symbolic load."
+    },
+    {
+      "slug": "shark",
+      "title": "Shark Symbolism",
+      "h1": "Shark Symbolism & Meaning",
+      "context": "the apex predator of emotional depths. Survival intelligence, raw instinct, sometimes the part of the psyche that doesn't ask permission. Honest about its appetite."
+    },
+    {
+      "slug": "deer",
+      "title": "Deer Symbolism",
+      "h1": "Deer Symbolism & Meaning",
+      "context": "gentleness, alertness, the wild that yields without breaking. Across cultures associated with spiritual purity and the vulnerable-watchful register of being."
+    },
+    {
+      "slug": "fox",
+      "title": "Fox Symbolism",
+      "h1": "Fox Symbolism & Meaning",
+      "context": "cleverness, adaptability, the trickster who survives by intelligence rather than force. The fox as the practical version of the magical mind."
+    },
+    {
+      "slug": "horse",
+      "title": "Horse Symbolism",
+      "h1": "Horse Symbolism & Meaning",
+      "context": "harnessed power, partnership across species, vitality in motion. The horse as the relationship between strength and direction. Strong cross-cultural symbolic register."
+    },
+    {
+      "slug": "elephant",
+      "title": "Elephant Symbolism",
+      "h1": "Elephant Symbolism & Meaning",
+      "context": "memory, wisdom, ancestral knowledge held in the body. Strong religious and cultural symbolism across Asia and Africa. The slow mover that doesn't forget."
+    },
+    {
+      "slug": "tiger",
+      "title": "Tiger Symbolism",
+      "h1": "Tiger Symbolism & Meaning",
+      "context": "concentrated power, solitary intensity, primal sovereignty in the East. Where the lion is the western king-figure, the tiger is the eastern apex of fierce dignity."
+    },
+    {
+      "slug": "rabbit",
+      "title": "Rabbit Symbolism",
+      "h1": "Rabbit Symbolism & Meaning",
+      "context": "fertility, vulnerability, the alertness that keeps prey alive. The rabbit as gentleness with persistent watchfulness."
+    },
+    {
+      "slug": "hummingbird",
+      "title": "Hummingbird Symbolism",
+      "h1": "Hummingbird Symbolism & Meaning",
+      "context": "joy, lightness, the impossible flight made possible. The hummingbird as concentrated vital energy. Often associated with messages from departed loved ones in contemporary tradition."
+    },
+    {
+      "slug": "swan",
+      "title": "Swan Symbolism",
+      "h1": "Swan Symbolism & Meaning",
+      "context": "transformation, grace, the white bird of the soul. Often associated with mature beauty and the integration that comes after the ugly-duckling phase."
+    },
+    {
+      "slug": "peacock",
+      "title": "Peacock Symbolism",
+      "h1": "Peacock Symbolism & Meaning",
+      "context": "beauty made visible, pride, sometimes the integration of shadow (the 'eyes' on the feathers as the watchful unconscious made decorative). Strong Hindu and Christian symbolic traditions."
+    },
+    {
+      "slug": "dragonfly",
+      "title": "Dragonfly Symbolism",
+      "h1": "Dragonfly Symbolism & Meaning",
+      "context": "transformation, illusion meeting clarity, the brief brilliant life. Strong contemporary association with messages from the spiritual realm."
+    },
+    {
+      "slug": "ladybug",
+      "title": "Ladybug Symbolism",
+      "h1": "Ladybug Symbolism & Meaning",
+      "context": "luck, gentle protection, the small beautiful thing that doesn't ask for attention. Strong folk-tradition load — landing on you traditionally good fortune."
+    },
+    {
+      "slug": "ant",
+      "title": "Ant Symbolism",
+      "h1": "Ant Symbolism & Meaning",
+      "context": "industry, collective, the small effort that builds large outcomes. Across cultures associated with patience and cooperative achievement."
+    },
+    {
+      "slug": "bee",
+      "title": "Bee Symbolism",
+      "h1": "Bee Symbolism & Meaning",
+      "context": "industry, community, sweetness produced through patient work. Strong cross-cultural symbolic load — from Egyptian solar associations to contemporary ecological concern."
+    },
+    {
+      "slug": "frog",
+      "title": "Frog Symbolism",
+      "h1": "Frog Symbolism & Meaning",
+      "context": "transformation, threshold-crossing, the creature that lives between water and land. Strong rebirth associations across cultures."
+    },
+    {
+      "slug": "turtle",
+      "title": "Turtle Symbolism",
+      "h1": "Turtle Symbolism & Meaning",
+      "context": "longevity, patience, carrying home with you. The turtle as the symbol of slow steady wisdom that outlasts faster things."
+    },
+    {
+      "slug": "octopus",
+      "title": "Octopus Symbolism",
+      "h1": "Octopus Symbolism & Meaning",
+      "context": "intelligence in unfamiliar form, multiplicity, the mind that operates on many fronts at once. Contemporary associations with adaptive genius."
+    },
+    {
+      "slug": "spider-symbol",
+      "title": "Spider Symbolism",
+      "h1": "Spider Symbolism & Meaning",
+      "context": "the weaver, the patient builder of structure, sometimes the trap-maker. Cross-cultural symbolic register from creation mythology to contemporary noticing."
+    },
+    {
+      "slug": "ouroboros",
+      "title": "Ouroboros Symbolism",
+      "h1": "Ouroboros Symbolism & Meaning",
+      "context": "the serpent eating its own tail. Eternity, cyclicity, the unity of beginning and end. Foundational symbol in alchemy and across many ancient cultures."
+    },
+    {
+      "slug": "yin-yang",
+      "title": "Yin Yang Symbolism",
+      "h1": "Yin Yang Symbolism & Meaning",
+      "context": "the complementary opposites that contain each other. The most universal eastern symbol of balance — and the western misreadings worth knowing."
+    },
+    {
+      "slug": "lotus",
+      "title": "Lotus Symbolism",
+      "h1": "Lotus Symbolism & Meaning",
+      "context": "spiritual emergence from muddy water. Central symbol across Buddhist and Hindu traditions — beauty that requires the difficulty it rises through."
+    },
+    {
+      "slug": "tree-of-life",
+      "title": "Tree of Life Symbolism",
+      "h1": "Tree of Life Symbolism & Meaning",
+      "context": "the cosmic axis. Yggdrasil, the Kabbalistic Tree, the biblical Tree of Life — the cross-cultural image of connection across realms."
+    },
+    {
+      "slug": "pentagram",
+      "title": "Pentagram Symbolism",
+      "h1": "Pentagram Symbolism & Meaning",
+      "context": "the five-pointed star with deep symbolic load. The protective version (point up), the inverted version, and the cultural baggage worth separating from the symbol."
+    },
+    {
+      "slug": "hexagram",
+      "title": "Hexagram Symbolism",
+      "h1": "Hexagram Symbolism & Meaning",
+      "context": "the six-pointed star — Star of David, Seal of Solomon, the I Ching hexagrams. Different traditions, different meanings, all carrying balance and integration."
+    },
+    {
+      "slug": "triangle",
+      "title": "Triangle Symbolism",
+      "h1": "Triangle Symbolism & Meaning",
+      "context": "the simplest stable shape. Point up, point down, equilateral — each variation carries distinct meaning. The trinity register across many traditions."
+    },
+    {
+      "slug": "circle",
+      "title": "Circle Symbolism",
+      "h1": "Circle Symbolism & Meaning",
+      "context": "wholeness, completion, the unbroken line. The mandala register. Across cultures the symbol that needs no further qualification."
+    },
+    {
+      "slug": "square",
+      "title": "Square Symbolism",
+      "h1": "Square Symbolism & Meaning",
+      "context": "stability, the four directions, the foundation. Where the circle is spiritual completion, the square is earthly stability and structure."
+    },
+    {
+      "slug": "spiral",
+      "title": "Spiral Symbolism",
+      "h1": "Spiral Symbolism & Meaning",
+      "context": "growth that returns to itself at a higher level. The cross-cultural symbol of evolution, return, the journey that's circular and progressive at once."
+    },
+    {
+      "slug": "infinity",
+      "title": "Infinity Symbol Symbolism",
+      "h1": "Infinity Symbol Meaning",
+      "context": "the lemniscate. Mathematical concept, mystical symbol, contemporary tattoo. The single line that contains no end."
+    },
+    {
+      "slug": "anchor",
+      "title": "Anchor Symbolism",
+      "h1": "Anchor Symbolism & Meaning",
+      "context": "stability, hope, the holding-fast register. Early Christian secret-symbol; contemporary tattoo of steadiness. The thing that keeps you from drift."
+    },
+    {
+      "slug": "compass",
+      "title": "Compass Symbolism",
+      "h1": "Compass Symbolism & Meaning",
+      "context": "direction, guidance, finding your true north. Both the literal navigational tool and the metaphorical inner-compass register."
+    },
+    {
+      "slug": "cross",
+      "title": "Cross Symbolism",
+      "h1": "Cross Symbolism & Meaning",
+      "context": "the intersection of heaven and earth, sacrifice and salvation in Christian register, the four directions in older traditions. Pre-Christian symbolic depth worth knowing."
+    },
+    {
+      "slug": "ankh",
+      "title": "Ankh Symbolism",
+      "h1": "Ankh Symbolism & Meaning",
+      "context": "the Egyptian symbol of life. The looped cross carried by deities. One of the most distinctive ancient symbols still actively in use."
+    },
+    {
+      "slug": "eye-of-horus",
+      "title": "Eye of Horus Symbolism",
+      "h1": "Eye of Horus Symbolism & Meaning",
+      "context": "protection, royal power, the all-seeing register. Distinct from the Eye of Ra. Strong Egyptian symbolic load, modern jewelry and tattoo presence."
+    },
+    {
+      "slug": "eye-of-providence",
+      "title": "Eye of Providence Symbolism",
+      "h1": "Eye of Providence Symbolism & Meaning",
+      "context": "the eye in the triangle. American currency, Masonic tradition, divine watchfulness. The contemporary conspiracy-baggage worth separating from the symbol."
+    },
+    {
+      "slug": "hamsa",
+      "title": "Hamsa Symbolism",
+      "h1": "Hamsa Symbolism & Meaning",
+      "context": "the hand-shaped amulet across Jewish, Islamic, and Mediterranean cultures. Protection against the evil eye. The most cross-cultural protective symbol still actively worn."
+    },
+    {
+      "slug": "evil-eye",
+      "title": "Evil Eye Symbolism",
+      "h1": "Evil Eye Symbolism & Meaning",
+      "context": "the protective eye amulet — the symbol that watches back against malevolent attention. Strong Mediterranean and Middle Eastern presence; contemporary global circulation."
+    },
+    {
+      "slug": "trinity-knot",
+      "title": "Trinity Knot Symbolism",
+      "h1": "Trinity Knot Symbolism & Meaning",
+      "context": "the Celtic triquetra. Three interlocked arcs. Pre-Christian Celtic symbol later adopted into Christian Trinity iconography. The symbol of threes."
+    },
+    {
+      "slug": "celtic-cross",
+      "title": "Celtic Cross Symbolism",
+      "h1": "Celtic Cross Symbolism & Meaning",
+      "context": "the cross within the circle — Christian crucifix meeting older sun-wheel imagery. Distinctively Irish and Scottish presence. Cultural inheritance worth understanding."
+    },
+    {
+      "slug": "om",
+      "title": "Om Symbolism",
+      "h1": "Om / Aum Symbolism & Meaning",
+      "context": "the primordial sound made visual. Central in Hindu, Buddhist, and Jain traditions. The symbol that represents the vibration underlying existence."
+    },
+    {
+      "slug": "chakra",
+      "title": "Chakra Symbolism",
+      "h1": "Chakra Symbolism & Meaning",
+      "context": "the seven energy centres in the body. Indian Tantric origin, contemporary global wellness adoption. The system worth understanding before invoking."
+    },
+    {
+      "slug": "third-eye",
+      "title": "Third Eye Symbolism",
+      "h1": "Third Eye Symbolism & Meaning",
+      "context": "the ajna chakra, the inner sight, the intuitive register. Cross-cultural symbol of insight beyond ordinary perception."
+    },
+    {
+      "slug": "phoenix",
+      "title": "Phoenix Symbolism",
+      "h1": "Phoenix Symbolism & Meaning",
+      "context": "rebirth through fire. The bird that rises from its own ashes. Cross-cultural with significant variations between Greek, Egyptian (Bennu), and Chinese (Fenghuang) versions."
+    },
+    {
+      "slug": "dragon",
+      "title": "Dragon Symbolism",
+      "h1": "Dragon Symbolism & Meaning",
+      "context": "the great difference between Eastern and Western dragons. Western: predator to be defeated. Eastern: powerful protective spirit. The most starkly divided cross-cultural symbol."
+    },
+    {
+      "slug": "unicorn",
+      "title": "Unicorn Symbolism",
+      "h1": "Unicorn Symbolism & Meaning",
+      "context": "purity, the wild that cannot be tamed except by the truly worthy. Medieval European symbolic load, contemporary cultural reframing."
+    },
+    {
+      "slug": "mermaid",
+      "title": "Mermaid Symbolism",
+      "h1": "Mermaid Symbolism & Meaning",
+      "context": "the boundary between conscious and unconscious depths. Sailor-tradition warnings, contemporary feminine-power reclamation, the seductive register of what's not fully visible."
+    },
+    {
+      "slug": "snake-shedding",
+      "title": "Snake Shedding Skin Symbolism",
+      "h1": "Snake Shedding Skin Symbolism",
+      "context": "the specific symbol of the snake's molting. Renewal, transformation, the shedding of identity. Distinct from broader snake symbolism."
+    },
+    {
+      "slug": "feather-white",
+      "title": "White Feather Symbolism",
+      "h1": "White Feather Meaning",
+      "context": "the specific white-feather find. Contemporary association with messages from departed loved ones. Older traditions of peace and surrender. Worth knowing both."
+    },
+    {
+      "slug": "feather-black",
+      "title": "Black Feather Symbolism",
+      "h1": "Black Feather Meaning",
+      "context": "the specific black-feather find. Protection, mystery, sometimes warning across traditions. Different register from the white-feather find."
+    },
+    {
+      "slug": "rainbow",
+      "title": "Rainbow Symbolism",
+      "h1": "Rainbow Symbolism & Meaning",
+      "context": "promise after difficulty across cultures. Biblical covenant; Hindu Indra's bow; Norse Bifrost. Contemporary pride-flag reclamation as additional layer."
+    },
+    {
+      "slug": "star-of-david",
+      "title": "Star of David Symbolism",
+      "h1": "Star of David Symbolism & Meaning",
+      "context": "the hexagram in its specifically Jewish register. The shield, the seal, the modern Israeli national symbol. Historical and contemporary significance."
+    },
+    {
+      "slug": "celtic-knot",
+      "title": "Celtic Knot Symbolism",
+      "h1": "Celtic Knot Symbolism & Meaning",
+      "context": "the interlaced patterns without beginning or end. Pre-Christian Celtic origin, later monastic adoption. Eternity and connection across the various knot forms."
+    },
+    {
+      "slug": "mandala",
+      "title": "Mandala Symbolism",
+      "h1": "Mandala Symbolism & Meaning",
+      "context": "the radial spiritual diagram. Buddhist and Hindu traditions, Jung's psychological adoption, contemporary therapeutic and meditative use. The whole-self diagram."
+    },
+    {
+      "slug": "sun-and-moon",
+      "title": "Sun and Moon Symbolism",
+      "h1": "Sun and Moon Symbolism & Meaning",
+      "context": "the pair held together — the cross-cultural image of conscious and unconscious, masculine and feminine, day and night in balance."
+    },
+    {
+      "slug": "key-and-lock",
+      "title": "Key and Lock Symbolism",
+      "h1": "Key and Lock Symbolism & Meaning",
+      "context": "the matched pair. Access requires the right key for the specific lock. The symbolic register of fitness — not every key opens every door."
+    },
+    {
+      "slug": "skull",
+      "title": "Skull Symbolism",
+      "h1": "Skull Symbolism & Meaning",
+      "context": "mortality, the memento mori register, Día de los Muertos celebration. The honest reminder, not the macabre threat. Cross-cultural depth worth knowing."
+    },
+    {
+      "slug": "scarab",
+      "title": "Scarab Symbolism",
+      "h1": "Scarab Symbolism & Meaning",
+      "context": "the Egyptian beetle of regeneration. Rolling the sun across the sky. Resurrection and rebirth in the most specific archaeological register."
+    },
+    {
+      "slug": "lily",
+      "title": "Lily Symbolism",
+      "h1": "Lily Symbolism & Meaning",
+      "context": "purity, renewal, often funerary. The white lily's specific symbolic register across Christian and broader traditions."
+    },
+    {
+      "slug": "sunflower",
+      "title": "Sunflower Symbolism",
+      "h1": "Sunflower Symbolism & Meaning",
+      "context": "loyalty to light, the face that follows the sun. Contemporary cheerful register, deeper symbolic load about devoted attention to source."
+    },
+    {
+      "slug": "oak-tree",
+      "title": "Oak Tree Symbolism",
+      "h1": "Oak Tree Symbolism & Meaning",
+      "context": "strength, longevity, sacred status in Druidic and Norse traditions. The specific oak-symbol, distinct from generic tree symbolism."
+    },
+    {
+      "slug": "willow-tree",
+      "title": "Willow Tree Symbolism",
+      "h1": "Willow Tree Symbolism & Meaning",
+      "context": "flexibility through grief, the tree that bends and survives. Strong association with mourning across cultures, balanced by the resilience register."
+    },
+    {
+      "slug": "olive-branch",
+      "title": "Olive Branch Symbolism",
+      "h1": "Olive Branch Symbolism & Meaning",
+      "context": "peace, the offering of reconciliation. Biblical dove-and-branch, Greek Athena, contemporary diplomatic register."
+    },
+    {
+      "slug": "thorn",
+      "title": "Thorn Symbolism",
+      "h1": "Thorn Symbolism & Meaning",
+      "context": "the cost of beauty, the protective edge. Biblical crown-of-thorns register, the rose-and-thorn pairing, the symbol that doesn't lie about cost."
+    },
+    {
+      "slug": "wheat",
+      "title": "Wheat Symbolism",
+      "h1": "Wheat Symbolism & Meaning",
+      "context": "harvest, sustenance, the patient agricultural cycle. Strong religious register across grain-cultivating civilisations."
+    },
+    {
+      "slug": "candle",
+      "title": "Candle Symbolism",
+      "h1": "Candle Symbolism & Meaning",
+      "context": "light in darkness, the small flame that holds against the dark. Religious, romantic, memorial — the candle's symbolic load is multilayered."
+    },
+    {
+      "slug": "fire",
+      "title": "Fire Symbolism",
+      "h1": "Fire Symbolism & Meaning",
+      "context": "transformation, destruction, vitality. The element that purifies and consumes. Cross-cultural sacred-fire traditions and contemporary symbolic register."
+    },
+    {
+      "slug": "water-symbol",
+      "title": "Water Symbolism",
+      "h1": "Water Symbolism & Meaning",
+      "context": "emotion, the unconscious, life-giving and dangerous at once. The element that holds the most symbolic load in dream and waking imagery alike."
+    },
+    {
+      "slug": "earth",
+      "title": "Earth Symbolism",
+      "h1": "Earth Element Symbolism & Meaning",
+      "context": "ground, stability, the body as element. Across elemental traditions the foundational register — Mother Earth, grounding, the practical material."
+    },
+    {
+      "slug": "wind",
+      "title": "Wind Symbolism",
+      "h1": "Wind Symbolism & Meaning",
+      "context": "spirit, change, the invisible that moves everything. The Hebrew ruach, the Greek pneuma, the breath of life across traditions."
+    },
+    {
+      "slug": "labyrinth",
+      "title": "Labyrinth Symbolism",
+      "h1": "Labyrinth Symbolism & Meaning",
+      "context": "the single-path winding to a centre. Distinct from a maze — labyrinths cannot be lost in. Spiritual walking tradition across cultures."
+    },
+    {
+      "slug": "pyramid",
+      "title": "Pyramid Symbolism",
+      "h1": "Pyramid Symbolism & Meaning",
+      "context": "ascent to a point, the structure rising to apex. Egyptian funerary architecture, Mesoamerican ceremony, contemporary New Age inheritance worth separating."
+    },
+    {
+      "slug": "all-seeing-eye",
+      "title": "All Seeing Eye Symbolism",
+      "h1": "All Seeing Eye Symbolism & Meaning",
+      "context": "divine omniscience across traditions. The eye in the triangle, the eye of Horus, the eye of God. Contemporary conspiracy baggage versus traditional reading."
+    },
+    {
+      "slug": "lotus-flower",
+      "title": "Lotus Flower Symbolism",
+      "h1": "Lotus Flower Symbolism & Meaning",
+      "context": "the spiritual flower of the East. Buddhist and Hindu central symbol — beauty rising from mud. Detailed colour-register across traditions."
+    },
+    {
+      "slug": "totem",
+      "title": "Totem Symbolism",
+      "h1": "Totem Symbolism & Meaning",
+      "context": "the spirit-animal or spirit-symbol associated with a person, family, or clan. Indigenous origins worth respecting, contemporary popular adoption worth examining critically."
+    },
+    {
+      "slug": "spirit-animal",
+      "title": "Spirit Animal Meaning",
+      "h1": "Spirit Animal Symbolism & Meaning",
+      "context": "the concept across indigenous traditions and contemporary popular interpretation. What it means to claim one, what cultural appropriation concerns matter, and the deeper register."
+    },
+    {
+      "slug": "salt",
+      "title": "Salt Symbolism",
+      "h1": "Salt Symbolism & Meaning",
+      "context": "preservation, purification, the cost of necessity (salary-from-salt). Cross-cultural sacred register from the Roman empire to contemporary folk magic."
+    },
+    {
+      "slug": "honey",
+      "title": "Honey Symbolism",
+      "h1": "Honey Symbolism & Meaning",
+      "context": "sweetness, preservation, the gift produced by patient work. Cross-cultural sacred register, often associated with divine sustenance and language of love."
+    },
+    {
+      "slug": "blood-symbol",
+      "title": "Blood Symbolism",
+      "h1": "Blood Symbolism & Meaning",
+      "context": "vitality, lineage, the sacred cost. Eucharistic register, ancestral blood-bonds, the most charged liquid in the symbolic vocabulary."
+    },
+    {
+      "slug": "rose-red",
+      "title": "Red Rose Symbolism",
+      "h1": "Red Rose Symbolism & Meaning",
+      "context": "the specific red-rose register — romantic love, passion, the most universal flower-colour pairing. Distinct from broader rose symbolism."
+    },
+    {
+      "slug": "rose-white",
+      "title": "White Rose Symbolism",
+      "h1": "White Rose Symbolism & Meaning",
+      "context": "purity, new beginnings, sometimes mourning. The white-rose specific register including the dual wedding/funeral presence."
+    },
+    {
+      "slug": "rose-black",
+      "title": "Black Rose Symbolism",
+      "h1": "Black Rose Symbolism & Meaning",
+      "context": "endings, mourning, the love that has cost. Beneath the goth-aesthetic baggage there's real symbolic weight worth knowing."
+    },
+    {
+      "slug": "cobweb",
+      "title": "Cobweb Symbolism",
+      "h1": "Cobweb Symbolism & Meaning",
+      "context": "abandoned structure, dormancy, the trap that no longer catches. Different register from the active spider's web."
+    },
+    {
+      "slug": "broken-clock",
+      "title": "Broken Clock Symbolism",
+      "h1": "Broken Clock Symbolism & Meaning",
+      "context": "time stopped, the moment that won't move forward. Sometimes literal grief; sometimes the felt sense of being stuck. Contemporary symbolic register."
+    },
+    {
+      "slug": "north-star",
+      "title": "North Star Symbolism",
+      "h1": "North Star Symbolism & Meaning",
+      "context": "guidance, fixed reference point, the bright thing that doesn't move. Polaris in literal terms; the inner compass register in symbolic terms."
+    },
+    {
+      "slug": "shooting-star",
+      "title": "Shooting Star Symbolism",
+      "h1": "Shooting Star Symbolism & Meaning",
+      "context": "the brief brilliant moment, the wish-granted register, sometimes the soul departing. Cross-cultural significance worth knowing."
+    },
+    {
+      "slug": "eclipse",
+      "title": "Eclipse Symbolism",
+      "h1": "Eclipse Symbolism & Meaning",
+      "context": "the temporary obscuring of usually-present light. Solar versus lunar eclipses; the contemporary astrological register; the deeper symbolic load."
+    },
+    {
+      "slug": "comet",
+      "title": "Comet Symbolism",
+      "h1": "Comet Symbolism & Meaning",
+      "context": "the rare visitor, traditionally an omen across cultures. Sometimes good, often disruptive — the harbinger register."
+    },
+    {
+      "slug": "lightning",
+      "title": "Lightning Symbolism",
+      "h1": "Lightning Symbolism & Meaning",
+      "context": "sudden illumination, divine power, the strike that changes everything. Zeus, Thor, the contemporary symbolic register of breakthrough."
+    },
+    {
+      "slug": "thunder",
+      "title": "Thunder Symbolism",
+      "h1": "Thunder Symbolism & Meaning",
+      "context": "the divine voice, the announcement of something larger. Distinct from lightning — thunder is the registering, not the strike."
+    },
+    {
+      "slug": "mountain-symbol",
+      "title": "Mountain Symbolism",
+      "h1": "Mountain Symbolism & Meaning",
+      "context": "ascent, obstacle, the sacred high place. Mount Olympus, Sinai, Meru — cross-cultural symbolism of the elevated and the difficult."
+    },
+    {
+      "slug": "river",
+      "title": "River Symbolism",
+      "h1": "River Symbolism & Meaning",
+      "context": "the directional flow of time and life. Crossing the river, following it, the source-to-sea register. The Styx, the Ganges, the cross-cultural significance."
+    },
+    {
+      "slug": "well",
+      "title": "Well Symbolism",
+      "h1": "Well Symbolism & Meaning",
+      "context": "the depth that gives life. Drawing from the well, falling into one, the secret-depths register. Strong fairy-tale and biblical presence."
+    },
+    {
+      "slug": "bridge",
+      "title": "Bridge Symbolism",
+      "h1": "Bridge Symbolism & Meaning",
+      "context": "transition, connection across divide. Burning bridges, crossing them, the under-the-bridge register. Cross-cultural symbolic depth."
+    },
+    {
+      "slug": "door",
+      "title": "Door Symbolism",
+      "h1": "Door Symbolism & Meaning",
+      "context": "threshold, choice, opportunity. Open doors, closed doors, doors that aren't really there. The symbolic register of options."
+    },
+    {
+      "slug": "window",
+      "title": "Window Symbolism",
+      "h1": "Window Symbolism & Meaning",
+      "context": "seeing without entering, the perspective from inside. Different register from the door — windows reveal, doors decide."
+    },
+    {
+      "slug": "stairs-symbol",
+      "title": "Stairs Symbolism",
+      "h1": "Stairs Symbolism & Meaning",
+      "context": "ascent and descent between levels. Spiral, straight, broken — each variant carries a distinct register of progress or interruption."
+    },
+    {
+      "slug": "ladder",
+      "title": "Ladder Symbolism",
+      "h1": "Ladder Symbolism & Meaning",
+      "context": "ascent, achievement, the climb between levels. Jacob's ladder, the corporate ladder, the symbol that holds aspiration."
+    },
+    {
+      "slug": "heart",
+      "title": "Heart Symbolism",
+      "h1": "Heart Symbol — Meaning & Symbolism",
+      "context": "the heart symbol: love, the emotional centre, courage ('heart'), and life-force. The journey from the anatomical heart to the stylised icon, and what it has meant across cultures and eras."
+    },
+    {
+      "slug": "four-leaf-clover",
+      "title": "Four-Leaf Clover Symbolism",
+      "h1": "Four-Leaf Clover — Meaning & Symbolism",
+      "context": "the four-leaf clover: rare luck, with faith, hope, love, and luck assigned to each leaf; Irish and folk traditions of the lucky find, and the shamrock contrast."
+    },
+    {
+      "slug": "horseshoe",
+      "title": "Horseshoe Symbolism",
+      "h1": "Horseshoe — Meaning & Symbolism",
+      "context": "the horseshoe: protection and luck, iron as a charm against ill fortune; the old debate over points-up (holds the luck) versus points-down (pours blessings out)."
+    },
+    {
+      "slug": "dreamcatcher",
+      "title": "Dreamcatcher Symbolism",
+      "h1": "Dreamcatcher — Meaning & Symbolism",
+      "context": "the dreamcatcher: Ojibwe origins, the web that filters dreams, protection in sleep. Treat the cultural origin with respect and note the gap between tradition and commercial use."
+    },
+    {
+      "slug": "crown",
+      "title": "Crown Symbolism",
+      "h1": "Crown — Meaning & Symbolism",
+      "context": "the crown: sovereignty, authority, achievement, the crown chakra and the 'divine right'; the difference between mastery over self and power over others."
+    },
+    {
+      "slug": "crescent-moon",
+      "title": "Crescent Moon Symbolism",
+      "h1": "Crescent Moon — Meaning & Symbolism",
+      "context": "the crescent moon: cycles, growth, the feminine and intuitive; Islamic and pagan associations, and how waxing versus waning shifts the meaning. Distinct from the full moon."
+    },
+    {
+      "slug": "dove",
+      "title": "Dove Symbolism",
+      "h1": "Dove — Meaning & Symbolism",
+      "context": "the dove: peace, the Holy Spirit, love and the soul; the dove-and-olive-branch pairing and the symbolism of releasing a dove. Distinct from the olive branch alone."
+    },
+    {
+      "slug": "fleur-de-lis",
+      "title": "Fleur-de-lis Symbolism",
+      "h1": "Fleur-de-lis — Meaning & Symbolism",
+      "context": "the fleur-de-lis: French royalty, the lily stylised, purity and the Trinity; its heraldic history and its later civic and Scouting associations."
+    },
+    {
+      "slug": "sword",
+      "title": "Sword Symbolism",
+      "h1": "Sword — Meaning & Symbolism",
+      "context": "the sword: power and protection, discrimination (cutting truth from falsehood), justice and conflict; the meaning of its double edge, and the sword in tarot and myth."
+    },
+    {
+      "slug": "crystal",
+      "title": "Crystal Symbolism",
+      "h1": "Crystals — Meaning & Symbolism",
+      "context": "crystals as a class of symbol: clarity, focused intention, healing belief, and the earth's hidden structure made visible. Stay grounded — describe the belief, distinguish it from evidence."
+    },
+    {
+      "slug": "angel",
+      "title": "Angel Symbolism",
+      "h1": "Angel — Meaning & Symbolism",
+      "context": "the angel as symbol: messengers, protection, and the bridge between the human and the divine; guardian-angel belief across the Abrahamic traditions and beyond."
+    },
+    {
+      "slug": "fairy",
+      "title": "Fairy Symbolism",
+      "h1": "Fairy — Meaning & Symbolism",
+      "context": "the fairy: nature spirits, the liminal and the magical, mischief and blessing in equal measure; the folklore of the fae and the hidden world alongside our own."
+    },
+    {
+      "slug": "arrow",
+      "title": "Arrow Symbolism",
+      "h1": "Arrow — Meaning & Symbolism",
+      "context": "the arrow: direction, focus, intent and swiftness; a single arrow for protection, crossed arrows for friendship, and Cupid's arrow for sudden love."
+    },
+    {
+      "slug": "clock",
+      "title": "Clock Symbolism",
+      "h1": "Clock — Meaning & Symbolism",
+      "context": "the clock as symbol: mortality, the pressure and passage of time, order and mechanism. Distinct from a broken or stopped clock (time arrested)."
+    },
+    {
+      "slug": "hourglass",
+      "title": "Hourglass Symbolism",
+      "h1": "Hourglass — Meaning & Symbolism",
+      "context": "the hourglass: finite time, patience, the inevitability of change; 'as above, so below' echoed in its twin chambers, and the memento-mori tradition."
+    }
   ],
   "number": [
-    { "slug": "0", "title": "0 Meaning", "h1": "The Number 0 — Meaning & Symbolism", "context": "the void, potential, the unmanifest. The zero as starting point and as completion. Distinct from any single repeating-digit angel number." },
-    { "slug": "121", "title": "121 Meaning", "h1": "121 Angel Number Meaning", "context": "the 1-2-1 palindromic structure. New cycle (1) bracketing partnership (2) — the support for a relationship that's becoming central." },
-    { "slug": "131", "title": "131 Meaning", "h1": "131 Angel Number Meaning", "context": "new cycle (1) framing expression and creativity (3). Often appears when initiative is being asked to take creative or communicative form." },
-    { "slug": "141", "title": "141 Meaning", "h1": "141 Angel Number Meaning", "context": "new cycle (1) framing foundation (4). The initiative grounded by structure. Often a build-something-real signal." },
-    { "slug": "151", "title": "151 Meaning", "h1": "151 Angel Number Meaning", "context": "new cycle (1) framing change (5). Often signals that the initiative being asked of you is specifically about embracing significant change." },
-    { "slug": "161", "title": "161 Meaning", "h1": "161 Angel Number Meaning", "context": "new cycle (1) framing responsibility and home (6). Often appears when initiative is being asked in caring or domestic contexts." },
-    { "slug": "171", "title": "171 Meaning", "h1": "171 Angel Number Meaning", "context": "new cycle (1) framing spiritual alignment (7). Often appears when initiative is being asked specifically about inner or spiritual work." },
-    { "slug": "181", "title": "181 Meaning", "h1": "181 Angel Number Meaning", "context": "new cycle (1) framing abundance (8). Often appears when initiative is being asked specifically about financial or material expansion." },
-    { "slug": "191", "title": "191 Meaning", "h1": "191 Angel Number Meaning", "context": "new cycle (1) framing completion (9). The initiative that completes a long arc. Often appears at endings that become beginnings." },
-    { "slug": "212", "title": "212 Meaning", "h1": "212 Angel Number Meaning", "context": "balance (2) framing initiative (1). The relational support around a new beginning. Partnership backing a single move." },
-    { "slug": "232", "title": "232 Meaning", "h1": "232 Angel Number Meaning", "context": "balance (2) framing expression (3). Partnership making creativity possible. Often appears in collaborative creative work." },
-    { "slug": "242", "title": "242 Meaning", "h1": "242 Angel Number Meaning", "context": "balance (2) framing foundation (4). Partnership building stability. Long-term-relationship register specifically." },
-    { "slug": "252", "title": "252 Meaning", "h1": "252 Angel Number Meaning", "context": "balance (2) framing change (5). Partnership navigating major change together. Often appears during couple-level life transitions." },
-    { "slug": "262", "title": "262 Meaning", "h1": "262 Angel Number Meaning", "context": "balance (2) framing responsibility (6). Partnership in service or home contexts. Family-oriented register." },
-    { "slug": "272", "title": "272 Meaning", "h1": "272 Angel Number Meaning", "context": "balance (2) framing spiritual alignment (7). Partnership at the spiritual level. Often appears in committed shared-faith or shared-practice relationships." },
-    { "slug": "282", "title": "282 Meaning", "h1": "282 Angel Number Meaning", "context": "balance (2) framing abundance (8). Partnership generating material expansion. Business-partnership register specifically." },
-    { "slug": "292", "title": "292 Meaning", "h1": "292 Angel Number Meaning", "context": "balance (2) framing completion (9). Partnership reaching the end of a cycle. Sometimes endings, sometimes graduations." },
-    { "slug": "313", "title": "313 Meaning", "h1": "313 Angel Number Meaning", "context": "expression (3) framing initiative (1). Creative or communicative work supporting a new beginning. Often appears around launches." },
-    { "slug": "323", "title": "323 Meaning", "h1": "323 Angel Number Meaning", "context": "expression (3) framing partnership (2). Creativity making relationship possible. Often appears during creative collaboration." },
-    { "slug": "343", "title": "343 Meaning", "h1": "343 Angel Number Meaning", "context": "expression (3) framing foundation (4). Creative work becoming structurally stable. Often appears when creative careers mature." },
-    { "slug": "353", "title": "353 Meaning", "h1": "353 Angel Number Meaning", "context": "expression (3) framing change (5). Creative work catalysing transformation. Often appears at creative breakthroughs." },
-    { "slug": "363", "title": "363 Meaning", "h1": "363 Angel Number Meaning", "context": "expression (3) framing responsibility (6). Creativity in service or domestic context. Often appears when creative work has a home or family register." },
-    { "slug": "373", "title": "373 Meaning", "h1": "373 Angel Number Meaning", "context": "expression (3) framing spiritual alignment (7). Creative work as spiritual practice. Often appears for artists and writers in mystical phases." },
-    { "slug": "383", "title": "383 Meaning", "h1": "383 Angel Number Meaning", "context": "expression (3) framing abundance (8). Creative work generating material abundance. Often appears at career-breakthrough moments for creatives." },
-    { "slug": "393", "title": "393 Meaning", "h1": "393 Angel Number Meaning", "context": "expression (3) framing completion (9). Creative work reaching the end of a major arc. Often appears when long projects conclude." },
-    { "slug": "414", "title": "414 Meaning", "h1": "414 Angel Number Meaning", "context": "foundation (4) framing initiative (1). Structure supporting a new beginning. Often appears when starting from a stable base." },
-    { "slug": "424", "title": "424 Meaning", "h1": "424 Angel Number Meaning", "context": "foundation (4) framing partnership (2). Structure supporting relationship. The long-marriage register specifically." },
-    { "slug": "434", "title": "434 Meaning", "h1": "434 Angel Number Meaning", "context": "foundation (4) framing expression (3). Structure supporting creative work. Often appears when creative discipline is bearing fruit." },
-    { "slug": "454", "title": "454 Meaning", "h1": "454 Angel Number Meaning", "context": "foundation (4) framing change (5). Stable structure navigating change. The 'change managed from a stable base' register." },
-    { "slug": "464", "title": "464 Meaning", "h1": "464 Angel Number Meaning", "context": "foundation (4) framing responsibility (6). Structure supporting service or family. The reliable-caretaker register." },
-    { "slug": "474", "title": "474 Meaning", "h1": "474 Angel Number Meaning", "context": "foundation (4) framing spiritual alignment (7). Structure supporting inner work. Long-disciplined-practice register." },
-    { "slug": "484", "title": "484 Meaning", "h1": "484 Angel Number Meaning", "context": "foundation (4) framing abundance (8). Structure supporting material expansion. Stable career or business register." },
-    { "slug": "494", "title": "494 Meaning", "h1": "494 Angel Number Meaning", "context": "foundation (4) framing completion (9). Structure carrying you through to the end of a cycle. The long-effort-ending register." },
-    { "slug": "515", "title": "515 Meaning", "h1": "515 Angel Number Meaning", "context": "change (5) framing initiative (1). Transformation enabling a new beginning. Often appears at significant pivot moments." },
-    { "slug": "525", "title": "525 Meaning", "h1": "525 Angel Number Meaning", "context": "change (5) framing partnership (2). Transformation reshaping relationship. Often appears at relational pivots." },
-    { "slug": "535", "title": "535 Meaning", "h1": "535 Angel Number Meaning", "context": "change (5) framing expression (3). Transformation through creative work. Often appears for artists in growth phases." },
-    { "slug": "545", "title": "545 Meaning", "h1": "545 Angel Number Meaning", "context": "change (5) framing foundation (4). Transformation that strengthens structure. The 'change that builds rather than dismantles' register." },
-    { "slug": "565", "title": "565 Meaning", "h1": "565 Angel Number Meaning", "context": "change (5) framing responsibility (6). Transformation in service or home. The caretaker-role evolving register." },
-    { "slug": "575", "title": "575 Meaning", "h1": "575 Angel Number Meaning", "context": "change (5) framing spiritual alignment (7). Transformation through inner work. The breakthrough-via-practice register." },
-    { "slug": "585", "title": "585 Meaning", "h1": "585 Angel Number Meaning", "context": "change (5) framing abundance (8). Transformation generating material expansion. Career-pivot-into-prosperity register." },
-    { "slug": "595", "title": "595 Meaning", "h1": "595 Angel Number Meaning", "context": "change (5) framing completion (9). Transformation that ends a long arc. Major-cycle-closing register." },
-    { "slug": "616", "title": "616 Meaning", "h1": "616 Angel Number Meaning", "context": "responsibility (6) framing initiative (1). Caretaking enabling new beginning. Often appears when service work catalyses growth." },
-    { "slug": "626", "title": "626 Meaning", "h1": "626 Angel Number Meaning", "context": "responsibility (6) framing partnership (2). Caretaking through relationship. Family or committed-couple register." },
-    { "slug": "636", "title": "636 Meaning", "h1": "636 Angel Number Meaning", "context": "responsibility (6) framing expression (3). Caretaking through creative work. The artist-as-caregiver register." },
-    { "slug": "646", "title": "646 Meaning", "h1": "646 Angel Number Meaning", "context": "responsibility (6) framing foundation (4). Caretaking grounded in structure. Long-stable-service register." },
-    { "slug": "656", "title": "656 Meaning", "h1": "656 Angel Number Meaning", "context": "responsibility (6) framing change (5). Caretaking through transformation. Often appears when family or service roles are shifting." },
-    { "slug": "676", "title": "676 Meaning", "h1": "676 Angel Number Meaning", "context": "responsibility (6) framing spiritual alignment (7). Caretaking as spiritual practice. The contemplative-service register." },
-    { "slug": "686", "title": "686 Meaning", "h1": "686 Angel Number Meaning", "context": "responsibility (6) framing abundance (8). Caretaking generating prosperity. The 'helping others builds your own' register." },
-    { "slug": "696", "title": "696 Meaning", "h1": "696 Angel Number Meaning", "context": "responsibility (6) framing completion (9). Caretaking reaching the natural end. Often appears at caretaking-role closures." },
-    { "slug": "727", "title": "727 Meaning", "h1": "727 Angel Number Meaning", "context": "spiritual alignment (7) framing partnership (2). Deep work supporting relationship. Often appears in mystical-couple register." },
-    { "slug": "737", "title": "737 Meaning", "h1": "737 Angel Number Meaning", "context": "spiritual alignment (7) framing expression (3). Inner work supporting creativity. The mystical-artist register." },
-    { "slug": "747", "title": "747 Meaning", "h1": "747 Angel Number Meaning", "context": "spiritual alignment (7) framing foundation (4). Inner work grounding into stable practice. The disciplined-mystic register." },
-    { "slug": "757", "title": "757 Meaning", "h1": "757 Angel Number Meaning", "context": "spiritual alignment (7) framing change (5). Inner work catalysing transformation. Major-breakthrough register." },
-    { "slug": "767", "title": "767 Meaning", "h1": "767 Angel Number Meaning", "context": "spiritual alignment (7) framing responsibility (6). Inner work in service. The contemplative-caretaker register." },
-    { "slug": "787", "title": "787 Meaning", "h1": "787 Angel Number Meaning", "context": "spiritual alignment (7) framing abundance (8). Inner work generating material expansion. Mystic-prosperity register." },
-    { "slug": "797", "title": "797 Meaning", "h1": "797 Angel Number Meaning", "context": "spiritual alignment (7) framing completion (9). Inner work completing a long arc. End-of-practice-cycle register." },
-    { "slug": "818", "title": "818 Meaning", "h1": "818 Angel Number Meaning", "context": "abundance (8) framing initiative (1). Prosperity enabling new beginnings. Often appears at career-launch moments." },
-    { "slug": "828", "title": "828 Meaning", "h1": "828 Angel Number Meaning", "context": "abundance (8) framing partnership (2). Prosperity supporting relationship. Business-partnership-success register." },
-    { "slug": "838", "title": "838 Meaning", "h1": "838 Angel Number Meaning", "context": "abundance (8) framing expression (3). Prosperity through creative work. The successful-artist register." },
-    { "slug": "848", "title": "848 Meaning", "h1": "848 Angel Number Meaning", "context": "abundance (8) framing foundation (4). Prosperity built on stable structure. Long-stable-success register." },
-    { "slug": "858", "title": "858 Meaning", "h1": "858 Angel Number Meaning", "context": "abundance (8) framing change (5). Prosperity through transformation. Career-pivot-success register." },
-    { "slug": "868", "title": "868 Meaning", "h1": "868 Angel Number Meaning", "context": "abundance (8) framing responsibility (6). Prosperity through service or family. The 'wealth that comes through caring' register." },
-    { "slug": "878", "title": "878 Meaning", "h1": "878 Angel Number Meaning", "context": "abundance (8) framing spiritual alignment (7). Prosperity through inner work. The mystic-success register." },
-    { "slug": "898", "title": "898 Meaning", "h1": "898 Angel Number Meaning", "context": "abundance (8) framing completion (9). Prosperity completing a cycle. The 'culmination of long financial effort' register." },
-    { "slug": "919", "title": "919 Meaning", "h1": "919 Angel Number Meaning", "context": "completion (9) framing initiative (1). End of one cycle launching the next. The graduation-into-new register." },
-    { "slug": "929", "title": "929 Meaning", "h1": "929 Angel Number Meaning", "context": "completion (9) framing partnership (2). End of a relational chapter. Sometimes endings, sometimes graduations." },
-    { "slug": "939", "title": "939 Meaning", "h1": "939 Angel Number Meaning", "context": "completion (9) framing expression (3). End of a creative chapter. Often appears when major creative projects close." },
-    { "slug": "949", "title": "949 Meaning", "h1": "949 Angel Number Meaning", "context": "completion (9) framing foundation (4). End of a structural era. Long-built-stable-thing reaching its natural end." },
-    { "slug": "959", "title": "959 Meaning", "h1": "959 Angel Number Meaning", "context": "completion (9) framing change (5). End of a transformation. The 'change cycle completing' register." },
-    { "slug": "969", "title": "969 Meaning", "h1": "969 Angel Number Meaning", "context": "completion (9) framing responsibility (6). End of a caretaking era. Often appears at significant service-role closures." },
-    { "slug": "979", "title": "979 Meaning", "h1": "979 Angel Number Meaning", "context": "completion (9) framing spiritual alignment (7). End of a practice chapter. The 'one phase of inner work completing' register." },
-    { "slug": "989", "title": "989 Meaning", "h1": "989 Angel Number Meaning", "context": "completion (9) framing abundance (8). End of a financial or material chapter. Often appears at career-cycle closures." },
-    { "slug": "1010-alt", "title": "1011 Meaning", "h1": "1011 Angel Number Meaning", "context": "the 1011 specifically — initiative (1) doubled with the void (0) and another initiative (1). Distinct from 1010 in carrying the additional new-beginning signal." },
-    { "slug": "1100", "title": "1100 Meaning", "h1": "1100 Angel Number Meaning", "context": "two initiatives (11) followed by two voids (00). Often signals a doubled new-beginning energy settling into the unmanifest before becoming visible." },
-    { "slug": "1122", "title": "1122 Meaning", "h1": "1122 Angel Number Meaning", "context": "initiatives (11) and partnerships (22) combined. Both master numbers present. Often appears at significant relational-life-direction moments." },
-    { "slug": "1133", "title": "1133 Meaning", "h1": "1133 Angel Number Meaning", "context": "initiatives (11) and expression (33) combined. Often appears for creative people at significant career-launch moments." },
-    { "slug": "1144", "title": "1144 Meaning", "h1": "1144 Angel Number Meaning", "context": "initiatives (11) and foundation (44). Often appears at moments when bold new beginnings need stable structure to succeed." },
-    { "slug": "1155", "title": "1155 Meaning", "h1": "1155 Angel Number Meaning", "context": "initiatives (11) and change (55). Doubled new-beginning with doubled change. Often appears at major life-pivot moments." },
-    { "slug": "1166", "title": "1166 Meaning", "h1": "1166 Angel Number Meaning", "context": "initiatives (11) and responsibility (66). New beginnings in service or family contexts. The 'starting from caring' register." },
-    { "slug": "1177", "title": "1177 Meaning", "h1": "1177 Angel Number Meaning", "context": "initiatives (11) and spiritual alignment (77). The bold spiritual-launch register. Often appears at significant practice-life pivots." },
-    { "slug": "1188", "title": "1188 Meaning", "h1": "1188 Angel Number Meaning", "context": "initiatives (11) and abundance (88). New beginnings in prosperous contexts. The 'launching from a position of resource' register." },
-    { "slug": "1199", "title": "1199 Meaning", "h1": "1199 Angel Number Meaning", "context": "initiatives (11) and completion (99). New beginnings emerging from major endings. The 'death-and-rebirth' register specifically." },
-    { "slug": "1221", "title": "1221 Meaning", "h1": "1221 Angel Number Meaning", "context": "the palindromic 1221. Initiative (1) framed by partnerships (22) framed by initiative (1). Strong symmetric structure carrying balanced-new-beginning register." },
-    { "slug": "1313", "title": "1313 Meaning", "h1": "1313 Angel Number Meaning", "context": "alternating initiative (1) and expression (3). Often appears for creatives at moments of new creative directions emerging." },
-    { "slug": "1414", "title": "1414 Meaning", "h1": "1414 Angel Number Meaning", "context": "alternating initiative (1) and foundation (4). Often appears at moments when new beginnings are being grounded into structure." },
-    { "slug": "1515", "title": "1515 Meaning", "h1": "1515 Angel Number Meaning", "context": "alternating initiative (1) and change (5). Often appears at moments of pivot-into-new-direction." },
-    { "slug": "1616", "title": "1616 Meaning", "h1": "1616 Angel Number Meaning", "context": "alternating initiative (1) and responsibility (6). Often appears at moments when new beginnings emerge in caring or family contexts." },
-    { "slug": "1717", "title": "1717 Meaning", "h1": "1717 Angel Number Meaning", "context": "alternating initiative (1) and spiritual alignment (7). The new-beginning-via-inner-work register specifically." },
-    { "slug": "1818", "title": "1818 Meaning", "h1": "1818 Angel Number Meaning", "context": "alternating initiative (1) and abundance (8). Often appears at career-launch moments with strong material implications." },
-    { "slug": "1919", "title": "1919 Meaning", "h1": "1919 Angel Number Meaning", "context": "alternating initiative (1) and completion (9). New beginnings emerging from completed cycles. The graduating-into-the-next register." },
-    { "slug": "3333", "title": "3333 Meaning", "h1": "3333 Angel Number Meaning", "context": "amplified expression (3). Creative force at full strength. Often appears for artists, writers, and communicators at peak-output moments." },
-    { "slug": "4444", "title": "4444 Meaning", "h1": "4444 Angel Number Meaning", "context": "amplified foundation (4). Stability at maximum strength. Often appears when structure is genuinely settled and durable." },
-    { "slug": "5555", "title": "5555 Meaning", "h1": "5555 Angel Number Meaning", "context": "amplified change (5). Transformation at full strength. Often appears at moments of major life upheaval — sometimes welcome, sometimes overwhelming." },
-    { "slug": "6666", "title": "6666 Meaning", "h1": "6666 Angel Number Meaning", "context": "amplified responsibility (6). The caring or material register at full strength. Distinct from the Revelation-666 inheritance — worth knowing both readings." },
-    { "slug": "7777", "title": "7777 Meaning", "h1": "7777 Angel Number Meaning", "context": "amplified spiritual alignment (7). Inner work or mystical experience at full strength. Often appears at significant breakthrough moments." },
-    { "slug": "8888", "title": "8888 Meaning", "h1": "8888 Angel Number Meaning", "context": "amplified abundance (8). Prosperity or expansion at full strength. Often appears at significant material-success moments." },
-    { "slug": "9999", "title": "9999 Meaning", "h1": "9999 Angel Number Meaning", "context": "amplified completion (9). Major life-cycle ending at full strength. Often appears at significant chapter closures." },
-    { "slug": "1144-alt", "title": "1313 Meaning", "h1": "1313 Angel Number Meaning Alternative", "context": "alternative reading on the 1313 pattern — often distinguished from the standard 1313 reading for those seeing it specifically." }
+    {
+      "slug": "0",
+      "title": "0 Meaning",
+      "h1": "The Number 0 — Meaning & Symbolism",
+      "context": "the void, potential, the unmanifest. The zero as starting point and as completion. Distinct from any single repeating-digit angel number."
+    },
+    {
+      "slug": "121",
+      "title": "121 Meaning",
+      "h1": "121 Angel Number Meaning",
+      "context": "the 1-2-1 palindromic structure. New cycle (1) bracketing partnership (2) — the support for a relationship that's becoming central."
+    },
+    {
+      "slug": "131",
+      "title": "131 Meaning",
+      "h1": "131 Angel Number Meaning",
+      "context": "new cycle (1) framing expression and creativity (3). Often appears when initiative is being asked to take creative or communicative form."
+    },
+    {
+      "slug": "141",
+      "title": "141 Meaning",
+      "h1": "141 Angel Number Meaning",
+      "context": "new cycle (1) framing foundation (4). The initiative grounded by structure. Often a build-something-real signal."
+    },
+    {
+      "slug": "151",
+      "title": "151 Meaning",
+      "h1": "151 Angel Number Meaning",
+      "context": "new cycle (1) framing change (5). Often signals that the initiative being asked of you is specifically about embracing significant change."
+    },
+    {
+      "slug": "161",
+      "title": "161 Meaning",
+      "h1": "161 Angel Number Meaning",
+      "context": "new cycle (1) framing responsibility and home (6). Often appears when initiative is being asked in caring or domestic contexts."
+    },
+    {
+      "slug": "171",
+      "title": "171 Meaning",
+      "h1": "171 Angel Number Meaning",
+      "context": "new cycle (1) framing spiritual alignment (7). Often appears when initiative is being asked specifically about inner or spiritual work."
+    },
+    {
+      "slug": "181",
+      "title": "181 Meaning",
+      "h1": "181 Angel Number Meaning",
+      "context": "new cycle (1) framing abundance (8). Often appears when initiative is being asked specifically about financial or material expansion."
+    },
+    {
+      "slug": "191",
+      "title": "191 Meaning",
+      "h1": "191 Angel Number Meaning",
+      "context": "new cycle (1) framing completion (9). The initiative that completes a long arc. Often appears at endings that become beginnings."
+    },
+    {
+      "slug": "212",
+      "title": "212 Meaning",
+      "h1": "212 Angel Number Meaning",
+      "context": "balance (2) framing initiative (1). The relational support around a new beginning. Partnership backing a single move."
+    },
+    {
+      "slug": "232",
+      "title": "232 Meaning",
+      "h1": "232 Angel Number Meaning",
+      "context": "balance (2) framing expression (3). Partnership making creativity possible. Often appears in collaborative creative work."
+    },
+    {
+      "slug": "242",
+      "title": "242 Meaning",
+      "h1": "242 Angel Number Meaning",
+      "context": "balance (2) framing foundation (4). Partnership building stability. Long-term-relationship register specifically."
+    },
+    {
+      "slug": "252",
+      "title": "252 Meaning",
+      "h1": "252 Angel Number Meaning",
+      "context": "balance (2) framing change (5). Partnership navigating major change together. Often appears during couple-level life transitions."
+    },
+    {
+      "slug": "262",
+      "title": "262 Meaning",
+      "h1": "262 Angel Number Meaning",
+      "context": "balance (2) framing responsibility (6). Partnership in service or home contexts. Family-oriented register."
+    },
+    {
+      "slug": "272",
+      "title": "272 Meaning",
+      "h1": "272 Angel Number Meaning",
+      "context": "balance (2) framing spiritual alignment (7). Partnership at the spiritual level. Often appears in committed shared-faith or shared-practice relationships."
+    },
+    {
+      "slug": "282",
+      "title": "282 Meaning",
+      "h1": "282 Angel Number Meaning",
+      "context": "balance (2) framing abundance (8). Partnership generating material expansion. Business-partnership register specifically."
+    },
+    {
+      "slug": "292",
+      "title": "292 Meaning",
+      "h1": "292 Angel Number Meaning",
+      "context": "balance (2) framing completion (9). Partnership reaching the end of a cycle. Sometimes endings, sometimes graduations."
+    },
+    {
+      "slug": "313",
+      "title": "313 Meaning",
+      "h1": "313 Angel Number Meaning",
+      "context": "expression (3) framing initiative (1). Creative or communicative work supporting a new beginning. Often appears around launches."
+    },
+    {
+      "slug": "323",
+      "title": "323 Meaning",
+      "h1": "323 Angel Number Meaning",
+      "context": "expression (3) framing partnership (2). Creativity making relationship possible. Often appears during creative collaboration."
+    },
+    {
+      "slug": "343",
+      "title": "343 Meaning",
+      "h1": "343 Angel Number Meaning",
+      "context": "expression (3) framing foundation (4). Creative work becoming structurally stable. Often appears when creative careers mature."
+    },
+    {
+      "slug": "353",
+      "title": "353 Meaning",
+      "h1": "353 Angel Number Meaning",
+      "context": "expression (3) framing change (5). Creative work catalysing transformation. Often appears at creative breakthroughs."
+    },
+    {
+      "slug": "363",
+      "title": "363 Meaning",
+      "h1": "363 Angel Number Meaning",
+      "context": "expression (3) framing responsibility (6). Creativity in service or domestic context. Often appears when creative work has a home or family register."
+    },
+    {
+      "slug": "373",
+      "title": "373 Meaning",
+      "h1": "373 Angel Number Meaning",
+      "context": "expression (3) framing spiritual alignment (7). Creative work as spiritual practice. Often appears for artists and writers in mystical phases."
+    },
+    {
+      "slug": "383",
+      "title": "383 Meaning",
+      "h1": "383 Angel Number Meaning",
+      "context": "expression (3) framing abundance (8). Creative work generating material abundance. Often appears at career-breakthrough moments for creatives."
+    },
+    {
+      "slug": "393",
+      "title": "393 Meaning",
+      "h1": "393 Angel Number Meaning",
+      "context": "expression (3) framing completion (9). Creative work reaching the end of a major arc. Often appears when long projects conclude."
+    },
+    {
+      "slug": "414",
+      "title": "414 Meaning",
+      "h1": "414 Angel Number Meaning",
+      "context": "foundation (4) framing initiative (1). Structure supporting a new beginning. Often appears when starting from a stable base."
+    },
+    {
+      "slug": "424",
+      "title": "424 Meaning",
+      "h1": "424 Angel Number Meaning",
+      "context": "foundation (4) framing partnership (2). Structure supporting relationship. The long-marriage register specifically."
+    },
+    {
+      "slug": "434",
+      "title": "434 Meaning",
+      "h1": "434 Angel Number Meaning",
+      "context": "foundation (4) framing expression (3). Structure supporting creative work. Often appears when creative discipline is bearing fruit."
+    },
+    {
+      "slug": "454",
+      "title": "454 Meaning",
+      "h1": "454 Angel Number Meaning",
+      "context": "foundation (4) framing change (5). Stable structure navigating change. The 'change managed from a stable base' register."
+    },
+    {
+      "slug": "464",
+      "title": "464 Meaning",
+      "h1": "464 Angel Number Meaning",
+      "context": "foundation (4) framing responsibility (6). Structure supporting service or family. The reliable-caretaker register."
+    },
+    {
+      "slug": "474",
+      "title": "474 Meaning",
+      "h1": "474 Angel Number Meaning",
+      "context": "foundation (4) framing spiritual alignment (7). Structure supporting inner work. Long-disciplined-practice register."
+    },
+    {
+      "slug": "484",
+      "title": "484 Meaning",
+      "h1": "484 Angel Number Meaning",
+      "context": "foundation (4) framing abundance (8). Structure supporting material expansion. Stable career or business register."
+    },
+    {
+      "slug": "494",
+      "title": "494 Meaning",
+      "h1": "494 Angel Number Meaning",
+      "context": "foundation (4) framing completion (9). Structure carrying you through to the end of a cycle. The long-effort-ending register."
+    },
+    {
+      "slug": "515",
+      "title": "515 Meaning",
+      "h1": "515 Angel Number Meaning",
+      "context": "change (5) framing initiative (1). Transformation enabling a new beginning. Often appears at significant pivot moments."
+    },
+    {
+      "slug": "525",
+      "title": "525 Meaning",
+      "h1": "525 Angel Number Meaning",
+      "context": "change (5) framing partnership (2). Transformation reshaping relationship. Often appears at relational pivots."
+    },
+    {
+      "slug": "535",
+      "title": "535 Meaning",
+      "h1": "535 Angel Number Meaning",
+      "context": "change (5) framing expression (3). Transformation through creative work. Often appears for artists in growth phases."
+    },
+    {
+      "slug": "545",
+      "title": "545 Meaning",
+      "h1": "545 Angel Number Meaning",
+      "context": "change (5) framing foundation (4). Transformation that strengthens structure. The 'change that builds rather than dismantles' register."
+    },
+    {
+      "slug": "565",
+      "title": "565 Meaning",
+      "h1": "565 Angel Number Meaning",
+      "context": "change (5) framing responsibility (6). Transformation in service or home. The caretaker-role evolving register."
+    },
+    {
+      "slug": "575",
+      "title": "575 Meaning",
+      "h1": "575 Angel Number Meaning",
+      "context": "change (5) framing spiritual alignment (7). Transformation through inner work. The breakthrough-via-practice register."
+    },
+    {
+      "slug": "585",
+      "title": "585 Meaning",
+      "h1": "585 Angel Number Meaning",
+      "context": "change (5) framing abundance (8). Transformation generating material expansion. Career-pivot-into-prosperity register."
+    },
+    {
+      "slug": "595",
+      "title": "595 Meaning",
+      "h1": "595 Angel Number Meaning",
+      "context": "change (5) framing completion (9). Transformation that ends a long arc. Major-cycle-closing register."
+    },
+    {
+      "slug": "616",
+      "title": "616 Meaning",
+      "h1": "616 Angel Number Meaning",
+      "context": "responsibility (6) framing initiative (1). Caretaking enabling new beginning. Often appears when service work catalyses growth."
+    },
+    {
+      "slug": "626",
+      "title": "626 Meaning",
+      "h1": "626 Angel Number Meaning",
+      "context": "responsibility (6) framing partnership (2). Caretaking through relationship. Family or committed-couple register."
+    },
+    {
+      "slug": "636",
+      "title": "636 Meaning",
+      "h1": "636 Angel Number Meaning",
+      "context": "responsibility (6) framing expression (3). Caretaking through creative work. The artist-as-caregiver register."
+    },
+    {
+      "slug": "646",
+      "title": "646 Meaning",
+      "h1": "646 Angel Number Meaning",
+      "context": "responsibility (6) framing foundation (4). Caretaking grounded in structure. Long-stable-service register."
+    },
+    {
+      "slug": "656",
+      "title": "656 Meaning",
+      "h1": "656 Angel Number Meaning",
+      "context": "responsibility (6) framing change (5). Caretaking through transformation. Often appears when family or service roles are shifting."
+    },
+    {
+      "slug": "676",
+      "title": "676 Meaning",
+      "h1": "676 Angel Number Meaning",
+      "context": "responsibility (6) framing spiritual alignment (7). Caretaking as spiritual practice. The contemplative-service register."
+    },
+    {
+      "slug": "686",
+      "title": "686 Meaning",
+      "h1": "686 Angel Number Meaning",
+      "context": "responsibility (6) framing abundance (8). Caretaking generating prosperity. The 'helping others builds your own' register."
+    },
+    {
+      "slug": "696",
+      "title": "696 Meaning",
+      "h1": "696 Angel Number Meaning",
+      "context": "responsibility (6) framing completion (9). Caretaking reaching the natural end. Often appears at caretaking-role closures."
+    },
+    {
+      "slug": "727",
+      "title": "727 Meaning",
+      "h1": "727 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing partnership (2). Deep work supporting relationship. Often appears in mystical-couple register."
+    },
+    {
+      "slug": "737",
+      "title": "737 Meaning",
+      "h1": "737 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing expression (3). Inner work supporting creativity. The mystical-artist register."
+    },
+    {
+      "slug": "747",
+      "title": "747 Meaning",
+      "h1": "747 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing foundation (4). Inner work grounding into stable practice. The disciplined-mystic register."
+    },
+    {
+      "slug": "757",
+      "title": "757 Meaning",
+      "h1": "757 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing change (5). Inner work catalysing transformation. Major-breakthrough register."
+    },
+    {
+      "slug": "767",
+      "title": "767 Meaning",
+      "h1": "767 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing responsibility (6). Inner work in service. The contemplative-caretaker register."
+    },
+    {
+      "slug": "787",
+      "title": "787 Meaning",
+      "h1": "787 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing abundance (8). Inner work generating material expansion. Mystic-prosperity register."
+    },
+    {
+      "slug": "797",
+      "title": "797 Meaning",
+      "h1": "797 Angel Number Meaning",
+      "context": "spiritual alignment (7) framing completion (9). Inner work completing a long arc. End-of-practice-cycle register."
+    },
+    {
+      "slug": "818",
+      "title": "818 Meaning",
+      "h1": "818 Angel Number Meaning",
+      "context": "abundance (8) framing initiative (1). Prosperity enabling new beginnings. Often appears at career-launch moments."
+    },
+    {
+      "slug": "828",
+      "title": "828 Meaning",
+      "h1": "828 Angel Number Meaning",
+      "context": "abundance (8) framing partnership (2). Prosperity supporting relationship. Business-partnership-success register."
+    },
+    {
+      "slug": "838",
+      "title": "838 Meaning",
+      "h1": "838 Angel Number Meaning",
+      "context": "abundance (8) framing expression (3). Prosperity through creative work. The successful-artist register."
+    },
+    {
+      "slug": "848",
+      "title": "848 Meaning",
+      "h1": "848 Angel Number Meaning",
+      "context": "abundance (8) framing foundation (4). Prosperity built on stable structure. Long-stable-success register."
+    },
+    {
+      "slug": "858",
+      "title": "858 Meaning",
+      "h1": "858 Angel Number Meaning",
+      "context": "abundance (8) framing change (5). Prosperity through transformation. Career-pivot-success register."
+    },
+    {
+      "slug": "868",
+      "title": "868 Meaning",
+      "h1": "868 Angel Number Meaning",
+      "context": "abundance (8) framing responsibility (6). Prosperity through service or family. The 'wealth that comes through caring' register."
+    },
+    {
+      "slug": "878",
+      "title": "878 Meaning",
+      "h1": "878 Angel Number Meaning",
+      "context": "abundance (8) framing spiritual alignment (7). Prosperity through inner work. The mystic-success register."
+    },
+    {
+      "slug": "898",
+      "title": "898 Meaning",
+      "h1": "898 Angel Number Meaning",
+      "context": "abundance (8) framing completion (9). Prosperity completing a cycle. The 'culmination of long financial effort' register."
+    },
+    {
+      "slug": "919",
+      "title": "919 Meaning",
+      "h1": "919 Angel Number Meaning",
+      "context": "completion (9) framing initiative (1). End of one cycle launching the next. The graduation-into-new register."
+    },
+    {
+      "slug": "929",
+      "title": "929 Meaning",
+      "h1": "929 Angel Number Meaning",
+      "context": "completion (9) framing partnership (2). End of a relational chapter. Sometimes endings, sometimes graduations."
+    },
+    {
+      "slug": "939",
+      "title": "939 Meaning",
+      "h1": "939 Angel Number Meaning",
+      "context": "completion (9) framing expression (3). End of a creative chapter. Often appears when major creative projects close."
+    },
+    {
+      "slug": "949",
+      "title": "949 Meaning",
+      "h1": "949 Angel Number Meaning",
+      "context": "completion (9) framing foundation (4). End of a structural era. Long-built-stable-thing reaching its natural end."
+    },
+    {
+      "slug": "959",
+      "title": "959 Meaning",
+      "h1": "959 Angel Number Meaning",
+      "context": "completion (9) framing change (5). End of a transformation. The 'change cycle completing' register."
+    },
+    {
+      "slug": "969",
+      "title": "969 Meaning",
+      "h1": "969 Angel Number Meaning",
+      "context": "completion (9) framing responsibility (6). End of a caretaking era. Often appears at significant service-role closures."
+    },
+    {
+      "slug": "979",
+      "title": "979 Meaning",
+      "h1": "979 Angel Number Meaning",
+      "context": "completion (9) framing spiritual alignment (7). End of a practice chapter. The 'one phase of inner work completing' register."
+    },
+    {
+      "slug": "989",
+      "title": "989 Meaning",
+      "h1": "989 Angel Number Meaning",
+      "context": "completion (9) framing abundance (8). End of a financial or material chapter. Often appears at career-cycle closures."
+    },
+    {
+      "slug": "1010-alt",
+      "title": "1011 Meaning",
+      "h1": "1011 Angel Number Meaning",
+      "context": "the 1011 specifically — initiative (1) doubled with the void (0) and another initiative (1). Distinct from 1010 in carrying the additional new-beginning signal."
+    },
+    {
+      "slug": "1100",
+      "title": "1100 Meaning",
+      "h1": "1100 Angel Number Meaning",
+      "context": "two initiatives (11) followed by two voids (00). Often signals a doubled new-beginning energy settling into the unmanifest before becoming visible."
+    },
+    {
+      "slug": "1122",
+      "title": "1122 Meaning",
+      "h1": "1122 Angel Number Meaning",
+      "context": "initiatives (11) and partnerships (22) combined. Both master numbers present. Often appears at significant relational-life-direction moments."
+    },
+    {
+      "slug": "1133",
+      "title": "1133 Meaning",
+      "h1": "1133 Angel Number Meaning",
+      "context": "initiatives (11) and expression (33) combined. Often appears for creative people at significant career-launch moments."
+    },
+    {
+      "slug": "1144",
+      "title": "1144 Meaning",
+      "h1": "1144 Angel Number Meaning",
+      "context": "initiatives (11) and foundation (44). Often appears at moments when bold new beginnings need stable structure to succeed."
+    },
+    {
+      "slug": "1155",
+      "title": "1155 Meaning",
+      "h1": "1155 Angel Number Meaning",
+      "context": "initiatives (11) and change (55). Doubled new-beginning with doubled change. Often appears at major life-pivot moments."
+    },
+    {
+      "slug": "1166",
+      "title": "1166 Meaning",
+      "h1": "1166 Angel Number Meaning",
+      "context": "initiatives (11) and responsibility (66). New beginnings in service or family contexts. The 'starting from caring' register."
+    },
+    {
+      "slug": "1177",
+      "title": "1177 Meaning",
+      "h1": "1177 Angel Number Meaning",
+      "context": "initiatives (11) and spiritual alignment (77). The bold spiritual-launch register. Often appears at significant practice-life pivots."
+    },
+    {
+      "slug": "1188",
+      "title": "1188 Meaning",
+      "h1": "1188 Angel Number Meaning",
+      "context": "initiatives (11) and abundance (88). New beginnings in prosperous contexts. The 'launching from a position of resource' register."
+    },
+    {
+      "slug": "1199",
+      "title": "1199 Meaning",
+      "h1": "1199 Angel Number Meaning",
+      "context": "initiatives (11) and completion (99). New beginnings emerging from major endings. The 'death-and-rebirth' register specifically."
+    },
+    {
+      "slug": "1221",
+      "title": "1221 Meaning",
+      "h1": "1221 Angel Number Meaning",
+      "context": "the palindromic 1221. Initiative (1) framed by partnerships (22) framed by initiative (1). Strong symmetric structure carrying balanced-new-beginning register."
+    },
+    {
+      "slug": "1313",
+      "title": "1313 Meaning",
+      "h1": "1313 Angel Number Meaning",
+      "context": "alternating initiative (1) and expression (3). Often appears for creatives at moments of new creative directions emerging."
+    },
+    {
+      "slug": "1414",
+      "title": "1414 Meaning",
+      "h1": "1414 Angel Number Meaning",
+      "context": "alternating initiative (1) and foundation (4). Often appears at moments when new beginnings are being grounded into structure."
+    },
+    {
+      "slug": "1515",
+      "title": "1515 Meaning",
+      "h1": "1515 Angel Number Meaning",
+      "context": "alternating initiative (1) and change (5). Often appears at moments of pivot-into-new-direction."
+    },
+    {
+      "slug": "1616",
+      "title": "1616 Meaning",
+      "h1": "1616 Angel Number Meaning",
+      "context": "alternating initiative (1) and responsibility (6). Often appears at moments when new beginnings emerge in caring or family contexts."
+    },
+    {
+      "slug": "1717",
+      "title": "1717 Meaning",
+      "h1": "1717 Angel Number Meaning",
+      "context": "alternating initiative (1) and spiritual alignment (7). The new-beginning-via-inner-work register specifically."
+    },
+    {
+      "slug": "1818",
+      "title": "1818 Meaning",
+      "h1": "1818 Angel Number Meaning",
+      "context": "alternating initiative (1) and abundance (8). Often appears at career-launch moments with strong material implications."
+    },
+    {
+      "slug": "1919",
+      "title": "1919 Meaning",
+      "h1": "1919 Angel Number Meaning",
+      "context": "alternating initiative (1) and completion (9). New beginnings emerging from completed cycles. The graduating-into-the-next register."
+    },
+    {
+      "slug": "3333",
+      "title": "3333 Meaning",
+      "h1": "3333 Angel Number Meaning",
+      "context": "amplified expression (3). Creative force at full strength. Often appears for artists, writers, and communicators at peak-output moments."
+    },
+    {
+      "slug": "4444",
+      "title": "4444 Meaning",
+      "h1": "4444 Angel Number Meaning",
+      "context": "amplified foundation (4). Stability at maximum strength. Often appears when structure is genuinely settled and durable."
+    },
+    {
+      "slug": "5555",
+      "title": "5555 Meaning",
+      "h1": "5555 Angel Number Meaning",
+      "context": "amplified change (5). Transformation at full strength. Often appears at moments of major life upheaval — sometimes welcome, sometimes overwhelming."
+    },
+    {
+      "slug": "6666",
+      "title": "6666 Meaning",
+      "h1": "6666 Angel Number Meaning",
+      "context": "amplified responsibility (6). The caring or material register at full strength. Distinct from the Revelation-666 inheritance — worth knowing both readings."
+    },
+    {
+      "slug": "7777",
+      "title": "7777 Meaning",
+      "h1": "7777 Angel Number Meaning",
+      "context": "amplified spiritual alignment (7). Inner work or mystical experience at full strength. Often appears at significant breakthrough moments."
+    },
+    {
+      "slug": "8888",
+      "title": "8888 Meaning",
+      "h1": "8888 Angel Number Meaning",
+      "context": "amplified abundance (8). Prosperity or expansion at full strength. Often appears at significant material-success moments."
+    },
+    {
+      "slug": "9999",
+      "title": "9999 Meaning",
+      "h1": "9999 Angel Number Meaning",
+      "context": "amplified completion (9). Major life-cycle ending at full strength. Often appears at significant chapter closures."
+    },
+    {
+      "slug": "1144-alt",
+      "title": "1313 Meaning",
+      "h1": "1313 Angel Number Meaning Alternative",
+      "context": "alternative reading on the 1313 pattern — often distinguished from the standard 1313 reading for those seeing it specifically."
+    },
+    {
+      "slug": "1",
+      "title": "Number 1 Meaning",
+      "h1": "The Number 1 — Meaning & Symbolism",
+      "context": "the single digit 1 in numerology — the root vibration, not a repeating sequence: leadership, beginnings, independence, the self and unity, the first step taken alone."
+    },
+    {
+      "slug": "2",
+      "title": "Number 2 Meaning",
+      "h1": "The Number 2 — Meaning & Symbolism",
+      "context": "the single digit 2: balance, partnership, duality, diplomacy and patience; the pair, the mirror, cooperation over conquest."
+    },
+    {
+      "slug": "3",
+      "title": "Number 3 Meaning",
+      "h1": "The Number 3 — Meaning & Symbolism",
+      "context": "the single digit 3: creativity, self-expression, communication and joy; the trinity, the triangle, the synthesis that follows a pair."
+    },
+    {
+      "slug": "4",
+      "title": "Number 4 Meaning",
+      "h1": "The Number 4 — Meaning & Symbolism",
+      "context": "the single digit 4: stability, foundation, diligence and order; the four corners, the four elements, the square that holds."
+    },
+    {
+      "slug": "5",
+      "title": "Number 5 Meaning",
+      "h1": "The Number 5 — Meaning & Symbolism",
+      "context": "the single digit 5: change, freedom, the five senses, adventure and restlessness; the pivot at the centre of the single digits."
+    },
+    {
+      "slug": "6",
+      "title": "Number 6 Meaning",
+      "h1": "The Number 6 — Meaning & Symbolism",
+      "context": "the single digit 6: harmony, home, responsibility, nurturing and the heart; service and care, the number of the homemaker and healer."
+    },
+    {
+      "slug": "7",
+      "title": "Number 7 Meaning",
+      "h1": "The Number 7 — Meaning & Symbolism",
+      "context": "the single digit 7: introspection, the seeker, spirituality and analysis; mystery, the inward turn, the number of the mystic and the scholar."
+    },
+    {
+      "slug": "8",
+      "title": "Number 8 Meaning",
+      "h1": "The Number 8 — Meaning & Symbolism",
+      "context": "the single digit 8: power, abundance, material mastery and karma; the infinity loop stood upright, cause meeting effect."
+    },
+    {
+      "slug": "9",
+      "title": "Number 9 Meaning",
+      "h1": "The Number 9 — Meaning & Symbolism",
+      "context": "the single digit 9: completion, compassion, the humanitarian; endings that enable beginnings, the last digit before the cycle resets."
+    },
+    {
+      "slug": "000",
+      "title": "000 Meaning",
+      "h1": "000 — Meaning & Symbolism",
+      "context": "000 as an angel number: the void and infinite potential amplified, oneness with the source, a clean reset; the circle of wholeness tripled. Distinct from a single 0."
+    },
+    {
+      "slug": "0000",
+      "title": "0000 Meaning",
+      "h1": "0000 — Meaning & Symbolism",
+      "context": "0000 as an angel number: the strongest amplification of zero — a powerful reset, the unmanifest, divine wholeness and a blank slate ready to be written on."
+    },
+    {
+      "slug": "2020",
+      "title": "2020 Meaning",
+      "h1": "2020 — Meaning & Symbolism",
+      "context": "2020 as an angel number: clarity of vision ('20/20'), balance doubled, partnership and patience; building steadily and seeing a goal clearly. Distinct from 2222 or 1010."
+    },
+    {
+      "slug": "2121",
+      "title": "2121 Meaning",
+      "h1": "2121 — Meaning & Symbolism",
+      "context": "2121 as an angel number: fresh starts woven through partnership (2 and 1 interlaced); aligning relationships with new beginnings, trusting the unfolding."
+    },
+    {
+      "slug": "1331",
+      "title": "1331 Meaning",
+      "h1": "1331 — Meaning & Symbolism",
+      "context": "1331 as an angel number: a mirror sequence framing creativity and expression (3) within new beginnings (1); growth held between two thresholds."
+    },
+    {
+      "slug": "1441",
+      "title": "1441 Meaning",
+      "h1": "1441 — Meaning & Symbolism",
+      "context": "1441 as an angel number: foundation and effort (4) framed by beginnings (1); steady building toward a new chapter, work meeting manifestation."
+    }
   ]
 }

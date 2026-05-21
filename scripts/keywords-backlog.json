@@ -1,0 +1,188 @@
+{
+  "dream": [
+    {
+      "slug": "wolf",
+      "title": "Wolf Dreams",
+      "h1": "Dreams About a Wolf",
+      "context": "dreaming of a wolf: instinct, the outsider, threat or guidance from the wild part of the psyche; the pack (belonging) versus the lone wolf (independence or isolation)."
+    },
+    {
+      "slug": "vomiting",
+      "title": "Vomiting in a Dream",
+      "h1": "Dreams About Vomiting",
+      "context": "vomiting: a forceful need to expel something toxic — a feeling, a situation, words held back. Rejection of what no longer agrees with you; release that can't stay polite."
+    },
+    {
+      "slug": "plane-crash",
+      "title": "Plane Crash Dreams",
+      "h1": "Dreams About a Plane Crash",
+      "context": "a plane crash: a high-stakes plan or ambition feared to be failing; loss of control over something you can't personally steer. Distinct from missing a flight (lost opportunity)."
+    },
+    {
+      "slug": "driving",
+      "title": "Driving Dreams",
+      "h1": "Dreams About Driving (and Losing Control)",
+      "context": "driving — especially brakes failing, losing control, or sitting in the back seat: how much agency you feel over your own direction in life, and who is really 'driving' your choices."
+    },
+    {
+      "slug": "snake-in-house",
+      "title": "Snake in the House Dream",
+      "h1": "Dreams About a Snake in Your House",
+      "context": "a snake inside the home: a hidden threat or tension within your private or family life — or inner self — something unsettling that has gotten into your safe space. Distinct from snakes outdoors."
+    },
+    {
+      "slug": "demon",
+      "title": "Demon Dreams",
+      "h1": "Dreams About a Demon",
+      "context": "a demon: confronting a shadow aspect, guilt, fear, or an oppressive force; the felt sense of evil, and the sleep-paralysis imagery that often accompanies it. Psychological, not literal."
+    },
+    {
+      "slug": "miscarriage",
+      "title": "Dreaming of a Miscarriage",
+      "h1": "Dreams About a Miscarriage",
+      "context": "dreaming of a miscarriage: fear of loss around something nascent — a plan, a hope, a relationship — surfacing as anxiety, not prophecy. Handle with real compassion."
+    },
+    {
+      "slug": "crying",
+      "title": "Crying in a Dream",
+      "h1": "Dreams About Crying",
+      "context": "crying: a release of feeling that may be suppressed while awake; grief, relief, or a long-held need finally surfacing where the waking guard is down."
+    },
+    {
+      "slug": "owl",
+      "title": "Owl Dreams",
+      "h1": "Dreams About an Owl",
+      "context": "dreaming of an owl: seeing what's hidden, intuition and wisdom — or, in some traditions, a warning. The owl as night-sight, knowing what others miss in the dark."
+    },
+    {
+      "slug": "bull",
+      "title": "Bull Dreams",
+      "h1": "Dreams About a Bull",
+      "context": "dreaming of a bull: powerful drive, stubbornness, fertility and aggression; a force charging at you, or your own untamed energy demanding direction."
+    },
+    {
+      "slug": "eagle",
+      "title": "Eagle Dreams",
+      "h1": "Dreams About an Eagle",
+      "context": "dreaming of an eagle: vision, ambition, freedom and a higher perspective; rising above a situation — or the sense of being watched from above."
+    },
+    {
+      "slug": "hair-falling-out",
+      "title": "Hair Falling Out in a Dream",
+      "h1": "Dreams About Hair Falling Out",
+      "context": "hair falling out: anxiety about appearance, ageing, control, or vitality; a loss of confidence or 'face'. Distinct from a haircut, which is a chosen change."
+    },
+    {
+      "slug": "being-kidnapped",
+      "title": "Being Kidnapped in a Dream",
+      "h1": "Dreams About Being Kidnapped",
+      "context": "being kidnapped: feeling powerless, controlled, or taken somewhere against your will in waking life; a loss of autonomy, or being pulled off your own path by another's force."
+    },
+    {
+      "slug": "cockroach",
+      "title": "Cockroach Dreams",
+      "h1": "Dreams About Cockroaches",
+      "context": "cockroaches: resilience and survival, but also disgust, neglect, or a problem that keeps returning no matter how hard you try to be rid of it."
+    },
+    {
+      "slug": "divorce",
+      "title": "Dreaming of Divorce",
+      "h1": "Dreams About Divorce",
+      "context": "dreaming of divorce: a separation being processed — from a person, a belief, or a phase; fear of, or quiet readiness for, an ending. Not a prediction about your relationship."
+    },
+    {
+      "slug": "hiding",
+      "title": "Hiding in a Dream",
+      "h1": "Dreams About Hiding",
+      "context": "hiding: avoidance, a part of yourself or a truth you don't want seen; safety-seeking, shame, or a genuine need for space and protection."
+    }
+  ],
+  "symbol": [
+    {
+      "slug": "lighthouse",
+      "title": "Lighthouse Symbolism",
+      "h1": "Lighthouse — Meaning & Symbolism",
+      "context": "the lighthouse: guidance through darkness, hope, safe return, and steadfastness amid storms; the fixed point that helps others find their way."
+    },
+    {
+      "slug": "zodiac",
+      "title": "Zodiac Symbolism",
+      "h1": "The Zodiac — Meaning & Symbolism",
+      "context": "the zodiac as a symbolic system: the wheel of twelve, archetypes of character and fate, the heavens mapped onto human temperament. An overview, not a horoscope."
+    },
+    {
+      "slug": "dharma-wheel",
+      "title": "Dharma Wheel Symbolism",
+      "h1": "Dharma Wheel — Meaning & Symbolism",
+      "context": "the dharma wheel (dharmachakra): the Buddha's teaching set in motion, the Noble Eightfold Path in its spokes, and the turning of cosmic law."
+    },
+    {
+      "slug": "acorn",
+      "title": "Acorn Symbolism",
+      "h1": "Acorn — Meaning & Symbolism",
+      "context": "the acorn: latent potential — 'mighty oaks from little acorns' — patience and quiet strength; Norse and Victorian traditions of the acorn as luck and protection."
+    },
+    {
+      "slug": "palm-tree",
+      "title": "Palm Tree Symbolism",
+      "h1": "Palm Tree — Meaning & Symbolism",
+      "context": "the palm: victory, peace, paradise and resilience; Palm Sunday and triumphal entry, and the palm that bends in the storm but does not break."
+    },
+    {
+      "slug": "peace-sign",
+      "title": "Peace Sign Symbolism",
+      "h1": "Peace Sign — Meaning & Symbolism",
+      "context": "the peace sign: its origin in the nuclear-disarmament (CND) movement, unity and nonviolence; distinct from the two-finger peace 'V' gesture and its separate history."
+    },
+    {
+      "slug": "trident",
+      "title": "Trident Symbolism",
+      "h1": "Trident — Meaning & Symbolism",
+      "context": "the trident: Poseidon and Neptune and the power of the sea, Shiva's trishula and the three gunas; authority over the elements held in three prongs."
+    },
+    {
+      "slug": "caduceus",
+      "title": "Caduceus Symbolism",
+      "h1": "Caduceus — Meaning & Symbolism",
+      "context": "the caduceus versus the Rod of Asclepius: Hermes, commerce and messengers (two snakes, wings) against true medicine (one snake); the common and revealing mix-up."
+    },
+    {
+      "slug": "valknut",
+      "title": "Valknut Symbolism",
+      "h1": "Valknut — Meaning & Symbolism",
+      "context": "the valknut: Odin, the slain, and the bind of three interlocking triangles; its Norse archaeological context and a careful note on its modern appropriations."
+    }
+  ],
+  "number": [
+    {
+      "slug": "1551",
+      "title": "1551 Meaning",
+      "h1": "1551 — Meaning & Symbolism",
+      "context": "1551 as an angel number: change (5) framed by beginnings (1); a transition that opens a new path, freedom pursued with intention."
+    },
+    {
+      "slug": "1661",
+      "title": "1661 Meaning",
+      "h1": "1661 — Meaning & Symbolism",
+      "context": "1661 as an angel number: home and harmony (6) framed by beginnings (1); nurturing a fresh start, balancing responsibility with self."
+    },
+    {
+      "slug": "1771",
+      "title": "1771 Meaning",
+      "h1": "1771 — Meaning & Symbolism",
+      "context": "1771 as an angel number: spiritual insight (7) framed by beginnings (1); a new chapter guided by inner wisdom, the seeker stepping forward."
+    },
+    {
+      "slug": "1881",
+      "title": "1881 Meaning",
+      "h1": "1881 — Meaning & Symbolism",
+      "context": "1881 as an angel number: abundance and power (8) framed by beginnings (1); material renewal and karmic balance entering a new cycle."
+    },
+    {
+      "slug": "1991",
+      "title": "1991 Meaning",
+      "h1": "1991 — Meaning & Symbolism",
+      "context": "1991 as an angel number: completion (9) framed by beginnings (1); an ending that seeds a new beginning, humanitarian purpose coming full circle."
+    }
+  ]
+}
