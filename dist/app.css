@@ -581,3 +581,15 @@ input[type=text]:focus,input[type=email]:focus,textarea:focus{border-color:var(-
   .card{box-shadow:none;border-color:#ccc}
   #consent-banner,.ads-slot{display:none}
 }
+
+/* newsletter-css */
+.newsletter{max-width:640px;margin:2.5rem auto;padding:1.5rem 1.25rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025)}
+.newsletter h2{margin:0 0 .35rem;font-size:1.2rem;line-height:1.25}
+.newsletter p{margin:0 0 1rem;opacity:.85}
+.newsletter__form{display:flex;gap:.5rem;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.newsletter__form input[type=email]{flex:1 1 220px;min-width:0;padding:.65rem .8rem;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.25);color:inherit;font:inherit}
+.newsletter__form button{padding:.65rem 1.2rem;border-radius:10px;border:0;cursor:pointer;font:inherit;font-weight:600;background:#efeadf;color:#161821}
+.newsletter__form button:disabled{opacity:.6;cursor:default}
+.newsletter__status{margin:.75rem 0 0;font-size:.9rem;opacity:.9}
+.newsletter__status--error{color:#ef9a9a;opacity:1}
+.newsletter__hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}

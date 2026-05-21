@@ -484,6 +484,19 @@
   <div id="trendBars"></div>
 </div></main>
 
+<!-- newsletter:start -->
+    <section class="newsletter" aria-label="Newsletter signup">
+      <h2>The daily symbol, in your inbox</h2>
+      <p>One considered dream, symbol, or number reading each day. No spam — unsubscribe anytime.</p>
+      <form data-newsletter class="newsletter__form" novalidate>
+        <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" autocomplete="email" />
+        <input type="text" name="company" class="newsletter__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter__status" role="status" aria-live="polite" hidden></p>
+    </section>
+<!-- newsletter:end -->
+
 <footer>
   <a class="pill" href="privacy.html">Privacy</a>
   <a class="pill" href="terms.html">Terms</a>
@@ -492,4 +505,5 @@
 </footer>
 </div>
 
-<script src="script.js" defer></script></body></html>
+<script src="script.js" defer></script><script src="/newsletter.js" defer></script>
+</body></html>

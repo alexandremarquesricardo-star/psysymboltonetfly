@@ -184,6 +184,9 @@ await import("./add-nav.mjs");
 // ---------- 7. Plausible analytics injection ----------
 await import("./add-plausible.mjs");
 
+// ---------- 7.5. Newsletter signup block + /newsletter.js + CSS ----------
+await import("./add-newsletter.mjs");
+
 // ---------- 8. Bump SW cache ----------
 const swPath = resolve(DIST, "sw.js");
 let sw = readFileSync(swPath, "utf8");
