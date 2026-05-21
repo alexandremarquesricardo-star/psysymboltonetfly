@@ -42,7 +42,7 @@
       .then(function (res) {
         if (res.ok) {
           form.reset();
-          show("Thanks — you're on the list.", true);
+          show("Almost there — check your inbox to confirm your subscription.", true);
           if (window.plausible) window.plausible("Newsletter signup");
         } else {
           show(res.data.error || "Something went wrong. Please try again.", false);
