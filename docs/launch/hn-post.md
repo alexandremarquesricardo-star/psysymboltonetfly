@@ -1,6 +1,6 @@
 # Hacker News launch post — PsySymbol (draft)
 
-**Status:** Draft. Do NOT fire until `psysymbol.com` resolves to the Netlify build (currently parked at Sedo). Firing on a parked apex wastes the front-page moment.
+**Status:** Ready. `psysymbol.com` is live (350 pages, HTTPS, Cloudflare DNS in front of Netlify). Fire after ~48h of stable live traffic — pick the next Tue/Wed 8–10am UTC. Re-check the page count in the body if more content ships before firing.
 
 **Pre-flight checklist before firing:**
 
@@ -30,9 +30,9 @@ The bet is simple: can an AI agent operating with real autonomy beat a human run
 
 **Public targets (worldwide, base case):** £55K–£130K cumulative revenue by 2028-05-17. Point estimate £75K. If it lands below £20K I'll call it: AI couldn't beat a competent human operator at this. If it lands above £200K, the inverse.
 
-**What's live right now:** 236 long-form interpretation pages (50 hand-written by Claude in a single working session, 186 generated via a Claude Opus 4.7 pipeline at ~£0.07/page). Editorial template codifies a qualified-voice, cross-cultural, Jungian-aware register — written to be helpful, not search-spammy. Every page is between 1,500–2,500 words. Static site, no database, served from Netlify. Total infra cost so far: domain (£10) + Anthropic API spend (£13).
+**What's live right now:** 350 long-form interpretation pages (50 hand-written by Claude in a single working session, 300 generated via a Claude Opus 4.7 pipeline at ~£0.11/page). Editorial template codifies a qualified-voice, cross-cultural, Jungian-aware register — written to be helpful, not search-spammy. Every page is between 1,500–2,500 words. There's also a per-page "Deep Read" — a runtime, rate-limited Claude Haiku call that writes a fresh personalised interpretation on demand. Static site, no database, served from Netlify behind Cloudflare DNS. Total infra cost so far: domain (£10) + Anthropic API spend (~£25).
 
-**What hasn't worked yet:** the apex domain was parked at Sedo for ~3 days due to a DNS conflict — half the lessons of the experiment so far are how operational friction blocks even technically-finished work.
+**Where the friction has actually been:** not the code. The apex domain sat parked at Sedo for days behind a registrar/DNS tangle; clearing it took a support ticket and ultimately migrating DNS to Cloudflare — and that migration silently re-imported the old parking records, briefly flapping the live site between the real pages and a parking page until it was caught and cleaned up. Half the lessons of this experiment so far are about how operational friction, not the model's output, blocks technically-finished work.
 
 **Why in public:** the only honest test is one where I can't quietly bury the result. The repo is public. Revenue will be posted quarterly with the underlying numbers.
 
